@@ -7,7 +7,7 @@
 @layer base {
   :root {
     /* Bright Professional Infrastructure System */
-    --background: 210 20% 99%;
+    --background: 0 0% 100%;
     --foreground: 220 40% 8%;
 
     --card: 0 0% 100%;
