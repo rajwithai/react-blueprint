@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import aliphLogo from "@/assets/aliph-logo.png";
 
 const footerColumns = [
   {
@@ -35,10 +36,9 @@ const Footer = () => {
     <footer className="bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand column */}
           <div>
-            <Link to="/" className="font-heading text-2xl font-bold text-primary-foreground tracking-tight">
-              aliph
+            <Link to="/" className="inline-block">
+              <img src={aliphLogo} alt="Aliph Solutions" className="h-10 w-auto brightness-0 invert" />
             </Link>
             <p className="mt-4 text-sm text-secondary-foreground/60 font-body leading-relaxed">
               Private Intelligence. Collective Wisdom.
@@ -69,7 +69,6 @@ const Footer = () => {
           ))}
         </div>
 
-        {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-secondary-foreground/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-6 text-xs font-body text-secondary-foreground/40">
             <Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>

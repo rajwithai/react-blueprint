@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import HeroSection from "@/components/sections/HeroSection";
 import Section from "@/components/sections/Section";
 
@@ -18,9 +18,17 @@ const Blog = () => {
 
       <Section>
         <div className="grid md:grid-cols-3 gap-8">
-          {blogPosts.map((post) => (
-            <article key={post.title} className="bg-card rounded-2xl border border-border overflow-hidden card-hover">
-              <div className="h-48 bg-muted" />
+          {blogPosts.map((post, i) => (
+            <motion.article
+              key={post.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ y: -4 }}
+              className="bg-card rounded-2xl border border-border overflow-hidden shadow-sm hover:shadow-lg hover:shadow-primary/5 transition-shadow"
+            >
+              <div className="h-48 bg-gradient-to-br from-primary/10 to-violet/10 shimmer" />
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="inline-block px-2.5 py-1 rounded-full text-xs font-heading font-semibold bg-primary/10 text-primary">{post.category}</span>
@@ -29,7 +37,7 @@ const Blog = () => {
                 <h3 className="font-heading font-semibold text-lg mb-2">{post.title}</h3>
                 <p className="font-body text-sm text-muted-foreground leading-relaxed">{post.excerpt}</p>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </Section>

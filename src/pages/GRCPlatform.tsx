@@ -1,110 +1,164 @@
-import { FileCheck, Users, BookOpen, Search } from "lucide-react";
+import { FileCheck, Search, BookOpen } from "lucide-react";
+import { motion } from "framer-motion";
 import HeroSection from "@/components/sections/HeroSection";
 import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
 
 const impact = [
-  { capability: "Compliance report generation", traditional: "Days of manual research", aliph: "Hours" },
-  { capability: "Regulatory mapping", traditional: "Weeks of specialist research", aliph: "Minutes" },
-  { capability: "Contract risk analysis", traditional: "Multi-day legal review", aliph: "Under an hour" },
-  { capability: "Cost", traditional: "SAR 500K+ per engagement", aliph: "A fraction of the cost" },
-  { capability: "Timeline", traditional: "6–12 months", aliph: "Weeks" },
-];
-
-const regulations = [
-  { reg: "PDPL", authority: "SDAIA", coverage: "Full compliance mapping, gap analysis, remediation" },
-  { reg: "SAMA Regulations", authority: "Saudi Arabian Monetary Authority", coverage: "Financial sector compliance reporting" },
-  { reg: "CMA Corporate Governance", authority: "Capital Market Authority", coverage: "Board governance requirements" },
-  { reg: "NCA Cybersecurity", authority: "National Cybersecurity Authority", coverage: "Security controls alignment" },
-  { reg: "GDPR", authority: "European Union", coverage: "Coming with European expansion" },
+  { label: "Compliance Reports", before: "Days of manual work", after: "Hours" },
+  { label: "Regulatory Mapping", before: "Weeks of research", after: "Minutes" },
+  { label: "Contract Analysis", before: "Multi-day review", after: "Under an hour" },
+  { label: "Cost", before: "SAR 500K+ per engagement", after: "A fraction" },
 ];
 
 const GRCPlatform = () => {
   return (
     <>
       <HeroSection
-        eyebrow="ALIPH GRC PLATFORM"
-        title="Advisory-quality compliance at a fraction of the cost."
-        subtitle="Multi-agent AI automates the work that traditionally requires teams of consultants. Compliance mapping, contract analysis, document drafting, and audit preparation — delivered in hours instead of weeks."
+        eyebrow="ALIPH GRC"
+        title="Months of compliance work. Done in days."
+        subtitle="Multi-agent AI that automates compliance mapping, contract analysis, document generation, and audit preparation — at advisory-firm quality, at a fraction of the cost, in a fraction of the time."
         primaryCta={{ label: "Request a Demo", href: "/demo" }}
-        badge="Live — Demonstrated to Prospects"
+        badge="Live"
       />
 
+      {/* Impact */}
       <Section>
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-12">The Impact</h2>
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-border">
-                <th className="text-left py-3 font-heading font-semibold text-sm">Capability</th>
-                <th className="text-left py-3 font-heading font-semibold text-sm text-muted-foreground">Traditional Approach</th>
-                <th className="text-left py-3 font-heading font-semibold text-sm text-primary">With Aliph GRC</th>
-              </tr>
-            </thead>
-            <tbody>
-              {impact.map((row) => (
-                <tr key={row.capability} className="border-b border-border/50">
-                  <td className="py-3 font-body text-sm font-medium">{row.capability}</td>
-                  <td className="py-3 font-body text-sm text-muted-foreground">{row.traditional}</td>
-                  <td className="py-3 font-body text-sm text-primary font-semibold">{row.aliph}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </Section>
-
-      <Section dark>
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-primary-foreground">Core Capabilities</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          <FeatureCard icon={FileCheck} title="Compliance Engine" description="Auto-map documents to Saudi regulations — PDPL, SAMA, CMA, NCA. Gap identification with risk scoring. Remediation recommendations with priority ranking. Audit-ready compliance reports." delay={0} dark />
-          <FeatureCard icon={Search} title="Document Intelligence" description="Large-scale document indexing with semantic search. Contract analysis and risk flagging. Template library for common GRC documents. Arabic and English document generation." delay={100} dark />
-          <FeatureCard icon={BookOpen} title="Advisory Automation" description="Board materials preparation. Due diligence automation. Policy and procedure drafting. Precedent search across all past engagements." delay={200} dark />
-        </div>
-      </Section>
-
-      <Section>
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-8">Multi-Agent AI</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12"
+        >
+          What used to take months.
+        </motion.h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { title: "Intake & Research", desc: "Agents classify the request, research applicable regulations, gather organizational context." },
-            { title: "Generation", desc: "Agents draft documents, analyze contracts, build structured reports aligned with professional standards." },
-            { title: "Validation", desc: "Agents validate compliance, review quality, verify citations, and score risk before output reaches the user." },
-            { title: "Learning", desc: "Agents capture patterns, integrate feedback, and update the knowledge base with every engagement." },
-          ].map((s, i) => (
-            <FeatureCard key={s.title} title={s.title} description={s.desc} delay={i * 100} />
+          {impact.map((item, i) => (
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="rounded-2xl border border-border bg-card p-6 text-center"
+            >
+              <p className="font-heading font-semibold text-lg mb-4">{item.label}</p>
+              <p className="font-body text-sm text-muted-foreground line-through mb-2">{item.before}</p>
+              <p className="font-heading font-bold text-2xl text-gradient">{item.after}</p>
+            </motion.div>
           ))}
         </div>
       </Section>
 
+      {/* What It Does */}
       <Section dark>
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-primary-foreground">Regulations Covered</h2>
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-primary-foreground/10">
-                <th className="text-left py-3 font-heading font-semibold text-sm text-primary-foreground/60">Regulation</th>
-                <th className="text-left py-3 font-heading font-semibold text-sm text-primary-foreground/60">Authority</th>
-                <th className="text-left py-3 font-heading font-semibold text-sm text-primary-foreground/60">Coverage</th>
-              </tr>
-            </thead>
-            <tbody>
-              {regulations.map((r) => (
-                <tr key={r.reg} className="border-b border-primary-foreground/5">
-                  <td className="py-3 font-body text-sm text-primary-foreground font-medium">{r.reg}</td>
-                  <td className="py-3 font-body text-sm text-primary-foreground/60">{r.authority}</td>
-                  <td className="py-3 font-body text-sm text-primary-foreground/60">{r.coverage}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-primary-foreground"
+        >
+          Enterprise GRC, powered by agentic AI.
+        </motion.h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          <FeatureCard icon={FileCheck} title="Compliance Engine" description="Auto-map documents to PDPL, SAMA, CMA, and NCA requirements. Identify gaps. Score risk. Generate remediation plans with priority ranking." delay={0} dark />
+          <FeatureCard icon={Search} title="Document Intelligence" description="Index and search across thousands of documents. Analyze contracts for risk. Generate board materials, audit reports, and policy drafts — in Arabic and English." delay={100} dark />
+          <FeatureCard icon={BookOpen} title="Precedent Intelligence" description="Every engagement makes the platform smarter. Past decisions, past analyses, past deliverables — all searchable, all informing the next piece of work." delay={200} dark />
         </div>
       </Section>
 
+      {/* Agentic Workflow */}
+      <Section>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-8"
+        >
+          AI agents that research, draft, validate, and learn.
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="font-body text-muted-foreground leading-relaxed max-w-3xl mb-12"
+        >
+          The GRC Platform orchestrates specialized AI agents across four stages. Agents research applicable regulations and gather organizational context. They draft documents and analyze contracts to professional standards. They validate compliance, verify citations, and score risk before anything reaches the user. And they learn — capturing patterns and integrating feedback so the platform improves with every engagement.
+        </motion.p>
+        <div className="grid md:grid-cols-4 gap-4">
+          {["Research", "Draft", "Validate", "Learn"].map((stage, i) => (
+            <motion.div
+              key={stage}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="relative rounded-2xl bg-primary/5 border border-primary/20 p-6 text-center"
+            >
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                <span className="font-heading font-bold text-primary">{i + 1}</span>
+              </div>
+              <p className="font-heading font-semibold">{stage}</p>
+              {i < 3 && (
+                <div className="hidden md:block absolute top-1/2 -right-2 w-4 h-px bg-primary/30" />
+              )}
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Regulations */}
+      <Section dark>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-primary-foreground"
+        >
+          Comprehensive regulatory coverage.
+        </motion.h2>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          {[
+            { name: "PDPL", auth: "SDAIA", note: "Full mapping, gap analysis, remediation" },
+            { name: "SAMA", auth: "Financial sector", note: "Financial sector compliance" },
+            { name: "CMA", auth: "Corporate", note: "Corporate governance" },
+            { name: "NCA", auth: "Cybersecurity", note: "Cybersecurity controls" },
+            { name: "GDPR", auth: "EU", note: "Coming with European expansion" },
+          ].map((r, i) => (
+            <motion.div
+              key={r.name}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+              className="glass glow-border rounded-xl p-5 text-center"
+            >
+              <p className="font-heading font-bold text-lg text-primary mb-1">{r.name}</p>
+              <p className="font-body text-xs text-primary-foreground/50">{r.note}</p>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Who it's for */}
+      <Section>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-6"
+        >
+          Built for the teams that carry the compliance burden.
+        </motion.h2>
+        <p className="font-body text-muted-foreground leading-relaxed max-w-3xl">
+          Compliance teams. Legal departments. Advisory firms. Internal audit functions. And the SMEs that need professional GRC but could never afford it before.
+        </p>
+      </Section>
+
       <CTABanner
-        title="Compliance in weeks, not months."
-        subtitle="See the GRC Platform in action."
+        title="Compliance that scales. See it live."
         primaryCta={{ label: "Request a Demo", href: "/demo" }}
       />
     </>

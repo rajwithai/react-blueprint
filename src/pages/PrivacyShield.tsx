@@ -1,115 +1,150 @@
-import { Link } from "react-router-dom";
-import { Shield, Lock, Globe2, FileCheck, Eye } from "lucide-react";
+import { motion } from "framer-motion";
 import HeroSection from "@/components/sections/HeroSection";
 import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
-import { useInView } from "@/hooks/useInView";
 
-const steps = [
-  "User submits a query containing sensitive data.",
-  "Privacy Shield scans for PII — names, organizations, ID numbers, financial data, contact information.",
-  "All detected entities are replaced with anonymized tokens.",
-  "An encrypted mapping between tokens and original values is stored temporarily.",
-  "Only the sanitized query reaches the external AI model.",
-  "Response returns. Tokens are restored to original values. Full audit trail logged.",
-  "Encrypted mapping auto-expires. No residual data.",
-];
-
-const entityTypes = [
-  { category: "Person Names", examples: "Full names in Arabic and English, including titles and honorifics" },
-  { category: "Organizations", examples: "Company names, government bodies, institutions" },
-  { category: "Locations", examples: "Addresses, cities, landmarks, regions" },
-  { category: "Financial Data", examples: "IBAN numbers, account numbers, transaction amounts" },
-  { category: "Identity Documents", examples: "National ID, Iqama, passport numbers" },
-  { category: "Contact Information", examples: "Phone numbers, email addresses, URLs" },
-  { category: "Medical Data", examples: "Patient identifiers, diagnosis references" },
-  { category: "Temporal Data", examples: "Dates of birth, appointment dates" },
+const entityTiles = [
+  "Person Names (Arabic & English)",
+  "Organizations & Institutions",
+  "Locations & Addresses",
+  "Financial Data (IBAN, accounts)",
+  "Identity Documents (National ID, Iqama, Passport)",
+  "Contact Information (phone, email)",
+  "Medical Identifiers",
+  "Dates & Timestamps",
 ];
 
 const PrivacyShield = () => {
-  const { ref, isInView } = useInView();
-
   return (
     <>
       <HeroSection
         eyebrow="PRIVACY SHIELD"
-        title="Your data never leaves. Ever."
-        subtitle="Aliph's proprietary Privacy Shield automatically detects and masks all personally identifiable information before any data reaches external AI models. High-accuracy detection for both Arabic and English. Encrypted. Auditable. Automatic."
+        title="Your sensitive data never touches an external server. Ever."
+        subtitle="Proprietary PII detection for Arabic and English. Automatic masking. Encrypted mapping. Full audit trail. This is the layer that makes global AI safe for regulated enterprise."
         primaryCta={{ label: "Request a Demo", href: "/demo" }}
       />
 
-      {/* How It Works */}
+      {/* The Idea */}
       <Section>
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-12">How It Works</h2>
-        <div className="max-w-2xl mx-auto space-y-4">
-          {steps.map((step, i) => (
-            <div key={i} ref={i === 0 ? ref : undefined} className={`flex gap-4 items-start ${isInView ? "animate-fade-in-up" : "opacity-0"}`} style={{ animationDelay: `${i * 80}ms` }}>
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center font-heading font-bold text-primary text-sm">{i + 1}</div>
-              <p className="font-body text-muted-foreground pt-1">{step}</p>
-            </div>
+        <div className="max-w-2xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-8 text-foreground"
+          >
+            What if you could use any AI model in the world — and it never knew who you were?
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="space-y-4"
+          >
+            <p className="font-body text-lg text-muted-foreground leading-relaxed">
+              That is what Privacy Shield does. Before any query reaches an external AI model, every piece of identifiable information is detected and replaced with encrypted tokens. The AI sees the question. It never sees the data. The response returns, tokens are restored, and a complete audit trail is logged. The encrypted mapping expires automatically.
+            </p>
+            <p className="font-body text-lg text-muted-foreground leading-relaxed font-medium">
+              No PII is stored externally. No PII is transmitted externally. No exceptions.
+            </p>
+          </motion.div>
+        </div>
+      </Section>
+
+      {/* What It Covers */}
+      <Section dark>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-primary-foreground"
+        >
+          Comprehensive detection across Arabic and English.
+        </motion.h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {entityTiles.map((tile, i) => (
+            <motion.div
+              key={tile}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+              className="glass glow-border rounded-xl p-5 text-center"
+            >
+              <span className="font-heading font-medium text-sm text-primary-foreground">{tile}</span>
+            </motion.div>
           ))}
         </div>
+        <p className="font-body text-sm text-primary-foreground/50 mt-6 text-center">
+          Detection runs in parallel across both languages, including mixed-language queries. Continuously improving.
+        </p>
       </Section>
 
-      {/* What We Detect */}
-      <Section dark>
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-primary-foreground">What We Detect</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {entityTypes.map((e, i) => (
-            <FeatureCard key={e.category} title={e.category} description={e.examples} delay={i * 80} dark />
-          ))}
-        </div>
-      </Section>
-
-      {/* Bilingual */}
+      {/* Before and After */}
       <Section>
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-6">Bilingual by Design</h2>
-          <p className="font-body text-muted-foreground leading-relaxed">
-            Unlike global privacy tools built for English-only environments, Aliph's Privacy Shield was engineered from day one for Arabic and English — including mixed-language queries where both languages appear in the same sentence. Separate detection systems run in parallel for each language, with results merged and deduplicated.
-          </p>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-8 text-center"
+        >
+          See the difference.
+        </motion.h2>
+        <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-6">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="rounded-2xl bg-muted border border-border p-6"
+          >
+            <p className="text-xs uppercase tracking-wider text-muted-foreground mb-3 font-heading font-semibold">What you write</p>
+            <p className="font-body text-foreground text-sm leading-relaxed">
+              "What PDPL penalty applies if we expose <span className="text-amber font-semibold">Ahmed Al-Rashid</span>'s email at <span className="text-amber font-semibold">National Corp</span>?"
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="rounded-2xl bg-primary/5 border border-primary/20 p-6"
+          >
+            <p className="text-xs uppercase tracking-wider text-primary mb-3 font-heading font-semibold">What the AI sees</p>
+            <p className="font-body text-foreground text-sm leading-relaxed">
+              "What PDPL penalty applies if we expose <span className="text-primary font-semibold">[PERSON_1]</span>'s <span className="text-primary font-semibold">[DATA_TYPE_1]</span> at <span className="text-primary font-semibold">[ORG_1]</span>?"
+            </p>
+          </motion.div>
         </div>
-      </Section>
-
-      {/* Live Example */}
-      <Section dark>
-        <div className="max-w-3xl mx-auto">
-          <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-8 text-primary-foreground text-center">Live Example</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10 p-6">
-              <p className="text-xs uppercase tracking-wider text-primary mb-3 font-heading font-semibold">Before Masking</p>
-              <p className="font-body text-primary-foreground/80 text-sm leading-relaxed">
-                "What PDPL penalty applies if we expose <span className="text-amber">Ahmed Al-Rashid</span>'s email at <span className="text-amber">National Corp</span>?"
-              </p>
-            </div>
-            <div className="rounded-2xl bg-primary-foreground/5 border border-primary/30 p-6">
-              <p className="text-xs uppercase tracking-wider text-primary mb-3 font-heading font-semibold">After Masking</p>
-              <p className="font-body text-primary-foreground/80 text-sm leading-relaxed">
-                "What PDPL penalty applies if we expose <span className="text-primary">[PERSON_1]</span>'s <span className="text-primary">[DATA_TYPE_1]</span> at <span className="text-primary">[ORG_1]</span>?"
-              </p>
-            </div>
-          </div>
-        </div>
+        <p className="font-body text-sm text-muted-foreground mt-6 text-center max-w-2xl mx-auto">
+          The AI responds to the masked query. Privacy Shield restores the original context before delivering the answer. The external model never saw a single piece of real data.
+        </p>
       </Section>
 
       {/* Compliance */}
-      <Section>
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-8">Compliance Alignment</h2>
+      <Section dark>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-8 text-primary-foreground"
+        >
+          Built for the world's strictest regulations.
+        </motion.h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { title: "PDPL (Saudi Arabia)", desc: "Data minimization, purpose limitation, storage limitation." },
-            { title: "GDPR (Europe)", desc: "Exceeds GDPR requirements by design." },
-            { title: "UAE PDPL", desc: "Same architecture, same compliance coverage." },
-            { title: "SAMA / NCA", desc: "Encryption standards, audit trails, access controls." },
+            { title: "PDPL", desc: "Data minimization, purpose limitation, storage controls." },
+            { title: "GDPR", desc: "Exceeds requirements by architecture." },
+            { title: "UAE PDPL", desc: "Same protection, same standard." },
+            { title: "SAMA / NCA", desc: "Encryption, audit trails, access controls." },
           ].map((c, i) => (
-            <FeatureCard key={c.title} title={c.title} description={c.desc} delay={i * 100} />
+            <FeatureCard key={c.title} title={c.title} description={c.desc} delay={i * 100} dark />
           ))}
         </div>
       </Section>
 
       <CTABanner
-        title="Protect your data. See Privacy Shield in action."
+        title="Protect every query. See Privacy Shield live."
         primaryCta={{ label: "Request a Demo", href: "/demo" }}
       />
     </>

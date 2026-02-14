@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
 import HeroSection from "@/components/sections/HeroSection";
 import Section from "@/components/sections/Section";
 
@@ -17,12 +18,18 @@ const Contact = () => {
     <>
       <HeroSection
         title="Let's talk."
-        subtitle="Whether you're exploring sovereign AI for your organization, interested in partnership opportunities, or have questions about our platform — we'd like to hear from you."
+        subtitle="Exploring sovereign AI. Evaluating partnerships. Asking hard questions. Whatever the reason — we're here."
       />
 
       <Section>
         <div className="grid lg:grid-cols-2 gap-16">
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <motion.form
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            onSubmit={handleSubmit}
+            className="space-y-5"
+          >
             <div>
               <label className="block font-body text-sm font-medium mb-1.5">Full Name *</label>
               <input type="text" required className="w-full rounded-lg border border-border bg-card px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
@@ -50,12 +57,18 @@ const Contact = () => {
               <label className="block font-body text-sm font-medium mb-1.5">Message *</label>
               <textarea required rows={4} className="w-full rounded-lg border border-border bg-card px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary resize-none" value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} />
             </div>
-            <button type="submit" className="w-full sm:w-auto px-8 py-3.5 rounded-lg bg-primary text-primary-foreground font-heading font-semibold hover:brightness-90 transition-all">
+            <button type="submit" className="w-full sm:w-auto px-8 py-3.5 rounded-lg bg-primary text-primary-foreground font-heading font-semibold hover:brightness-110 transition-all shadow-lg shadow-primary/25">
               Send Message
             </button>
-          </form>
+          </motion.form>
 
-          <div className="space-y-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="space-y-8"
+          >
             <div>
               <h3 className="font-heading font-semibold text-xl mb-6">Contact Details</h3>
               <div className="space-y-4">
@@ -82,7 +95,7 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </Section>
     </>
