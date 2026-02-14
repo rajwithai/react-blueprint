@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Shield, Brain, Globe, ArrowRight, Building2, Heart, Briefcase, CheckCircle2, Cpu, Layers, ShieldCheck, Lock, Server, FileSearch } from "lucide-react";
+import { Shield, Brain, Globe, ArrowRight, Building2, Heart, Briefcase, CheckCircle2, Cpu, Layers, ShieldCheck, Lock, Server, FileSearch, Zap, Network } from "lucide-react";
 import { motion } from "framer-motion";
 import HeroSection from "@/components/sections/HeroSection";
 import Section from "@/components/sections/Section";
@@ -7,20 +7,19 @@ import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
 
 const archLayers = [
-  { icon: Cpu, label: "Edge Intelligence", desc: "Native apps with embedded SLMs running directly on user devices. Zero-server dependency.", num: "01" },
-  { icon: Layers, label: "Sovereign Core", desc: "Your AI hub, trained on your data. Semantic search and Organization Memory running on your infrastructure.", num: "02" },
-  { icon: ShieldCheck, label: "Privacy Shield", desc: "Proprietary PII masking (Arabic & English). Sanitizes every query before external processing.", num: "03" },
-  { icon: Globe, label: "Cloud Augment", desc: "Safe access to Claude, GPT-4, and ALLAM—only after full sanitization.", num: "04" },
+  { icon: Cpu, label: "Edge Intelligence", desc: "Native applications with embedded SLMs running directly on user devices. Zero-server dependency.", num: "01" },
+  { icon: Layers, label: "Sovereign Core", desc: "Your institutional memory, indexed and searchable on-premise. Runs entirely on your own infrastructure.", num: "02" },
+  { icon: ShieldCheck, label: "Privacy Shield", desc: "Proprietary PII masking (Arabic & English) that sanitizes every query before external processing.", num: "03" },
+  { icon: Globe, label: "Cloud Augmentation", desc: "Safe access to global reasoning (Claude, GPT-4, ALLAM) only after full anonymization.", num: "04" },
 ];
 
 const Index = () => {
   return (
     <>
-      {/* Hero — The Sovereign Perimeter */}
       <HeroSection
         eyebrow="SOVEREIGN AI INFRASTRUCTURE"
         title="Your Intelligence. Your Borders."
-        subtitle="The first sovereign AI infrastructure purpose-built for Saudi Enterprise. Deploy world-class intelligence while keeping your data—and your future—within your walls."
+        subtitle="The first sovereign AI infrastructure purpose-built for the world's most regulated markets. Deploy world-class intelligence while maintaining absolute data sovereignty across the Kingdom, the UAE, and beyond."
         primaryCta={{ label: "Contact Sales", href: "/contact" }}
         secondaryCta={{ label: "Explore Platform", href: "/platform" }}
         minHeight="min-h-[90vh]"
@@ -30,20 +29,30 @@ const Index = () => {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-14 flex flex-wrap justify-center gap-3"
+          className="mt-14 flex flex-col items-center gap-6"
         >
-          {["PDPL Compliant", "SAMA Ready", "NCA Aligned"].map((badge, i) => (
-            <motion.div
-              key={badge}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6 + i * 0.08 }}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-white/80 text-xs font-body font-semibold text-foreground/60 tracking-wide"
-            >
-              <CheckCircle2 className="h-3 w-3 text-accent" />
-              {badge}
-            </motion.div>
-          ))}
+          <div className="flex flex-wrap justify-center gap-3">
+            {["PDPL Compliant", "SAMA / CBUAE Ready", "NCA / UAE IA Aligned"].map((badge, i) => (
+              <motion.div
+                key={badge}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.6 + i * 0.08 }}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-white/80 text-xs font-body font-semibold text-foreground/60 tracking-wide"
+              >
+                <CheckCircle2 className="h-3 w-3 text-accent" />
+                {badge}
+              </motion.div>
+            ))}
+          </div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.9 }}
+            className="text-white/60 text-xs font-body tracking-wider uppercase"
+          >
+            Production Pilot: <span className="text-gold font-semibold">Reve Consult, Riyadh</span>
+          </motion.p>
         </motion.div>
       </HeroSection>
 
@@ -56,7 +65,7 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-gold uppercase tracking-[0.25em] text-xs font-body font-semibold mb-4 text-center"
           >
-            THE 4-LAYER FEDERATED ARCHITECTURE
+            THE SOVEREIGN PERIMETER
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
@@ -64,7 +73,7 @@ const Index = () => {
             viewport={{ once: true }}
             className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl mb-4 text-white text-center tracking-tight"
           >
-            Sovereign by design.
+            Compliance Enforced by Design.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -73,7 +82,7 @@ const Index = () => {
             transition={{ delay: 0.1 }}
             className="font-body text-white/50 text-center max-w-xl mx-auto mb-16"
           >
-            Every query passes through sovereign infrastructure before anything reaches an external model. Most never leave.
+            Every query passes through a four-layer federated perimeter before anything reaches an external model. Most never leave.
           </motion.p>
 
           <div className="space-y-4">
@@ -105,66 +114,96 @@ const Index = () => {
         </div>
       </Section>
 
-      {/* Organization Memory — The Asset */}
+      {/* The Revolution — Status Quo vs Aliph */}
       <Section alabaster>
-        <div className="max-w-4xl mx-auto">
-          <motion.p
+        <div className="max-w-6xl mx-auto">
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-accent uppercase tracking-[0.25em] text-xs font-body font-semibold mb-4"
+            className="text-center mb-12"
           >
-            ORGANIZATION MEMORY
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl mb-6 text-foreground tracking-tight"
-          >
-            Your Institutional Memory, Digitized.
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="space-y-4 font-body text-muted-foreground leading-relaxed max-w-2xl"
-          >
-            <p>Capture decades of institutional expertise that would otherwise walk out the door.</p>
-            <p>Inherit existing permissions (Google Drive/MS 365) automatically—zero admin configuration required.</p>
-            <p>Every answer is delivered with full source citations—no hallucinations, only evidence.</p>
+            <p className="text-accent uppercase tracking-[0.25em] text-xs font-body font-semibold mb-4">
+              THE REVOLUTION
+            </p>
+            <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl mb-6 text-foreground tracking-tight">
+              The "Impossible Choice" Solved.
+            </h2>
           </motion.div>
 
-          {/* Connector visual */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="mt-12 grid grid-cols-3 gap-4 max-w-lg"
-          >
-            {["Google Drive", "Microsoft 365", "Local Shared Drives"].map((connector) => (
-              <div key={connector} className="bento-card p-4 text-center">
-                <p className="font-body text-xs text-muted-foreground font-medium">{connector}</p>
-              </div>
-            ))}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.25 }}
-            className="mt-8"
-          >
-            <Link
-              to="/platform/organization-memory"
-              className="inline-flex items-center gap-1.5 text-sm font-body font-semibold text-accent hover:gap-2.5 transition-all duration-200"
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* The Status Quo */}
+            <motion.div
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-gray-100 rounded-lg p-8 border-l-4 border-red-500/50"
             >
-              Learn more <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-          </motion.div>
+              <h3 className="font-heading font-bold text-2xl mb-6 text-gray-500">The Status Quo</h3>
+              <ul className="space-y-6">
+                <li className="flex gap-4">
+                  <span className="shrink-0 w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-600 font-bold">×</span>
+                  <div>
+                    <h4 className="font-bold text-foreground">Expert Flight</h4>
+                    <p className="text-sm text-muted-foreground">Institutional wisdom vanishes when a senior partner or compliance lead resigns.</p>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <span className="shrink-0 w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-600 font-bold">×</span>
+                  <div>
+                    <h4 className="font-bold text-foreground">Regulatory Exposure</h4>
+                    <p className="text-sm text-muted-foreground">Using global AI tools creates SAR 5M risk per incident under PDPL.</p>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <span className="shrink-0 w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-600 font-bold">×</span>
+                  <div>
+                    <h4 className="font-bold text-foreground">Manual GRC</h4>
+                    <p className="text-sm text-muted-foreground">Compliance is a slow, expensive process that misses up to 30% of requirements.</p>
+                  </div>
+                </li>
+              </ul>
+            </motion.div>
+
+            {/* The Aliph Revolution */}
+            <motion.div
+              initial={{ opacity: 0, x: 24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-lg p-8 border-l-4 border-gold shadow-lg"
+            >
+              <h3 className="font-heading font-bold text-2xl mb-6 text-gold">The Aliph Revolution</h3>
+              <ul className="space-y-6">
+                <li className="flex gap-4">
+                  <span className="shrink-0 w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <h4 className="font-bold text-foreground">Knowledge Persistence</h4>
+                    <p className="text-sm text-muted-foreground">Institutional memory is captured and searchable for every authorized team member instantly.</p>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <span className="shrink-0 w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <h4 className="font-bold text-foreground">Native Sovereignty</h4>
+                    <p className="text-sm text-muted-foreground">Zero PII ever leaves your perimeter. Full AI capability with 100% data sovereignty.</p>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <span className="shrink-0 w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <h4 className="font-bold text-foreground">Agentic Execution</h4>
+                    <p className="text-sm text-muted-foreground">Big Four quality compliance reports generated in hours, not months.</p>
+                  </div>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
         </div>
       </Section>
 
@@ -189,9 +228,9 @@ const Index = () => {
         <div className="grid md:grid-cols-3 gap-6">
           {[
             {
-              title: "Aliph GRC Platform",
+              title: "Aliph GRC",
               badge: "Live",
-              desc: "Big Four quality GRC advisory automated. Auto-map documents to KSA regulations (PDPL, SAMA, CMA, NCA) in hours, not months.",
+              desc: "Don’t just map regulations; automate the entire advisory lifecycle. Big Four quality advisory at AI speed.",
               href: "/products/grc",
             },
             {
@@ -203,17 +242,16 @@ const Index = () => {
             {
               title: "Agentic AI Platform",
               badge: "Q2 2026",
-              desc: "Advanced agentic power built on OpenClaw, hardened with Aliph's Privacy Shield and security.",
+              desc: "Move from chatbots to 'Digital Teammates.' Autonomous agents that research, draft, and validate complex workflows.",
               href: "/products/agentic-ai",
             },
           ].map(({ title, badge, desc, href }, i) => (
             <FeatureCard key={title} title={title} description={desc} delay={i * 80}>
               <div className="flex items-center justify-between mt-4">
-                <span className={`inline-block px-2.5 py-1 rounded text-[10px] font-body font-semibold uppercase tracking-wider border ${
-                  badge === "Live"
-                    ? "text-accent border-accent/30 bg-accent/5"
-                    : "text-muted-foreground border-border bg-muted"
-                }`}>
+                <span className={`inline-block px-2.5 py-1 rounded text-[10px] font-body font-semibold uppercase tracking-wider border ${badge === "Live"
+                  ? "text-accent border-accent/30 bg-accent/5"
+                  : "text-muted-foreground border-border bg-muted"
+                  }`}>
                   {badge}
                 </span>
                 <Link to={href} className="inline-flex items-center gap-1.5 text-sm font-body font-semibold text-accent hover:gap-2.5 transition-all duration-200">
@@ -282,18 +320,28 @@ const Index = () => {
           <span className="text-muted-foreground">Enforced by architecture.</span>
         </motion.h2>
         <div className="grid md:grid-cols-3 gap-6">
-          <FeatureCard icon={Building2} title="Financial Services" description="SAMA compliance. Due diligence automation. Financial data sovereignty." delay={0}>
+          <FeatureCard icon={Building2} title="Financial Services" description="SAMA & CBUAE compliance. Real-time AML pattern detection and due diligence compression." delay={0}>
             <Link to="/industries/financial-services" className="inline-flex items-center gap-1.5 mt-4 text-sm font-body font-semibold text-accent hover:gap-2.5 transition-all duration-200">
               Learn more <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </FeatureCard>
-          <FeatureCard icon={Heart} title="Healthcare" description="Patient data protection. CBAHI accreditation. Clinical knowledge management." delay={80}>
+          <FeatureCard icon={Heart} title="Healthcare" description="CBAHI & MOH accreditation ready. PDPL-compliant patient data handling across clinical protocols." delay={80}>
             <Link to="/industries/healthcare" className="inline-flex items-center gap-1.5 mt-4 text-sm font-body font-semibold text-accent hover:gap-2.5 transition-all duration-200">
               Learn more <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </FeatureCard>
-          <FeatureCard icon={Briefcase} title="Professional Services" description="Client confidentiality. Engagement intelligence. Institutional knowledge retention." delay={160}>
+          <FeatureCard icon={Briefcase} title="Professional Services" description="Instant precedent search and contract risk flagging for senior partners and legal teams." delay={160}>
             <Link to="/industries/professional-services" className="inline-flex items-center gap-1.5 mt-4 text-sm font-body font-semibold text-accent hover:gap-2.5 transition-all duration-200">
+              Learn more <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </FeatureCard>
+          <FeatureCard icon={Zap} title="Energy & Infrastructure" description="Secure, offline-first intelligence for critical facilities and remote operations." delay={240}>
+            <Link to="/industries/energy" className="inline-flex items-center gap-1.5 mt-4 text-sm font-body font-semibold text-accent hover:gap-2.5 transition-all duration-200">
+              Learn more <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </FeatureCard>
+          <FeatureCard icon={Network} title="Conglomerates" description="Cross-subsidiary intelligence without breaking data silos between holdings." delay={320}>
+            <Link to="/industries/conglomerates" className="inline-flex items-center gap-1.5 mt-4 text-sm font-body font-semibold text-accent hover:gap-2.5 transition-all duration-200">
               Learn more <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </FeatureCard>

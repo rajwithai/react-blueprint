@@ -15,7 +15,7 @@ export default {
     extend: {
       fontFamily: {
         heading: ['"IBM Plex Serif"', 'Georgia', 'serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
+        body: ['"IBM Plex Sans Arabic"', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -52,16 +52,16 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         navy: {
-          DEFAULT: "hsl(var(--navy))",
-          deep: "hsl(var(--navy-deep))",
+          DEFAULT: "#0B1426", // Midnight Navy
+          deep: "#0B1426",
         },
-        midnight: "hsl(var(--midnight))",
+        midnight: "#0B1426",
         gold: {
-          DEFAULT: "hsl(var(--gold))",
-          light: "hsl(var(--gold-light))",
-          muted: "hsl(var(--gold-muted))",
+          DEFAULT: "#B8860B", // Petroleum Gold
+          light: "#D4AF37",
+          muted: "#8B7355",
         },
-        alabaster: "hsl(var(--alabaster))",
+        alabaster: "#F8F9FA", // Alabaster
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
