@@ -55,10 +55,16 @@ export default {
           DEFAULT: "hsl(var(--navy))",
           light: "hsl(var(--navy-light))",
         },
-        teal: {
-          DEFAULT: "hsl(var(--teal))",
-          dark: "hsl(var(--teal-dark))",
+        purple: {
+          DEFAULT: "hsl(var(--purple))",
+          light: "hsl(var(--purple-light))",
+          dark: "hsl(var(--purple-dark))",
         },
+        blue: {
+          DEFAULT: "hsl(var(--blue))",
+          light: "hsl(var(--blue-light))",
+        },
+        violet: "hsl(var(--violet))",
         amber: "hsl(var(--amber))",
         "slate-medium": "hsl(var(--slate-medium))",
         "cloud-white": "hsl(var(--cloud-white))",

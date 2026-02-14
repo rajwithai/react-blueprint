@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { LucideIcon } from "lucide-react";
-import { useInView } from "@/hooks/useInView";
+import { motion } from "framer-motion";
 
 interface FeatureCardProps {
   icon?: LucideIcon;
@@ -12,20 +12,21 @@ interface FeatureCardProps {
 }
 
 const FeatureCard = ({ icon: Icon, title, description, children, delay = 0, dark = false }: FeatureCardProps) => {
-  const { ref, isInView } = useInView();
-
   return (
-    <div
-      ref={ref}
-      className={`rounded-2xl p-8 lg:p-10 card-hover ${
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: delay / 1000 }}
+      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      className={`rounded-2xl p-8 lg:p-10 transition-shadow duration-300 ${
         dark
-          ? "bg-secondary-foreground/5 border border-primary-foreground/10"
-          : "bg-card border border-border shadow-sm"
-      } ${isInView ? `animate-fade-in-up` : "opacity-0"}`}
-      style={{ animationDelay: `${delay}ms` }}
+          ? "glass glow-border"
+          : "bg-card border border-border shadow-sm hover:shadow-lg hover:shadow-primary/5"
+      }`}
     >
       {Icon && (
-        <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-5 ${dark ? "bg-primary/10" : "bg-primary/10"}`}>
+        <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-5 ${dark ? "bg-primary/15" : "bg-primary/10"}`}>
           <Icon className="h-6 w-6 text-primary" />
         </div>
       )}
@@ -36,7 +37,7 @@ const FeatureCard = ({ icon: Icon, title, description, children, delay = 0, dark
         {description}
       </p>
       {children}
-    </div>
+    </motion.div>
   );
 };
 

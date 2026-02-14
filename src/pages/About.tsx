@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
 import HeroSection from "@/components/sections/HeroSection";
 import Section from "@/components/sections/Section";
 import CTABanner from "@/components/sections/CTABanner";
@@ -10,80 +10,104 @@ const About = () => {
       <HeroSection
         eyebrow="ABOUT ALIPH"
         title="Private Intelligence. Collective Wisdom."
-        subtitle="Aliph is a sovereign AI platform company headquartered in Riyadh, Kingdom of Saudi Arabia. We build the infrastructure layer that enables organizations to adopt world-class AI safely — without compromising data sovereignty, regulatory compliance, or institutional knowledge."
+        subtitle="We build the infrastructure layer that makes AI safe for enterprise — so organizations never have to choose between intelligence and sovereignty."
       />
 
+      {/* Mission */}
       <Section>
+        <div className="max-w-2xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-8"
+          >
+            The choice shouldn't exist.
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-body text-lg text-muted-foreground leading-relaxed"
+          >
+            Every organization deserves the world's best AI. None should sacrifice data sovereignty to access it. Aliph exists to eliminate this tradeoff — permanently. We are the controlled adoption layer between enterprise data and global AI, built for the most regulated markets on earth.
+          </motion.p>
+        </div>
+      </Section>
+
+      {/* What We Are */}
+      <Section dark>
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-6">Our Mission</h2>
-          <p className="font-body text-muted-foreground leading-relaxed">
-            Every organization deserves access to the world's best AI. No organization should have to sacrifice data sovereignty to get it. We exist to resolve this tension — by building the controlled adoption layer between enterprise data and global AI capability.
-          </p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-heading font-semibold text-3xl md:text-4xl mb-8 text-primary-foreground"
+          >
+            What we are.
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-body text-primary-foreground/70 leading-relaxed text-lg"
+          >
+            A sovereign AI platform company. Not a chatbot. Not a consulting firm. Not a competitor to the AI labs or the regulators. We are the layer that makes their ecosystems safe for enterprise. Built in Riyadh. Designed for the world.
+          </motion.p>
         </div>
       </Section>
 
-      <Section dark>
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-8 text-primary-foreground">What We Are</h2>
-        <div className="max-w-3xl space-y-3">
-          {[
-            "A sovereign AI platform powering multiple enterprise applications.",
-            "The controlled adoption layer between enterprise data and global AI.",
-            "A compliance-first AI company built for regulated markets.",
-            "An enabler — we make global AI models safe for enterprise use.",
-          ].map((item) => (
-            <div key={item} className="flex gap-3 items-start">
-              <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-              <p className="font-body text-primary-foreground/70">{item}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
+      {/* Vision 2030 */}
       <Section>
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-8">What We Are Not</h2>
-        <div className="max-w-3xl space-y-3">
-          {[
-            "Not a generic chatbot or AI wrapper.",
-            "Not a consulting firm.",
-            "Not a competitor to SDAIA, HUMAIN, or global AI providers.",
-            "We enable their ecosystems and make them enterprise-safe.",
-          ].map((item) => (
-            <div key={item} className="flex gap-3 items-start">
-              <span className="text-muted-foreground mt-1">—</span>
-              <p className="font-body text-muted-foreground">{item}</p>
-            </div>
-          ))}
+        <div className="max-w-2xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-heading font-semibold text-3xl md:text-4xl mb-6"
+          >
+            Aligned with the Kingdom's AI ambitions.
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-body text-muted-foreground leading-relaxed"
+          >
+            Aliph is purpose-built for Saudi Arabia's AI moment. We are aligned with SDAIA's mandate for responsible AI. Designed for the HUMAIN ecosystem. Committed to making the Kingdom a global leader in sovereign AI infrastructure.
+          </motion.p>
         </div>
       </Section>
 
+      {/* Company Details */}
       <Section dark>
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-6 text-primary-foreground">Vision 2030 Alignment</h2>
-          <p className="font-body text-primary-foreground/60 leading-relaxed">
-            Aliph is purpose-built for the Kingdom's AI ambitions. We are aligned with SDAIA's mandate for responsible AI adoption, designed as an enterprise application layer for the HUMAIN ecosystem, and committed to making Saudi Arabia a global leader in sovereign AI infrastructure.
-          </p>
-        </div>
-      </Section>
-
-      <Section>
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-8">Company Details</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             { label: "Legal entity", value: "Aliph Solutions" },
             { label: "Headquarters", value: "Riyadh, Kingdom of Saudi Arabia" },
             { label: "Founded", value: "2024" },
             { label: "Website", value: "aliphai.ai" },
-          ].map((d) => (
-            <div key={d.label} className="bg-muted rounded-xl p-6">
-              <p className="font-body text-sm text-muted-foreground mb-1">{d.label}</p>
-              <p className="font-heading font-semibold text-foreground">{d.value}</p>
-            </div>
+          ].map((d, i) => (
+            <motion.div
+              key={d.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="glass glow-border rounded-xl p-6"
+            >
+              <p className="font-body text-sm text-primary-foreground/50 mb-1">{d.label}</p>
+              <p className="font-heading font-semibold text-primary-foreground">{d.value}</p>
+            </motion.div>
           ))}
         </div>
       </Section>
 
       <CTABanner
-        title="Learn more about what we're building."
+        title="See what we've built."
         primaryCta={{ label: "Request a Demo", href: "/demo" }}
       />
     </>

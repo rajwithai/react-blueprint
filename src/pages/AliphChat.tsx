@@ -1,87 +1,126 @@
 import { Link } from "react-router-dom";
-import { Search, ShieldCheck, Users, MessageSquare, CheckCircle2 } from "lucide-react";
+import { Search, ShieldCheck, Users, MessageSquare, CheckCircle2, X } from "lucide-react";
+import { motion } from "framer-motion";
 import HeroSection from "@/components/sections/HeroSection";
 import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
-import { useInView } from "@/hooks/useInView";
 
-const howItWorks = [
-  { title: "Understand", desc: "The system interprets the user's intent and assesses data sensitivity." },
-  { title: "Resolve Locally", desc: "Organization Memory is searched first. Most queries are answered from your own data." },
-  { title: "Protect & Augment", desc: "If external AI is needed, all sensitive data is masked before the query leaves." },
-  { title: "Deliver with Context", desc: "Response is restored with full context. Source citations attached. Audit trail logged." },
+const beforeAfter = [
+  { without: "Employees use ChatGPT. You don't know what data leaves.", withAliph: "Every query is audited. Sensitive data is masked automatically." },
+  { without: "A senior partner leaves. Their knowledge leaves with them.", withAliph: "Their expertise is in Organization Memory. Accessible to the next person, instantly." },
+  { without: "Searching for a past decision means digging through email and folders.", withAliph: "Ask in natural language. Get the answer with the source document cited." },
+  { without: "Compliance team discovers unauthorized AI use after the fact.", withAliph: "Full visibility from day one. Admin dashboard. Usage analytics." },
 ];
 
 const comparison = [
-  { capability: "Data sovereignty", chatgpt: "Data sent to foreign servers", aliph: "Data stays within your infrastructure" },
-  { capability: "Organizational knowledge", chatgpt: "No access to your documents", aliph: "Searches your entire knowledge base" },
-  { capability: "PII protection", chatgpt: "None", aliph: "Automatic detection and masking" },
-  { capability: "Arabic support", chatgpt: "Limited", aliph: "Native Arabic and English" },
-  { capability: "Audit trail", chatgpt: "None", aliph: "Every interaction logged and auditable" },
-  { capability: "PDPL compliance", chatgpt: "Not compliant", aliph: "Built for PDPL compliance" },
-  { capability: "Role-based access", chatgpt: "Not available", aliph: "Inherited from your existing systems" },
-  { capability: "Source citations", chatgpt: "Not available", aliph: "Every answer cites its sources" },
+  { cap: "Data stays sovereign", chatgpt: false, aliph: true },
+  { cap: "Searches your documents", chatgpt: false, aliph: true },
+  { cap: "PII masking", chatgpt: false, aliph: true },
+  { cap: "Native Arabic", chatgpt: false, aliph: true },
+  { cap: "Audit trail", chatgpt: false, aliph: true },
+  { cap: "PDPL compliant", chatgpt: false, aliph: true },
+  { cap: "Inherits your permissions", chatgpt: false, aliph: true },
+  { cap: "Source citations", chatgpt: false, aliph: true },
 ];
 
 const AliphChat = () => {
-  const { ref, isInView } = useInView();
-
   return (
     <>
       <HeroSection
         eyebrow="ALIPHCHAT"
-        title="Enterprise AI that knows your business and keeps your secrets."
-        subtitle="The sovereign enterprise AI assistant. Employees ask questions in natural language. The system answers from your organization's own knowledge first."
+        title="Ask anything. Expose nothing."
+        subtitle="An enterprise AI assistant that searches your organization's knowledge first — and when it reaches beyond, your sensitive data has already been stripped. Natural language. Arabic and English. Every answer cited. Every interaction audited."
         primaryCta={{ label: "Request a Demo", href: "/demo" }}
-        badge="Live — Demonstrated to Prospects"
+        badge="Live"
       />
 
+      {/* What Changes */}
       <Section>
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-12">How It Works</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {howItWorks.map((s, i) => (
-            <FeatureCard key={s.title} title={`${i + 1}. ${s.title}`} description={s.desc} delay={i * 100} />
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12"
+        >
+          The difference is immediate.
+        </motion.h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          {beforeAfter.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+              className="rounded-2xl border border-border overflow-hidden"
+            >
+              <div className="bg-muted p-5 border-b border-border">
+                <p className="text-xs uppercase tracking-wider text-destructive mb-2 font-heading font-semibold">Without AliphChat</p>
+                <p className="font-body text-sm text-muted-foreground">{item.without}</p>
+              </div>
+              <div className="bg-primary/5 p-5">
+                <p className="text-xs uppercase tracking-wider text-primary mb-2 font-heading font-semibold">With AliphChat</p>
+                <p className="font-body text-sm text-foreground">{item.withAliph}</p>
+              </div>
+            </motion.div>
           ))}
         </div>
       </Section>
 
+      {/* Capabilities */}
       <Section dark>
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-primary-foreground">Key Features</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-primary-foreground"
+        >
+          Built for the enterprise, not the consumer.
+        </motion.h2>
         <div className="grid md:grid-cols-2 gap-8">
-          <FeatureCard icon={Search} title="Intelligent Search" description="Natural language queries in Arabic and English. Semantic search across all organizational documents. Source citations with every answer. Multi-turn conversation with memory." delay={0} dark />
-          <FeatureCard icon={ShieldCheck} title="Privacy Engine" description="Automatic PII detection on every query. High-accuracy masking for Arabic and English. Encrypted token mapping with automatic expiry. Full audit trail for regulatory compliance." delay={100} dark />
-          <FeatureCard icon={MessageSquare} title="Enterprise Integration" description="SSO integration with existing Google Workspace or Microsoft 365 credentials. Google Drive connector, local file system connectors. Admin dashboard with usage analytics." delay={200} dark />
-          <FeatureCard icon={Users} title="Role-Based Access Control" description="AliphChat inherits your existing permissions automatically. The files an employee can see are exactly the files AliphChat can search for them. Zero admin configuration." delay={300} dark />
+          <FeatureCard icon={Search} title="Sovereign Search" description="Ask in Arabic, English, or both. Answers come from your own knowledge base first — with the source document cited. Multi-turn conversations. Confidence scoring." delay={0} dark />
+          <FeatureCard icon={ShieldCheck} title="Privacy Engine" description="Every query scanned for sensitive data. Every entity masked before external AI is reached. Encrypted. Expiring. Auditable." delay={100} dark />
+          <FeatureCard icon={Users} title="Inherited Permissions" description="No new access structures to build. AliphChat sees exactly what each employee is authorized to see in your existing systems — Google Drive, SharePoint, network drives." delay={200} dark />
+          <FeatureCard icon={MessageSquare} title="Enterprise Ready" description="SSO with Google Workspace and Microsoft 365. Admin dashboard. Usage analytics. Deployed in days, not months." delay={300} dark />
         </div>
       </Section>
 
+      {/* Comparison */}
       <Section>
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-12">The Difference</h2>
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-border">
-                <th className="text-left py-3 pr-4 font-heading font-semibold text-sm">Capability</th>
-                <th className="text-left py-3 px-4 font-heading font-semibold text-sm">ChatGPT / Copilot</th>
-                <th className="text-left py-3 pl-4 font-heading font-semibold text-sm text-primary">AliphChat</th>
-              </tr>
-            </thead>
-            <tbody>
-              {comparison.map((row) => (
-                <tr key={row.capability} className="border-b border-border/50">
-                  <td className="py-3 pr-4 font-body text-sm font-medium">{row.capability}</td>
-                  <td className="py-3 px-4 font-body text-sm text-muted-foreground">{row.chatgpt}</td>
-                  <td className="py-3 pl-4 font-body text-sm text-primary">{row.aliph}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12"
+        >
+          Why not just use ChatGPT?
+        </motion.h2>
+        <div className="max-w-2xl mx-auto">
+          <div className="grid grid-cols-3 gap-4 mb-4 px-4">
+            <span className="font-heading font-semibold text-sm"></span>
+            <span className="font-heading font-semibold text-sm text-center text-muted-foreground">ChatGPT / Copilot</span>
+            <span className="font-heading font-semibold text-sm text-center text-primary">AliphChat</span>
+          </div>
+          {comparison.map((row, i) => (
+            <motion.div
+              key={row.cap}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.03 }}
+              className="grid grid-cols-3 gap-4 py-3 px-4 border-b border-border/50 items-center"
+            >
+              <span className="font-body text-sm">{row.cap}</span>
+              <div className="flex justify-center"><X className="h-4 w-4 text-destructive" /></div>
+              <div className="flex justify-center"><CheckCircle2 className="h-4 w-4 text-primary" /></div>
+            </motion.div>
+          ))}
         </div>
       </Section>
 
       <CTABanner
-        title="Give your team ChatGPT-level intelligence with zero data risk."
+        title="Give your team world-class AI without the risk."
         primaryCta={{ label: "Request a Demo", href: "/demo" }}
       />
     </>

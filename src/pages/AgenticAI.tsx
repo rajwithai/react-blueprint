@@ -1,16 +1,17 @@
+import { CheckCircle2, X } from "lucide-react";
+import { motion } from "framer-motion";
 import HeroSection from "@/components/sections/HeroSection";
 import Section from "@/components/sections/Section";
-import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
 
 const comparison = [
-  { capability: "Agentic execution", oss: "Powerful task automation", aliph: "Same — plus data sovereignty" },
-  { capability: "Privacy layer", oss: "None", aliph: "Privacy Shield on all agent interactions" },
-  { capability: "Organizational context", oss: "None", aliph: "Organization Memory gives agents business knowledge" },
-  { capability: "Compliance awareness", oss: "None", aliph: "PDPL, GDPR, SAMA compliance built in" },
-  { capability: "Audit trail", oss: "None", aliph: "Every agent action logged and auditable" },
-  { capability: "Arabic support", oss: "Limited", aliph: "Native Arabic and English" },
-  { capability: "Enterprise security", oss: "Basic", aliph: "RBAC, encryption, role-based access" },
+  { cap: "Autonomous execution", oss: true, aliph: true },
+  { cap: "Data sovereignty", oss: false, aliph: true },
+  { cap: "PII protection", oss: false, aliph: true },
+  { cap: "Organizational context", oss: false, aliph: true },
+  { cap: "Regulatory compliance", oss: false, aliph: true },
+  { cap: "Audit trail", oss: false, aliph: true },
+  { cap: "Arabic support", oss: false, aliph: true },
 ];
 
 const AgenticAI = () => {
@@ -18,56 +19,93 @@ const AgenticAI = () => {
     <>
       <HeroSection
         eyebrow="AGENTIC AI PLATFORM"
-        title="Autonomous AI agents. Sovereign by default."
-        subtitle="Advanced agentic AI capabilities — autonomous task execution, tool use, and multi-step reasoning — enhanced with Aliph's Privacy Shield and Organization Memory. The power of open-source agentic frameworks, made safe for regulated enterprises."
-        primaryCta={{ label: "Join the Waitlist", href: "/demo" }}
+        title="Autonomous AI. Sovereign by default."
+        subtitle="AI agents that can research, execute, and reason through complex workflows — with every interaction protected by Privacy Shield and informed by Organization Memory. Coming Q2 2026."
+        primaryCta={{ label: "Join the Early Access Waitlist", href: "/demo" }}
         badge="Coming Q2 2026"
       />
 
+      {/* The Gap */}
       <Section>
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-12">What It Adds</h2>
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-border">
-                <th className="text-left py-3 font-heading font-semibold text-sm">Capability</th>
-                <th className="text-left py-3 font-heading font-semibold text-sm text-muted-foreground">Open-Source Agents Alone</th>
-                <th className="text-left py-3 font-heading font-semibold text-sm text-primary">Agents + Aliph</th>
-              </tr>
-            </thead>
-            <tbody>
-              {comparison.map((row) => (
-                <tr key={row.capability} className="border-b border-border/50">
-                  <td className="py-3 font-body text-sm font-medium">{row.capability}</td>
-                  <td className="py-3 font-body text-sm text-muted-foreground">{row.oss}</td>
-                  <td className="py-3 font-body text-sm text-primary">{row.aliph}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="max-w-2xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-8 text-foreground"
+          >
+            Agentic AI is powerful. But it's not ready for regulated enterprise.
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-6">
+              Open-source agentic frameworks can autonomously research, use tools, and execute multi-step workflows. But they have no privacy layer. No organizational context. No audit trail. No compliance awareness. Enterprises in regulated markets cannot adopt them — until now.
+            </p>
+            <p className="font-heading font-semibold text-xl text-primary">
+              Aliph makes agentic AI enterprise-safe.
+            </p>
+          </motion.div>
         </div>
       </Section>
 
+      {/* Comparison */}
       <Section dark>
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-6 text-primary-foreground">Why It Matters</h2>
-          <p className="font-body text-primary-foreground/60 leading-relaxed">
-            Agentic AI is the next frontier of enterprise automation. Agents that can independently research, execute multi-step workflows, use tools, and reason through complex problems. But enterprises in regulated markets cannot adopt these frameworks without data sovereignty, PII protection, audit trails, and organizational context. Aliph makes agentic AI enterprise-safe.
-          </p>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-primary-foreground"
+        >
+          What Aliph adds.
+        </motion.h2>
+        <div className="max-w-2xl mx-auto">
+          <div className="grid grid-cols-3 gap-4 mb-4 px-4">
+            <span></span>
+            <span className="font-heading font-semibold text-sm text-center text-primary-foreground/60">Open-Source Agents</span>
+            <span className="font-heading font-semibold text-sm text-center text-primary">Agents + Aliph</span>
+          </div>
+          {comparison.map((row, i) => (
+            <motion.div
+              key={row.cap}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.03 }}
+              className="grid grid-cols-3 gap-4 py-3 px-4 border-b border-primary-foreground/10 items-center"
+            >
+              <span className="font-body text-sm text-primary-foreground/80">{row.cap}</span>
+              <div className="flex justify-center">
+                {row.oss ? <CheckCircle2 className="h-4 w-4 text-primary" /> : <X className="h-4 w-4 text-destructive" />}
+              </div>
+              <div className="flex justify-center"><CheckCircle2 className="h-4 w-4 text-primary" /></div>
+            </motion.div>
+          ))}
         </div>
       </Section>
 
+      {/* Early Access */}
       <Section>
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-6">Early Access</h2>
+        <div className="max-w-2xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-heading font-semibold text-3xl md:text-4xl mb-6"
+          >
+            Be among the first.
+          </motion.h2>
           <p className="font-body text-muted-foreground leading-relaxed mb-8">
-            We are onboarding early-access partners for the Agentic AI Platform. Organizations interested in sovereign agentic capabilities can join the waitlist for priority access when the platform launches in Q2 2026.
+            We are onboarding early-access partners for the Agentic AI Platform. Priority access. Direct input into the product. Available Q2 2026.
           </p>
         </div>
       </Section>
 
       <CTABanner
-        title="Join the Early Access Waitlist"
+        title="Request Early Access"
         primaryCta={{ label: "Join the Waitlist", href: "/demo" }}
       />
     </>

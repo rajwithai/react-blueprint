@@ -1,96 +1,110 @@
 import { Link } from "react-router-dom";
 import { Cpu, Layers, ShieldCheck, Globe, Minimize2, Eye, Shuffle, FileCheck } from "lucide-react";
+import { motion } from "framer-motion";
 import HeroSection from "@/components/sections/HeroSection";
 import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
-import { useInView } from "@/hooks/useInView";
+import { useState } from "react";
 
 const layers = [
-  { icon: Cpu, num: 1, title: "Edge Intelligence", desc: "Native applications with embedded small language models running directly on user devices. Sub-second responses for cached and simple queries. Full offline functionality. Voice query support in Arabic and English." },
-  { icon: Layers, num: 2, title: "Sovereign Core", desc: "The organization's central AI hub. Semantic search across all organizational documents. Retrieval-augmented generation for context-rich answers. Intelligent routing that determines whether queries can be resolved locally." },
-  { icon: ShieldCheck, num: 3, title: "Privacy Shield", desc: "Proprietary PII detection covering both Arabic and English. Names, organizations, locations, financial data, identity numbers detected and masked with encrypted tokens. Full audit trail for every masking operation." },
-  { icon: Globe, num: 4, title: "Cloud Augmentation", desc: "Secure access to Claude, GPT-4, Gemini, and ALLAM. Model selection is automatic based on query language, complexity, and domain. Zero-retention agreements with all providers." },
-];
-
-const queryFlow = [
-  "User submits a question.",
-  "Edge device checks if it can answer instantly. If yes, responds in milliseconds.",
-  "If not, query routes to Sovereign Core. Organization Memory is searched.",
-  "If external AI is needed, Privacy Shield scans and masks all sensitive data.",
-  "Sanitized query reaches the optimal cloud AI model.",
-  "Response returns. Tokens are restored. Audit trail logged.",
+  { icon: Cpu, title: "Edge Intelligence", desc: "AI that lives on the device. Instant answers from embedded models — no server, no network, no dependency. Your fastest queries never leave the laptop." },
+  { icon: Layers, title: "Sovereign Core", desc: "Your organization's AI engine. Knowledge base, semantic search, and intelligent orchestration — running entirely on your infrastructure or in your region. Where the vast majority of queries are resolved." },
+  { icon: ShieldCheck, title: "Privacy Shield", desc: "The boundary layer. Every piece of sensitive data — names, IDs, financials, in Arabic and English — detected, masked, and encrypted before anything crosses to external AI. Automatic. Auditable." },
+  { icon: Globe, title: "Cloud Augmentation", desc: "When your query needs the world's best AI, it gets it — through Claude, GPT-4, Gemini, or ALLAM. But the query that arrives has already been stripped of everything sensitive. The model sees the question, never the data." },
 ];
 
 const Platform = () => {
-  const { ref: flowRef, isInView: flowVisible } = useInView();
+  const [activeLayer, setActiveLayer] = useState(0);
 
   return (
     <>
       <HeroSection
         eyebrow="THE ALIPH PLATFORM"
-        title="Four layers of sovereign intelligence."
-        subtitle="A federated AI architecture designed to maximize data sovereignty while maintaining access to the world's most advanced AI capabilities. Resolve locally. Protect always. Augment safely."
+        title="Sovereign by architecture, not by compromise."
+        subtitle="A four-layer AI infrastructure that keeps the vast majority of intelligence on-premise — and protects everything else."
         primaryCta={{ label: "Request a Demo", href: "/demo" }}
       />
 
-      {/* Architecture deep dive */}
+      {/* Interactive Architecture */}
       <Section>
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground">Architecture Deep-Dive</h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {layers.map((l, i) => (
-            <FeatureCard key={l.title} icon={l.icon} title={`Layer ${l.num}: ${l.title}`} description={l.desc} delay={i * 100}>
-              <Link to={i === 0 ? "/platform" : i === 1 ? "/platform/organization-memory" : i === 2 ? "/platform/privacy-shield" : "/platform/global-llm"} className="inline-flex items-center gap-1.5 mt-4 text-sm font-heading font-semibold text-primary hover:underline">
-                Learn more →
-              </Link>
-            </FeatureCard>
-          ))}
-        </div>
-      </Section>
-
-      {/* Query Flow */}
-      <Section dark>
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-primary-foreground">The Query Flow</h2>
-        <div ref={flowRef} className="max-w-2xl mx-auto space-y-4">
-          {queryFlow.map((step, i) => (
-            <div key={i} className={`flex gap-4 items-start ${flowVisible ? "animate-fade-in-up" : "opacity-0"}`} style={{ animationDelay: `${i * 100}ms` }}>
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center font-heading font-bold text-primary text-sm">{i + 1}</div>
-              <p className="font-body text-primary-foreground/70 pt-1">{step}</p>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-12 text-foreground"
+        >
+          Four layers. One principle: your data stays yours.
+        </motion.h2>
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          {/* Interactive visual */}
+          <div className="space-y-3">
+            {layers.map((l, i) => {
+              const Icon = l.icon;
+              return (
+                <motion.div
+                  key={l.title}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  onClick={() => setActiveLayer(i)}
+                  className={`relative rounded-2xl p-6 cursor-pointer transition-all duration-300 ${
+                    activeLayer === i
+                      ? "bg-primary/10 border-2 border-primary/40 shadow-lg shadow-primary/10"
+                      : "bg-muted border-2 border-transparent hover:border-primary/20"
+                  }`}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${activeLayer === i ? "bg-primary/20" : "bg-primary/5"}`}>
+                      <Icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <span className="font-heading font-semibold text-lg">{l.title}</span>
+                  </div>
+                  {activeLayer === i && i < layers.length - 1 && (
+                    <div className="absolute left-1/2 -bottom-3 w-px h-3 bg-primary/30" />
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
+          {/* Description */}
+          <motion.div
+            key={activeLayer}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="lg:sticky lg:top-32"
+          >
+            <div className="rounded-2xl bg-card border border-border p-8 shadow-sm">
+              <h3 className="font-heading font-semibold text-2xl mb-4">{layers[activeLayer].title}</h3>
+              <p className="font-body text-muted-foreground leading-relaxed text-lg">{layers[activeLayer].desc}</p>
             </div>
-          ))}
+          </motion.div>
         </div>
       </Section>
 
-      {/* Three Capabilities */}
-      <Section>
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground">Three Capabilities</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          <FeatureCard icon={ShieldCheck} title="Privacy Shield" description="Your data never leaves." delay={0}>
-            <Link to="/platform/privacy-shield" className="text-sm font-heading font-semibold text-primary hover:underline mt-2 inline-block">Learn more →</Link>
-          </FeatureCard>
-          <FeatureCard icon={Layers} title="Organization Memory" description="An employee who remembers everything and never leaves." delay={100}>
-            <Link to="/platform/organization-memory" className="text-sm font-heading font-semibold text-primary hover:underline mt-2 inline-block">Learn more →</Link>
-          </FeatureCard>
-          <FeatureCard icon={Globe} title="Global LLM Connectivity" description="All the power. None of the risk." delay={200}>
-            <Link to="/platform/global-llm" className="text-sm font-heading font-semibold text-primary hover:underline mt-2 inline-block">Learn more →</Link>
-          </FeatureCard>
-        </div>
-      </Section>
-
-      {/* Platform Principles */}
+      {/* Principles */}
       <Section dark>
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-primary-foreground">Platform Principles</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-primary-foreground"
+        >
+          The principles behind the architecture.
+        </motion.h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <FeatureCard icon={Minimize2} title="Data Minimization" description="Resolve as much as possible locally. External AI is a last resort, never the default." delay={0} dark />
-          <FeatureCard icon={Eye} title="Zero Trust" description="Every query, every response, every access event is logged and auditable." delay={100} dark />
-          <FeatureCard icon={Shuffle} title="Model Agnostic" description="Not locked into any single AI provider. Best model for each task, selected automatically." delay={200} dark />
-          <FeatureCard icon={FileCheck} title="Compliance Native" description="PDPL, SAMA, NCA, GDPR compliance is built into the architecture, not bolted on." delay={300} dark />
+          <FeatureCard icon={Minimize2} title="Data Minimization" description="External AI is a last resort. The default is local." delay={0} dark />
+          <FeatureCard icon={Eye} title="Zero Trust Audit" description="Every query, every response, every access — logged and immutable." delay={100} dark />
+          <FeatureCard icon={Shuffle} title="Model Agnostic" description="Best model per task. No lock-in. Automatic selection." delay={200} dark />
+          <FeatureCard icon={FileCheck} title="Compliance Native" description="PDPL, SAMA, NCA, GDPR — built into the architecture, not bolted on after." delay={300} dark />
         </div>
       </Section>
 
       <CTABanner
-        title="See the platform in action."
-        subtitle="Request a demo and see how four layers of sovereign intelligence protect your data."
+        title="Experience the platform."
+        subtitle="Request a demo."
         primaryCta={{ label: "Request a Demo", href: "/demo" }}
       />
     </>

@@ -2,20 +2,20 @@ import { ReactNode } from "react";
 
 interface SectionProps {
   dark?: boolean;
-  tealGradient?: boolean;
+  purpleGradient?: boolean;
   children: ReactNode;
   className?: string;
   id?: string;
 }
 
-const Section = ({ dark = false, tealGradient = false, children, className = "", id }: SectionProps) => {
-  const bg = tealGradient
-    ? "hero-gradient-teal"
+const Section = ({ dark = false, purpleGradient = false, children, className = "", id }: SectionProps) => {
+  const bg = purpleGradient
+    ? "hero-gradient-purple"
     : dark
     ? "hero-gradient grid-pattern"
     : "bg-background";
 
-  const text = dark || tealGradient ? "text-primary-foreground" : "text-foreground";
+  const text = dark || purpleGradient ? "text-primary-foreground" : "text-foreground";
 
   return (
     <section id={id} className={`${bg} ${text} ${className}`}>
