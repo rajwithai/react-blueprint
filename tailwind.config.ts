@@ -65,6 +65,10 @@ export default {
           light: "hsl(var(--blue-light))",
         },
         violet: "hsl(var(--violet))",
+        teal: {
+          DEFAULT: "hsl(var(--teal))",
+          light: "hsl(var(--teal-light))",
+        },
         amber: "hsl(var(--amber))",
         "slate-medium": "hsl(var(--slate-medium))",
         "cloud-white": "hsl(var(--cloud-white))",

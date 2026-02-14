@@ -67,20 +67,18 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 h-[72px] lg:h-[72px] flex items-center transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 h-[72px] flex items-center transition-all duration-250 ${
         scrolled
-          ? "bg-secondary/95 backdrop-blur-md shadow-lg shadow-primary/5"
-          : "bg-secondary"
+          ? "bg-background/90 backdrop-blur-xl border-b border-border/50"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6">
-        {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <img src={aliphLogo} alt="Aliph Solutions" className="h-10 w-auto" />
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-0.5">
           {navItems.map((item) => (
             <div
               key={item.label}
@@ -88,25 +86,25 @@ const Navbar = () => {
               onMouseEnter={() => setOpenDropdown(item.label)}
               onMouseLeave={() => setOpenDropdown(null)}
             >
-              <button className="flex items-center gap-1 px-4 py-2 text-[15px] font-body font-medium text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <button className="flex items-center gap-1 px-4 py-2 text-[14px] font-body font-medium text-foreground/60 hover:text-foreground transition-colors duration-200">
                 {item.label}
-                <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${openDropdown === item.label ? "rotate-180" : ""}`} />
+                <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${openDropdown === item.label ? "rotate-180" : ""}`} />
               </button>
               <AnimatePresence>
                 {openDropdown === item.label && (
                   <motion.div
-                    initial={{ opacity: 0, y: 8 }}
+                    initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                    transition={{ duration: 0.2 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    transition={{ duration: 0.15 }}
                     className="absolute top-full left-0 pt-2"
                   >
-                    <div className="bg-card rounded-xl shadow-xl shadow-primary/10 border border-border/50 py-2 min-w-[220px] backdrop-blur-xl">
+                    <div className="glass-card rounded-xl shadow-xl shadow-primary/5 py-2 min-w-[220px]">
                       {item.children.map((child) => (
                         <Link
                           key={child.href}
                           to={child.href}
-                          className="block px-4 py-2.5 text-sm font-body text-foreground hover:bg-primary/5 hover:text-primary transition-colors"
+                          className="block px-4 py-2.5 text-sm font-body text-foreground/70 hover:text-primary hover:bg-primary/5 transition-colors duration-200"
                         >
                           {child.label}
                         </Link>
@@ -119,16 +117,15 @@ const Navbar = () => {
           ))}
         </nav>
 
-        {/* CTA + Mobile toggle */}
         <div className="flex items-center gap-3">
           <Link
             to="/demo"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-heading font-semibold text-[15px] hover:brightness-110 transition-all min-w-[160px] text-center shadow-lg shadow-primary/25"
+            className="cta-glow inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-heading font-semibold text-[14px] hover:brightness-110 transition-all duration-200 shadow-lg shadow-primary/20"
           >
             Request Demo
           </Link>
           <button
-            className="lg:hidden text-primary-foreground"
+            className="lg:hidden text-foreground"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -143,19 +140,20 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden absolute top-[72px] left-0 right-0 bg-secondary border-t border-primary-foreground/10 max-h-[calc(100vh-72px)] overflow-y-auto"
+            transition={{ duration: 0.2 }}
+            className="lg:hidden absolute top-[72px] left-0 right-0 bg-background/95 backdrop-blur-xl border-t border-border max-h-[calc(100vh-72px)] overflow-y-auto"
           >
             {navItems.map((item) => (
-              <div key={item.label} className="border-b border-primary-foreground/5">
+              <div key={item.label} className="border-b border-border/50">
                 <button
-                  className="w-full flex items-center justify-between px-6 py-4 text-primary-foreground font-body font-medium"
+                  className="w-full flex items-center justify-between px-6 py-4 text-foreground font-body font-medium text-sm"
                   onClick={() =>
                     setMobileAccordion(mobileAccordion === item.label ? null : item.label)
                   }
                 >
                   {item.label}
                   <ChevronDown
-                    className={`h-4 w-4 transition-transform ${
+                    className={`h-4 w-4 transition-transform duration-200 ${
                       mobileAccordion === item.label ? "rotate-180" : ""
                     }`}
                   />
@@ -166,13 +164,14 @@ const Navbar = () => {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
                       className="pb-2 overflow-hidden"
                     >
                       {item.children.map((child) => (
                         <Link
                           key={child.href}
                           to={child.href}
-                          className="block px-10 py-2.5 text-sm text-primary-foreground/70 hover:text-primary transition-colors"
+                          className="block px-10 py-2.5 text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
                         >
                           {child.label}
                         </Link>
