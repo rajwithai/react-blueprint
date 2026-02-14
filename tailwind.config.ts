@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['Outfit', 'system-ui', 'sans-serif'],
-        body: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+        heading: ['"IBM Plex Serif"', 'Georgia', 'serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -53,26 +53,15 @@ export default {
         },
         navy: {
           DEFAULT: "hsl(var(--navy))",
-          light: "hsl(var(--navy-light))",
+          deep: "hsl(var(--navy-deep))",
         },
-        purple: {
-          DEFAULT: "hsl(var(--purple))",
-          light: "hsl(var(--purple-light))",
-          dark: "hsl(var(--purple-dark))",
+        midnight: "hsl(var(--midnight))",
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          light: "hsl(var(--gold-light))",
+          muted: "hsl(var(--gold-muted))",
         },
-        blue: {
-          DEFAULT: "hsl(var(--blue))",
-          light: "hsl(var(--blue-light))",
-        },
-        violet: "hsl(var(--violet))",
-        teal: {
-          DEFAULT: "hsl(var(--teal))",
-          light: "hsl(var(--teal-light))",
-        },
-        amber: "hsl(var(--amber))",
-        "slate-medium": "hsl(var(--slate-medium))",
-        "cloud-white": "hsl(var(--cloud-white))",
-        "ice-gray": "hsl(var(--ice-gray))",
+        alabaster: "hsl(var(--alabaster))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

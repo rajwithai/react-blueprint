@@ -10,6 +10,7 @@ interface HeroSectionProps {
   secondaryCta?: { label: string; href: string };
   badge?: string;
   minHeight?: string;
+  dark?: boolean;
   children?: ReactNode;
 }
 
@@ -21,25 +22,26 @@ const HeroSection = ({
   secondaryCta,
   badge,
   minHeight = "min-h-[60vh]",
+  dark = false,
   children,
 }: HeroSectionProps) => {
   return (
     <section
-      className={`hero-gradient ${minHeight} flex items-center relative overflow-hidden`}
+      className={`${minHeight} flex items-center relative overflow-hidden ${
+        dark ? "hero-gradient-navy" : "hero-gradient"
+      }`}
     >
-      {/* Animated grid overlay */}
-      <div className="absolute inset-0 grid-pattern opacity-60" />
+      {/* Subtle grid overlay */}
+      <div className={`absolute inset-0 ${dark ? "grid-pattern-light" : "grid-pattern"} opacity-40`} />
 
-      {/* Light beams */}
-      <div className="light-beam" style={{ left: '15%', animationDelay: '0s' }} />
-      <div className="light-beam" style={{ left: '35%', animationDelay: '1.5s' }} />
-      <div className="light-beam" style={{ left: '65%', animationDelay: '3s' }} />
-      <div className="light-beam" style={{ left: '85%', animationDelay: '0.8s' }} />
-
-      {/* Ambient orbs — deep, muted */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-primary/6 blur-[160px]" />
-      <div className="absolute bottom-1/4 right-1/5 w-[400px] h-[400px] rounded-full bg-teal/4 blur-[140px]" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-violet/4 blur-[180px]" />
+      {/* Light beams for dark hero */}
+      {dark && (
+        <>
+          <div className="light-beam" style={{ left: '20%', animationDelay: '0s' }} />
+          <div className="light-beam" style={{ left: '50%', animationDelay: '2s' }} />
+          <div className="light-beam" style={{ left: '80%', animationDelay: '1s' }} />
+        </>
+      )}
 
       <div className="container mx-auto px-6 py-24 lg:py-32 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
@@ -48,7 +50,9 @@ const HeroSection = ({
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="text-primary/80 uppercase tracking-[0.25em] text-xs font-heading font-semibold mb-6"
+              className={`uppercase tracking-[0.25em] text-xs font-body font-semibold mb-6 ${
+                dark ? "text-gold" : "text-accent"
+              }`}
             >
               {eyebrow}
             </motion.p>
@@ -58,7 +62,11 @@ const HeroSection = ({
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3 }}
-              className="inline-block px-3 py-1 rounded-full text-xs font-heading font-semibold bg-primary/10 text-primary mb-4 border border-primary/20"
+              className={`inline-block px-3 py-1 rounded-lg text-xs font-body font-semibold mb-4 border ${
+                dark
+                  ? "bg-gold/10 text-gold border-gold/20"
+                  : "bg-accent/10 text-accent border-accent/20"
+              }`}
             >
               {badge}
             </motion.span>
@@ -67,7 +75,9 @@ const HeroSection = ({
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="font-heading font-extrabold text-4xl md:text-5xl lg:text-[3.5rem] text-foreground leading-[1.1] text-balance tracking-tight"
+            className={`font-heading font-bold text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.15] text-balance tracking-tight ${
+              dark ? "text-white" : "text-foreground"
+            }`}
           >
             {title}
           </motion.h1>
@@ -75,7 +85,9 @@ const HeroSection = ({
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-6 text-lg md:text-xl font-body text-muted-foreground leading-relaxed max-w-2xl mx-auto"
+            className={`mt-6 text-lg md:text-xl font-body leading-relaxed max-w-2xl mx-auto ${
+              dark ? "text-white/60" : "text-muted-foreground"
+            }`}
           >
             {subtitle}
           </motion.p>
@@ -89,7 +101,7 @@ const HeroSection = ({
               {primaryCta && (
                 <Link
                   to={primaryCta.href}
-                  className="cta-glow inline-flex items-center justify-center px-8 py-3.5 rounded-lg bg-primary text-primary-foreground font-heading font-semibold text-base hover:brightness-110 transition-all duration-200 min-w-[180px] shadow-lg shadow-primary/20"
+                  className="cta-primary inline-flex items-center justify-center px-8 py-3.5 rounded-lg bg-primary text-primary-foreground font-body font-semibold text-base min-w-[180px]"
                 >
                   {primaryCta.label}
                 </Link>
@@ -97,7 +109,11 @@ const HeroSection = ({
               {secondaryCta && (
                 <Link
                   to={secondaryCta.href}
-                  className="inline-flex items-center justify-center px-8 py-3.5 rounded-lg border border-border text-foreground font-heading font-semibold text-base hover:bg-muted hover:border-primary/30 transition-all duration-200 min-w-[180px]"
+                  className={`inline-flex items-center justify-center px-8 py-3.5 rounded-lg border font-body font-semibold text-base min-w-[180px] transition-all duration-200 ${
+                    dark
+                      ? "border-white/20 text-white hover:bg-white/5"
+                      : "border-border text-foreground hover:bg-muted"
+                  }`}
                 >
                   {secondaryCta.label}
                 </Link>
@@ -108,8 +124,8 @@ const HeroSection = ({
         </div>
       </div>
 
-      {/* Bottom glow line */}
-      <div className="absolute bottom-0 left-0 right-0 section-glow-line" />
+      {/* Bottom separator */}
+      <div className="absolute bottom-0 left-0 right-0 section-divider" />
     </section>
   );
 };

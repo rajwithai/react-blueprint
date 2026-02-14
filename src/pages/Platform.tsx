@@ -8,10 +8,10 @@ import CTABanner from "@/components/sections/CTABanner";
 import { useState } from "react";
 
 const layers = [
-  { icon: Cpu, title: "Edge Intelligence", desc: "AI that lives on the device. Instant answers from embedded models — no server, no network, no dependency." },
-  { icon: Layers, title: "Sovereign Core", desc: "Your organization's AI engine. Knowledge base, semantic search, and orchestration — running entirely on your infrastructure." },
-  { icon: ShieldCheck, title: "Privacy Shield", desc: "Every piece of sensitive data — detected, masked, encrypted before anything crosses to external AI. Automatic. Auditable." },
-  { icon: Globe, title: "Cloud Augmentation", desc: "When your query needs the world's best AI, it gets it. But the query that arrives has already been stripped of everything sensitive." },
+  { icon: Cpu, title: "Edge Intelligence", desc: "Native apps with embedded SLMs running directly on user devices. Zero-server dependency." },
+  { icon: Layers, title: "Sovereign Core", desc: "Your AI hub, trained on your data. Semantic search and Organization Memory running on your infrastructure." },
+  { icon: ShieldCheck, title: "Privacy Shield", desc: "Proprietary PII masking (Arabic & English). Sanitizes every query before external processing." },
+  { icon: Globe, title: "Cloud Augment", desc: "Safe access to Claude, GPT-4, and ALLAM—only after full sanitization." },
 ];
 
 const Platform = () => {
@@ -23,7 +23,7 @@ const Platform = () => {
         eyebrow="THE ALIPH PLATFORM"
         title="Sovereign by architecture, not by compromise."
         subtitle="A four-layer AI infrastructure that keeps intelligence on-premise — and protects everything else."
-        primaryCta={{ label: "Request Demo", href: "/demo" }}
+        primaryCta={{ label: "Contact Sales", href: "/contact" }}
       />
 
       {/* Interactive Architecture */}
@@ -32,7 +32,7 @@ const Platform = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-accent uppercase tracking-[0.25em] text-xs font-heading font-semibold mb-4"
+          className="text-gold uppercase tracking-[0.25em] text-xs font-body font-semibold mb-4"
         >
           ARCHITECTURE
         </motion.p>
@@ -40,10 +40,10 @@ const Platform = () => {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-extrabold text-3xl md:text-4xl lg:text-5xl mb-12 text-foreground tracking-tight"
+          className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl mb-12 text-white tracking-tight"
         >
           Four layers. One principle:<br />
-          <span className="text-muted-foreground">your data stays yours.</span>
+          <span className="text-white/50">your data stays yours.</span>
         </motion.h2>
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-3">
@@ -57,17 +57,17 @@ const Platform = () => {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
                   onClick={() => setActiveLayer(i)}
-                  className={`relative rounded-2xl p-6 cursor-pointer transition-all duration-250 ${
+                  className={`relative rounded-lg p-6 cursor-pointer transition-all duration-200 ${
                     activeLayer === i
-                      ? "glass-card border border-primary/30 shadow-lg shadow-primary/5"
-                      : "glass hover:border-primary/15"
+                      ? "glass-card border border-gold/30 shadow-lg"
+                      : "glass hover:border-gold/15"
                   }`}
                 >
                   <div className="flex items-center gap-4">
-                    <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-colors duration-200 ${activeLayer === i ? "bg-primary/15" : "bg-primary/5"}`}>
-                      <Icon className="h-5 w-5 text-primary" strokeWidth={1.5} />
+                    <div className={`w-11 h-11 rounded-lg flex items-center justify-center transition-colors duration-200 ${activeLayer === i ? "bg-gold/15" : "bg-gold/5"}`}>
+                      <Icon className="h-5 w-5 text-gold" strokeWidth={1.5} />
                     </div>
-                    <span className="font-heading font-bold text-lg text-foreground">{l.title}</span>
+                    <span className="font-heading font-semibold text-lg text-white">{l.title}</span>
                   </div>
                 </motion.div>
               );
@@ -80,9 +80,9 @@ const Platform = () => {
             transition={{ duration: 0.25 }}
             className="lg:sticky lg:top-32"
           >
-            <div className="glass-card rounded-2xl p-8 gradient-border-card">
-              <h3 className="font-heading font-bold text-2xl mb-4 text-foreground">{layers[activeLayer].title}</h3>
-              <p className="font-body text-muted-foreground leading-relaxed text-lg">{layers[activeLayer].desc}</p>
+            <div className="glass-card rounded-lg p-8">
+              <h3 className="font-heading font-semibold text-2xl mb-4 text-white">{layers[activeLayer].title}</h3>
+              <p className="font-body text-white/50 leading-relaxed text-lg">{layers[activeLayer].desc}</p>
             </div>
           </motion.div>
         </div>
@@ -94,7 +94,7 @@ const Platform = () => {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-extrabold text-3xl md:text-4xl mb-12 text-foreground tracking-tight"
+          className="font-heading font-bold text-3xl md:text-4xl mb-12 text-foreground tracking-tight"
         >
           Design principles.
         </motion.h2>
@@ -109,7 +109,8 @@ const Platform = () => {
       <CTABanner
         title="Experience the platform."
         subtitle="See sovereign AI infrastructure in action."
-        primaryCta={{ label: "Request Demo", href: "/demo" }}
+        primaryCta={{ label: "Contact Sales", href: "/contact" }}
+        dark
       />
     </>
   );

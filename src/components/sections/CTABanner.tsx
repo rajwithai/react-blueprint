@@ -6,26 +6,24 @@ interface CTABannerProps {
   subtitle?: string;
   primaryCta: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
+  dark?: boolean;
   purpleBg?: boolean;
-  tealBg?: boolean;
 }
 
-const CTABanner = ({ title, subtitle, primaryCta, secondaryCta, purpleBg = false }: CTABannerProps) => {
+const CTABanner = ({ title, subtitle, primaryCta, secondaryCta, dark = true }: CTABannerProps) => {
   return (
-    <section className={purpleBg ? "hero-gradient-purple" : "hero-gradient"}>
+    <section className={dark ? "hero-gradient-navy" : "bg-alabaster"}>
       <div className="container mx-auto px-6 py-20 lg:py-24 text-center relative overflow-hidden">
-        {/* Grid overlay */}
-        <div className="absolute inset-0 grid-pattern opacity-30" />
-        
-        {/* Ambient glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] rounded-full bg-primary/8 blur-[120px]" />
+        {dark && <div className="absolute inset-0 grid-pattern-light opacity-20" />}
 
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4 relative z-10"
+          className={`font-heading font-bold text-3xl md:text-4xl mb-4 relative z-10 ${
+            dark ? "text-white" : "text-foreground"
+          }`}
         >
           {title}
         </motion.h2>
@@ -35,7 +33,9 @@ const CTABanner = ({ title, subtitle, primaryCta, secondaryCta, purpleBg = false
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="font-body text-lg text-muted-foreground max-w-2xl mx-auto mb-8 relative z-10"
+            className={`font-body text-lg max-w-2xl mx-auto mb-8 relative z-10 ${
+              dark ? "text-white/50" : "text-muted-foreground"
+            }`}
           >
             {subtitle}
           </motion.p>
@@ -49,14 +49,22 @@ const CTABanner = ({ title, subtitle, primaryCta, secondaryCta, purpleBg = false
         >
           <Link
             to={primaryCta.href}
-            className="cta-glow inline-flex items-center justify-center px-8 py-3.5 rounded-lg bg-primary text-primary-foreground font-heading font-semibold text-base hover:brightness-110 transition-all duration-200 min-w-[180px] shadow-lg shadow-primary/20"
+            className={`cta-primary inline-flex items-center justify-center px-8 py-3.5 rounded-lg font-body font-semibold text-base min-w-[180px] ${
+              dark
+                ? "bg-gold text-accent-foreground hover:brightness-110"
+                : "bg-primary text-primary-foreground"
+            }`}
           >
             {primaryCta.label}
           </Link>
           {secondaryCta && (
             <Link
               to={secondaryCta.href}
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-lg border border-border text-foreground font-heading font-semibold text-base hover:bg-muted transition-all duration-200 min-w-[180px]"
+              className={`inline-flex items-center justify-center px-8 py-3.5 rounded-lg border font-body font-semibold text-base min-w-[180px] transition-all duration-200 ${
+                dark
+                  ? "border-white/20 text-white hover:bg-white/5"
+                  : "border-border text-foreground hover:bg-muted"
+              }`}
             >
               {secondaryCta.label}
             </Link>
