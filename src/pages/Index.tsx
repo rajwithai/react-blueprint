@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Spline from '@splinetool/react-spline';
 import { Shield, Brain, Globe, ArrowRight, Building2, Heart, Briefcase, CheckCircle2, Cpu, Layers, ShieldCheck, Lock, Server, FileSearch, Zap, Network } from "lucide-react";
 import { motion } from "framer-motion";
 import HeroSection from "@/components/sections/HeroSection";
@@ -16,47 +17,67 @@ const archLayers = [
 const Index = () => {
   return (
     <>
-      <HeroSection
-        eyebrow="SOVEREIGN AI INFRASTRUCTURE"
-        title="Your Intelligence. Your Borders."
-        subtitle="The first sovereign AI infrastructure purpose-built for the world's most regulated markets. Deploy world-class intelligence while maintaining absolute data sovereignty across the Kingdom, the UAE, and beyond."
-        primaryCta={{ label: "Contact Sales", href: "/contact" }}
-        secondaryCta={{ label: "Explore Platform", href: "/platform" }}
-        minHeight="min-h-[90vh]"
-      >
-        {/* Trust badges */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-14 flex flex-col items-center gap-6"
-        >
-          <div className="flex flex-wrap justify-center gap-3">
-            {["PDPL Compliant", "SAMA / CBUAE Ready", "NCA / UAE IA Aligned"].map((badge, i) => (
-              <motion.div
-                key={badge}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.6 + i * 0.08 }}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-white/80 text-xs font-body font-semibold text-foreground/60 tracking-wide"
-              >
-                <CheckCircle2 className="h-3 w-3 text-accent" />
-                {badge}
-              </motion.div>
-            ))}
-          </div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.9 }}
-            className="text-white/60 text-xs font-body tracking-wider uppercase"
-          >
-            Production Pilot: <span className="text-gold font-semibold">Reve Consult, Riyadh</span>
-          </motion.p>
-        </motion.div>
-      </HeroSection>
+      {/* Hero — The Sovereign Core (3D) */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-midnight">
+        {/* 3D Background */}
+        <div className="absolute inset-0 z-0">
+          <Spline scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" />
+          <div className="absolute inset-0 bg-midnight/60 pointer-events-none" /> {/* Overlay for text readability */}
+        </div>
 
-      {/* 4-Layer Federated Architecture — Scroll-triggered */}
+        <div className="container relative z-10 px-4 md:px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto space-y-8"
+          >
+            <span className="inline-block px-3 py-1 rounded-full bg-gold/10 text-gold text-xs font-semibold tracking-wider uppercase mb-4 border border-gold/20 backdrop-blur-sm">
+              Sovereign AI Infrastructure
+            </span>
+
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold gradient-text pb-2 tracking-tight">
+              Your Intelligence.<br />Your Borders.
+            </h1>
+
+            <p className="text-xl md:text-2xl text-white/70 max-w-2xl mx-auto font-body leading-relaxed">
+              Sovereign AI infrastructure for the world's most regulated markets. Deploy world-class intelligence while maintaining absolute data sovereignty across the Kingdom, the UAE, and beyond.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+              <Link
+                to="/contact"
+                className="w-full sm:w-auto px-8 py-4 bg-navy hover:bg-navy-deep text-white rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-navy/25 border border-gold/20 hover:border-gold/50 flex items-center justify-center gap-2 group"
+              >
+                Contact Sales
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                to="/platform"
+                className="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 text-white rounded-lg font-semibold backdrop-blur-sm border border-white/10 transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                Explore the Perimeter
+              </Link>
+            </div>
+
+            {/* Trust Bar & Traction */}
+            <div className="pt-12 border-t border-white/10 mt-12 max-w-3xl mx-auto">
+              <div className="flex flex-col items-center gap-6">
+                <p className="text-gold/80 text-sm font-semibold tracking-widest uppercase">
+                  Production Pilot: <span className="text-white">Reve Consult, Riyadh</span>
+                </p>
+                <div className="flex flex-wrap justify-center gap-4 text-white/40 text-sm font-medium">
+                  <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-gold" /> PDPL Compliant</span>
+                  <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-gold" /> SAMA / CBUAE Ready</span>
+                  <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-gold" /> NCA / UAE IA Aligned</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 4-Layer Sovereign Perimeter — Scroll-triggered */}
       <Section dark>
         <div className="max-w-5xl mx-auto">
           <motion.p
@@ -165,14 +186,14 @@ const Index = () => {
               </ul>
             </motion.div>
 
-            {/* The Aliph Revolution */}
+            {/* The Aliph Standard */}
             <motion.div
               initial={{ opacity: 0, x: 24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="bg-white rounded-lg p-8 border-l-4 border-gold shadow-lg"
             >
-              <h3 className="font-heading font-bold text-2xl mb-6 text-gold">The Aliph Revolution</h3>
+              <h3 className="font-heading font-bold text-2xl mb-6 text-gold">The Aliph Standard</h3>
               <ul className="space-y-6">
                 <li className="flex gap-4">
                   <span className="shrink-0 w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold">
@@ -280,7 +301,7 @@ const Index = () => {
             viewport={{ once: true }}
             className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl mb-6 text-white tracking-tight"
           >
-            Compliance is the architecture,<br />not a feature.
+            Compliance is the perimeter,<br />not a feature.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -289,7 +310,7 @@ const Index = () => {
             transition={{ delay: 0.1 }}
             className="font-body text-white/50 mb-12 max-w-xl mx-auto"
           >
-            Designed for PDPL—one of the world's strictest data sovereignty frameworks. Our architecture exceeds the requirements of GDPR, UAE PDPL, and most global privacy regulations by design.
+            Designed for PDPL—one of the world's strictest data sovereignty frameworks. Our perimeter exceeds the requirements of GDPR, UAE PDPL, and most global privacy regulations by design.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
