@@ -67,9 +67,9 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 h-[72px] flex items-center transition-all duration-250 ${
+      className={`fixed top-0 left-0 right-0 z-50 h-[72px] flex items-center transition-all duration-200 ${
         scrolled
-          ? "bg-background/90 backdrop-blur-xl border-b border-border/50"
+          ? "bg-white/95 backdrop-blur-xl border-b border-border shadow-sm"
           : "bg-transparent"
       }`}
     >
@@ -99,12 +99,12 @@ const Navbar = () => {
                     transition={{ duration: 0.15 }}
                     className="absolute top-full left-0 pt-2"
                   >
-                    <div className="glass-card rounded-xl shadow-xl shadow-primary/5 py-2 min-w-[220px]">
+                    <div className="bg-white rounded-lg shadow-lg shadow-foreground/5 border border-border py-2 min-w-[220px]">
                       {item.children.map((child) => (
                         <Link
                           key={child.href}
                           to={child.href}
-                          className="block px-4 py-2.5 text-sm font-body text-foreground/70 hover:text-primary hover:bg-primary/5 transition-colors duration-200"
+                          className="block px-4 py-2.5 text-sm font-body text-foreground/70 hover:text-accent hover:bg-accent/5 transition-colors duration-200"
                         >
                           {child.label}
                         </Link>
@@ -119,10 +119,10 @@ const Navbar = () => {
 
         <div className="flex items-center gap-3">
           <Link
-            to="/demo"
-            className="cta-glow inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-heading font-semibold text-[14px] hover:brightness-110 transition-all duration-200 shadow-lg shadow-primary/20"
+            to="/contact"
+            className="cta-primary inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-body font-semibold text-[14px]"
           >
-            Request Demo
+            Contact Sales
           </Link>
           <button
             className="lg:hidden text-foreground"
@@ -141,7 +141,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden absolute top-[72px] left-0 right-0 bg-background/95 backdrop-blur-xl border-t border-border max-h-[calc(100vh-72px)] overflow-y-auto"
+            className="lg:hidden absolute top-[72px] left-0 right-0 bg-white border-t border-border max-h-[calc(100vh-72px)] overflow-y-auto shadow-lg"
           >
             {navItems.map((item) => (
               <div key={item.label} className="border-b border-border/50">
@@ -171,7 +171,7 @@ const Navbar = () => {
                         <Link
                           key={child.href}
                           to={child.href}
-                          className="block px-10 py-2.5 text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
+                          className="block px-10 py-2.5 text-sm text-muted-foreground hover:text-accent transition-colors duration-200"
                         >
                           {child.label}
                         </Link>
