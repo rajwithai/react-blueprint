@@ -4,16 +4,11 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import aliphLogo from "@/assets/aliph-logo.png";
 
+const singleLinks = [
+  { label: "Platform", href: "/platform" },
+];
+
 const navItems = [
-  {
-    label: "Platform",
-    children: [
-      { label: "Overview", href: "/platform" },
-      { label: "Privacy Shield", href: "/platform/privacy-shield" },
-      { label: "Organization Memory", href: "/platform/organization-memory" },
-      { label: "Global LLM Connectivity", href: "/platform/global-llm" },
-    ],
-  },
   {
     label: "Products",
     children: [
@@ -79,6 +74,15 @@ const Navbar = () => {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-0.5">
+          {singleLinks.map((item) => (
+            <Link
+              key={item.label}
+              to={item.href}
+              className="px-4 py-2 text-[14px] font-body font-medium text-foreground/60 hover:text-foreground transition-colors duration-200"
+            >
+              {item.label}
+            </Link>
+          ))}
           {navItems.map((item) => (
             <div
               key={item.label}
@@ -143,6 +147,16 @@ const Navbar = () => {
             transition={{ duration: 0.2 }}
             className="lg:hidden absolute top-[72px] left-0 right-0 bg-white border-t border-border max-h-[calc(100vh-72px)] overflow-y-auto shadow-lg"
           >
+            {singleLinks.map((item) => (
+              <div key={item.label} className="border-b border-border/50">
+                <Link
+                  to={item.href}
+                  className="w-full flex items-center px-6 py-4 text-foreground font-body font-medium text-sm"
+                >
+                  {item.label}
+                </Link>
+              </div>
+            ))}
             {navItems.map((item) => (
               <div key={item.label} className="border-b border-border/50">
                 <button
