@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { RefreshCw, Users, TrendingUp } from "lucide-react";
-import HeroSection from "@/components/sections/HeroSection";
+import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
@@ -16,7 +16,7 @@ const dataSources = [
 const OrganizationMemory = () => {
   return (
     <>
-      <HeroSection
+      <PageHero
         eyebrow="ORGANIZATION MEMORY"
         title="Twenty years of expertise. Available in seconds."
         subtitle="Every document, every decision, every lesson — indexed, searchable, and secured by the permissions you already have."

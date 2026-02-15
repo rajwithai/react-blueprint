@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
-import HeroSection from "@/components/sections/HeroSection";
+import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 import CTABanner from "@/components/sections/CTABanner";
 
@@ -19,7 +19,7 @@ interface IndustryPageProps {
 
 const IndustryPage = ({ eyebrow, title, subtitle, challengeTitle, challengeBody, solutionTitle, solutionBody, badges, ctaText }: IndustryPageProps) => (
   <>
-    <HeroSection
+    <PageHero
       eyebrow={eyebrow}
       title={title}
       subtitle={subtitle}

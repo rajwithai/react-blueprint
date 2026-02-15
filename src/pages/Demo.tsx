@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
-import HeroSection from "@/components/sections/HeroSection";
+import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 
 const companySizes = ["1–50", "51–200", "201–500", "501–1000", "1000+"];
@@ -25,7 +25,7 @@ const Demo = () => {
 
   return (
     <>
-      <HeroSection
+      <PageHero
         title="See it live."
         subtitle="30 minutes. Tailored to your organization. See Privacy Shield mask data in real time, Organization Memory answer from your knowledge base, and multi-agent AI produce work that used to take weeks."
       />

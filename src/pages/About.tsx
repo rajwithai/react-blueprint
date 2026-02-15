@@ -1,13 +1,13 @@
 import { CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
-import HeroSection from "@/components/sections/HeroSection";
+import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 import CTABanner from "@/components/sections/CTABanner";
 
 const About = () => {
   return (
     <>
-      <HeroSection
+      <PageHero
         eyebrow="ABOUT ALIPH"
         title="Private Intelligence. Collective Wisdom."
         subtitle="We build the infrastructure layer that makes AI safe for enterprise — so organizations never have to choose between intelligence and sovereignty."

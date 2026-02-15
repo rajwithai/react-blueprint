@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Search, ShieldCheck, Users, MessageSquare, CheckCircle2, X } from "lucide-react";
 import { motion } from "framer-motion";
-import HeroSection from "@/components/sections/HeroSection";
+import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
@@ -27,7 +27,7 @@ const comparison = [
 const AliphChat = () => {
   return (
     <>
-      <HeroSection
+      <PageHero
         eyebrow="ALIPHCHAT"
         title="Ask anything. Expose nothing."
         subtitle="An enterprise AI assistant that searches your organization's knowledge first — and when it reaches beyond, your sensitive data has already been stripped. Natural language. Arabic and English. Every answer cited. Every interaction audited."

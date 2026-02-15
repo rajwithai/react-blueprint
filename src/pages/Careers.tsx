@@ -1,12 +1,12 @@
 import { CheckCircle2, Mail } from "lucide-react";
 import { motion } from "framer-motion";
-import HeroSection from "@/components/sections/HeroSection";
+import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 
 const Careers = () => {
   return (
     <>
-      <HeroSection
+      <PageHero
         title="Build sovereign AI from Riyadh."
         subtitle="We're assembling engineers, product builders, and domain experts who believe enterprise AI and data sovereignty are not mutually exclusive."
       />
