@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
-import HeroSection from "@/components/sections/HeroSection";
+import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
@@ -24,7 +24,7 @@ const securityControls = [
 const GlobalLLM = () => {
   return (
     <>
-      <HeroSection
+      <PageHero
         eyebrow="GLOBAL LLM CONNECTIVITY"
         title="Every model. Zero exposure."
         subtitle="Claude, GPT-4, Gemini, ALLAM — the world's most advanced AI, accessed safely through Privacy Shield. Automatic model selection. No vendor lock-in. No data compromise."

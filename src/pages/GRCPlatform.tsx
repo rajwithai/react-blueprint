@@ -1,6 +1,6 @@
 import { FileCheck, Search, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
-import HeroSection from "@/components/sections/HeroSection";
+import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
@@ -15,7 +15,7 @@ const impact = [
 const GRCPlatform = () => {
   return (
     <>
-      <HeroSection
+      <PageHero
         eyebrow="ALIPH GRC"
         title="Months of compliance work. Done in days."
         subtitle="Multi-agent AI that automates compliance mapping, contract analysis, document generation, and audit preparation — at advisory-firm quality, at a fraction of the cost, in a fraction of the time."

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
-import HeroSection from "@/components/sections/HeroSection";
+import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 
 const inquiryTypes = ["General Inquiry", "Partnership", "Demo Request", "Investor Relations", "Media", "Careers"];
@@ -16,7 +16,7 @@ const Contact = () => {
 
   return (
     <>
-      <HeroSection
+      <PageHero
         title="Let's talk."
         subtitle="Exploring sovereign AI. Evaluating partnerships. Asking hard questions. Whatever the reason — we're here."
       />

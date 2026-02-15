@@ -1,6 +1,6 @@
 import { CheckCircle2, X } from "lucide-react";
 import { motion } from "framer-motion";
-import HeroSection from "@/components/sections/HeroSection";
+import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 import CTABanner from "@/components/sections/CTABanner";
 
@@ -17,7 +17,7 @@ const comparison = [
 const AgenticAI = () => {
   return (
     <>
-      <HeroSection
+      <PageHero
         eyebrow="AGENTIC AI PLATFORM"
         title="Autonomous AI. Sovereign by default."
         subtitle="AI agents that can research, execute, and reason through complex workflows — with every interaction protected by Privacy Shield and informed by Organization Memory. Coming Q2 2026."

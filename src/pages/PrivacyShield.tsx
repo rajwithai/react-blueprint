@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Lock, Shield } from "lucide-react";
-import HeroSection from "@/components/sections/HeroSection";
+import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
@@ -19,7 +19,7 @@ const entityTiles = [
 const PrivacyShield = () => {
   return (
     <>
-      <HeroSection
+      <PageHero
         eyebrow="PRIVACY SHIELD"
         title="Your data never leaves. The AI never knows."
         subtitle="Proprietary PII detection for Arabic and English. Automatic masking. Encrypted mapping. Full audit trail."

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Cpu, Layers, ShieldCheck, Globe, Minimize2, Eye, Shuffle, FileCheck } from "lucide-react";
 import { motion } from "framer-motion";
-import HeroSection from "@/components/sections/HeroSection";
+import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
@@ -19,7 +19,7 @@ const Platform = () => {
 
   return (
     <>
-      <HeroSection
+      <PageHero
         eyebrow="THE ALIPH PLATFORM"
         title="Sovereign by architecture, not by compromise."
         subtitle="A four-layer AI infrastructure that keeps intelligence on-premise — and protects everything else."

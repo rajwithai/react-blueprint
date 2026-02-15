@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import HeroSection from "@/components/sections/HeroSection";
+import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 
 const blogPosts = [
@@ -11,7 +11,7 @@ const blogPosts = [
 const Blog = () => {
   return (
     <>
-      <HeroSection
+      <PageHero
         title="Insights & Resources"
         subtitle="Thought leadership on sovereign AI, PDPL compliance, and the future of enterprise intelligence."
       />

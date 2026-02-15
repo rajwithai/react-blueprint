@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { User } from "lucide-react";
-import HeroSection from "@/components/sections/HeroSection";
+import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 
 const profiles = [
@@ -25,7 +25,7 @@ const profiles = [
 const Leadership = () => {
   return (
     <>
-      <HeroSection
+      <PageHero
         title="45+ years of expertise. One mission."
         subtitle="Two founders know what to deliver. One knows how to build it."
       />

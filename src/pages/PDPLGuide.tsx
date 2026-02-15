@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import HeroSection from "@/components/sections/HeroSection";
+import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 import CTABanner from "@/components/sections/CTABanner";
 
@@ -16,7 +16,7 @@ const sections = [
 const PDPLGuide = () => {
   return (
     <>
-      <HeroSection
+      <PageHero
         eyebrow="RESOURCE"
         title="The Enterprise Guide to PDPL Compliance"
         subtitle="PDPL is live. Penalties are real. This is what your organization needs to know — and how AI adoption fits within the framework."
