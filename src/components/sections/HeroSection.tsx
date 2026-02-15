@@ -1,131 +1,105 @@
-import { ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-interface HeroSectionProps {
-  eyebrow?: string;
-  title: string;
-  subtitle: string;
-  primaryCta?: { label: string; href: string };
-  secondaryCta?: { label: string; href: string };
-  badge?: string;
-  minHeight?: string;
-  dark?: boolean;
-  children?: ReactNode;
-}
-
-const HeroSection = ({
-  eyebrow,
-  title,
-  subtitle,
-  primaryCta,
-  secondaryCta,
-  badge,
-  minHeight = "min-h-[60vh]",
-  dark = false,
-  children,
-}: HeroSectionProps) => {
+const HeroSection = () => {
   return (
-    <section
-      className={`${minHeight} flex items-center relative overflow-hidden ${
-        dark ? "hero-gradient-navy" : "hero-gradient"
-      }`}
-    >
-      {/* Subtle grid overlay */}
-      <div className={`absolute inset-0 ${dark ? "grid-pattern-light" : "grid-pattern"} opacity-40`} />
-
-      {/* Light beams for dark hero */}
-      {dark && (
-        <>
-          <div className="light-beam" style={{ left: '20%', animationDelay: '0s' }} />
-          <div className="light-beam" style={{ left: '50%', animationDelay: '2s' }} />
-          <div className="light-beam" style={{ left: '80%', animationDelay: '1s' }} />
-        </>
-      )}
-
-      <div className="container mx-auto px-6 py-24 lg:py-32 relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
-          {eyebrow && (
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className={`uppercase tracking-[0.25em] text-xs font-body font-semibold mb-6 ${
-                dark ? "text-gold" : "text-accent"
-              }`}
-            >
-              {eyebrow}
-            </motion.p>
-          )}
-          {badge && (
-            <motion.span
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3 }}
-              className={`inline-block px-3 py-1 rounded-lg text-xs font-body font-semibold mb-4 border ${
-                dark
-                  ? "bg-gold/10 text-gold border-gold/20"
-                  : "bg-accent/10 text-accent border-accent/20"
-              }`}
-            >
-              {badge}
-            </motion.span>
-          )}
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className={`font-heading font-bold text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.15] text-balance tracking-tight ${
-              dark ? "text-white" : "text-foreground"
-            }`}
-          >
-            {title}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className={`mt-6 text-lg md:text-xl font-body leading-relaxed max-w-2xl mx-auto ${
-              dark ? "text-white/60" : "text-muted-foreground"
-            }`}
-          >
-            {subtitle}
-          </motion.p>
-          {(primaryCta || secondaryCta) && (
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              {primaryCta && (
-                <Link
-                  to={primaryCta.href}
-                  className="cta-primary inline-flex items-center justify-center px-8 py-3.5 rounded-lg bg-primary text-primary-foreground font-body font-semibold text-base min-w-[180px]"
-                >
-                  {primaryCta.label}
-                </Link>
-              )}
-              {secondaryCta && (
-                <Link
-                  to={secondaryCta.href}
-                  className={`inline-flex items-center justify-center px-8 py-3.5 rounded-lg border font-body font-semibold text-base min-w-[180px] transition-all duration-200 ${
-                    dark
-                      ? "border-white/20 text-white hover:bg-white/5"
-                      : "border-border text-foreground hover:bg-muted"
-                  }`}
-                >
-                  {secondaryCta.label}
-                </Link>
-              )}
-            </motion.div>
-          )}
-          {children}
-        </div>
+    <section className="relative min-h-[95vh] flex items-center overflow-hidden bg-navy-deep text-white">
+      {/* Background: Placeholder for Generated Asset */}
+      {/* Note: We will update 'hero-background.webp' once generated and moved */}
+      <div className="absolute inset-0 bg-slate-900">
+        <div className="absolute inset-0 bg-[url('/assets/hero_background.webp')] bg-cover bg-center opacity-40 mix-blend-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/80 to-transparent" />
       </div>
 
-      {/* Bottom separator */}
-      <div className="absolute bottom-0 left-0 right-0 section-divider" />
+      <div className="container relative z-10 px-4 md:px-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+          {/* Left: Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
+          >
+            <div className="inline-block border-l-2 border-gold pl-4">
+              <p className="text-xs font-bold tracking-widest uppercase text-slate-400">
+                Built in Riyadh. Designed for regulated adoption across Saudi Arabia and the UAE.
+              </p>
+            </div>
+
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight leading-[1.1]">
+              Adopt AI—without losing control of your data.
+            </h1>
+
+            <p className="text-xl text-slate-300 max-w-xl font-body leading-relaxed">
+              Aliph is the sovereign AI Control Plane for enterprise—governing how teams use modern AI while protecting sensitive data and preserving institutional knowledge.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
+              <Link
+                to="/demo"
+                className="w-full sm:w-auto px-8 py-4 bg-gold hover:bg-gold-light text-white rounded-lg font-bold transition-all duration-300 shadow-lg shadow-gold/20 hover:shadow-gold/40 flex items-center justify-center gap-2 group"
+              >
+                Book a Demo
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                to="/platform"
+                className="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                Explore the Platform
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* Right: Governed Path Animation */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="relative h-[600px] w-full hidden lg:flex items-center justify-center"
+          >
+            {/* Visual Background Asset */}
+            <div className="absolute inset-0 bg-[url('/assets/control_plane_illustration.webp')] bg-contain bg-no-repeat bg-center opacity-30" />
+
+            {/* SVG Animation Layer */}
+            <svg className="w-full h-full relative z-10" viewBox="0 0 600 600">
+              {/* Path: Request -> Shield -> Model -> Output */}
+              <path
+                id="governed-path"
+                d="M 50 300 L 200 300 C 250 300 250 300 300 300 C 350 300 350 300 550 300"
+                fill="none"
+                stroke="rgba(255,255,255,0.1)"
+                strokeWidth="2"
+              />
+
+              {/* Node: Request */}
+              <circle cx="50" cy="300" r="8" fill="#cbd5e1" />
+              <text x="50" y="340" textAnchor="middle" fill="#94a3b8" fontSize="12" fontWeight="bold">REQUEST</text>
+
+              {/* Node: Policy Gate */}
+              <g transform="translate(280, 280)">
+                <rect width="40" height="40" rx="8" fill="#0f172a" stroke="#b8860b" strokeWidth="2" />
+                <path d="M12 12 L28 28 M28 12 L12 28" stroke="#b8860b" strokeWidth="2" transform="scale(0.5) translate(20,20)" />
+                {/* Shield Icon approximation */}
+              </g>
+              <text x="300" y="340" textAnchor="middle" fill="#b8860b" fontSize="12" fontWeight="bold">POLICY GATE</text>
+
+              {/* Node: Output */}
+              <circle cx="550" cy="300" r="8" fill="#emerald" className="text-emerald-500 fill-current" />
+              <text x="550" y="340" textAnchor="middle" fill="#34d399" fontSize="12" fontWeight="bold">AUDIT READY</text>
+
+              {/* Animated Packet */}
+              <circle r="6" fill="#b8860b">
+                <animateMotion dur="3s" repeatCount="indefinite" path="M 50 300 L 550 300" />
+                <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" />
+              </circle>
+            </svg>
+
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 };
