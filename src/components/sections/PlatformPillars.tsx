@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, Database, Eye, Network, ArrowRight } from "lucide-react";
+import { Shield, Database, Eye, Network, ArrowRight, Lock, CheckCircle2, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const pillars = [
@@ -8,25 +8,29 @@ const pillars = [
         id: "privacy",
         icon: Shield,
         title: "Privacy Shield",
-        desc: "Protect sensitive information in prompts and outputs—across Arabic and English workflows.",
+        desc: "Protect sensitive information in prompts and outputs—across Arabic and English workflows. Our engine detects PII and sovereign data boundaries in real-time.",
+        bgImage: "/assets/privacy.png",
     },
     {
         id: "memory",
         icon: Database,
         title: "Organization Memory",
-        desc: "Capture institutional knowledge with permission-aware access, so learning compounds securely.",
+        desc: "Capture institutional knowledge with permission-aware access, so learning compounds securely. Your data stays within your sovereign perimeter.",
+        bgImage: null,
     },
     {
         id: "governance",
         icon: Eye,
         title: "Governance & Auditability",
-        desc: "Policy enforcement, admin oversight, and audit trails built into every workflow.",
+        desc: "Policy enforcement, admin oversight, and audit trails built into every workflow. Every interaction is logged for full compliance and oversight.",
+        bgImage: null,
     },
     {
         id: "connectivity",
         icon: Network,
         title: "Governed Model Connectivity",
-        desc: "Use leading AI safely when needed—through one controlled interface.",
+        desc: "Use leading AI models safely when needed—through one controlled interface. Route requests based on sensitivity and cost automatically.",
+        bgImage: null,
     },
 ];
 
@@ -34,160 +38,110 @@ const PlatformPillars = () => {
     const [activePillar, setActivePillar] = useState(0);
 
     return (
-        <section className="py-24 bg-white">
-            <div className="container px-4 md:px-6">
+        <section className="relative min-h-[850px] flex items-center overflow-hidden bg-black text-white">
 
-                <div className="grid lg:grid-cols-2 gap-16 items-start">
+            {/* --- FULL SECTION BACKGROUND TRANSITION --- */}
+            <div className="absolute inset-0 z-0">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={activePillar}
+                        initial={{ opacity: 0, scale: 1.05 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                        style={{
+                            backgroundImage: pillars[activePillar].bgImage
+                                ? `url(${pillars[activePillar].bgImage})`
+                                : undefined,
+                            backgroundColor: '#000000' // Fallback to black
+                        }}
+                    >
+                        {/* Cinematic Gradient Overlay: From black (left) to transparent (middle/right) */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-transparent w-full" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent h-40 bottom-0" />
+                    </motion.div>
+                </AnimatePresence>
+            </div>
 
-                    {/* Left: Content & Accordion */}
-                    <div>
-                        <div className="mb-10">
-                            <h2 className="text-4xl font-heading font-bold text-navy mb-4">
-                                Compliance enforced by design—not by policy documents.
-                            </h2>
-                            <p className="text-xl text-slate-600">
-                                The Control Plane standardizes how AI is used across the enterprise—so adoption scales without chaos.
-                            </p>
-                        </div>
+            <div className="container px-4 md:px-6 relative z-10 py-24">
+                <div className="mb-20 max-w-4xl">
+                    <h2 className="text-5xl md:text-6xl font-heading font-bold mb-6 leading-[1.1] tracking-tight">
+                        Compliance enforced by design<br />
+                        <span className="text-slate-500 block mt-2">not by policy documents.</span>
+                    </h2>
+                    <p className="text-xl text-slate-400 max-w-2xl leading-relaxed">
+                        The Control Plane standardizes how AI is used across the enterprise—so adoption scales without chaos.
+                    </p>
+                </div>
 
-                        <div className="space-y-4">
-                            {pillars.map((pillar, i) => {
-                                const isActive = activePillar === i;
-                                const Icon = pillar.icon;
-                                return (
-                                    <div
-                                        key={i}
-                                        onClick={() => setActivePillar(i)}
-                                        className={`cursor-pointer rounded-xl transition-all duration-300 border ${isActive
-                                                ? "bg-navy text-white border-navy shadow-lg"
-                                                : "bg-white text-slate-600 border-slate-200 hover:border-navy/30"
-                                            }`}
-                                    >
-                                        <div className="p-6 flex items-start gap-4">
-                                            <div className={`mt-1 p-2 rounded-lg transition-colors ${isActive ? "bg-white/10 text-gold" : "bg-slate-100 text-slate-400"
-                                                }`}>
-                                                <Icon className="w-6 h-6" />
-                                            </div>
-                                            <div>
-                                                <h3 className={`text-xl font-bold mb-2 ${isActive ? "text-white" : "text-navy"}`}>
-                                                    {pillar.title}
-                                                </h3>
-                                                <AnimatePresence>
-                                                    {isActive && (
-                                                        <motion.div
-                                                            initial={{ height: 0, opacity: 0 }}
-                                                            animate={{ height: "auto", opacity: 1 }}
-                                                            exit={{ height: 0, opacity: 0 }}
-                                                            className="overflow-hidden"
-                                                        >
-                                                            <p className="text-slate-300 leading-relaxed font-body">
-                                                                {pillar.desc}
-                                                            </p>
-                                                        </motion.div>
-                                                    )}
-                                                </AnimatePresence>
-                                            </div>
-                                        </div>
+                <div className="grid lg:grid-cols-12 gap-12 items-center">
+
+                    {/* Left Column: Minimalist Navigation */}
+                    <div className="lg:col-span-4 space-y-6">
+                        {pillars.map((pillar, i) => {
+                            const isActive = activePillar === i;
+                            const Icon = pillar.icon;
+                            return (
+                                <button
+                                    key={i}
+                                    onClick={() => setActivePillar(i)}
+                                    // Added explicit height and relative positioning for better alignment
+                                    className="w-full text-left group flex items-center gap-6 focus:outline-none relative py-2"
+                                >
+                                    {/* Vertical Indicator Line - Positioned to the left of the icon now */}
+                                    {isActive && (
+                                        <motion.div
+                                            layoutId="activePillarLine"
+                                            className="absolute -left-6 top-1/2 -translate-y-1/2 w-1 h-8 bg-gold rounded-full"
+                                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                        />
+                                    )}
+
+                                    {/* Icon */}
+                                    <div className={`transition-colors duration-300 ${isActive ? "text-gold" : "text-slate-600 group-hover:text-slate-400"}`}>
+                                        <Icon className="w-6 h-6" />
                                     </div>
-                                );
-                            })}
-                        </div>
 
-                        <div className="mt-8">
-                            <Link to="/security" className="inline-flex items-center gap-2 text-navy font-bold hover:gap-4 transition-all">
+                                    {/* Text */}
+                                    <div className="relative">
+                                        <span className={`text-xl font-bold tracking-tight transition-colors duration-300 ${isActive ? "text-white" : "text-slate-500 group-hover:text-slate-300"}`}>
+                                            {pillar.title}
+                                        </span>
+                                    </div>
+                                </button>
+                            );
+                        })}
+
+                        <div className="pt-12 pl-0">
+                            <Link to="/security" className="inline-flex items-center gap-2 text-gold font-bold hover:gap-4 transition-all text-sm uppercase tracking-wide">
                                 Security & Compliance <ArrowRight className="w-4 h-4" />
                             </Link>
                         </div>
                     </div>
 
-                    {/* Right: Dynamic Graphic */}
-                    <div className="hidden lg:flex items-center justify-center bg-slate-50 rounded-2xl p-8 border border-slate-200 h-[600px] relative overflow-hidden">
-
-                        {/* Abstract Schematic Background */}
-                        <div className="absolute inset-0 grid-pattern opacity-50"></div>
-
+                    {/* Right Column: Clean Description (Floating on Image) */}
+                    <div className="lg:col-span-8 lg:pl-16">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activePillar}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.95 }}
-                                className="relative z-10 w-full max-w-sm"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                transition={{ duration: 0.4, delay: 0.1 }}
+                                className="max-w-xl"
                             >
-                                {/* We render a different 'schematic' based on active pillar */}
-                                {activePillar === 0 && ( /* Privacy Shield */
-                                    <div className="bg-white p-6 rounded-xl border-2 border-navy shadow-xl">
-                                        <div className="flex justify-between items-center mb-4 border-b border-slate-100 pb-2">
-                                            <span className="text-xs font-bold text-navy uppercase">Privacy Engine</span>
-                                            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                                        </div>
-                                        <div className="space-y-2">
-                                            <div className="h-2 bg-slate-100 rounded w-3/4"></div>
-                                            <div className="h-2 bg-slate-100 rounded w-1/2"></div>
-                                            <div className="bg-red-50 p-2 rounded border border-red-100 text-[10px] text-red-600 font-mono mt-4">
-                                                Detected: PII (National ID)
-                                                <br />Action: Redact
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
-
-                                {activePillar === 1 && ( /* Org Memory */
-                                    <div className="bg-white p-6 rounded-xl border-2 border-gold shadow-xl">
-                                        <div className="flex justify-between items-center mb-4 border-b border-slate-100 pb-2">
-                                            <span className="text-xs font-bold text-navy uppercase">Knowledge Graph</span>
-                                            <Database className="w-4 h-4 text-gold" />
-                                        </div>
-                                        <div className="grid grid-cols-2 gap-2">
-                                            {[1, 2, 3, 4].map(i => (
-                                                <div key={i} className="aspect-square bg-slate-50 rounded border border-slate-200 flex items-center justify-center">
-                                                    <div className="w-1/2 h-1/2 rounded bg-gold/20"></div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                                {activePillar === 2 && ( /* Governance */
-                                    <div className="bg-white p-6 rounded-xl border-2 border-navy shadow-xl">
-                                        <div className="flex justify-between items-center mb-4 border-b border-slate-100 pb-2">
-                                            <span className="text-xs font-bold text-navy uppercase">Audit Log Stream</span>
-                                            <Eye className="w-4 h-4 text-navy" />
-                                        </div>
-                                        <div className="font-mono text-[10px] space-y-2 text-slate-500">
-                                            <div className="border-l-2 border-emerald-500 pl-2">
-                                                <span className="text-navy font-bold">10:42:01</span> User.A accessed Model.GPT4
-                                            </div>
-                                            <div className="border-l-2 border-red-500 pl-2">
-                                                <span className="text-navy font-bold">10:42:05</span> Policy Block: Financial Data
-                                            </div>
-                                            <div className="border-l-2 border-slate-300 pl-2 opacity-50">...</div>
-                                        </div>
-                                    </div>
-                                )}
-
-                                {activePillar === 3 && ( /* Connectivity */
-                                    <div className="bg-white p-6 rounded-xl border-2 border-slate-400 shadow-xl">
-                                        <div className="flex justify-between items-center mb-4 border-b border-slate-100 pb-2">
-                                            <span className="text-xs font-bold text-navy uppercase">Model Router</span>
-                                            <Network className="w-4 h-4 text-slate-600" />
-                                        </div>
-                                        <div className="space-y-3">
-                                            <div className="flex items-center justify-between p-2 bg-slate-50 rounded border border-slate-200">
-                                                <span className="text-xs font-bold">Local Host</span>
-                                                <span className="text-[10px] bg-emerald-100 text-emerald-600 px-1 rounded">Active</span>
-                                            </div>
-                                            <div className="flex items-center justify-between p-2 bg-slate-50 rounded border border-slate-200 opacity-50">
-                                                <span className="text-xs font-bold">Public API</span>
-                                                <Lock className="w-3 h-3" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
-
+                                <div className="mb-6 flex items-center gap-3">
+                                    <div className="h-px w-12 bg-gold/50"></div>
+                                    <span className="text-gold font-mono text-sm uppercase tracking-widest">
+                                        {pillars[activePillar].title} Module
+                                    </span>
+                                </div>
+                                <h3 className="text-3xl md:text-4xl font-light text-white leading-snug mb-6 drop-shadow-xl">
+                                    {pillars[activePillar].desc}
+                                </h3>
                             </motion.div>
                         </AnimatePresence>
-
                     </div>
 
                 </div>
@@ -195,5 +149,5 @@ const PlatformPillars = () => {
         </section>
     );
 };
-
+// Removed internal Graphic components (PrivacyGraphic, MemoryGraphic, etc.) as they are no longer used.
 export default PlatformPillars;
