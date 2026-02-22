@@ -3,12 +3,6 @@ import aliphLogo from "@/assets/aliph-logo.png";
 
 const footerColumns = [
   {
-    title: "Platform",
-    links: [
-      { label: "Platform Overview", href: "/platform" },
-    ],
-  },
-  {
     title: "Products",
     links: [
       { label: "AliphChat", href: "/products/aliphchat" },
