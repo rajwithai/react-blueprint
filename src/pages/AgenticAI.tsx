@@ -1,8 +1,12 @@
-import { CheckCircle2, X } from "lucide-react";
+import { CheckCircle2, X, Brain, Workflow, Shield, Eye, Cpu, Network } from "lucide-react";
 import { motion } from "framer-motion";
 import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
+import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
+import ParallaxImage from "@/components/sections/ParallaxImage";
+import agenticImg from "@/assets/images/agentic-ai-hero.jpg";
+import platformImg from "@/assets/images/platform-architecture.jpg";
 
 const comparison = [
   { cap: "Autonomous execution", oss: true, aliph: true },
@@ -12,6 +16,15 @@ const comparison = [
   { cap: "Regulatory compliance", oss: false, aliph: true },
   { cap: "Audit trail", oss: false, aliph: true },
   { cap: "Arabic support", oss: false, aliph: true },
+];
+
+const capabilities = [
+  { icon: Brain, title: "Multi-Step Reasoning", description: "Agents break complex tasks into subtasks, research independently, and synthesize results — all within governed boundaries." },
+  { icon: Workflow, title: "Workflow Orchestration", description: "Chain multiple agents together for end-to-end automation. Research → Draft → Validate → Deliver." },
+  { icon: Shield, title: "Privacy-First Execution", description: "Every agent interaction passes through Privacy Shield. PII is masked before any external model is reached." },
+  { icon: Eye, title: "Full Observability", description: "Watch agents work in real-time. Every decision logged. Every data access tracked. Complete audit trail." },
+  { icon: Cpu, title: "Model Selection", description: "Agents automatically select the best model for each subtask — Claude for reasoning, GPT-4 for generation, ALLAM for Arabic." },
+  { icon: Network, title: "Enterprise Integration", description: "Agents connect to your existing systems — CRM, ERP, document stores — with inherited permissions." },
 ];
 
 const AgenticAI = () => {
@@ -25,7 +38,15 @@ const AgenticAI = () => {
         badge="Coming Q2 2026"
       />
 
-      {/* The Gap */}
+      {/* Parallax Hero Image */}
+      <ParallaxImage
+        src={agenticImg}
+        alt="Agentic AI autonomous systems"
+        className="h-[50vh] md:h-[60vh]"
+        speed={0.2}
+      />
+
+      {/* Section 1: The Gap */}
       <Section>
         <div className="max-w-2xl mx-auto text-center">
           <motion.h2
@@ -52,8 +73,55 @@ const AgenticAI = () => {
         </div>
       </Section>
 
-      {/* Comparison */}
+      {/* Section 2: Capabilities */}
       <Section alabaster>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-4 text-foreground"
+        >
+          What sovereign agents can do.
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.05 }}
+          className="font-body text-muted-foreground mb-12 max-w-2xl"
+        >
+          Enterprise-grade autonomous AI with privacy, observability, and compliance built into every interaction.
+        </motion.p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {capabilities.map((cap, i) => (
+            <FeatureCard key={cap.title} icon={cap.icon} title={cap.title} description={cap.description} delay={i * 80} />
+          ))}
+        </div>
+      </Section>
+
+      {/* Parallax Architecture */}
+      <ParallaxImage
+        src={platformImg}
+        alt="Aliph platform architecture layers"
+        className="h-[40vh] md:h-[50vh]"
+        speed={0.25}
+        overlay
+        overlayOpacity={0.2}
+      >
+        <div className="container mx-auto px-6 py-20 lg:py-28 text-center text-white">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-4"
+          >
+            Four layers of protection. Every interaction.
+          </motion.h2>
+        </div>
+      </ParallaxImage>
+
+      {/* Section 3: Comparison */}
+      <Section>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -87,7 +155,38 @@ const AgenticAI = () => {
         </div>
       </Section>
 
-      {/* Early Access */}
+      {/* Section 4: Use Cases */}
+      <Section alabaster>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground"
+        >
+          Real-world agent workflows.
+        </motion.h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            { title: "Regulatory Research", desc: "Agent researches PDPL requirements, maps to your policies, identifies gaps, and drafts a remediation plan — autonomously." },
+            { title: "Due Diligence", desc: "Agent analyzes target company documents, extracts risk factors, cross-references with regulatory requirements, produces a report." },
+            { title: "Contract Review", desc: "Agent reviews contracts against regulatory frameworks, flags non-compliant clauses, suggests amendments with citations." },
+          ].map((uc, i) => (
+            <motion.div
+              key={uc.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="rounded-xl border border-border bg-card p-8"
+            >
+              <h3 className="font-heading font-semibold text-xl mb-3 text-foreground">{uc.title}</h3>
+              <p className="font-body text-sm text-muted-foreground leading-relaxed">{uc.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Section 5: Early Access */}
       <Section>
         <div className="max-w-2xl mx-auto text-center">
           <motion.h2
