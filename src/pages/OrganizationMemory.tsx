@@ -1,12 +1,18 @@
 import { motion } from "framer-motion";
-import { RefreshCw, Users, TrendingUp, Database, Search, Lock } from "lucide-react";
-import PageHero from "@/components/sections/PageHero";
+import { RefreshCw, Users, TrendingUp, Database, Search, Lock, FolderOpen, Shield } from "lucide-react";
+import SplitHero from "@/components/sections/SplitHero";
+import TrustBar from "@/components/sections/TrustBar";
 import Section from "@/components/sections/Section";
-import FeatureCard from "@/components/sections/FeatureCard";
+import AlternatingFeature from "@/components/sections/AlternatingFeature";
+import ImpactStats from "@/components/sections/ImpactStats";
+import MidPageCTA from "@/components/sections/MidPageCTA";
 import CTABanner from "@/components/sections/CTABanner";
 import ParallaxImage from "@/components/sections/ParallaxImage";
+import FeatureCard from "@/components/sections/FeatureCard";
 import orgMemoryImg from "@/assets/images/org-memory-hero.jpg";
 import teamImg from "@/assets/images/team-collaboration.jpg";
+import platformImg from "@/assets/images/platform-architecture.jpg";
+import heroChatImg from "@/assets/images/hero-chat-ui.jpg";
 
 const dataSources = [
   { name: "Google Drive", status: "Live" },
@@ -19,22 +25,50 @@ const dataSources = [
 const OrganizationMemory = () => {
   return (
     <>
-      <PageHero
+      {/* 1. Split Hero */}
+      <SplitHero
         eyebrow="ORGANIZATION MEMORY"
         title="Twenty years of expertise. Available in seconds."
-        subtitle="Every document, every decision, every lesson — indexed, searchable, and secured by the permissions you already have."
-        primaryCta={{ label: "Request Demo", href: "/demo" }}
+        subtitle="Every document, every decision, every lesson — indexed, searchable, and secured by the permissions you already have. No knowledge left behind."
+        primaryCta={{ label: "Request a Demo", href: "/demo" }}
+        secondaryCta={{ label: "See How It Works", href: "/demo" }}
+        trustText="No commitment required. Connects to your existing systems."
+        image={orgMemoryImg}
+        imageAlt="Organization Memory knowledge network"
       />
 
-      {/* Parallax Hero */}
+      {/* 2. Trust Bar */}
+      <TrustBar
+        stats={[
+          { value: "Millions", label: "Documents indexed" },
+          { value: "<1s", label: "Retrieval time" },
+          { value: "5+", label: "Integrations" },
+          { value: "Zero", label: "Data exposure" },
+        ]}
+      />
+
+      {/* 3. Product Showcase */}
       <ParallaxImage
-        src={orgMemoryImg}
-        alt="Organization Memory knowledge network"
+        src={teamImg}
+        alt="Knowledge sharing across teams"
         className="h-[50vh] md:h-[60vh]"
         speed={0.2}
-      />
+        overlay
+        overlayOpacity={0.35}
+      >
+        <div className="container mx-auto px-6 py-20 lg:py-28 text-center text-white">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-4"
+          >
+            Knowledge that compounds with every interaction.
+          </motion.h2>
+        </div>
+      </ParallaxImage>
 
-      {/* Section 1: The Promise */}
+      {/* 4. The Problem */}
       <Section>
         <div className="max-w-2xl mx-auto text-center">
           <motion.h2
@@ -58,7 +92,7 @@ const OrganizationMemory = () => {
         </div>
       </Section>
 
-      {/* Section 2: Connected Systems */}
+      {/* 5. Connected Systems */}
       <Section alabaster>
         <motion.p
           initial={{ opacity: 0 }}
@@ -95,7 +129,7 @@ const OrganizationMemory = () => {
         </div>
       </Section>
 
-      {/* Section 3: Permissions */}
+      {/* 6. Permissions Demo */}
       <Section>
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
@@ -117,9 +151,6 @@ const OrganizationMemory = () => {
             >
               Aliph inherits your existing permission structure. Same question, different depth — based on organizational role. Zero admin configuration.
             </motion.p>
-            <p className="font-body text-sm text-muted-foreground/60">
-              Permission changes propagate in minutes. SSO deprovisioning revokes access immediately.
-            </p>
           </div>
           <motion.div
             initial={{ opacity: 0, x: 16 }}
@@ -127,9 +158,9 @@ const OrganizationMemory = () => {
             viewport={{ once: true }}
             className="space-y-3"
           >
-            <div className="rounded-2xl border border-accent/20 bg-card p-6">
+            <div className="rounded-2xl border border-accent/20 bg-accent/5 p-6">
               <p className="text-xs uppercase tracking-wider text-accent mb-2 font-heading font-semibold">CEO query result</p>
-              <p className="font-body text-sm text-muted-foreground">Full policy + HR notes + legal precedents</p>
+              <p className="font-body text-sm text-muted-foreground">Full policy + HR notes + legal precedents + financial data</p>
             </div>
             <div className="rounded-2xl border border-border bg-card p-6">
               <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2 font-heading font-semibold">Analyst query result</p>
@@ -139,28 +170,7 @@ const OrganizationMemory = () => {
         </div>
       </Section>
 
-      {/* Parallax Break */}
-      <ParallaxImage
-        src={teamImg}
-        alt="Knowledge sharing across teams"
-        className="h-[40vh] md:h-[50vh]"
-        speed={0.3}
-        overlay
-        overlayOpacity={0.35}
-      >
-        <div className="container mx-auto px-6 py-20 lg:py-28 text-center text-white">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-4"
-          >
-            Knowledge that compounds with every interaction.
-          </motion.h2>
-        </div>
-      </ParallaxImage>
-
-      {/* Section 4: Core capabilities */}
+      {/* 7. Core Capabilities */}
       <Section alabaster>
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
@@ -177,7 +187,15 @@ const OrganizationMemory = () => {
         </div>
       </Section>
 
-      {/* Section 5: Gets Smarter */}
+      {/* 8. Mid-page CTA */}
+      <MidPageCTA
+        title="Stop losing what your organization knows."
+        subtitle="See how Organization Memory preserves and surfaces institutional knowledge."
+        primaryCta={{ label: "Request a Demo", href: "/demo" }}
+        secondaryCta={{ label: "Contact Sales", href: "/contact" }}
+      />
+
+      {/* 9. Intelligence Compounds */}
       <Section>
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
@@ -188,13 +206,13 @@ const OrganizationMemory = () => {
           Intelligence that compounds.
         </motion.h2>
         <div className="grid md:grid-cols-3 gap-6">
-          <FeatureCard icon={RefreshCw} title="Learns from feedback" description="Corrections and approvals refine every future response." delay={0} />
-          <FeatureCard icon={Users} title="Captures new knowledge" description="Every engagement adds to institutional memory." delay={80} />
-          <FeatureCard icon={TrendingUp} title="Strengthens over time" description="The platform you deploy today is the weakest version you'll ever have." delay={160} />
+          <FeatureCard icon={RefreshCw} title="Learns from feedback" description="Corrections and approvals refine every future response. The system improves with every interaction." delay={0} />
+          <FeatureCard icon={Users} title="Captures new knowledge" description="Every engagement, every document, every decision adds to institutional memory automatically." delay={80} />
+          <FeatureCard icon={TrendingUp} title="Strengthens over time" description="The platform you deploy today is the weakest version you'll ever have. It only gets smarter." delay={160} />
         </div>
       </Section>
 
-      {/* Section 6: How it works */}
+      {/* 10. How It Works */}
       <Section alabaster>
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
@@ -229,9 +247,12 @@ const OrganizationMemory = () => {
         </div>
       </Section>
 
+      {/* 11. Final CTA */}
       <CTABanner
-        title="Stop losing what your organization knows."
-        primaryCta={{ label: "Request Demo", href: "/demo" }}
+        title="Your organization's knowledge. Always available."
+        subtitle="No commitment. See Organization Memory live with your own documents."
+        primaryCta={{ label: "Request a Demo", href: "/demo" }}
+        secondaryCta={{ label: "Contact Sales", href: "/contact" }}
       />
     </>
   );

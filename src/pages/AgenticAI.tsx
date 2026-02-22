@@ -1,22 +1,15 @@
-import { CheckCircle2, X, Brain, Workflow, Shield, Eye, Cpu, Network } from "lucide-react";
+import { Brain, Workflow, Shield, Eye, Cpu, Network } from "lucide-react";
 import { motion } from "framer-motion";
-import PageHero from "@/components/sections/PageHero";
+import SplitHero from "@/components/sections/SplitHero";
+import TrustBar from "@/components/sections/TrustBar";
 import Section from "@/components/sections/Section";
-import FeatureCard from "@/components/sections/FeatureCard";
+import ComparisonTable from "@/components/sections/ComparisonTable";
+import MidPageCTA from "@/components/sections/MidPageCTA";
 import CTABanner from "@/components/sections/CTABanner";
 import ParallaxImage from "@/components/sections/ParallaxImage";
+import FeatureCard from "@/components/sections/FeatureCard";
 import agenticImg from "@/assets/images/agentic-ai-hero.jpg";
 import platformImg from "@/assets/images/platform-architecture.jpg";
-
-const comparison = [
-  { cap: "Autonomous execution", oss: true, aliph: true },
-  { cap: "Data sovereignty", oss: false, aliph: true },
-  { cap: "PII protection", oss: false, aliph: true },
-  { cap: "Organizational context", oss: false, aliph: true },
-  { cap: "Regulatory compliance", oss: false, aliph: true },
-  { cap: "Audit trail", oss: false, aliph: true },
-  { cap: "Arabic support", oss: false, aliph: true },
-];
 
 const capabilities = [
   { icon: Brain, title: "Multi-Step Reasoning", description: "Agents break complex tasks into subtasks, research independently, and synthesize results — all within governed boundaries." },
@@ -30,32 +23,61 @@ const capabilities = [
 const AgenticAI = () => {
   return (
     <>
-      <PageHero
+      {/* 1. Split Hero */}
+      <SplitHero
         eyebrow="AGENTIC AI PLATFORM"
         title="Autonomous AI. Sovereign by default."
-        subtitle="AI agents that can research, execute, and reason through complex workflows — with every interaction protected by Privacy Shield and informed by Organization Memory. Coming Q2 2026."
-        primaryCta={{ label: "Join the Early Access Waitlist", href: "/demo" }}
+        subtitle="AI agents that can research, execute, and reason through complex workflows — with every interaction protected by Privacy Shield and informed by Organization Memory."
+        primaryCta={{ label: "Join the Waitlist", href: "/demo" }}
+        secondaryCta={{ label: "Learn More", href: "/demo" }}
         badge="Coming Q2 2026"
+        trustText="Priority access for early partners. Direct input into the product."
+        image={agenticImg}
+        imageAlt="Agentic AI autonomous systems"
       />
 
-      {/* Parallax Hero Image */}
+      {/* 2. Trust Bar */}
+      <TrustBar
+        stats={[
+          { value: "4", label: "Protection layers" },
+          { value: "100%", label: "Audit coverage" },
+          { value: "2", label: "Languages" },
+          { value: "∞", label: "Agent workflows" },
+        ]}
+      />
+
+      {/* 3. Product Showcase */}
       <ParallaxImage
-        src={agenticImg}
-        alt="Agentic AI autonomous systems"
+        src={platformImg}
+        alt="Agentic AI platform architecture"
         className="h-[50vh] md:h-[60vh]"
         speed={0.2}
-      />
+        overlay
+        overlayOpacity={0.2}
+      >
+        <div className="container mx-auto px-6 py-20 lg:py-28 text-center text-white">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-4"
+          >
+            Four layers of protection. Every interaction.
+          </motion.h2>
+        </div>
+      </ParallaxImage>
 
-      {/* Section 1: The Gap */}
+      {/* 4. The Gap */}
       <Section>
         <div className="max-w-2xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-8 text-foreground"
+            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-8 text-foreground tracking-tight"
           >
-            Agentic AI is powerful. But it's not ready for regulated enterprise.
+            Agentic AI is powerful.<br />
+            <span className="text-muted-foreground">But it's not ready for regulated enterprise.</span>
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -64,22 +86,30 @@ const AgenticAI = () => {
             transition={{ delay: 0.1 }}
           >
             <p className="font-body text-lg text-muted-foreground leading-relaxed mb-6">
-              Open-source agentic frameworks can autonomously research, use tools, and execute multi-step workflows. But they have no privacy layer. No organizational context. No audit trail. No compliance awareness. Enterprises in regulated markets cannot adopt them — until now.
+              Open-source agentic frameworks can autonomously research, use tools, and execute multi-step workflows. But they have no privacy layer. No organizational context. No audit trail. No compliance awareness.
             </p>
-            <p className="font-heading font-semibold text-xl text-primary">
+            <p className="font-heading font-semibold text-xl text-gradient">
               Aliph makes agentic AI enterprise-safe.
             </p>
           </motion.div>
         </div>
       </Section>
 
-      {/* Section 2: Capabilities */}
+      {/* 5. Capabilities */}
       <Section alabaster>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-accent uppercase tracking-[0.25em] text-xs font-heading font-semibold mb-4"
+        >
+          CAPABILITIES
+        </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-semibold text-3xl md:text-4xl mb-4 text-foreground"
+          className="font-heading font-semibold text-3xl md:text-4xl mb-4 text-foreground tracking-tight"
         >
           What sovereign agents can do.
         </motion.h2>
@@ -99,69 +129,46 @@ const AgenticAI = () => {
         </div>
       </Section>
 
-      {/* Parallax Architecture */}
-      <ParallaxImage
-        src={platformImg}
-        alt="Aliph platform architecture layers"
-        className="h-[40vh] md:h-[50vh]"
-        speed={0.25}
-        overlay
-        overlayOpacity={0.2}
-      >
-        <div className="container mx-auto px-6 py-20 lg:py-28 text-center text-white">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-4"
-          >
-            Four layers of protection. Every interaction.
-          </motion.h2>
-        </div>
-      </ParallaxImage>
+      {/* 6. Comparison Table */}
+      <ComparisonTable
+        title="What Aliph adds."
+        subtitle="Open-source agents give you autonomy. Aliph gives you governance."
+        competitorName="Open-Source Agents"
+        aliphName="Agents + Aliph"
+        rows={[
+          { feature: "Autonomous execution", competitor: true, aliph: true },
+          { feature: "Data sovereignty", competitor: false, aliph: true },
+          { feature: "PII protection", competitor: false, aliph: true },
+          { feature: "Organizational context", competitor: false, aliph: true },
+          { feature: "Regulatory compliance", competitor: false, aliph: true },
+          { feature: "Complete audit trail", competitor: false, aliph: true },
+          { feature: "Arabic support", competitor: false, aliph: true },
+        ]}
+      />
 
-      {/* Section 3: Comparison */}
+      {/* 7. Mid-page CTA */}
+      <MidPageCTA
+        title="Be among the first."
+        subtitle="Priority access for early partners. Direct input into the product."
+        primaryCta={{ label: "Join the Waitlist", href: "/demo" }}
+        secondaryCta={{ label: "Contact Sales", href: "/contact" }}
+      />
+
+      {/* 8. Use Cases */}
       <Section>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground"
+          className="text-accent uppercase tracking-[0.25em] text-xs font-heading font-semibold mb-4"
         >
-          What Aliph adds.
-        </motion.h2>
-        <div className="max-w-2xl mx-auto">
-          <div className="grid grid-cols-3 gap-4 mb-4 px-4">
-            <span></span>
-            <span className="font-heading font-semibold text-sm text-center text-muted-foreground">Open-Source Agents</span>
-            <span className="font-heading font-semibold text-sm text-center text-primary">Agents + Aliph</span>
-          </div>
-          {comparison.map((row, i) => (
-            <motion.div
-              key={row.cap}
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.03 }}
-              className="grid grid-cols-3 gap-4 py-3 px-4 border-b border-border/50 items-center"
-            >
-              <span className="font-body text-sm text-foreground">{row.cap}</span>
-              <div className="flex justify-center">
-                {row.oss ? <CheckCircle2 className="h-4 w-4 text-primary" /> : <X className="h-4 w-4 text-destructive" />}
-              </div>
-              <div className="flex justify-center"><CheckCircle2 className="h-4 w-4 text-primary" /></div>
-            </motion.div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Section 4: Use Cases */}
-      <Section alabaster>
+          USE CASES
+        </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground"
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground tracking-tight"
         >
           Real-world agent workflows.
         </motion.h2>
@@ -186,26 +193,35 @@ const AgenticAI = () => {
         </div>
       </Section>
 
-      {/* Section 5: Early Access */}
-      <Section>
+      {/* 9. Early Access */}
+      <Section alabaster>
         <div className="max-w-2xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-heading font-semibold text-3xl md:text-4xl mb-6 text-foreground"
+            className="font-heading font-semibold text-3xl md:text-4xl mb-6 text-foreground tracking-tight"
           >
-            Be among the first.
+            Early access. Direct influence.
           </motion.h2>
-          <p className="font-body text-muted-foreground leading-relaxed mb-8">
-            We are onboarding early-access partners for the Agentic AI Platform. Priority access. Direct input into the product. Available Q2 2026.
-          </p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.05 }}
+            className="font-body text-muted-foreground leading-relaxed"
+          >
+            We are onboarding early-access partners for the Agentic AI Platform. Priority access. Direct input into the product roadmap. Available Q2 2026.
+          </motion.p>
         </div>
       </Section>
 
+      {/* 10. Final CTA */}
       <CTABanner
-        title="Request Early Access"
+        title="The future of enterprise AI is autonomous."
+        subtitle="Join the waitlist. Shape the product."
         primaryCta={{ label: "Join the Waitlist", href: "/demo" }}
+        secondaryCta={{ label: "Contact Sales", href: "/contact" }}
       />
     </>
   );
