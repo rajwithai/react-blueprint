@@ -28,7 +28,7 @@ const SolutionsTeaser = () => {
           ))}
         </div>
 
-        <Link to="/solutions" className="inline-flex items-center gap-2 text-primary font-bold text-lg hover:text-accent transition-colors">
+        <Link to="/industries/financial-services" className="inline-flex items-center gap-2 text-primary font-bold text-lg hover:text-accent transition-colors">
           Explore Solutions <ArrowRight className="w-5 h-5" />
         </Link>
       </div>
