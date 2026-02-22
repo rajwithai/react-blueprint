@@ -8,9 +8,20 @@ interface CTABannerProps {
   secondaryCta?: { label: string; href: string };
   dark?: boolean;
   purpleBg?: boolean;
+  inquiryType?: string;
+  source?: string;
 }
 
-const CTABanner = ({ title, subtitle, primaryCta, secondaryCta }: CTABannerProps) => {
+const buildHref = (href: string, inquiryType?: string, source?: string) => {
+  if (!href.startsWith("/contact") && !href.startsWith("/demo")) return href;
+  const params = new URLSearchParams();
+  if (inquiryType) params.set("inquiry", inquiryType);
+  if (source) params.set("source", source);
+  const qs = params.toString();
+  return qs ? `${href}?${qs}` : href;
+};
+
+const CTABanner = ({ title, subtitle, primaryCta, secondaryCta, inquiryType, source }: CTABannerProps) => {
   return (
     <section className="bg-secondary">
       <div className="container mx-auto px-6 py-20 lg:py-24 text-center">
@@ -42,14 +53,14 @@ const CTABanner = ({ title, subtitle, primaryCta, secondaryCta }: CTABannerProps
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Link
-            to={primaryCta.href}
+            to={buildHref(primaryCta.href, inquiryType, source)}
             className="cta-primary inline-flex items-center justify-center px-8 py-3.5 rounded-lg font-body font-semibold text-base min-w-[180px] bg-accent text-accent-foreground hover:brightness-110"
           >
             {primaryCta.label}
           </Link>
           {secondaryCta && (
             <Link
-              to={secondaryCta.href}
+              to={buildHref(secondaryCta.href, inquiryType, source)}
               className="inline-flex items-center justify-center px-8 py-3.5 rounded-lg border border-border text-foreground hover:bg-muted font-body font-semibold text-base min-w-[180px] transition-all duration-200"
             >
               {secondaryCta.label}

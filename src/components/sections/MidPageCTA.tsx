@@ -7,9 +7,20 @@ interface MidPageCTAProps {
   subtitle?: string;
   primaryCta: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
+  inquiryType?: string;
+  source?: string;
 }
 
-const MidPageCTA = ({ title, subtitle, primaryCta, secondaryCta }: MidPageCTAProps) => {
+const buildHref = (href: string, inquiryType?: string, source?: string) => {
+  if (!href.startsWith("/contact") && !href.startsWith("/demo")) return href;
+  const params = new URLSearchParams();
+  if (inquiryType) params.set("inquiry", inquiryType);
+  if (source) params.set("source", source);
+  const qs = params.toString();
+  return qs ? `${href}?${qs}` : href;
+};
+
+const MidPageCTA = ({ title, subtitle, primaryCta, secondaryCta, inquiryType, source }: MidPageCTAProps) => {
   return (
     <section className="relative bg-primary overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/90" />
@@ -41,7 +52,7 @@ const MidPageCTA = ({ title, subtitle, primaryCta, secondaryCta }: MidPageCTAPro
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Link
-            to={primaryCta.href}
+            to={buildHref(primaryCta.href, inquiryType, source)}
             className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-accent hover:brightness-110 text-accent-foreground rounded-lg font-heading font-semibold transition-all group"
           >
             {primaryCta.label}
@@ -49,7 +60,7 @@ const MidPageCTA = ({ title, subtitle, primaryCta, secondaryCta }: MidPageCTAPro
           </Link>
           {secondaryCta && (
             <Link
-              to={secondaryCta.href}
+              to={buildHref(secondaryCta.href, inquiryType, source)}
               className="inline-flex items-center justify-center px-8 py-3.5 rounded-lg border border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 font-heading font-semibold transition-all"
             >
               {secondaryCta.label}
