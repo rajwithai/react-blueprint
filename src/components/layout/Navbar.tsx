@@ -13,6 +13,9 @@ const navItems = [
     label: "Products",
     children: [
       { label: "AliphChat", href: "/products/aliphchat" },
+      { label: "Privacy Shield", href: "/platform/privacy-shield" },
+      { label: "Organization Memory", href: "/platform/organization-memory" },
+      { label: "Global LLM Router", href: "/platform/global-llm" },
       { label: "GRC Platform", href: "/products/grc" },
       { label: "Agentic AI", href: "/products/agentic-ai" },
     ],

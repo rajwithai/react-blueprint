@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Users, Rocket, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
 import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
@@ -149,14 +149,14 @@ const About = () => {
         </div>
       </Section>
 
-      {/* Section 5: Company Details */}
+      {/* Section 5: Company Details + Team Info */}
       <Section>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {[
-            { label: "Legal entity", value: "Aliph Solutions" },
-            { label: "Headquarters", value: "Riyadh, Kingdom of Saudi Arabia" },
-            { label: "Founded", value: "2024" },
-            { label: "Website", value: "aliphai.ai" },
+            { label: "Legal entity", value: "Aliph Solutions", icon: Building2 },
+            { label: "Headquarters", value: "Riyadh, KSA", icon: Building2 },
+            { label: "Founded", value: "2024", icon: Rocket },
+            { label: "Stage", value: "Pre-Seed · Building", icon: Rocket },
           ].map((d, i) => (
             <motion.div
               key={d.label}
@@ -171,6 +171,23 @@ const About = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Team snapshot */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="rounded-xl border border-border bg-secondary/50 p-8 max-w-2xl mx-auto text-center"
+        >
+          <Users className="w-8 h-8 text-accent mx-auto mb-4" />
+          <h3 className="font-heading font-semibold text-lg text-foreground mb-2">Founding Team</h3>
+          <p className="font-body text-sm text-muted-foreground leading-relaxed">
+            Small, senior team with 45+ combined years across enterprise AI architecture, Big Four GRC consulting, and Saudi regulatory affairs. Actively growing engineering and product functions.
+          </p>
+          <Link to="/company/leadership" className="inline-block mt-4 font-heading font-semibold text-sm text-accent hover:underline">
+            Meet the team →
+          </Link>
+        </motion.div>
       </Section>
 
       {/* Section 6: Join Us */}

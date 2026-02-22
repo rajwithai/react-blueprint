@@ -1,4 +1,4 @@
-import { CheckCircle2, Mail, Code, Shield, Brain, Globe, Users } from "lucide-react";
+import { CheckCircle2, Mail, Code, Shield, Brain, Globe, Users, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
@@ -9,10 +9,10 @@ import riyadhImg from "@/assets/images/riyadh-office.jpg";
 import teamImg from "@/assets/images/team-collaboration.jpg";
 
 const openRoles = [
-  { title: "Senior ML Engineer", team: "Engineering", desc: "Build privacy-preserving NER models for Arabic and English. Production ML at scale." },
-  { title: "Full-Stack Engineer", team: "Engineering", desc: "Build enterprise AI interfaces with React, TypeScript, and Python. High-performance systems." },
-  { title: "GRC Domain Expert", team: "Product", desc: "Shape the compliance automation platform. Deep PDPL/SAMA knowledge required." },
-  { title: "Enterprise Sales Lead", team: "Growth", desc: "Sell sovereign AI to Saudi enterprises. C-suite relationships in financial services or healthcare." },
+  { title: "Senior ML Engineer", team: "Engineering", desc: "Build privacy-preserving NER models for Arabic and English. Production ML at scale.", location: "Riyadh", type: "On-site" },
+  { title: "Full-Stack Engineer", team: "Engineering", desc: "Build enterprise AI interfaces with React, TypeScript, and Python. High-performance systems.", location: "Riyadh", type: "Hybrid" },
+  { title: "GRC Domain Expert", team: "Product", desc: "Shape the compliance automation platform. Deep PDPL/SAMA knowledge required.", location: "Riyadh", type: "On-site" },
+  { title: "Enterprise Sales Lead", team: "Growth", desc: "Sell sovereign AI to Saudi enterprises. C-suite relationships in financial services or healthcare.", location: "Riyadh", type: "Hybrid" },
 ];
 
 const Careers = () => {
@@ -102,6 +102,9 @@ const Careers = () => {
             >
               <div className="flex items-center gap-2 mb-3">
                 <span className="inline-block px-2.5 py-1 rounded-full text-xs font-heading font-semibold bg-accent/10 text-accent">{role.team}</span>
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-body text-muted-foreground bg-secondary border border-border">
+                  <MapPin className="w-3 h-3" /> {role.location} · {role.type}
+                </span>
               </div>
               <h3 className="font-heading font-semibold text-lg mb-2 text-foreground">{role.title}</h3>
               <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4">{role.desc}</p>

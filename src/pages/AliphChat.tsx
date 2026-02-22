@@ -24,8 +24,7 @@ const AliphChat = () => {
         title="Ask anything. Expose nothing."
         subtitle="An enterprise AI assistant that searches your organization's knowledge first — and when it reaches beyond, your sensitive data has already been stripped. Arabic & English. Every answer cited."
         primaryCta={{ label: "Request a Demo", href: "/demo" }}
-        secondaryCta={{ label: "Watch Demo", href: "/demo" }}
-        badge="Live"
+        secondaryCta={{ label: "Contact Sales", href: "/contact?inquiry=demo&source=aliphchat" }}
         trustText="No commitment required. Free personalized demo."
         image={heroChatImg}
         imageAlt="AliphChat enterprise AI interface"

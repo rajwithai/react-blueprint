@@ -2,11 +2,9 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 const industries = [
-  "Financial Services",
-  "Healthcare",
-  "Professional Services",
-  "Conglomerates",
-  "PIF Portfolio & Government"
+  { label: "Financial Services", href: "/industries/financial-services" },
+  { label: "Healthcare", href: "/industries/healthcare" },
+  { label: "Professional Services", href: "/industries/professional-services" },
 ];
 
 const SolutionsTeaser = () => {
@@ -21,10 +19,14 @@ const SolutionsTeaser = () => {
         </p>
 
         <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {industries.map((ind, i) => (
-            <span key={i} className="px-4 py-2 bg-secondary rounded-full text-sm font-semibold text-foreground border border-border">
-              {ind}
-            </span>
+          {industries.map((ind) => (
+            <Link
+              key={ind.label}
+              to={ind.href}
+              className="px-4 py-2 bg-secondary rounded-full text-sm font-semibold text-foreground border border-border hover:border-accent/30 hover:text-accent transition-all duration-200"
+            >
+              {ind.label}
+            </Link>
           ))}
         </div>
 

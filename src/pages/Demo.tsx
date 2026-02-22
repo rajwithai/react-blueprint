@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CheckCircle2, Shield, Clock, Users, Zap, Globe } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
@@ -14,6 +14,7 @@ const products = ["AliphChat", "GRC Platform", "Agentic AI Platform", "Show Me E
 
 const Demo = () => {
   const [formData, setFormData] = useState({ name: "", email: "", organization: "", title: "", companySize: "", industry: "", products: [] as string[] });
+  const [submitted, setSubmitted] = useState(false);
 
   const toggleProduct = (p: string) => {
     setFormData(prev => ({
@@ -24,7 +25,7 @@ const Demo = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Thank you! We'll schedule your demo shortly.");
+    setSubmitted(true);
   };
 
   return (
@@ -58,58 +59,93 @@ const Demo = () => {
       {/* Section 1: Form */}
       <Section>
         <div className="grid lg:grid-cols-2 gap-16">
-          <motion.form
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            onSubmit={handleSubmit}
-            className="space-y-5"
-          >
-            <div>
-              <label className="block font-body text-sm font-medium mb-1.5">Full Name *</label>
-              <input type="text" required className="w-full rounded-lg border border-border bg-card px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
-            </div>
-            <div>
-              <label className="block font-body text-sm font-medium mb-1.5">Work Email *</label>
-              <input type="email" required className="w-full rounded-lg border border-border bg-card px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
-            </div>
-            <div>
-              <label className="block font-body text-sm font-medium mb-1.5">Organization Name *</label>
-              <input type="text" required className="w-full rounded-lg border border-border bg-card px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary" value={formData.organization} onChange={e => setFormData({...formData, organization: e.target.value})} />
-            </div>
-            <div>
-              <label className="block font-body text-sm font-medium mb-1.5">Job Title *</label>
-              <input type="text" required className="w-full rounded-lg border border-border bg-card px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary" value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} />
-            </div>
-            <div>
-              <label className="block font-body text-sm font-medium mb-1.5">Company Size</label>
-              <select className="w-full rounded-lg border border-border bg-card px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary" value={formData.companySize} onChange={e => setFormData({...formData, companySize: e.target.value})}>
-                <option value="">Select...</option>
-                {companySizes.map(s => <option key={s} value={s}>{s}</option>)}
-              </select>
-            </div>
-            <div>
-              <label className="block font-body text-sm font-medium mb-1.5">Industry</label>
-              <select className="w-full rounded-lg border border-border bg-card px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary" value={formData.industry} onChange={e => setFormData({...formData, industry: e.target.value})}>
-                <option value="">Select...</option>
-                {industries.map(i => <option key={i} value={i}>{i}</option>)}
-              </select>
-            </div>
-            <div>
-              <label className="block font-body text-sm font-medium mb-1.5">Products of interest</label>
-              <div className="space-y-2">
-                {products.map(p => (
-                  <label key={p} className="flex items-center gap-2 cursor-pointer">
-                    <input type="checkbox" checked={formData.products.includes(p)} onChange={() => toggleProduct(p)} className="rounded border-border text-primary focus:ring-primary" />
-                    <span className="font-body text-sm">{p}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-            <button type="submit" className="w-full px-8 py-3.5 rounded-lg bg-accent text-accent-foreground font-heading font-semibold hover:brightness-110 transition-all text-lg">
-              Book My Demo
-            </button>
-          </motion.form>
+          <AnimatePresence mode="wait">
+            {submitted ? (
+              <motion.div
+                key="success"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ type: "spring", stiffness: 200 }}
+                className="flex flex-col items-center justify-center text-center py-16 space-y-4"
+              >
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 300, delay: 0.1 }}
+                >
+                  <CheckCircle2 className="w-16 h-16 text-accent" />
+                </motion.div>
+                <h3 className="font-heading font-bold text-2xl text-foreground">Demo booked!</h3>
+                <p className="font-body text-muted-foreground max-w-sm">
+                  We'll send you a calendar invite within 24 hours with a personalized demo tailored to your organization. A real person from our founding team will walk you through the platform.
+                </p>
+                <button
+                  onClick={() => {
+                    setSubmitted(false);
+                    setFormData({ name: "", email: "", organization: "", title: "", companySize: "", industry: "", products: [] });
+                  }}
+                  className="mt-4 font-body text-sm text-accent hover:underline"
+                >
+                  Book another demo
+                </button>
+              </motion.div>
+            ) : (
+              <motion.form
+                key="form"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                viewport={{ once: true }}
+                onSubmit={handleSubmit}
+                className="space-y-5"
+              >
+                <div>
+                  <label className="block font-body text-sm font-medium mb-1.5">Full Name *</label>
+                  <input type="text" required className="w-full rounded-lg border border-border bg-card px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
+                </div>
+                <div>
+                  <label className="block font-body text-sm font-medium mb-1.5">Work Email *</label>
+                  <input type="email" required className="w-full rounded-lg border border-border bg-card px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
+                </div>
+                <div>
+                  <label className="block font-body text-sm font-medium mb-1.5">Organization Name *</label>
+                  <input type="text" required className="w-full rounded-lg border border-border bg-card px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary" value={formData.organization} onChange={e => setFormData({...formData, organization: e.target.value})} />
+                </div>
+                <div>
+                  <label className="block font-body text-sm font-medium mb-1.5">Job Title *</label>
+                  <input type="text" required className="w-full rounded-lg border border-border bg-card px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary" value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} />
+                </div>
+                <div>
+                  <label className="block font-body text-sm font-medium mb-1.5">Company Size</label>
+                  <select className="w-full rounded-lg border border-border bg-card px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary" value={formData.companySize} onChange={e => setFormData({...formData, companySize: e.target.value})}>
+                    <option value="">Select...</option>
+                    {companySizes.map(s => <option key={s} value={s}>{s}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label className="block font-body text-sm font-medium mb-1.5">Industry</label>
+                  <select className="w-full rounded-lg border border-border bg-card px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary" value={formData.industry} onChange={e => setFormData({...formData, industry: e.target.value})}>
+                    <option value="">Select...</option>
+                    {industries.map(i => <option key={i} value={i}>{i}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label className="block font-body text-sm font-medium mb-1.5">Products of interest</label>
+                  <div className="space-y-2">
+                    {products.map(p => (
+                      <label key={p} className="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" checked={formData.products.includes(p)} onChange={() => toggleProduct(p)} className="rounded border-border text-primary focus:ring-primary" />
+                        <span className="font-body text-sm">{p}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+                <button type="submit" className="w-full px-8 py-3.5 rounded-lg bg-accent text-accent-foreground font-heading font-semibold hover:brightness-110 transition-all text-lg">
+                  Book My Demo
+                </button>
+              </motion.form>
+            )}
+          </AnimatePresence>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -167,7 +203,7 @@ const Demo = () => {
           <p className="font-body text-muted-foreground leading-relaxed mb-8">
             Organizations across financial services, healthcare, and professional services trust Aliph to govern their AI interactions while maintaining full data sovereignty.
           </p>
-          <div className="grid grid-cols-3 gap-8">
+          <div className="grid grid-cols-3 gap-8 mb-4">
             {[
               { metric: "100%", label: "PDPL Compliant" },
               { metric: "95%+", label: "PII Detection Accuracy" },
@@ -185,6 +221,7 @@ const Demo = () => {
               </motion.div>
             ))}
           </div>
+          <p className="font-body text-[10px] text-muted-foreground/50">Based on internal benchmarks · Production pilot data</p>
         </div>
       </Section>
 
@@ -224,8 +261,8 @@ const Demo = () => {
       </Section>
 
       <CTABanner
-        title="Ready to see it live?"
-        primaryCta={{ label: "Book a Demo", href: "/demo" }}
+        title="Have questions first?"
+        primaryCta={{ label: "Contact Sales", href: "/contact" }}
       />
     </>
   );
