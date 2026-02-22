@@ -26,20 +26,9 @@ const footerColumns = [
 const Footer = () => {
   return (
     <footer className="relative bg-secondary border-t border-border">
-      {/* Newsletter Section */}
-      <div className="border-b border-border">
-        <div className="container mx-auto px-6 py-12">
-          <InlineEmailCapture
-            title="Stay ahead of sovereign AI."
-            subtitle="Monthly insights on PDPL, enterprise AI governance, and product updates."
-            buttonText="Subscribe"
-            placeholder="you@company.com"
-          />
-        </div>
-      </div>
-
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Column 1: Logo + Tagline */}
           <div>
             <Link to="/" className="inline-block">
               <img src={aliphLogo} alt="Aliph Solutions" className="h-10 w-auto" />
@@ -62,6 +51,7 @@ const Footer = () => {
             </p>
           </div>
 
+          {/* Column 2 & 3: Link columns */}
           {footerColumns.map((col) => (
             <div key={col.title}>
               <h4 className="font-heading font-semibold text-xs text-muted-foreground uppercase tracking-[0.2em] mb-4">
@@ -81,6 +71,20 @@ const Footer = () => {
               </ul>
             </div>
           ))}
+
+          {/* Column 4: Newsletter */}
+          <div>
+            <h4 className="font-heading font-semibold text-xs text-muted-foreground uppercase tracking-[0.2em] mb-4">
+              Newsletter
+            </h4>
+            <InlineEmailCapture
+              title="Stay ahead of sovereign AI."
+              subtitle="Monthly insights on PDPL, enterprise AI governance, and product updates."
+              buttonText="Subscribe"
+              placeholder="you@company.com"
+              compact
+            />
+          </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
