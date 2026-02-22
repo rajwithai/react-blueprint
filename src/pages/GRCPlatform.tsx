@@ -29,7 +29,7 @@ const GRCPlatform = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-semibold text-3xl md:text-4xl mb-12"
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground"
         >
           What used to take months.
         </motion.h2>
@@ -41,9 +41,9 @@ const GRCPlatform = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="rounded-2xl border border-border bg-card p-6 text-center"
+              className="rounded-xl border border-border bg-card p-6 text-center"
             >
-              <p className="font-heading font-semibold text-lg mb-4">{item.label}</p>
+              <p className="font-heading font-semibold text-lg mb-4 text-foreground">{item.label}</p>
               <p className="font-body text-sm text-muted-foreground line-through mb-2">{item.before}</p>
               <p className="font-heading font-bold text-2xl text-gradient">{item.after}</p>
             </motion.div>
@@ -52,19 +52,19 @@ const GRCPlatform = () => {
       </Section>
 
       {/* What It Does */}
-      <Section dark>
+      <Section alabaster>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-primary-foreground"
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground"
         >
           Enterprise GRC, powered by agentic AI.
         </motion.h2>
         <div className="grid md:grid-cols-3 gap-8">
-          <FeatureCard icon={FileCheck} title="Compliance Engine" description="Auto-map documents to PDPL, SAMA, CMA, and NCA requirements. Identify gaps. Score risk. Generate remediation plans with priority ranking." delay={0} dark />
-          <FeatureCard icon={Search} title="Document Intelligence" description="Index and search across thousands of documents. Analyze contracts for risk. Generate board materials, audit reports, and policy drafts — in Arabic and English." delay={100} dark />
-          <FeatureCard icon={BookOpen} title="Precedent Intelligence" description="Every engagement makes the platform smarter. Past decisions, past analyses, past deliverables — all searchable, all informing the next piece of work." delay={200} dark />
+          <FeatureCard icon={FileCheck} title="Compliance Engine" description="Auto-map documents to PDPL, SAMA, CMA, and NCA requirements. Identify gaps. Score risk. Generate remediation plans with priority ranking." delay={0} />
+          <FeatureCard icon={Search} title="Document Intelligence" description="Index and search across thousands of documents. Analyze contracts for risk. Generate board materials, audit reports, and policy drafts — in Arabic and English." delay={100} />
+          <FeatureCard icon={BookOpen} title="Precedent Intelligence" description="Every engagement makes the platform smarter. Past decisions, past analyses, past deliverables — all searchable, all informing the next piece of work." delay={200} />
         </div>
       </Section>
 
@@ -74,7 +74,7 @@ const GRCPlatform = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-semibold text-3xl md:text-4xl mb-8"
+          className="font-heading font-semibold text-3xl md:text-4xl mb-8 text-foreground"
         >
           AI agents that research, draft, validate, and learn.
         </motion.h2>
@@ -95,14 +95,14 @@ const GRCPlatform = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="relative rounded-2xl bg-primary/5 border border-primary/20 p-6 text-center"
+              className="relative rounded-xl bg-accent/5 border border-accent/20 p-6 text-center"
             >
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
-                <span className="font-heading font-bold text-primary">{i + 1}</span>
+              <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-3">
+                <span className="font-heading font-bold text-accent">{i + 1}</span>
               </div>
-              <p className="font-heading font-semibold">{stage}</p>
+              <p className="font-heading font-semibold text-foreground">{stage}</p>
               {i < 3 && (
-                <div className="hidden md:block absolute top-1/2 -right-2 w-4 h-px bg-primary/30" />
+                <div className="hidden md:block absolute top-1/2 -right-2 w-4 h-px bg-accent/30" />
               )}
             </motion.div>
           ))}
@@ -110,22 +110,22 @@ const GRCPlatform = () => {
       </Section>
 
       {/* Regulations */}
-      <Section dark>
+      <Section alabaster>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-primary-foreground"
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground"
         >
           Comprehensive regulatory coverage.
         </motion.h2>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {[
-            { name: "PDPL", auth: "SDAIA", note: "Full mapping, gap analysis, remediation" },
-            { name: "SAMA", auth: "Financial sector", note: "Financial sector compliance" },
-            { name: "CMA", auth: "Corporate", note: "Corporate governance" },
-            { name: "NCA", auth: "Cybersecurity", note: "Cybersecurity controls" },
-            { name: "GDPR", auth: "EU", note: "Coming with European expansion" },
+            { name: "PDPL", note: "Full mapping, gap analysis, remediation" },
+            { name: "SAMA", note: "Financial sector compliance" },
+            { name: "CMA", note: "Corporate governance" },
+            { name: "NCA", note: "Cybersecurity controls" },
+            { name: "GDPR", note: "Coming with European expansion" },
           ].map((r, i) => (
             <motion.div
               key={r.name}
@@ -133,10 +133,10 @@ const GRCPlatform = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="glass glow-border rounded-xl p-5 text-center"
+              className="rounded-xl border border-border bg-card p-5 text-center"
             >
               <p className="font-heading font-bold text-lg text-primary mb-1">{r.name}</p>
-              <p className="font-body text-xs text-primary-foreground/50">{r.note}</p>
+              <p className="font-body text-xs text-muted-foreground">{r.note}</p>
             </motion.div>
           ))}
         </div>
@@ -148,7 +148,7 @@ const GRCPlatform = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-semibold text-3xl md:text-4xl mb-6"
+          className="font-heading font-semibold text-3xl md:text-4xl mb-6 text-foreground"
         >
           Built for the teams that carry the compliance burden.
         </motion.h2>

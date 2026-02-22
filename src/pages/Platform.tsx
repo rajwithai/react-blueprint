@@ -26,48 +26,47 @@ const Platform = () => {
   return (
     <>
       {/* SECTION 1 — Hero */}
-      <section className="relative hero-gradient-navy text-white overflow-hidden">
-        <div className="absolute inset-0 grid-pattern-light opacity-20" />
-        <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-gold/5 blur-[120px] rounded-full" />
+      <section className="relative bg-background overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="container mx-auto px-6 py-24 md:py-32 lg:py-36 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <motion.p {...fadeUp} className="text-gold uppercase tracking-[0.25em] text-xs font-body font-semibold mb-4">
+              <motion.p {...fadeUp} className="text-accent uppercase tracking-[0.25em] text-xs font-body font-semibold mb-4">
                 THE ALIPH PLATFORM
               </motion.p>
               <motion.h1
                 {...fadeUp}
                 transition={{ duration: 0.5, delay: 0.05 }}
-                className="font-heading font-bold text-4xl md:text-5xl lg:text-[3.25rem] tracking-tight leading-[1.1] mb-6"
+                className="font-heading font-bold text-4xl md:text-5xl lg:text-[3.25rem] tracking-tight leading-[1.1] mb-6 text-foreground"
               >
                 The Architecture Behind Sovereign AI Governance.
               </motion.h1>
               <motion.p
                 {...fadeUp}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="font-body text-lg text-white/60 leading-relaxed mb-4 max-w-xl"
+                className="font-body text-lg text-muted-foreground leading-relaxed mb-4 max-w-xl"
               >
                 Aliph introduces a Control Plane that governs how AI interacts with enterprise systems — enforcing policy, preserving institutional knowledge, and maintaining accountability across every model and workflow.
               </motion.p>
               <motion.p
                 {...fadeUp}
                 transition={{ duration: 0.5, delay: 0.15 }}
-                className="font-body text-[15px] text-white/40 leading-relaxed mb-8 max-w-xl"
+                className="font-body text-[15px] text-muted-foreground/70 leading-relaxed mb-8 max-w-xl"
               >
                 The Control Plane does not replace AI models. It sits between your organization and artificial intelligence — inspecting, routing, filtering, logging, and structuring every interaction.
               </motion.p>
               <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-wrap gap-4">
                 <a
                   href="#architecture"
-                  className="cta-gold inline-flex items-center gap-2 px-7 py-3.5 bg-gold hover:brightness-110 text-accent-foreground rounded-lg font-body font-semibold text-[15px] transition-all shadow-lg shadow-gold/20"
+                  className="cta-gold inline-flex items-center gap-2 px-7 py-3.5 bg-accent hover:brightness-110 text-accent-foreground rounded-lg font-body font-semibold text-[15px] transition-all shadow-sm"
                 >
                   View Architecture
                   <ArrowRight className="w-4 h-4" />
                 </a>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/20 text-white hover:bg-white/5 rounded-lg font-body font-semibold text-[15px] transition-all"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 border border-border text-foreground hover:bg-secondary rounded-lg font-body font-semibold text-[15px] transition-all"
                 >
                   Request Technical Briefing
                 </Link>
@@ -81,33 +80,32 @@ const Platform = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="hidden lg:block"
             >
-              <div className="glass-card rounded-xl p-8 relative">
+              <div className="rounded-xl p-8 relative border border-border bg-secondary">
                 <div className="space-y-3">
                   {[
-                    { label: "Edge Intelligence", color: "bg-gold/20 border-gold/30" },
-                    { label: "Privacy Shield", color: "bg-emerald-500/10 border-emerald-500/20" },
-                    { label: "Control Plane", color: "bg-gold/10 border-gold/40", highlight: true },
-                    { label: "Organization Memory", color: "bg-blue-500/10 border-blue-500/20" },
-                    { label: "Governed Connectivity", color: "bg-purple-500/10 border-purple-500/20" },
+                    { label: "Edge Intelligence", highlight: false },
+                    { label: "Privacy Shield", highlight: false },
+                    { label: "Control Plane", highlight: true },
+                    { label: "Organization Memory", highlight: false },
+                    { label: "Governed Connectivity", highlight: false },
                   ].map((layer, i) => (
                     <motion.div
                       key={layer.label}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.4 + i * 0.08 }}
-                      className={`flex items-center gap-4 p-4 rounded-lg border ${layer.color} ${layer.highlight ? "ring-1 ring-gold/20" : ""}`}
+                      className={`flex items-center gap-4 p-4 rounded-lg border ${layer.highlight ? "border-accent/30 bg-accent/5" : "border-border bg-card"}`}
                     >
-                      <div className="w-2 h-2 rounded-full bg-gold" />
-                      <span className={`font-body text-sm ${layer.highlight ? "text-gold font-semibold" : "text-white/70"}`}>
+                      <div className={`w-2 h-2 rounded-full ${layer.highlight ? "bg-accent" : "bg-muted-foreground/30"}`} />
+                      <span className={`font-body text-sm ${layer.highlight ? "text-accent font-semibold" : "text-muted-foreground"}`}>
                         {layer.label}
                       </span>
                       {i < 4 && (
-                        <ChevronRight className="w-3 h-3 text-white/20 ml-auto" />
+                        <ChevronRight className="w-3 h-3 text-muted-foreground/30 ml-auto" />
                       )}
                     </motion.div>
                   ))}
                 </div>
-                <div className="absolute -top-3 -right-3 w-24 h-24 bg-gold/5 blur-[60px] rounded-full" />
               </div>
             </motion.div>
           </div>
@@ -171,31 +169,31 @@ const Platform = () => {
       </Section>
 
       {/* SECTION 4 — Layer 1: Privacy Shield */}
-      <Section dark>
+      <Section>
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           <div>
             <motion.div {...fadeUp} className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center">
-                <Shield className="w-5 h-5 text-gold" strokeWidth={1.5} />
+              <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+                <Shield className="w-5 h-5 text-accent" strokeWidth={1.5} />
               </div>
-              <span className="text-gold uppercase tracking-[0.2em] text-xs font-body font-semibold">Layer 1</span>
+              <span className="text-accent uppercase tracking-[0.2em] text-xs font-body font-semibold">Layer 1</span>
             </motion.div>
-            <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-6 text-white tracking-tight">
+            <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-6 text-foreground tracking-tight">
               Privacy Enforcement Before Inference.
             </motion.h2>
-            <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-white/50 leading-relaxed text-[15px] mb-6">
+            <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-muted-foreground leading-relaxed text-[15px] mb-6">
               Before any query reaches an AI model, the Privacy Shield performs runtime policy enforcement — masking, blocking, or minimizing sensitive data based on configurable rules.
             </motion.p>
-            <motion.p {...fadeUp} transition={{ delay: 0.15 }} className="font-body text-white/40 leading-relaxed text-[15px]">
+            <motion.p {...fadeUp} transition={{ delay: 0.15 }} className="font-body text-muted-foreground/70 leading-relaxed text-[15px]">
               This is automatic enforcement at the infrastructure level — not documentation, not guidelines, not optional configuration. Every interaction is governed before inference begins.
             </motion.p>
           </div>
-          <motion.div {...fadeUp} transition={{ delay: 0.2 }} className="glass-card rounded-xl p-8">
+          <motion.div {...fadeUp} transition={{ delay: 0.2 }} className="bento-card rounded-xl p-8">
             <div className="space-y-4">
               {["PII Detection (Arabic & English)", "Runtime Policy Enforcement", "Data Minimization Rules", "Automatic Masking & Blocking"].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/5">
-                  <div className="w-2 h-2 rounded-full bg-gold" />
-                  <span className="font-body text-sm text-white/70">{item}</span>
+                <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-secondary border border-border">
+                  <div className="w-2 h-2 rounded-full bg-accent" />
+                  <span className="font-body text-sm text-foreground">{item}</span>
                 </div>
               ))}
             </div>
@@ -204,13 +202,13 @@ const Platform = () => {
       </Section>
 
       {/* SECTION 5 — Layer 2: Organization Memory */}
-      <Section>
+      <Section alabaster>
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           <motion.div {...fadeUp} transition={{ delay: 0.1 }} className="order-2 lg:order-1">
             <div className="bento-card p-8">
               <div className="space-y-4">
                 {["Structured Internal Memory", "Context Persistence Across Sessions", "Permissioned Access Controls", "Zero External Exposure"].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 border border-border">
+                  <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-secondary border border-border">
                     <div className="w-2 h-2 rounded-full bg-accent" />
                     <span className="font-body text-sm text-foreground">{item}</span>
                   </div>
@@ -239,31 +237,31 @@ const Platform = () => {
       </Section>
 
       {/* SECTION 6 — Layer 3: Governance & Auditability */}
-      <Section dark>
+      <Section>
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           <div>
             <motion.div {...fadeUp} className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center">
-                <Eye className="w-5 h-5 text-gold" strokeWidth={1.5} />
+              <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+                <Eye className="w-5 h-5 text-accent" strokeWidth={1.5} />
               </div>
-              <span className="text-gold uppercase tracking-[0.2em] text-xs font-body font-semibold">Layer 3</span>
+              <span className="text-accent uppercase tracking-[0.2em] text-xs font-body font-semibold">Layer 3</span>
             </motion.div>
-            <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-6 text-white tracking-tight">
+            <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-6 text-foreground tracking-tight">
               Oversight Embedded in Every Interaction.
             </motion.h2>
-            <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-white/50 leading-relaxed text-[15px] mb-4">
+            <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-muted-foreground leading-relaxed text-[15px] mb-4">
               Every query, every response, every model access — logged immutably. Governance is not a reporting layer applied after the fact. It is embedded in the interaction itself.
             </motion.p>
-            <motion.p {...fadeUp} transition={{ delay: 0.15 }} className="font-body text-white/40 leading-relaxed text-[15px]">
+            <motion.p {...fadeUp} transition={{ delay: 0.15 }} className="font-body text-muted-foreground/70 leading-relaxed text-[15px]">
               Usage tracking, model access visibility, and full traceability ensure that AI operations remain accountable infrastructure — not opaque tooling.
             </motion.p>
           </div>
-          <motion.div {...fadeUp} transition={{ delay: 0.2 }} className="glass-card rounded-xl p-8">
+          <motion.div {...fadeUp} transition={{ delay: 0.2 }} className="bento-card rounded-xl p-8">
             <div className="space-y-4">
               {["Immutable Interaction Logging", "Model Access Visibility", "Usage & Cost Tracking", "Full Audit Trail per Query"].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/5">
-                  <div className="w-2 h-2 rounded-full bg-gold" />
-                  <span className="font-body text-sm text-white/70">{item}</span>
+                <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-secondary border border-border">
+                  <div className="w-2 h-2 rounded-full bg-accent" />
+                  <span className="font-body text-sm text-foreground">{item}</span>
                 </div>
               ))}
             </div>
@@ -272,13 +270,13 @@ const Platform = () => {
       </Section>
 
       {/* SECTION 7 — Layer 4: Governed Connectivity */}
-      <Section>
+      <Section alabaster>
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           <motion.div {...fadeUp} transition={{ delay: 0.1 }} className="order-2 lg:order-1">
             <div className="bento-card p-8">
               <div className="space-y-4">
                 {["Private On-Premise Models", "Sovereign Cloud Models", "Approved External Providers", "Policy-Controlled Routing Rules"].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 border border-border">
+                  <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-secondary border border-border">
                     <div className="w-2 h-2 rounded-full bg-accent" />
                     <span className="font-body text-sm text-foreground">{item}</span>
                   </div>
@@ -307,7 +305,7 @@ const Platform = () => {
       </Section>
 
       {/* SECTION 8 — Deployment Architecture */}
-      <Section alabaster>
+      <Section>
         <motion.div {...fadeUp} className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
             <Server className="w-5 h-5 text-accent" strokeWidth={1.5} />
@@ -343,18 +341,18 @@ const Platform = () => {
       </Section>
 
       {/* SECTION 9 — Why This Architecture Matters */}
-      <Section dark>
+      <Section alabaster>
         <div className="max-w-3xl mx-auto text-center">
-          <motion.h2 {...fadeUp} className="font-heading font-bold text-3xl md:text-4xl mb-6 text-white tracking-tight">
+          <motion.h2 {...fadeUp} className="font-heading font-bold text-3xl md:text-4xl mb-6 text-foreground tracking-tight">
             Governance Is Infrastructure.
           </motion.h2>
-          <motion.p {...fadeUp} transition={{ delay: 0.05 }} className="font-body text-white/50 leading-relaxed text-lg mb-6">
+          <motion.p {...fadeUp} transition={{ delay: 0.05 }} className="font-body text-muted-foreground leading-relaxed text-lg mb-6">
             AI without governance creates long-term operational risk — unstructured data flows, untraceable decisions, and unaccountable model access.
           </motion.p>
-          <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-white/50 leading-relaxed text-lg mb-8">
+          <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-muted-foreground leading-relaxed text-lg mb-8">
             AI with a Control Plane becomes controlled infrastructure — inspectable, auditable, and aligned with organizational policy.
           </motion.p>
-          <motion.p {...fadeUp} transition={{ delay: 0.15 }} className="font-heading font-semibold text-gold text-xl">
+          <motion.p {...fadeUp} transition={{ delay: 0.15 }} className="font-heading font-semibold text-accent text-xl">
             Aliph is governance infrastructure for artificial intelligence.
           </motion.p>
         </div>
