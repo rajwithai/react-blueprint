@@ -41,7 +41,7 @@ const AliphChat = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-semibold text-3xl md:text-4xl mb-12"
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground"
         >
           The difference is immediate.
         </motion.h2>
@@ -53,13 +53,13 @@ const AliphChat = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="rounded-2xl border border-border overflow-hidden"
+              className="rounded-xl border border-border overflow-hidden"
             >
-              <div className="bg-muted p-5 border-b border-border">
+              <div className="bg-secondary p-5 border-b border-border">
                 <p className="text-xs uppercase tracking-wider text-destructive mb-2 font-heading font-semibold">Without AliphChat</p>
                 <p className="font-body text-sm text-muted-foreground">{item.without}</p>
               </div>
-              <div className="bg-primary/5 p-5">
+              <div className="bg-accent/5 p-5">
                 <p className="text-xs uppercase tracking-wider text-primary mb-2 font-heading font-semibold">With AliphChat</p>
                 <p className="font-body text-sm text-foreground">{item.withAliph}</p>
               </div>
@@ -69,20 +69,20 @@ const AliphChat = () => {
       </Section>
 
       {/* Capabilities */}
-      <Section dark>
+      <Section alabaster>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-primary-foreground"
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground"
         >
           Built for the enterprise, not the consumer.
         </motion.h2>
         <div className="grid md:grid-cols-2 gap-8">
-          <FeatureCard icon={Search} title="Sovereign Search" description="Ask in Arabic, English, or both. Answers come from your own knowledge base first — with the source document cited. Multi-turn conversations. Confidence scoring." delay={0} dark />
-          <FeatureCard icon={ShieldCheck} title="Privacy Engine" description="Every query scanned for sensitive data. Every entity masked before external AI is reached. Encrypted. Expiring. Auditable." delay={100} dark />
-          <FeatureCard icon={Users} title="Inherited Permissions" description="No new access structures to build. AliphChat sees exactly what each employee is authorized to see in your existing systems — Google Drive, SharePoint, network drives." delay={200} dark />
-          <FeatureCard icon={MessageSquare} title="Enterprise Ready" description="SSO with Google Workspace and Microsoft 365. Admin dashboard. Usage analytics. Deployed in days, not months." delay={300} dark />
+          <FeatureCard icon={Search} title="Sovereign Search" description="Ask in Arabic, English, or both. Answers come from your own knowledge base first — with the source document cited. Multi-turn conversations. Confidence scoring." delay={0} />
+          <FeatureCard icon={ShieldCheck} title="Privacy Engine" description="Every query scanned for sensitive data. Every entity masked before external AI is reached. Encrypted. Expiring. Auditable." delay={100} />
+          <FeatureCard icon={Users} title="Inherited Permissions" description="No new access structures to build. AliphChat sees exactly what each employee is authorized to see in your existing systems — Google Drive, SharePoint, network drives." delay={200} />
+          <FeatureCard icon={MessageSquare} title="Enterprise Ready" description="SSO with Google Workspace and Microsoft 365. Admin dashboard. Usage analytics. Deployed in days, not months." delay={300} />
         </div>
       </Section>
 
@@ -92,7 +92,7 @@ const AliphChat = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-semibold text-3xl md:text-4xl mb-12"
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground"
         >
           Why not just use ChatGPT?
         </motion.h2>
@@ -111,7 +111,7 @@ const AliphChat = () => {
               transition={{ delay: i * 0.03 }}
               className="grid grid-cols-3 gap-4 py-3 px-4 border-b border-border/50 items-center"
             >
-              <span className="font-body text-sm">{row.cap}</span>
+              <span className="font-body text-sm text-foreground">{row.cap}</span>
               <div className="flex justify-center"><X className="h-4 w-4 text-destructive" /></div>
               <div className="flex justify-center"><CheckCircle2 className="h-4 w-4 text-primary" /></div>
             </motion.div>

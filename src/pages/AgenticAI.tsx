@@ -53,19 +53,19 @@ const AgenticAI = () => {
       </Section>
 
       {/* Comparison */}
-      <Section dark>
+      <Section alabaster>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-primary-foreground"
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground"
         >
           What Aliph adds.
         </motion.h2>
         <div className="max-w-2xl mx-auto">
           <div className="grid grid-cols-3 gap-4 mb-4 px-4">
             <span></span>
-            <span className="font-heading font-semibold text-sm text-center text-primary-foreground/60">Open-Source Agents</span>
+            <span className="font-heading font-semibold text-sm text-center text-muted-foreground">Open-Source Agents</span>
             <span className="font-heading font-semibold text-sm text-center text-primary">Agents + Aliph</span>
           </div>
           {comparison.map((row, i) => (
@@ -75,9 +75,9 @@ const AgenticAI = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.03 }}
-              className="grid grid-cols-3 gap-4 py-3 px-4 border-b border-primary-foreground/10 items-center"
+              className="grid grid-cols-3 gap-4 py-3 px-4 border-b border-border/50 items-center"
             >
-              <span className="font-body text-sm text-primary-foreground/80">{row.cap}</span>
+              <span className="font-body text-sm text-foreground">{row.cap}</span>
               <div className="flex justify-center">
                 {row.oss ? <CheckCircle2 className="h-4 w-4 text-primary" /> : <X className="h-4 w-4 text-destructive" />}
               </div>
@@ -94,7 +94,7 @@ const AgenticAI = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-heading font-semibold text-3xl md:text-4xl mb-6"
+            className="font-heading font-semibold text-3xl md:text-4xl mb-6 text-foreground"
           >
             Be among the first.
           </motion.h2>

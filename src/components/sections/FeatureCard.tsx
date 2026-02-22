@@ -11,7 +11,7 @@ interface FeatureCardProps {
   dark?: boolean;
 }
 
-const FeatureCard = ({ icon: Icon, title, description, children, delay = 0, dark = false }: FeatureCardProps) => {
+const FeatureCard = ({ icon: Icon, title, description, children, delay = 0 }: FeatureCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -19,27 +19,17 @@ const FeatureCard = ({ icon: Icon, title, description, children, delay = 0, dark
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.4, delay: delay / 1000 }}
       whileHover={{ y: -2, transition: { duration: 0.2 } }}
-      className={`rounded-lg p-8 lg:p-10 transition-all duration-200 ${
-        dark
-          ? "glass-card border border-white/10 hover:border-gold/20"
-          : "bento-card"
-      }`}
+      className="bento-card rounded-lg p-8 lg:p-10"
     >
       {Icon && (
-        <div className={`inline-flex items-center justify-center w-11 h-11 rounded-lg mb-5 transition-colors duration-200 ${
-          dark ? "bg-gold/10" : "bg-accent/10"
-        }`}>
-          <Icon className={`h-5 w-5 ${dark ? "text-gold" : "text-accent"}`} strokeWidth={1.5} />
+        <div className="inline-flex items-center justify-center w-11 h-11 rounded-lg mb-5 bg-accent/10">
+          <Icon className="h-5 w-5 text-accent" strokeWidth={1.5} />
         </div>
       )}
-      <h3 className={`font-heading font-semibold text-xl lg:text-2xl mb-3 ${
-        dark ? "text-white" : "text-foreground"
-      }`}>
+      <h3 className="font-heading font-semibold text-xl lg:text-2xl mb-3 text-foreground">
         {title}
       </h3>
-      <p className={`font-body text-[15px] leading-relaxed ${
-        dark ? "text-white/50" : "text-muted-foreground"
-      }`}>
+      <p className="font-body text-[15px] leading-relaxed text-muted-foreground">
         {description}
       </p>
       {children}
