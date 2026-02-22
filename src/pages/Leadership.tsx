@@ -19,7 +19,7 @@ const profiles = [
     name: "Co-Founder",
     role: "Compliance & Advisory",
     bio: "15 years of Big Four GRC consulting across KPMG, PwC, and Deloitte. Direct implementation experience with PIF portfolio companies. Deep expertise in PDPL, SAMA, and CMA regulatory frameworks. C-suite relationships across healthcare, fintech, and professional services.",
-    note: "Name disclosed under NDA — full commitment upon funding.",
+    note: "Profile available under NDA during due diligence.",
   },
   {
     name: "Senior Advisor",

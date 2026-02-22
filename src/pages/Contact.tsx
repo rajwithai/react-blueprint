@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Mail, Phone, MapPin, Clock, Globe, Shield, MessageCircle, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Globe, Shield, MessageCircle, CheckCircle2, Building2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
@@ -236,13 +236,38 @@ const Contact = () => {
                   </div>
                 </div>
                 <div className="flex gap-3 items-start">
+                  <Building2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-body text-sm font-medium text-foreground">Office</p>
+                    <p className="font-body text-sm text-muted-foreground">Al Olaya District, Riyadh 12213<br />Kingdom of Saudi Arabia</p>
+                  </div>
+                </div>
+                <div className="flex gap-3 items-start">
                   <MapPin className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="font-body text-sm font-medium text-foreground">Location</p>
-                    <p className="font-body text-sm text-muted-foreground">Riyadh, Kingdom of Saudi Arabia</p>
+                    <p className="font-body text-sm font-medium text-foreground">Working Hours</p>
+                    <p className="font-body text-sm text-muted-foreground">Sun–Thu, 9:00 AM – 6:00 PM (AST)</p>
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* Engagement Models */}
+            <div className="rounded-xl border border-border bg-secondary/50 p-6">
+              <h4 className="font-heading font-semibold text-sm text-foreground mb-3">How We Work</h4>
+              <ul className="space-y-2">
+                {[
+                  "Enterprise licensing with custom deployment",
+                  "On-premise, sovereign cloud, or hybrid",
+                  "Guided pilot program for qualified enterprises",
+                  "Pricing tailored to your scale and requirements",
+                ].map((item) => (
+                  <li key={item} className="flex gap-2 items-start">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-accent flex-shrink-0 mt-0.5" />
+                    <span className="font-body text-xs text-muted-foreground">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </motion.div>
         </div>
