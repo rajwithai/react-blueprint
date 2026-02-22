@@ -3,6 +3,7 @@ import { Shield, Brain, Eye, Network, Server, ArrowRight, ChevronRight } from "l
 import { motion } from "framer-motion";
 import Section from "@/components/sections/Section";
 import CTABanner from "@/components/sections/CTABanner";
+import MidPageCTA from "@/components/sections/MidPageCTA";
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -200,6 +201,14 @@ const Platform = () => {
           </motion.div>
         </div>
       </Section>
+
+      {/* Mid-Page CTA */}
+      <MidPageCTA
+        title="See the Control Plane live."
+        subtitle="Walk through a real governance workflow mapped to your environment."
+        primaryCta={{ label: "Book a Demo", href: "/demo" }}
+        secondaryCta={{ label: "Download Architecture Brief", href: "/contact" }}
+      />
 
       {/* SECTION 5 — Layer 2: Organization Memory */}
       <Section alabaster>

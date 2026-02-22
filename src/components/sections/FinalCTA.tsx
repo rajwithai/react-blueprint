@@ -10,12 +10,20 @@ const FinalCTA = () => {
         <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
           We'll walk you through a real workflow—governance controls, protected inputs, and audit-ready outputs—mapped to your environment.
         </p>
-        <Link
-          to="/demo"
-          className="inline-block w-full sm:w-auto px-10 py-5 bg-accent hover:brightness-110 text-accent-foreground text-lg font-bold rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
-        >
-          Book a Demo
-        </Link>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link
+            to="/demo"
+            className="inline-block px-10 py-5 bg-accent hover:brightness-110 text-accent-foreground text-lg font-bold rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
+          >
+            Book a Demo
+          </Link>
+          <Link
+            to="/resources/pdpl-guide"
+            className="inline-block px-10 py-5 border border-border text-foreground hover:bg-secondary rounded-lg text-lg font-semibold transition-all duration-200"
+          >
+            Get the PDPL Guide
+          </Link>
+        </div>
       </div>
     </section>
   );

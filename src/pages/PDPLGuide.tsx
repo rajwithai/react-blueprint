@@ -6,6 +6,7 @@ import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
 import ParallaxImage from "@/components/sections/ParallaxImage";
+import InlineEmailCapture from "@/components/sections/InlineEmailCapture";
 import riyadhImg from "@/assets/images/riyadh-office.jpg";
 
 const sections = [
@@ -145,6 +146,17 @@ const PDPLGuide = () => {
           <p className="font-body text-muted-foreground leading-relaxed mb-8">
             We offer a free PDPL compliance assessment for enterprises evaluating AI adoption. Understand your exposure. See how Aliph addresses each gap.
           </p>
+          <InlineEmailCapture
+            title="Get a free PDPL compliance checklist"
+            subtitle="Enter your email and we'll send the complete checklist to your inbox."
+            buttonText="Get Checklist"
+            placeholder="you@company.com"
+          />
+          <div className="mt-6">
+            <Link to="/demo" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-accent hover:brightness-110 text-accent-foreground rounded-lg font-heading font-semibold transition-all">
+              Book a Free Assessment
+            </Link>
+          </div>
         </div>
       </Section>
 

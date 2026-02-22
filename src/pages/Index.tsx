@@ -8,41 +8,34 @@ import ProductShowcase from "@/components/sections/ProductShowcase";
 import SolutionsTeaser from "@/components/sections/SolutionsTeaser";
 import CredibilityProof from "@/components/sections/CredibilityProof";
 import FinalCTA from "@/components/sections/FinalCTA";
+import InlineEmailCapture from "@/components/sections/InlineEmailCapture";
 
 const Index = () => {
   return (
     <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
-
-      {/* Section 1: Hero (Urgency + Promise) */}
       <HeroSection />
-
-      {/* Section 2: Trust Band */}
       <TrustBand />
-
-      {/* Section 3: Why Now (Risk Cards) */}
       <RiskCards />
-
-      {/* Section 4: The Aliph Ecosystem (Control Plane Diagram) */}
       <ControlPlaneDiagram />
-
-      {/* Section 5: Platform Pillars */}
       <PlatformPillars />
-
-      {/* Section 6: Outcomes */}
       <Outcomes />
-
-      {/* Section 7: Products */}
       <ProductShowcase />
-
-      {/* Section 8: Solutions Teaser */}
       <SolutionsTeaser />
-
-      {/* Section 9: Proof / Credibility */}
       <CredibilityProof />
 
-      {/* Section 10: Final CTA */}
-      <FinalCTA />
+      {/* Inline Email Capture */}
+      <section className="py-16 bg-secondary border-y border-border">
+        <div className="container mx-auto px-6">
+          <InlineEmailCapture
+            title="Get weekly AI governance insights"
+            subtitle="Join enterprise leaders staying ahead of PDPL, sovereign AI, and compliance automation."
+            buttonText="Subscribe"
+            placeholder="you@company.com"
+          />
+        </div>
+      </section>
 
+      <FinalCTA />
     </main>
   );
 };

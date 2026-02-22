@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import aliphLogo from "@/assets/aliph-logo.png";
+import InlineEmailCapture from "@/components/sections/InlineEmailCapture";
 
 const footerColumns = [
   {
@@ -25,6 +26,18 @@ const footerColumns = [
 const Footer = () => {
   return (
     <footer className="relative bg-secondary border-t border-border">
+      {/* Newsletter Section */}
+      <div className="border-b border-border">
+        <div className="container mx-auto px-6 py-12">
+          <InlineEmailCapture
+            title="Stay ahead of sovereign AI."
+            subtitle="Monthly insights on PDPL, enterprise AI governance, and product updates."
+            buttonText="Subscribe"
+            placeholder="you@company.com"
+          />
+        </div>
+      </div>
+
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>

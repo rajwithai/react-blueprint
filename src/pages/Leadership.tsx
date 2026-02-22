@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { User, Award, Briefcase, Target, Shield, Globe } from "lucide-react";
 import PageHero from "@/components/sections/PageHero";
@@ -168,6 +169,14 @@ const Leadership = () => {
           <p className="font-body text-muted-foreground leading-relaxed mb-8">
             Interested in joining the founding team? We're looking for exceptional engineers, product builders, and domain experts.
           </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/company/careers" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-accent hover:brightness-110 text-accent-foreground rounded-lg font-heading font-semibold transition-all">
+              View Open Positions
+            </Link>
+            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 rounded-lg border border-border text-foreground hover:bg-secondary font-heading font-semibold transition-all">
+              Request a Meeting
+            </Link>
+          </div>
         </div>
       </Section>
 
