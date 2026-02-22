@@ -1,9 +1,12 @@
-import { FileCheck, Search, BookOpen } from "lucide-react";
+import { FileCheck, Search, BookOpen, Shield, BarChart3, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
+import ParallaxImage from "@/components/sections/ParallaxImage";
+import grcDashboardImg from "@/assets/images/grc-dashboard.jpg";
+import teamImg from "@/assets/images/team-collaboration.jpg";
 
 const impact = [
   { label: "Compliance Reports", before: "Days of manual work", after: "Hours" },
@@ -23,7 +26,15 @@ const GRCPlatform = () => {
         badge="Live"
       />
 
-      {/* Impact */}
+      {/* Parallax Product Image */}
+      <ParallaxImage
+        src={grcDashboardImg}
+        alt="GRC Platform compliance dashboard"
+        className="h-[50vh] md:h-[60vh]"
+        speed={0.2}
+      />
+
+      {/* Section 1: Impact */}
       <Section>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -51,7 +62,7 @@ const GRCPlatform = () => {
         </div>
       </Section>
 
-      {/* What It Does */}
+      {/* Section 2: What It Does */}
       <Section alabaster>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -68,7 +79,7 @@ const GRCPlatform = () => {
         </div>
       </Section>
 
-      {/* Agentic Workflow */}
+      {/* Section 3: Agentic Workflow */}
       <Section>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -109,7 +120,28 @@ const GRCPlatform = () => {
         </div>
       </Section>
 
-      {/* Regulations */}
+      {/* Parallax Break */}
+      <ParallaxImage
+        src={teamImg}
+        alt="Compliance team working together"
+        className="h-[40vh] md:h-[50vh]"
+        speed={0.3}
+        overlay
+        overlayOpacity={0.35}
+      >
+        <div className="container mx-auto px-6 py-20 lg:py-28 text-center text-white">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-4"
+          >
+            Advisory-firm quality. A fraction of the cost.
+          </motion.h2>
+        </div>
+      </ParallaxImage>
+
+      {/* Section 4: Regulations */}
       <Section alabaster>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -142,8 +174,25 @@ const GRCPlatform = () => {
         </div>
       </Section>
 
-      {/* Who it's for */}
+      {/* Section 5: Additional capabilities */}
       <Section>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground"
+        >
+          Enterprise-grade from day one.
+        </motion.h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          <FeatureCard icon={Shield} title="Data Sovereignty" description="All compliance data stays within your infrastructure. Zero exposure to external models during analysis." delay={0} />
+          <FeatureCard icon={BarChart3} title="Risk Scoring" description="Automated risk assessment across every document, contract, and policy. Prioritized remediation plans." delay={100} />
+          <FeatureCard icon={Users} title="Team Workflows" description="Assign tasks, track progress, and collaborate on compliance projects with built-in workflow management." delay={200} />
+        </div>
+      </Section>
+
+      {/* Section 6: Who it's for */}
+      <Section alabaster>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -152,9 +201,23 @@ const GRCPlatform = () => {
         >
           Built for the teams that carry the compliance burden.
         </motion.h2>
-        <p className="font-body text-muted-foreground leading-relaxed max-w-3xl">
+        <p className="font-body text-muted-foreground leading-relaxed max-w-3xl mb-8">
           Compliance teams. Legal departments. Advisory firms. Internal audit functions. And the SMEs that need professional GRC but could never afford it before.
         </p>
+        <div className="grid md:grid-cols-4 gap-4">
+          {["Compliance Officers", "Legal Teams", "Advisory Firms", "Internal Audit"].map((role, i) => (
+            <motion.div
+              key={role}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="rounded-xl border border-border bg-card p-6 text-center"
+            >
+              <p className="font-heading font-semibold text-foreground">{role}</p>
+            </motion.div>
+          ))}
+        </div>
       </Section>
 
       <CTABanner

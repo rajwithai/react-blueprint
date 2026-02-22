@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
-import { ShieldCheck } from "lucide-react";
+import { ShieldCheck, Globe, Cpu, Lock, BarChart3, RefreshCw } from "lucide-react";
 import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
+import ParallaxImage from "@/components/sections/ParallaxImage";
+import globalLlmImg from "@/assets/images/global-llm-hero.jpg";
+import platformImg from "@/assets/images/platform-architecture.jpg";
 
 const models = [
   { name: "Claude", provider: "Anthropic", capability: "Complex reasoning and regulatory analysis." },
@@ -31,12 +34,21 @@ const GlobalLLM = () => {
         primaryCta={{ label: "Request a Demo", href: "/demo" }}
       />
 
+      {/* Parallax Hero */}
+      <ParallaxImage
+        src={globalLlmImg}
+        alt="Global AI model connectivity network"
+        className="h-[50vh] md:h-[60vh]"
+        speed={0.2}
+      />
+
+      {/* Section 1: Models */}
       <Section>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-semibold text-3xl md:text-4xl mb-12"
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground"
         >
           The best model for every task. Selected automatically.
         </motion.h2>
@@ -47,12 +59,43 @@ const GlobalLLM = () => {
         </div>
       </Section>
 
-      <Section dark>
+      {/* Section 2: How Routing Works */}
+      <Section alabaster>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-semibold text-3xl md:text-4xl mb-8 text-primary-foreground"
+          className="font-heading font-semibold text-3xl md:text-4xl mb-4 text-foreground"
+        >
+          Intelligent model routing.
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.05 }}
+          className="font-body text-muted-foreground mb-12 max-w-2xl"
+        >
+          The Control Plane selects the optimal model based on task type, language, sensitivity level, and organizational policy.
+        </motion.p>
+        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          {[
+            { icon: Cpu, title: "Task-Based Selection", desc: "Reasoning tasks → Claude. Generation → GPT-4. Arabic → ALLAM. The right model for the right job." },
+            { icon: Lock, title: "Sensitivity Routing", desc: "Highly sensitive queries route to on-premise models. Standard queries can reach approved external providers." },
+            { icon: RefreshCw, title: "Automatic Failover", desc: "If a model is unavailable, the system gracefully degrades to the next best option. Zero downtime." },
+          ].map((item, i) => (
+            <FeatureCard key={item.title} icon={item.icon} title={item.title} description={item.desc} delay={i * 80} />
+          ))}
+        </div>
+      </Section>
+
+      {/* Section 3: Security Controls */}
+      <Section>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-8 text-foreground"
         >
           Enterprise-grade controls at every step.
         </motion.h2>
@@ -64,12 +107,73 @@ const GlobalLLM = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="flex gap-3 items-start glass glow-border rounded-xl p-4"
+              className="flex gap-3 items-start rounded-xl border border-border bg-card p-4"
             >
-              <ShieldCheck className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-              <p className="font-body text-primary-foreground/70 text-sm">{s}</p>
+              <ShieldCheck className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+              <p className="font-body text-muted-foreground text-sm">{s}</p>
             </motion.div>
           ))}
+        </div>
+      </Section>
+
+      {/* Parallax Break */}
+      <ParallaxImage
+        src={platformImg}
+        alt="Aliph platform layers"
+        className="h-[40vh] md:h-[50vh]"
+        speed={0.3}
+        overlay
+        overlayOpacity={0.25}
+      >
+        <div className="container mx-auto px-6 py-20 lg:py-28 text-center text-white">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl"
+          >
+            No vendor lock-in. No data compromise.
+          </motion.h2>
+        </div>
+      </ParallaxImage>
+
+      {/* Section 4: Benefits */}
+      <Section alabaster>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground"
+        >
+          Why multi-model matters.
+        </motion.h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          <FeatureCard icon={Globe} title="No Vendor Lock-in" description="Switch providers without changing a single line of code. Your organization is never dependent on a single AI vendor." delay={0} />
+          <FeatureCard icon={BarChart3} title="Cost Optimization" description="Route simpler tasks to faster, cheaper models. Reserve premium models for complex reasoning. Automatic cost control." delay={80} />
+          <FeatureCard icon={ShieldCheck} title="Future-Proof" description="New models from any provider can be added instantly. Your AI infrastructure evolves without re-architecture." delay={160} />
+        </div>
+      </Section>
+
+      {/* Section 5: Integration */}
+      <Section>
+        <div className="max-w-2xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-heading font-semibold text-3xl md:text-4xl mb-6 text-foreground"
+          >
+            Ready for your infrastructure.
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-body text-muted-foreground leading-relaxed mb-8"
+          >
+            Deploy on-premise, in sovereign cloud, or hybrid. Connect to existing identity providers. Integrate with your current systems through standard APIs.
+          </motion.p>
         </div>
       </Section>
 

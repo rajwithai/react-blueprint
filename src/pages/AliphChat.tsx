@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
-import { Search, ShieldCheck, Users, MessageSquare, CheckCircle2, X } from "lucide-react";
+import { Search, ShieldCheck, Users, MessageSquare, CheckCircle2, X, Zap, Globe } from "lucide-react";
 import { motion } from "framer-motion";
 import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
+import ParallaxImage from "@/components/sections/ParallaxImage";
+import heroChatImg from "@/assets/images/hero-chat-ui.jpg";
+import teamImg from "@/assets/images/team-collaboration.jpg";
 
 const beforeAfter = [
   { without: "Employees use ChatGPT. You don't know what data leaves.", withAliph: "Every query is audited. Sensitive data is masked automatically." },
@@ -24,6 +27,13 @@ const comparison = [
   { cap: "Source citations", chatgpt: false, aliph: true },
 ];
 
+const useCases = [
+  { icon: Zap, title: "Instant Answers", description: "Ask complex questions about company policies, past projects, or regulatory requirements. Get cited answers in seconds." },
+  { icon: Globe, title: "Bilingual Intelligence", description: "Full Arabic and English support. Ask in one language, get answers from documents in either. Seamless code-switching." },
+  { icon: ShieldCheck, title: "Compliance Ready", description: "Every interaction logged. Every data point protected. Built-in PDPL compliance from day one." },
+  { icon: Users, title: "Team Knowledge", description: "Surface collective expertise across departments. No more knowledge silos. No more reinventing work." },
+];
+
 const AliphChat = () => {
   return (
     <>
@@ -35,7 +45,15 @@ const AliphChat = () => {
         badge="Live"
       />
 
-      {/* What Changes */}
+      {/* Parallax Product Image */}
+      <ParallaxImage
+        src={heroChatImg}
+        alt="AliphChat enterprise AI interface"
+        className="h-[50vh] md:h-[60vh]"
+        speed={0.2}
+      />
+
+      {/* Section 1: What Changes */}
       <Section>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -68,8 +86,34 @@ const AliphChat = () => {
         </div>
       </Section>
 
-      {/* Capabilities */}
+      {/* Section 2: Use Cases */}
       <Section alabaster>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-4 text-foreground"
+        >
+          What teams actually do with AliphChat.
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.05 }}
+          className="font-body text-muted-foreground mb-12 max-w-2xl"
+        >
+          From legal research to onboarding new hires — AliphChat transforms how teams access institutional knowledge.
+        </motion.p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {useCases.map((uc, i) => (
+            <FeatureCard key={uc.title} icon={uc.icon} title={uc.title} description={uc.description} delay={i * 80} />
+          ))}
+        </div>
+      </Section>
+
+      {/* Section 3: Capabilities */}
+      <Section>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -86,7 +130,37 @@ const AliphChat = () => {
         </div>
       </Section>
 
-      {/* Comparison */}
+      {/* Parallax Break */}
+      <ParallaxImage
+        src={teamImg}
+        alt="Enterprise team collaboration"
+        className="h-[40vh] md:h-[50vh]"
+        speed={0.3}
+        overlay
+        overlayOpacity={0.3}
+      >
+        <div className="container mx-auto px-6 py-20 lg:py-28 text-center text-white">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-4"
+          >
+            Deployed in days, not months.
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-body text-lg text-white/80 max-w-xl mx-auto"
+          >
+            SSO integration. Admin controls. Your team is productive from week one.
+          </motion.p>
+        </div>
+      </ParallaxImage>
+
+      {/* Section 4: Comparison */}
       <Section>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -114,6 +188,40 @@ const AliphChat = () => {
               <span className="font-body text-sm text-foreground">{row.cap}</span>
               <div className="flex justify-center"><X className="h-4 w-4 text-destructive" /></div>
               <div className="flex justify-center"><CheckCircle2 className="h-4 w-4 text-primary" /></div>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Section 5: How It Works */}
+      <Section alabaster>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground text-center"
+        >
+          How it works.
+        </motion.h2>
+        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          {[
+            { step: "01", title: "Connect", desc: "Link your existing knowledge sources — Google Drive, SharePoint, local files. Permissions are inherited automatically." },
+            { step: "02", title: "Ask", desc: "Type your question in Arabic or English. AliphChat searches your knowledge base first, then reaches external AI with masked data." },
+            { step: "03", title: "Get Cited Answers", desc: "Every answer includes source citations. Full audit trail. Confidence scoring. Your compliance team can verify everything." },
+          ].map((s, i) => (
+            <motion.div
+              key={s.step}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="text-center"
+            >
+              <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-6">
+                <span className="font-heading font-bold text-2xl text-accent">{s.step}</span>
+              </div>
+              <h3 className="font-heading font-semibold text-xl mb-3 text-foreground">{s.title}</h3>
+              <p className="font-body text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
             </motion.div>
           ))}
         </div>

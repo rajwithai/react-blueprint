@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
-import { User } from "lucide-react";
+import { User, Award, Briefcase, Target, Shield, Globe } from "lucide-react";
 import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
+import FeatureCard from "@/components/sections/FeatureCard";
+import CTABanner from "@/components/sections/CTABanner";
+import ParallaxImage from "@/components/sections/ParallaxImage";
+import teamImg from "@/assets/images/team-collaboration.jpg";
+import riyadhImg from "@/assets/images/riyadh-office.jpg";
 
 const profiles = [
   {
@@ -30,6 +35,28 @@ const Leadership = () => {
         subtitle="Two founders know what to deliver. One knows how to build it."
       />
 
+      {/* Parallax Team Image */}
+      <ParallaxImage
+        src={teamImg}
+        alt="Leadership team collaboration"
+        className="h-[50vh] md:h-[60vh]"
+        speed={0.2}
+        overlay
+        overlayOpacity={0.3}
+      >
+        <div className="container mx-auto px-6 py-20 lg:py-28 text-center text-white">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl"
+          >
+            The combination is not replicable.
+          </motion.h2>
+        </div>
+      </ParallaxImage>
+
+      {/* Section 1: Profiles */}
       <Section>
         <div className="grid lg:grid-cols-3 gap-8">
           {profiles.map((p, i) => (
@@ -39,14 +66,13 @@ const Leadership = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              whileHover={{ y: -4 }}
-              className="bg-card rounded-2xl border border-border p-8 shadow-sm hover:shadow-lg hover:shadow-primary/5 transition-shadow"
+              className="bg-card rounded-2xl border border-border p-8"
             >
-              <div className="w-20 h-20 rounded-2xl bg-primary/5 flex items-center justify-center mb-6">
-                <User className="h-8 w-8 text-primary" />
+              <div className="w-20 h-20 rounded-2xl bg-accent/5 flex items-center justify-center mb-6">
+                <User className="h-8 w-8 text-accent" />
               </div>
-              <h3 className="font-heading font-semibold text-xl mb-1">{p.name}</h3>
-              <p className="font-body text-sm text-primary mb-4">{p.role}</p>
+              <h3 className="font-heading font-semibold text-xl mb-1 text-foreground">{p.name}</h3>
+              <p className="font-body text-sm text-accent mb-4">{p.role}</p>
               <p className="font-body text-sm text-muted-foreground leading-relaxed">{p.bio}</p>
               {p.note && (
                 <p className="font-body text-xs text-muted-foreground/60 italic mt-3">{p.note}</p>
@@ -56,21 +82,99 @@ const Leadership = () => {
         </div>
       </Section>
 
-      <Section dark>
+      {/* Section 2: The Advantage */}
+      <Section alabaster>
         <div className="max-w-3xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-heading font-semibold text-3xl md:text-4xl mb-6 text-primary-foreground"
+            className="font-heading font-semibold text-3xl md:text-4xl mb-6 text-foreground"
           >
-            The combination is not replicable.
+            Technology meets regulation.
           </motion.h2>
-          <p className="font-body text-primary-foreground/60 leading-relaxed">
+          <p className="font-body text-muted-foreground leading-relaxed">
             This is not a technology company learning compliance. It is not a consulting firm learning technology. It is both — integrated from inception. The regulatory expertise is real. The engineering is production-grade. The combination is not replicable.
           </p>
         </div>
       </Section>
+
+      {/* Section 3: Why This Team */}
+      <Section>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground text-center"
+        >
+          Why this team wins.
+        </motion.h2>
+        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <FeatureCard icon={Award} title="Deep Domain Expertise" description="45+ combined years across enterprise AI, GRC consulting, and regulatory affairs in the Kingdom." delay={0} />
+          <FeatureCard icon={Briefcase} title="Big Four Relationships" description="Direct C-suite relationships across financial services, healthcare, and professional services sectors." delay={80} />
+          <FeatureCard icon={Target} title="Production Experience" description="Not theoretical. The CTO has built and deployed the entire four-layer architecture already." delay={160} />
+        </div>
+      </Section>
+
+      {/* Parallax Riyadh */}
+      <ParallaxImage
+        src={riyadhImg}
+        alt="Riyadh skyline"
+        className="h-[40vh] md:h-[50vh]"
+        speed={0.3}
+        overlay
+        overlayOpacity={0.3}
+      >
+        <div className="container mx-auto px-6 py-20 lg:py-28 text-center text-white">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl"
+          >
+            Built from Riyadh, for the world.
+          </motion.h2>
+        </div>
+      </ParallaxImage>
+
+      {/* Section 4: Advisory Network */}
+      <Section alabaster>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-3xl md:text-4xl mb-12 text-foreground text-center"
+        >
+          Extended network.
+        </motion.h2>
+        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <FeatureCard icon={Shield} title="Regulatory Access" description="Active relationships with SDAIA, SAMA, and key government stakeholders for strategic guidance." delay={0} />
+          <FeatureCard icon={Globe} title="Industry Connections" description="C-suite relationships across PIF portfolio companies, healthcare systems, and financial institutions." delay={80} />
+          <FeatureCard icon={Briefcase} title="Technical Partners" description="Partnerships with leading cloud providers and AI model vendors for sovereign deployment." delay={160} />
+        </div>
+      </Section>
+
+      {/* Section 5: Join Us */}
+      <Section>
+        <div className="max-w-2xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-heading font-semibold text-3xl md:text-4xl mb-6 text-foreground"
+          >
+            We're building something exceptional.
+          </motion.h2>
+          <p className="font-body text-muted-foreground leading-relaxed mb-8">
+            Interested in joining the founding team? We're looking for exceptional engineers, product builders, and domain experts.
+          </p>
+        </div>
+      </Section>
+
+      <CTABanner
+        title="Meet the team. See the product."
+        primaryCta={{ label: "Request a Demo", href: "/demo" }}
+      />
     </>
   );
 };
