@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import PageHero from "@/components/sections/PageHero";
@@ -172,7 +173,32 @@ const About = () => {
         </div>
       </Section>
 
-      {/* Section 6: CTA */}
+      {/* Section 6: Join Us */}
+      <Section alabaster>
+        <div className="max-w-2xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-heading font-semibold text-3xl md:text-4xl mb-6 text-foreground"
+          >
+            Join us.
+          </motion.h2>
+          <p className="font-body text-muted-foreground leading-relaxed mb-8">
+            We're building the sovereign AI infrastructure for the world's most regulated markets. Come build with us.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/company/careers" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-accent hover:brightness-110 text-accent-foreground rounded-lg font-heading font-semibold transition-all">
+              View Open Roles
+            </Link>
+            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 rounded-lg border border-border text-foreground hover:bg-secondary font-heading font-semibold transition-all">
+              Contact Us
+            </Link>
+          </div>
+        </div>
+      </Section>
+
+      {/* Section 7: CTA */}
       <CTABanner
         title="See what we've built."
         primaryCta={{ label: "Request a Demo", href: "/demo" }}

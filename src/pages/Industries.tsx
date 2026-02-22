@@ -5,6 +5,7 @@ import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
+import MidPageCTA from "@/components/sections/MidPageCTA";
 import ParallaxImage from "@/components/sections/ParallaxImage";
 import financialImg from "@/assets/images/financial-services.jpg";
 import healthcareImg from "@/assets/images/healthcare.jpg";
@@ -127,6 +128,14 @@ const IndustryPage = ({ eyebrow, title, subtitle, heroImage, heroImageAlt, chall
         ))}
       </div>
     </Section>
+
+    {/* Mid-Page CTA */}
+    <MidPageCTA
+      title={`See how ${eyebrow.toLowerCase()} leaders use Aliph`}
+      subtitle="Walk through a real workflow designed for your industry."
+      primaryCta={{ label: "Book a Demo", href: "/demo" }}
+      secondaryCta={{ label: "Contact Sales", href: "/contact" }}
+    />
 
     {/* Section 4: Stats */}
     <Section alabaster>

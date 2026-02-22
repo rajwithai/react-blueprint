@@ -5,6 +5,7 @@ import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
 import ParallaxImage from "@/components/sections/ParallaxImage";
+import InlineEmailCapture from "@/components/sections/InlineEmailCapture";
 import teamImg from "@/assets/images/team-collaboration.jpg";
 
 const blogPosts = [
@@ -148,17 +149,12 @@ const Blog = () => {
       {/* Section 5: Newsletter */}
       <Section>
         <div className="max-w-2xl mx-auto text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-heading font-semibold text-3xl md:text-4xl mb-6 text-foreground"
-          >
-            Stay informed.
-          </motion.h2>
-          <p className="font-body text-muted-foreground leading-relaxed mb-8">
-            Subscribe to our newsletter for monthly insights on sovereign AI, regulatory updates, and enterprise AI best practices.
-          </p>
+          <InlineEmailCapture
+            title="Stay informed."
+            subtitle="Subscribe to our newsletter for monthly insights on sovereign AI, regulatory updates, and enterprise AI best practices."
+            buttonText="Subscribe"
+            placeholder="you@company.com"
+          />
         </div>
       </Section>
 
