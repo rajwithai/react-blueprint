@@ -185,7 +185,7 @@ const PlatformPillars = () => {
                     </div>
                   </div>
                   <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-accent/10 text-accent border border-accent/20">
-                    Layer {activePillar + 1}
+                    {active.title}
                   </div>
                 </div>
 
