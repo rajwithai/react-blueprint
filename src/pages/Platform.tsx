@@ -30,8 +30,8 @@ const Platform = () => {
       <section className="relative bg-background overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
 
-        <div className="container mx-auto px-6 py-24 md:py-32 lg:py-36 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="container mx-auto px-6 py-20 md:py-28 lg:py-36 relative z-10">
+          <div className="grid lg:grid-cols-[55%_45%] gap-10 lg:gap-16 items-center">
             <div>
               <motion.p {...fadeUp} className="text-accent uppercase tracking-[0.25em] text-xs font-body font-semibold mb-4">
                 THE ALIPH PLATFORM
@@ -41,40 +41,33 @@ const Platform = () => {
                 transition={{ duration: 0.5, delay: 0.05 }}
                 className="font-heading font-bold text-4xl md:text-5xl lg:text-[3.25rem] tracking-tight leading-[1.1] mb-6 text-foreground"
               >
-                The Architecture Behind Sovereign AI Governance.
+                How Aliph governs every AI interaction{" "}
+                <span className="text-muted-foreground font-medium">in your organization.</span>
               </motion.h1>
               <motion.p
                 {...fadeUp}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="font-body text-lg text-muted-foreground leading-relaxed mb-4 max-w-xl"
+                className="font-body text-lg text-muted-foreground leading-relaxed mb-8 max-w-[520px]"
               >
-                Aliph introduces a Control Plane that governs how AI interacts with enterprise systems — enforcing policy, preserving institutional knowledge, and maintaining accountability across every model and workflow.
+                When an employee asks AI a question, Aliph intercepts the query, checks it against your policies, strips sensitive data if it needs to leave your walls, searches your own documents first, logs everything for compliance, and delivers an answer with source citations. Here's exactly how.
               </motion.p>
-              <motion.p
-                {...fadeUp}
-                transition={{ duration: 0.5, delay: 0.15 }}
-                className="font-body text-[15px] text-muted-foreground/70 leading-relaxed mb-8 max-w-xl"
-              >
-                The Control Plane does not replace AI models. It sits between your organization and artificial intelligence — inspecting, routing, filtering, logging, and structuring every interaction.
-              </motion.p>
-              <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-wrap gap-4">
+              <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-wrap gap-4 mb-0">
                 <a
                   href="#architecture"
                   className="cta-gold inline-flex items-center gap-2 px-7 py-3.5 bg-accent hover:brightness-110 text-accent-foreground rounded-lg font-body font-semibold text-[15px] transition-all shadow-sm"
                 >
-                  View Architecture
-                  <ArrowRight className="w-4 h-4" />
+                  See the full query flow ↓
                 </a>
                 <Link
                   to="/contact"
                   className="inline-flex items-center gap-2 px-7 py-3.5 border border-border text-foreground hover:bg-secondary rounded-lg font-body font-semibold text-[15px] transition-all"
                 >
-                  Request Technical Briefing
+                  Schedule a technical walkthrough
                 </Link>
               </motion.div>
             </div>
 
-            {/* Right — Architectural Schematic */}
+            {/* Right — Platform Layer Visualization */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -84,24 +77,27 @@ const Platform = () => {
               <div className="rounded-xl p-8 relative border border-border bg-secondary">
                 <div className="space-y-3">
                   {[
-                    { label: "Edge Intelligence", highlight: false },
-                    { label: "Privacy Shield", highlight: false },
-                    { label: "Control Plane", highlight: true },
+                    { label: "Cloud AI Gateway", highlight: false },
+                    { label: "Privacy Shield", highlight: true },
+                    { label: "Control Plane", highlight: false },
                     { label: "Organization Memory", highlight: false },
-                    { label: "Governed Connectivity", highlight: false },
+                    { label: "Edge Intelligence", highlight: false },
                   ].map((layer, i) => (
                     <motion.div
                       key={layer.label}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.4 + i * 0.08 }}
-                      className={`flex items-center gap-4 p-4 rounded-lg border ${layer.highlight ? "border-accent/30 bg-accent/5" : "border-border bg-card"}`}
+                      className={`flex items-center gap-4 p-4 rounded-lg border ${layer.highlight ? "border-accent/30 bg-accent/5 shadow-[0_0_16px_hsl(var(--accent)/0.1)]" : "border-border bg-card"}`}
                     >
                       <div className={`w-2 h-2 rounded-full ${layer.highlight ? "bg-accent" : "bg-muted-foreground/30"}`} />
                       <span className={`font-body text-sm ${layer.highlight ? "text-accent font-semibold" : "text-muted-foreground"}`}>
                         {layer.label}
                       </span>
-                      {i < 4 && (
+                      {layer.highlight && (
+                        <span className="ml-auto text-[10px] font-body text-accent/70 tracking-wide uppercase">● Active</span>
+                      )}
+                      {!layer.highlight && i < 4 && (
                         <ChevronRight className="w-3 h-3 text-muted-foreground/30 ml-auto" />
                       )}
                     </motion.div>
