@@ -1,67 +1,70 @@
-import { CheckCircle, Shield, TrendingUp } from "lucide-react";
-import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
+const stats = [
+  { value: "2", label: "Products live & demonstrated" },
+  { value: "1,000s", label: "Documents indexed in Organization Memory" },
+  { value: "2", label: "Languages — Arabic + English natively" },
+  { value: "4", label: "Layers of sovereign architecture deployed" },
+  { value: "1", label: "Enterprise pilot deployed & active" },
+];
 
 const CredibilityProof = () => {
   return (
-    <section className="py-24 bg-secondary border-t border-border">
-      <div className="container px-4 md:px-6">
+    <section className="bg-secondary border-t border-border">
+      <div className="container px-4 md:px-6 py-20 lg:py-28">
+        {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
-            What's real today
-          </div>
-          <h2 className="text-4xl font-heading font-bold text-foreground mb-4">
-            Products are built. The bottleneck is execution speed.
-          </h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-accent uppercase tracking-[0.3em] text-xs font-semibold mb-5"
+          >
+            TRACTION
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold text-foreground leading-[1.1]"
+          >
+            Products are built. Deployment is underway.
+          </motion.h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
-          <div className="flex flex-col items-center text-center p-6 bg-card rounded-xl border border-border">
-            <CheckCircle className="w-8 h-8 text-accent mb-4" />
-            <h3 className="font-semibold text-foreground text-lg mb-2">Platform + products demonstrable</h3>
-            <p className="text-muted-foreground text-sm">End-to-end demo available.</p>
-          </div>
-          <div className="flex flex-col items-center text-center p-6 bg-card rounded-xl border border-border">
-            <Shield className="w-8 h-8 text-primary mb-4" />
-            <h3 className="font-semibold text-foreground text-lg mb-2">Designed for regulated adoption</h3>
-            <p className="text-muted-foreground text-sm">Governance, audit trails, and controls.</p>
-          </div>
-          <div className="flex flex-col items-center text-center p-6 bg-card rounded-xl border border-border">
-            <TrendingUp className="w-8 h-8 text-accent mb-4" />
-            <h3 className="font-semibold text-foreground text-lg mb-2">Deployable across industries</h3>
-            <p className="text-muted-foreground text-sm">Delivered through implementation services.</p>
-          </div>
-        </div>
-
-        {/* Light Dashboard Mock */}
-        <div className="relative max-w-4xl mx-auto rounded-xl overflow-hidden border border-border bg-card shadow-sm">
-          <div className="bg-secondary px-4 py-2 flex items-center gap-2 border-b border-border">
-            <div className="flex gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-destructive/60"></div>
-              <div className="w-2.5 h-2.5 rounded-full bg-accent/60"></div>
-              <div className="w-2.5 h-2.5 rounded-full bg-accent/40"></div>
+        {/* Traction Strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-4 max-w-5xl mx-auto"
+        >
+          {stats.map((stat, i) => (
+            <div
+              key={i}
+              className={`text-center ${i === 4 ? "col-span-2 md:col-span-1" : ""}`}
+            >
+              <p className="font-heading font-bold text-5xl md:text-[56px] text-foreground mb-2 leading-none">
+                {stat.value}
+              </p>
+              <p className="font-body text-sm md:text-[15px] text-muted-foreground leading-snug">
+                {stat.label}
+              </p>
             </div>
-            <div className="ml-4 text-[10px] text-muted-foreground font-mono">AliphLiveDemo</div>
-          </div>
+          ))}
+        </motion.div>
 
-          <div className="aspect-video bg-secondary/50 relative flex items-center justify-center p-8">
-            <div className="text-center">
-              <p className="text-muted-foreground text-sm mb-4">Interactive Control Plane Dashboard</p>
-              <Link to="/demo" className="px-6 py-3 bg-accent text-accent-foreground font-bold rounded-lg hover:brightness-110 transition-all">
-                Click to Book Live Demo
-              </Link>
-            </div>
-
-            <div className="absolute top-10 left-10 w-48 h-32 bg-border/30 rounded border border-border"></div>
-            <div className="absolute bottom-10 right-10 w-64 h-48 bg-border/30 rounded border border-border"></div>
-            <div className="absolute top-12 right-12 w-32 h-8 bg-border/30 rounded border border-border"></div>
-          </div>
-        </div>
-
-        <div className="mt-12 text-center">
-          <Link to="/demo" className="inline-block px-10 py-4 bg-primary text-primary-foreground text-lg font-bold rounded-lg hover:opacity-90 shadow-sm transition-all">
-            Book a Demo
-          </Link>
-        </div>
+        {/* Closing Line */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-center text-lg md:text-xl font-medium text-foreground/80 italic mt-16"
+        >
+          "This isn't a roadmap. It's what exists today."
+        </motion.p>
       </div>
     </section>
   );
