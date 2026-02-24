@@ -1,21 +1,21 @@
 import { motion } from "framer-motion";
-import { AlertTriangle, FileWarning, BrainCircuit } from "lucide-react";
+import { ShieldAlert, EyeOff, BrainCog } from "lucide-react";
 
 const risks = [
   {
-    icon: AlertTriangle,
-    title: "Data sovereignty risk",
-    desc: "Employees paste sensitive text into AI tools every day.",
+    icon: ShieldAlert,
+    title: "Data leaves silently",
+    desc: "Every ChatGPT or Copilot query transmits prompts to foreign servers. Client names, financial figures, contract terms — gone in a keystroke. PDPL penalties reach SAR 5M per violation.",
   },
   {
-    icon: FileWarning,
-    title: "No auditability",
-    desc: "No consistent policies, logs, or oversight across teams.",
+    icon: EyeOff,
+    title: "No visibility into what's shared",
+    desc: "You have no audit trail. No log of which employee sent what data to which model. When SDAIA asks for your AI governance records, the answer today is silence.",
   },
   {
-    icon: BrainCircuit,
-    title: "Knowledge leakage",
-    desc: "Institutional know-how spreads across tools and turnover.",
+    icon: BrainCog,
+    title: "Knowledge walks out the door",
+    desc: "When your senior compliance lead or partner leaves, every regulatory interpretation, client history, and precedent decision they carried leaves with them. Permanently.",
   },
 ];
 
@@ -24,13 +24,34 @@ const RiskCards = () => {
     <section className="py-24 bg-background">
       <div className="container px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6">
-            AI is already inside your organization.{" "}
-            <span className="text-destructive">It's just not governed.</span>
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            Teams are drafting contracts, policies, reports, and uploading documents into AI tools. Without a control layer, leaders can't see what data is shared, where it goes, or how to audit usage.
-          </p>
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-destructive mb-4"
+          >
+            The Hidden Risk
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6"
+          >
+            Every query is a decision.{" "}
+            <span className="text-destructive">Most of them happen without you.</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="text-xl text-muted-foreground"
+          >
+            Your employees ask AI to summarize contracts, draft emails with client names, analyze financials, and rewrite HR policies. Every one of those queries sends sensitive data to servers outside the Kingdom — with no audit trail, no access control, and no way to know what was shared.
+          </motion.p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
