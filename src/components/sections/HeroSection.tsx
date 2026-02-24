@@ -1,18 +1,25 @@
-import { ArrowRight, Activity, Shield, Brain, Eye, Workflow } from "lucide-react";
+import { ArrowRight, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
+const trustItems = [
+  "PDPL Compliant",
+  "SAMA Aligned",
+  "Vision 2030 Ready",
+  "Azure KSA Region",
+  "Arabic + English",
+];
+
 const controlPlaneNodes = [
   { icon: Shield, label: "Privacy Shield", delay: 0.4 },
-  { icon: Brain, label: "Organization Memory", delay: 0.5 },
-  { icon: Eye, label: "AI Governance", delay: 0.6 },
-  { icon: Workflow, label: "Multi-Agent AI", delay: 0.7 },
+  { icon: Shield, label: "Organization Memory", delay: 0.5 },
+  { icon: Shield, label: "AI Governance", delay: 0.6 },
+  { icon: Shield, label: "Multi-Agent AI", delay: 0.7 },
 ];
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-background">
-      {/* Subtle gradient accent */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -26,48 +33,70 @@ const HeroSection = () => {
               transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-semibold tracking-widest uppercase mb-6"
             >
-              <Activity className="w-3 h-3" />
-              Deployment-Ready
+              For Enterprises in Saudi Arabia & GCC
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight leading-[1.08] text-foreground mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold tracking-tight leading-[1.12] text-foreground mb-6"
             >
-              Adopt AI—without losing{" "}
-              <span className="text-gradient">control.</span>
+              Your teams already use AI.
+              <br />
+              <span className="text-gradient">You just don't govern it yet.</span>
             </motion.h1>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl text-muted-foreground max-w-xl font-body leading-relaxed mb-8 mx-auto lg:mx-0"
+              className="max-w-xl mx-auto lg:mx-0 mb-8 space-y-4"
             >
-              Aliph is the sovereign AI Control Plane for enterprise—governing how teams use modern AI while protecting sensitive data and preserving institutional knowledge.
-            </motion.p>
+              <p className="text-lg text-muted-foreground font-body leading-relaxed">
+                <span className="text-foreground font-semibold">The Privacy Layer:</span>{" "}
+                Aliph sits between your employees and global AI models like ChatGPT, Claude, and Gemini — stripping sensitive data before any query leaves your walls.
+              </p>
+              <p className="text-lg text-muted-foreground font-body leading-relaxed">
+                <span className="text-foreground font-semibold">The Platform Power:</span>{" "}
+                But Aliph isn't just a safety net. It's a sovereign AI platform with agentic workflows that automate compliance, draft documents, and turn your organization's knowledge into a permanent, searchable intelligence layer.
+              </p>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-8"
             >
               <Link
                 to="/demo"
                 className="w-full sm:w-auto px-8 py-4 bg-accent hover:brightness-110 text-accent-foreground rounded-lg font-semibold transition-all duration-200 shadow-sm hover:shadow-md flex items-center justify-center gap-2 group"
               >
-                Book a Demo
+                See it in action
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                to="/platform"
+                to="/resources/pdpl-guide"
                 className="w-full sm:w-auto px-8 py-4 bg-secondary hover:bg-secondary/80 text-foreground border border-border rounded-lg font-semibold transition-all duration-200 flex items-center justify-center gap-2"
               >
-                Explore the Platform
+                Get the PDPL Guide
               </Link>
+            </motion.div>
+
+            {/* Trust Bar */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="flex flex-wrap items-center gap-x-2 gap-y-1 justify-center lg:justify-start text-xs text-muted-foreground font-body"
+            >
+              {trustItems.map((item, i) => (
+                <span key={item} className="flex items-center gap-1.5">
+                  {i > 0 && <span className="text-border">·</span>}
+                  {item}
+                </span>
+              ))}
             </motion.div>
           </div>
 
@@ -79,7 +108,6 @@ const HeroSection = () => {
             className="hidden lg:flex items-center justify-center"
           >
             <div className="relative w-full max-w-md aspect-square">
-              {/* Central hub */}
               <motion.div
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -87,12 +115,11 @@ const HeroSection = () => {
                 className="absolute inset-0 m-auto w-32 h-32 rounded-2xl bg-accent/10 border border-accent/20 flex flex-col items-center justify-center z-10"
               >
                 <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center mb-2">
-                  <Activity className="w-5 h-5 text-accent" />
+                  <Shield className="w-5 h-5 text-accent" />
                 </div>
                 <span className="font-heading font-semibold text-xs text-foreground">Control Plane</span>
               </motion.div>
 
-              {/* Orbiting nodes */}
               {controlPlaneNodes.map((node, i) => {
                 const angle = (i * 90 - 45) * (Math.PI / 180);
                 const radius = 160;
@@ -115,7 +142,6 @@ const HeroSection = () => {
                 );
               })}
 
-              {/* Connecting lines (decorative) */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 400">
                 {controlPlaneNodes.map((_, i) => {
                   const angle = (i * 90 - 45) * (Math.PI / 180);
