@@ -60,20 +60,6 @@ const Outcomes = () => {
           ))}
         </div>
 
-        {/* Transition line */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-16 max-w-2xl mx-auto"
-        >
-          <p className="text-xl font-heading font-bold text-foreground mb-2">
-            Two products. One sovereign foundation.
-          </p>
-          <p className="text-muted-foreground font-body leading-relaxed">
-            Both built on the same four-layer architecture. Both ready for deployment.
-          </p>
-        </motion.div>
       </div>
     </section>
   );
