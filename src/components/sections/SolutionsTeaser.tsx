@@ -160,6 +160,12 @@ const SolutionsTeaser = () => {
                     </span>
                   ))}
                 </div>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 text-accent font-bold hover:gap-3 transition-all pt-2"
+                >
+                  Talk to us <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             </div>
           </motion.div>
@@ -196,26 +202,6 @@ const SolutionsTeaser = () => {
           </div>
         </motion.div>
 
-        {/* Additional Sectors */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center mt-14"
-        >
-          <p className="text-[15px] font-medium text-foreground mb-2">
-            Also serving: Real Estate & Property Management · Hospitality & Tourism · Education · Government · Enterprise Conglomerates
-          </p>
-          <p className="text-sm text-muted-foreground mb-4">
-            The four-layer architecture is sector-agnostic. Each industry gets pre-configured regulatory modules and domain-specific workflows. Don't see your sector?
-          </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 text-accent font-bold hover:gap-3 transition-all"
-          >
-            Talk to us <ArrowRight className="w-4 h-4" />
-          </Link>
-        </motion.div>
       </div>
     </section>
   );
