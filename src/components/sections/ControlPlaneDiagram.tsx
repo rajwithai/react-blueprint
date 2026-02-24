@@ -39,7 +39,7 @@ const ControlPlaneDiagram = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-16 max-w-4xl">
+        <div className="grid md:grid-cols-2 gap-6 mb-16 max-w-4xl mx-auto">
           <div className="bg-card rounded-2xl border border-border p-8">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
@@ -242,7 +242,6 @@ const ControlPlaneDiagram = () => {
                     <Shield className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Tab 1</span>
                     <h4 className="font-heading font-bold text-foreground text-lg">Aliph GRC Platform</h4>
                   </div>
                 </div>
@@ -264,7 +263,6 @@ const ControlPlaneDiagram = () => {
                     <Bot className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Tab 2</span>
                     <h4 className="font-heading font-bold text-foreground text-lg">AliphChat</h4>
                   </div>
                 </div>
