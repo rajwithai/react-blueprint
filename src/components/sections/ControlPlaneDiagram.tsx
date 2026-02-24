@@ -2,8 +2,23 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Server, Cloud, Shield, Lock, Database,
-  Layers, Globe, CheckCircle2, Bot
+  Layers, Globe, CheckCircle2, Bot, ArrowRight, Users, Building2
 } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const whatPeopleGet = [
+  "Access to Claude, GPT-4, Gemini — safely",
+  "AI that works offline, on-device",
+  "Each employee sees only what they're authorized to",
+  "Ask anything in Arabic or English",
+];
+
+const whatOrgControls = [
+  "Sensitive data stripped from every external query",
+  "PDPL, SAMA, and NCA mapped automatically",
+  "Full audit trail — who asked what, when, with what data",
+  "Agentic AI that drafts, validates, and learns from your work",
+];
 
 const ControlPlaneDiagram = () => {
   const [mode, setMode] = useState<"onprem" | "cloud">("cloud");
@@ -11,29 +26,56 @@ const ControlPlaneDiagram = () => {
   return (
     <section className="py-24 bg-secondary overflow-hidden">
       <div className="container px-4 md:px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between mb-16 gap-8">
-          <div className="text-center md:text-left">
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-2">
-              The Aliph Control Plane
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              One governance layer between your enterprise data and modern AI.
-            </p>
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={mode}
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -5 }}
-                className="text-sm font-medium text-foreground/60 mt-2"
-              >
-                {mode === "onprem"
-                  ? "Runs inside your environment for maximum control and data locality."
-                  : "Deployed in sovereign infrastructure with enterprise-grade governance and auditability."}
-              </motion.p>
-            </AnimatePresence>
+        <div className="mb-16 max-w-4xl">
+          <p className="text-accent uppercase tracking-[0.3em] text-xs font-heading font-semibold mb-5">
+            THE ALIPH PLATFORM
+          </p>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-4 leading-[1.1]">
+            One layer between your people and AI.{" "}
+            <span className="text-muted-foreground">Fully governed. Fully sovereign.</span>
+          </h2>
+          <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
+            Aliph sits inside your infrastructure. Every AI query is intercepted, sensitive data is stripped before it leaves, every interaction is logged for compliance, and your organization's knowledge stays — even when people don't.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6 mb-16 max-w-4xl">
+          <div className="bg-card rounded-2xl border border-border p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+                <Users className="w-5 h-5 text-accent" />
+              </div>
+              <h3 className="font-heading font-bold text-foreground text-lg">What your people get</h3>
+            </div>
+            <ul className="space-y-3">
+              {whatPeopleGet.map((item, i) => (
+                <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
+                  <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
 
+          <div className="bg-card rounded-2xl border border-border p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Building2 className="w-5 h-5 text-primary" />
+              </div>
+              <h3 className="font-heading font-bold text-foreground text-lg">What your organization controls</h3>
+            </div>
+            <ul className="space-y-3">
+              {whatOrgControls.map((item, i) => (
+                <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
+                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="flex justify-end mb-8">
           <div className="bg-card p-1 rounded-lg border border-border flex items-center">
             <button
               onClick={() => setMode("onprem")}
@@ -193,31 +235,50 @@ const ControlPlaneDiagram = () => {
               <span className="bg-secondary text-muted-foreground px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest border border-border">Governed Outputs</span>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-              <div className="bg-card p-6 rounded-xl border border-border flex items-start gap-4 hover:border-primary transition-colors group">
-                <div className="p-3 bg-primary/5 rounded-lg text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  <Shield className="w-6 h-6" />
+            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              <div className="bg-card p-8 rounded-xl border border-border hover:border-primary transition-colors group">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="p-3 bg-primary/5 rounded-lg text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <Shield className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Tab 1</span>
+                    <h4 className="font-heading font-bold text-foreground text-lg">Aliph GRC Platform</h4>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-bold text-foreground">Aliph GRC Platform</h4>
-                  <p className="text-sm text-muted-foreground">Compliance & risk workflows</p>
-                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                  Compliance work that used to take months — done in days. Agentic AI handles research, drafting, and validation so your team handles judgment.
+                </p>
+                <Link
+                  to="/grc-platform"
+                  className="inline-flex items-center gap-2 text-sm font-heading font-semibold text-accent hover:gap-3 transition-all group/link"
+                >
+                  Try Aliph GRC
+                  <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                </Link>
               </div>
-              <div className="bg-card p-6 rounded-xl border border-border flex items-start gap-4 hover:border-primary transition-colors group">
-                <div className="p-3 bg-primary/5 rounded-lg text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  <Bot className="w-6 h-6" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-foreground">AliphChat</h4>
-                  <p className="text-sm text-muted-foreground">Governed enterprise assistant</p>
-                </div>
-              </div>
-            </div>
 
-            <div className="mt-8 text-center">
-              <p className="text-xs text-muted-foreground font-medium">
-                Used across: <span className="text-foreground font-semibold">Financial Services • Healthcare • Professional Services • Conglomerates • PIF Portfolio & Government</span>
-              </p>
+              <div className="bg-card p-8 rounded-xl border border-border hover:border-primary transition-colors group">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="p-3 bg-primary/5 rounded-lg text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <Bot className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Tab 2</span>
+                    <h4 className="font-heading font-bold text-foreground text-lg">AliphChat</h4>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                  Every employee gets ChatGPT-level intelligence. Zero sensitive data leaves your walls. Answers cite their sources.
+                </p>
+                <Link
+                  to="/aliph-chat"
+                  className="inline-flex items-center gap-2 text-sm font-heading font-semibold text-accent hover:gap-3 transition-all group/link"
+                >
+                  Try AliphChat
+                  <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
