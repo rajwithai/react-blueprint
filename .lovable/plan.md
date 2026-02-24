@@ -1,97 +1,43 @@
 
 
-# Hero Section Visual Redesign — Full Content, Beautiful Layout
+## Fix: Make "How It Actually Works" Section Visually Attractive
 
-## Problem
-The current hero has two issues visible in the screenshot:
-1. **Right side appears empty** — the Control Plane diagram is too faint (accent/10 backgrounds, 0.15 opacity lines) to create any visual impact
-2. **Left side is a text wall** — badge, headline, two dense paragraphs, two CTAs, and a trust bar all stacked vertically creates visual fatigue
+### Problem
+The right content panel currently shows a plain icon in a small box alongside text. It feels flat and utilitarian. You want something more visually appealing -- gradients, imagery, or decorative elements instead of simple Lucide icons.
 
-## Proposed Layout — Centered-Top + Split-Bottom Approach
+### Solution
+Replace the small icon box in the right content panel with a large, visually rich gradient banner/hero area unique to each tab. Each tab gets its own signature gradient and a larger decorative icon treatment, creating a premium, Apple-inspired feel.
 
-Instead of cramming everything into a left column, restructure the hero into **two visual zones** while keeping all content:
+### Changes (single file: `PlatformPillars.tsx`)
 
-```text
-+------------------------------------------------------------------+
-|                                                                    |
-|          FOR ENTERPRISES IN SAUDI ARABIA & GCC  (badge)           |
-|                                                                    |
-|              Your teams already use AI.                            |
-|         You just don't govern it yet.  (centered headline)        |
-|                                                                    |
-|        [See it in action]    [Get the PDPL Guide]  (centered)     |
-|   PDPL Compliant · SAMA Aligned · Vision 2030 · Azure · Arabic   |
-|                                                                    |
-+------------------------------------------------------------------+
-|                                                                    |
-|  +---------------------------+   +----------------------------+   |
-|  | Shield Icon               |   | Layers Icon                |   |
-|  | THE PRIVACY LAYER         |   | THE PLATFORM POWER         |   |
-|  | Aliph sits between your   |   | But Aliph isn't just a     |   |
-|  | employees and global AI   |   | safety net. It's a         |   |
-|  | models like ChatGPT...    |   | sovereign AI platform...   |   |
-|  +---------------------------+   +----------------------------+   |
-|                                                                    |
-+------------------------------------------------------------------+
-```
+**1. Add unique gradient definitions per tab**
 
-### Zone 1 — Top: Centered Impact Block
-- Badge, headline, CTAs, and trust bar are **centered on the page**
-- Headline gets full width to breathe — no competing right column
-- CTAs sit directly under the headline for immediate conversion
-- Trust bar right below CTAs as a confidence strip
-- This follows the Apple product page pattern (centered hero text, no split)
+Each tab gets a distinct gradient palette:
+- **Privacy Shield** -- Deep blue-to-indigo gradient (conveys security/trust)
+- **Organization Memory** -- Amber-to-orange gradient (conveys knowledge/warmth)
+- **Governance & Auditability** -- Emerald-to-teal gradient (conveys compliance/clarity)
+- **Governed Model Connectivity** -- Purple-to-violet gradient (conveys connectivity/innovation)
 
-### Zone 2 — Bottom: Two Value Proposition Cards
-- The two subtext paragraphs ("The Privacy Layer" and "The Platform Power") become **two side-by-side glass cards** in a 2-column grid
-- Each card has: a subtle icon (Shield for privacy, Brain/Layers for platform), the bold label, and the paragraph text
-- Cards use `bg-card border border-border` with subtle hover effect
-- On mobile, they stack vertically
-- This separates the "what is it" explanation from the "grab attention" headline
+**2. Replace the small icon box with a gradient banner**
 
-### Visual Enhancements
-- Add a subtle animated gradient orb behind the headline (larger, more visible than current blurs)
-- The trust bar items get small checkmark icons instead of plain dots for more visual weight
-- Cards get a very subtle entrance animation (fade-in-up with stagger)
+In the right panel, instead of the current 48x48 icon box, render a large rounded card (~160-200px tall) with:
+- The tab's gradient as background
+- A large, semi-transparent white icon (48px) centered or offset
+- Subtle decorative circles/orbs in the background for depth (CSS-only, no images needed)
+- A soft glow/shadow matching the gradient color
 
-## Technical Changes
+**3. Update mobile accordion**
 
-**File:** `src/components/sections/HeroSection.tsx`
+Add a smaller version of the gradient banner inside each expanded accordion item for visual consistency on mobile.
 
-### Removals
-- Remove the entire right-side Control Plane diagram (the `lg:grid-cols-2` split layout)
-- Remove the SVG lines and orbital node positioning logic
+**4. Keep left tabs as-is**
 
-### Structure Changes
-- Change the grid from `lg:grid-cols-2` to a single centered column
-- Move headline, badge, CTAs, trust bar into a centered block with `text-center` and `max-w-4xl mx-auto`
-- Create two value proposition cards below in a `grid md:grid-cols-2 gap-6` layout
-- Each card: `rounded-2xl bg-card border border-border p-8` with icon + label + paragraph
+The left tab icons remain small and functional -- only the right panel content area gets the visual upgrade.
 
-### Content (unchanged)
-- Badge: "FOR ENTERPRISES IN SAUDI ARABIA & GCC"
-- Headline: "Your teams already use AI. / You just don't govern it yet."
-- Privacy Layer paragraph (full text)
-- Platform Power paragraph (full text)
-- CTAs: "See it in action" + "Get the PDPL Guide"
-- Trust bar: all 5 items
+### Technical Details
 
-### Icons
-- Privacy Layer card: `Shield` icon from lucide-react (already imported)
-- Platform Power card: `Brain` icon from lucide-react (new import)
-- Trust bar: `Check` icon from lucide-react for each item
-
-### Animations
-- Badge: fade-in-up (0s delay)
-- Headline: fade-in-up (0.1s delay)
-- CTAs: fade-in-up (0.2s delay)
-- Trust bar: fade-in (0.3s delay)
-- Left card: fade-in-up (0.4s delay)
-- Right card: fade-in-up (0.5s delay)
-
-### Mobile Behavior
-- Everything centered and stacked
-- Cards stack to single column
-- Full-width CTAs on small screens
-- Headline scales down to `text-3xl` on mobile
+- Gradients are defined as inline styles or Tailwind arbitrary values per tab in the `tabs` array (e.g., `gradient: "from-blue-600 to-indigo-700"`)
+- Decorative orbs use absolutely positioned `div` elements with `rounded-full`, `opacity`, and `blur` classes
+- No new dependencies or images required -- pure CSS/Tailwind gradients
+- All existing content (titles, body text), animation behavior (`AnimatePresence`), and interaction logic remain unchanged
 
