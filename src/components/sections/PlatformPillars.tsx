@@ -72,7 +72,7 @@ const PlatformPillars = () => {
         {/* Desktop */}
         <div className="hidden md:grid md:grid-cols-12 gap-0 rounded-2xl border border-border bg-card overflow-hidden shadow-sm">
           {/* Left tabs — 30% */}
-          <div className="md:col-span-4 border-r border-border bg-secondary/30">
+          <div className="md:col-span-4 border-r border-border bg-secondary/30 flex flex-col">
             {tabs.map((tab, i) => {
               const isActive = active === i;
               const Icon = tab.icon;
@@ -118,7 +118,7 @@ const PlatformPillars = () => {
           </div>
 
           {/* Right content — 70% */}
-          <div className="md:col-span-8 p-10 lg:p-14 flex flex-col justify-center min-h-[420px]">
+          <div className="md:col-span-8 p-8 lg:p-10 flex flex-col justify-center overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -130,7 +130,7 @@ const PlatformPillars = () => {
               >
                 {/* Gradient banner */}
                 <div
-                  className={`relative w-full h-[180px] rounded-2xl bg-gradient-to-br ${current.gradient} overflow-hidden mb-8`}
+                  className={`relative w-full h-[140px] rounded-2xl bg-gradient-to-br ${current.gradient} overflow-hidden mb-6`}
                   style={{ boxShadow: `0 12px 40px -8px ${current.glowColor}` }}
                 >
                   {/* Decorative orbs */}
@@ -143,10 +143,10 @@ const PlatformPillars = () => {
                   </div>
                 </div>
 
-                <h3 className="text-2xl lg:text-3xl font-heading font-bold text-foreground mb-4 leading-snug">
+                <h3 className="text-xl lg:text-2xl font-heading font-bold text-foreground mb-3 leading-snug">
                   {current.title}
                 </h3>
-                <p className="text-base text-muted-foreground font-body leading-relaxed max-w-xl">
+                <p className="text-sm text-muted-foreground font-body leading-relaxed max-w-xl">
                   {current.body}
                 </p>
               </motion.div>
