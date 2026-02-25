@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { Shield, Brain, Eye, Network, Server, ArrowRight, ChevronRight } from "lucide-react";
+import { Server, ArrowRight, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Section from "@/components/sections/Section";
 import CTABanner from "@/components/sections/CTABanner";
-import MidPageCTA from "@/components/sections/MidPageCTA";
+import PlatformLayers from "@/components/sections/PlatformLayers";
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -256,148 +256,22 @@ const Platform = () => {
         </motion.div>
       </Section>
 
-      {/* SECTION 4 — Layer 1: Privacy Shield */}
+      {/* SECTION 4 — The Four Layers */}
       <Section>
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <div>
-            <motion.div {...fadeUp} className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
-                <Shield className="w-5 h-5 text-accent" strokeWidth={1.5} />
-              </div>
-              <span className="text-accent uppercase tracking-[0.2em] text-xs font-body font-semibold">Layer 1</span>
-            </motion.div>
-            <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-6 text-foreground tracking-tight">
-              Privacy Enforcement Before Inference.
-            </motion.h2>
-            <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-muted-foreground leading-relaxed text-[15px] mb-6">
-              Before any query reaches an AI model, the Privacy Shield performs runtime policy enforcement — masking, blocking, or minimizing sensitive data based on configurable rules.
-            </motion.p>
-            <motion.p {...fadeUp} transition={{ delay: 0.15 }} className="font-body text-muted-foreground/70 leading-relaxed text-[15px]">
-              This is automatic enforcement at the infrastructure level — not documentation, not guidelines, not optional configuration. Every interaction is governed before inference begins.
-            </motion.p>
-          </div>
-          <motion.div {...fadeUp} transition={{ delay: 0.2 }} className="bento-card rounded-xl p-8">
-            <div className="space-y-4">
-              {["PII Detection (Arabic & English)", "Runtime Policy Enforcement", "Data Minimization Rules", "Automatic Masking & Blocking"].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-secondary border border-border">
-                  <div className="w-2 h-2 rounded-full bg-accent" />
-                  <span className="font-body text-sm text-foreground">{item}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+        <div className="text-center mb-14">
+          <motion.p {...fadeUp} className="text-accent uppercase tracking-[0.25em] text-xs font-body font-semibold mb-4">
+            THE FOUR LAYERS
+          </motion.p>
+          <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-4 text-foreground tracking-tight">
+            Four layers. One sovereign platform.
+          </motion.h2>
+          <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-muted-foreground max-w-[640px] mx-auto">
+            Every capability is built in — not bolted on. They work together automatically from the moment you deploy.
+          </motion.p>
         </div>
-      </Section>
-
-      {/* Mid-Page CTA */}
-      <MidPageCTA
-        title="See the Control Plane live."
-        subtitle="Walk through a real governance workflow mapped to your environment."
-        primaryCta={{ label: "Book a Demo", href: "/demo" }}
-        secondaryCta={{ label: "Download Architecture Brief", href: "/contact" }}
-      />
-
-      {/* SECTION 5 — Layer 2: Organization Memory */}
-      <Section alabaster>
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <motion.div {...fadeUp} transition={{ delay: 0.1 }} className="order-2 lg:order-1">
-            <div className="bento-card p-8">
-              <div className="space-y-4">
-                {["Structured Internal Memory", "Context Persistence Across Sessions", "Permissioned Access Controls", "Zero External Exposure"].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-secondary border border-border">
-                    <div className="w-2 h-2 rounded-full bg-accent" />
-                    <span className="font-body text-sm text-foreground">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-          <div className="order-1 lg:order-2">
-            <motion.div {...fadeUp} className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
-                <Brain className="w-5 h-5 text-accent" strokeWidth={1.5} />
-              </div>
-              <span className="text-accent uppercase tracking-[0.2em] text-xs font-body font-semibold">Layer 2</span>
-            </motion.div>
-            <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-6 text-foreground tracking-tight">
-              Institutional Knowledge Structuring.
-            </motion.h2>
-            <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-muted-foreground leading-relaxed text-[15px] mb-4">
-              Organization Memory captures and structures institutional knowledge — creating a persistent, permissioned intelligence layer that enriches AI responses with enterprise context.
-            </motion.p>
-            <motion.p {...fadeUp} transition={{ delay: 0.15 }} className="font-body text-muted-foreground leading-relaxed text-[15px]">
-              Knowledge remains internal. No enterprise data is exposed to external providers. Context persists across sessions and users within governed access boundaries.
-            </motion.p>
-          </div>
-        </div>
-      </Section>
-
-      {/* SECTION 6 — Layer 3: Governance & Auditability */}
-      <Section>
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <div>
-            <motion.div {...fadeUp} className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
-                <Eye className="w-5 h-5 text-accent" strokeWidth={1.5} />
-              </div>
-              <span className="text-accent uppercase tracking-[0.2em] text-xs font-body font-semibold">Layer 3</span>
-            </motion.div>
-            <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-6 text-foreground tracking-tight">
-              Oversight Embedded in Every Interaction.
-            </motion.h2>
-            <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-muted-foreground leading-relaxed text-[15px] mb-4">
-              Every query, every response, every model access — logged immutably. Governance is not a reporting layer applied after the fact. It is embedded in the interaction itself.
-            </motion.p>
-            <motion.p {...fadeUp} transition={{ delay: 0.15 }} className="font-body text-muted-foreground/70 leading-relaxed text-[15px]">
-              Usage tracking, model access visibility, and full traceability ensure that AI operations remain accountable infrastructure — not opaque tooling.
-            </motion.p>
-          </div>
-          <motion.div {...fadeUp} transition={{ delay: 0.2 }} className="bento-card rounded-xl p-8">
-            <div className="space-y-4">
-              {["Immutable Interaction Logging", "Model Access Visibility", "Usage & Cost Tracking", "Full Audit Trail per Query"].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-secondary border border-border">
-                  <div className="w-2 h-2 rounded-full bg-accent" />
-                  <span className="font-body text-sm text-foreground">{item}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </Section>
-
-      {/* SECTION 7 — Layer 4: Governed Connectivity */}
-      <Section alabaster>
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <motion.div {...fadeUp} transition={{ delay: 0.1 }} className="order-2 lg:order-1">
-            <div className="bento-card p-8">
-              <div className="space-y-4">
-                {["Private On-Premise Models", "Sovereign Cloud Models", "Approved External Providers", "Policy-Controlled Routing Rules"].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-secondary border border-border">
-                    <div className="w-2 h-2 rounded-full bg-accent" />
-                    <span className="font-body text-sm text-foreground">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-          <div className="order-1 lg:order-2">
-            <motion.div {...fadeUp} className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
-                <Network className="w-5 h-5 text-accent" strokeWidth={1.5} />
-              </div>
-              <span className="text-accent uppercase tracking-[0.2em] text-xs font-body font-semibold">Layer 4</span>
-            </motion.div>
-            <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-6 text-foreground tracking-tight">
-              Controlled Model Routing.
-            </motion.h2>
-            <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-muted-foreground leading-relaxed text-[15px] mb-4">
-              The Control Plane connects to private models, sovereign cloud models, and approved external providers — but only through policy-controlled routing.
-            </motion.p>
-            <motion.p {...fadeUp} transition={{ delay: 0.15 }} className="font-body text-muted-foreground leading-relaxed text-[15px]">
-              No direct model access. Every connection is governed by routing rules that enforce organizational policy, data residency requirements, and model selection criteria.
-            </motion.p>
-          </div>
-        </div>
+        <motion.div {...fadeUp} transition={{ delay: 0.15 }}>
+          <PlatformLayers />
+        </motion.div>
       </Section>
 
       {/* SECTION 8 — Deployment Architecture */}
