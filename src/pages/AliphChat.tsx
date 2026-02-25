@@ -5,7 +5,7 @@ import TrustBar from "@/components/sections/TrustBar";
 import Section from "@/components/sections/Section";
 import AlternatingFeature from "@/components/sections/AlternatingFeature";
 import ImpactStats from "@/components/sections/ImpactStats";
-import ComparisonTable from "@/components/sections/ComparisonTable";
+
 import MidPageCTA from "@/components/sections/MidPageCTA";
 import CTABanner from "@/components/sections/CTABanner";
 import ParallaxImage from "@/components/sections/ParallaxImage";
@@ -224,24 +224,118 @@ const AliphChat = () => {
 
 
 
-      {/* 7. Comparison Table */}
-      <ComparisonTable
-        title="Why not just use ChatGPT?"
-        subtitle="Generic AI tools weren't built for regulated enterprise. AliphChat was."
-        competitorName="ChatGPT / Copilot"
-        aliphName="AliphChat"
-        rows={[
-          { feature: "Data stays sovereign", competitor: false, aliph: true },
-          { feature: "Searches your documents", competitor: false, aliph: true },
-          { feature: "PII masking", competitor: false, aliph: true },
-          { feature: "Native Arabic", competitor: false, aliph: true },
-          { feature: "Complete audit trail", competitor: false, aliph: true },
-          { feature: "PDPL compliant", competitor: false, aliph: true },
-          { feature: "Inherits permissions", competitor: false, aliph: true },
-          { feature: "Source citations", competitor: false, aliph: true },
-        ]}
-        alabaster
-      />
+      {/* Section: The Real Comparison */}
+      <Section alabaster>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-accent uppercase tracking-[0.25em] text-xs font-heading font-semibold mb-4 text-center"
+        >
+          THE REAL COMPARISON
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-bold text-3xl md:text-4xl mb-4 text-foreground text-center tracking-tight"
+        >
+          Your team already uses ChatGPT.{" "}
+          <br className="hidden sm:block" />
+          Here's what that's actually costing you.
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.05 }}
+          className="font-body text-muted-foreground mb-12 text-center max-w-2xl mx-auto"
+        >
+          This isn't about features. It's about what happens to your data, your compliance, and your institutional knowledge with each choice.
+        </motion.p>
+
+        <div className="max-w-4xl mx-auto rounded-2xl border border-border overflow-hidden bg-card">
+          {/* Header */}
+          <div className="grid grid-cols-[1.2fr_1fr_1fr] bg-secondary">
+            <div className="p-4">
+              <span className="font-heading font-semibold text-sm text-muted-foreground">What happens when...</span>
+            </div>
+            <div className="p-4 text-center border-l border-border">
+              <span className="font-heading font-semibold text-sm text-muted-foreground">ChatGPT / Copilot</span>
+            </div>
+            <div className="p-4 text-center border-l border-accent/20 bg-accent/5">
+              <span className="font-heading font-semibold text-sm text-accent">AliphChat</span>
+            </div>
+          </div>
+
+          {[
+            {
+              scenario: "An employee pastes client data into a prompt",
+              competitor: "Data sent to external servers. No control. No record.",
+              aliph: "Privacy Shield strips PII before anything leaves. Full audit trail.",
+            },
+            {
+              scenario: "SDAIA requests a compliance audit",
+              competitor: "No logs. No proof of what was shared or when.",
+              aliph: "Every interaction logged to immutable audit trail. Export-ready.",
+            },
+            {
+              scenario: "Someone asks about internal company policy",
+              competitor: "Hallucinates an answer from public internet data.",
+              aliph: "Searches Organization Memory first. Cites the actual policy document.",
+            },
+            {
+              scenario: "A senior employee resigns",
+              competitor: "Their knowledge walks out the door.",
+              aliph: "Their documents are already indexed. Knowledge stays.",
+            },
+            {
+              scenario: "Arabic language queries are needed",
+              competitor: "Inconsistent Arabic. No bilingual NER.",
+              aliph: "Native Arabic + English. Bilingual entity recognition built in.",
+            },
+            {
+              scenario: "Different teams need different access levels",
+              competitor: "Everyone sees everything. Or nothing.",
+              aliph: "Inherits your existing directory permissions automatically.",
+            },
+            {
+              scenario: "You want to switch AI models later",
+              competitor: "Locked into one vendor's ecosystem.",
+              aliph: "Global LLM Gateway routes to any model. Switch anytime.",
+            },
+          ].map((row, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -8 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.03 }}
+              className="grid grid-cols-[1.2fr_1fr_1fr] border-t border-border"
+            >
+              <div className="p-4">
+                <span className="font-body text-sm font-medium text-foreground">{row.scenario}</span>
+              </div>
+              <div className="p-4 border-l border-border">
+                <span className="font-body text-sm text-muted-foreground">{row.competitor}</span>
+              </div>
+              <div className="p-4 border-l border-accent/20 bg-accent/5">
+                <span className="font-body text-sm text-foreground">{row.aliph}</span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-semibold text-lg text-center text-muted-foreground mt-10 max-w-xl mx-auto"
+        >
+          ChatGPT is a powerful tool.{" "}
+          <span className="text-foreground">AliphChat makes it safe for enterprise.</span>
+        </motion.p>
+      </Section>
 
       {/* 8. Mid-page CTA */}
       <MidPageCTA
