@@ -1,24 +1,139 @@
-import { Search, ShieldCheck, Users, MessageSquare, Zap, Globe } from "lucide-react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { Search, ShieldCheck, Users, MessageSquare, Zap, Globe, Check } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import SplitHero from "@/components/sections/SplitHero";
-import TrustBar from "@/components/sections/TrustBar";
 import Section from "@/components/sections/Section";
-import AlternatingFeature from "@/components/sections/AlternatingFeature";
-import ImpactStats from "@/components/sections/ImpactStats";
-
-import MidPageCTA from "@/components/sections/MidPageCTA";
-import CTABanner from "@/components/sections/CTABanner";
-import ParallaxImage from "@/components/sections/ParallaxImage";
 import FeatureCard from "@/components/sections/FeatureCard";
+import CTABanner from "@/components/sections/CTABanner";
 import heroChatImg from "@/assets/images/hero-chat-ui.jpg";
-import teamImg from "@/assets/images/team-collaboration.jpg";
-import platformImg from "@/assets/images/platform-architecture.jpg";
-import privacyImg from "@/assets/images/privacy-shield-hero.jpg";
+
+/* ─── Section 4: Capabilities Tab Data ─── */
+const capabilities = [
+  {
+    tab: "Your Knowledge Comes First",
+    title: "Answers from your own documents — before any external AI is called.",
+    body1:
+      "When an employee asks a question, AliphChat searches across your organization's documents first — Google Drive, SharePoint, shared folders, uploaded files. If the answer exists internally, it's delivered instantly with source citations showing exactly which document and which section.",
+    body2:
+      "No external AI call is made. No data leaves. Your institutional knowledge becomes the first line of intelligence.",
+    proofs: [
+      "Searches across all connected knowledge sources simultaneously",
+      "Citations include document name, section, and page reference",
+      "The more your team uses it, the more comprehensive the knowledge becomes",
+    ],
+  },
+  {
+    tab: "Your Data Never Leaves Unprotected",
+    title: "Sensitive data detected and handled before any external query.",
+    body1:
+      "When AliphChat needs to call an external AI model — Claude, GPT-4, or Gemini — the Privacy Shield scans the full query first. Personal identifiers, financial data, company information, and regulated data categories are detected in both Arabic and English and handled automatically.",
+    body2:
+      "The external AI model receives the question. It never receives the context. Your employee gets the full answer. Your data stays sovereign.",
+    proofs: [
+      "Arabic and English detection — not translated, natively built",
+      "Covers all PDPL-regulated data categories",
+      "Automatic — no employee action or judgment required",
+    ],
+  },
+  {
+    tab: "Every Employee Sees Only What They Should",
+    title: "Permissions inherited from your existing directory. Zero configuration.",
+    body1:
+      "AliphChat inherits your organization's existing file permissions automatically. When an employee asks a question, they only receive answers from documents they're already authorized to access. A junior analyst and a managing partner ask the same question — they get different answers, sourced from different documents, based on their existing access level.",
+    body2:
+      "No new permission system to configure. No admin overhead. It works from day one.",
+    proofs: [
+      "Inherits from Google Workspace, Microsoft 365, or custom directory",
+      "No IT configuration — works immediately on deployment",
+      "Access levels update automatically when permissions change",
+    ],
+  },
+];
+
+/* ─── Comparison Table Data ─── */
+const comparisonRows = [
+  {
+    scenario: "...an employee pastes client data into a query?",
+    competitor:
+      "Sent to US servers. Stored for training unless enterprise plan opted out. You have no visibility.",
+    aliph:
+      "Privacy Shield detects and strips sensitive data before it leaves your walls. Original query stays internal.",
+  },
+  {
+    scenario: "...you need to prove compliance to SDAIA?",
+    competitor:
+      "No audit trail of what employees asked or what data was shared. You have nothing to show.",
+    aliph:
+      "Every interaction logged — who asked, what data, which model, when. Exportable compliance reports ready for review.",
+  },
+  {
+    scenario: "...an employee asks about an internal policy?",
+    competitor:
+      "Answers from public internet data. Doesn't know your policies exist. May hallucinate an answer.",
+    aliph:
+      "Searches your Organization Memory first. Answers from your actual documents with page-level citations.",
+  },
+  {
+    scenario: "...your senior risk officer resigns?",
+    competitor:
+      "Their knowledge walks out the door. Nothing was captured.",
+    aliph:
+      "Organization Memory retains every document, every insight, every interaction. New hires access it from day one.",
+  },
+  {
+    scenario: "...you need responses in Arabic?",
+    competitor:
+      "Supports Arabic but doesn't detect Arabic PII or understand Saudi regulatory terminology natively.",
+    aliph:
+      "Arabic and English built in — including PII detection, regulatory terminology, and document processing in both languages.",
+  },
+  {
+    scenario: "...different employees need different access levels?",
+    competitor:
+      "Everyone sees everything. No permission inheritance. No role-based access to knowledge.",
+    aliph:
+      "Inherits your existing directory permissions. Each employee only sees documents they're authorized to access. Zero admin configuration.",
+  },
+  {
+    scenario: "...you want to switch AI models?",
+    competitor:
+      "Locked to OpenAI. Switching means rebuilding everything.",
+    aliph:
+      "Access Claude, GPT-4, Gemini, and others through one governed layer. Switch models without changing anything for users.",
+  },
+];
+
+/* ─── How It Works Steps ─── */
+const steps = [
+  {
+    step: "01",
+    title: "Connect your knowledge.",
+    desc: "Point AliphChat at your existing knowledge sources — Google Drive, SharePoint, shared folders, CRM exports, employee uploads. Aliph indexes everything and inherits your existing file permissions automatically. No data migration. No manual tagging. It just works.",
+  },
+  {
+    step: "02",
+    title: "Your employee asks a question.",
+    desc: "In Arabic or English. About a client contract, a compliance regulation, an internal policy, last quarter's performance, or anything else. They ask naturally — like talking to a colleague who's read every document in the company.",
+  },
+  {
+    step: "03",
+    title: "Aliph searches your documents first. Protects your data if it goes further.",
+    desc: "AliphChat checks your Organization Memory before calling any external AI. If the answer exists internally, it's delivered instantly — no external call made. If external AI is needed, the Privacy Shield activates — sensitive data is stripped before anything leaves your walls.",
+    highlight: true,
+  },
+  {
+    step: "04",
+    title: "Answer delivered. Sources cited. Everything logged.",
+    desc: "Your employee gets a clear, accurate answer with citations showing exactly where the information came from — which document, which section, which page. The full interaction is logged to an immutable audit trail. Your compliance team can review any interaction at any time.",
+  },
+];
 
 const AliphChat = () => {
+  const [activeTab, setActiveTab] = useState(0);
+
   return (
     <>
-      {/* 1. Split Hero */}
+      {/* ══════ SECTION 1: HERO ══════ */}
       <SplitHero
         eyebrow="ALIPHCHAT — SOVEREIGN ENTERPRISE AI ASSISTANT"
         title="Ask anything. Expose nothing."
@@ -35,17 +150,7 @@ const AliphChat = () => {
         imageAlt="AliphChat enterprise AI interface"
       />
 
-      {/* 2. Trust Bar */}
-      <TrustBar
-        stats={[
-          { value: "95%+", label: "Query accuracy" },
-          { value: "2", label: "Languages supported" },
-          { value: "Zero", label: "PII exposure" },
-          { value: "Days", label: "Time to deploy" },
-        ]}
-      />
-
-      {/* 2. How It Works — 4-Step Pipeline */}
+      {/* ══════ SECTION 2: HOW IT WORKS ══════ */}
       <Section id="how-it-works">
         <motion.p
           initial={{ opacity: 0, y: 12 }}
@@ -76,32 +181,7 @@ const AliphChat = () => {
         </motion.p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 max-w-5xl mx-auto">
-          {[
-            {
-              step: "01",
-              title: "Connect your knowledge.",
-              desc: "Point at Google Drive, SharePoint, shared folders. Aliph indexes everything. Inherits your permissions. No data migration.",
-              highlight: false,
-            },
-            {
-              step: "02",
-              title: "Your employee asks a question.",
-              desc: "In Arabic or English. About contracts, regulations, policies, performance — anything. Like talking to a colleague who's read every document in the company.",
-              highlight: false,
-            },
-            {
-              step: "03",
-              title: "Aliph searches your documents first. Protects your data if it goes further.",
-              desc: "Checks Organization Memory before any external call. If external AI needed, Privacy Shield strips sensitive data first.",
-              highlight: true,
-            },
-            {
-              step: "04",
-              title: "Answer delivered. Sources cited. Everything logged.",
-              desc: "Clear answer with document citations. Full interaction logged to immutable audit trail. Compliance-ready at any moment.",
-              highlight: false,
-            },
-          ].map((s, i) => (
+          {steps.map((s, i) => (
             <motion.div
               key={s.step}
               initial={{ opacity: 0, y: 24 }}
@@ -110,6 +190,7 @@ const AliphChat = () => {
               transition={{ delay: i * 0.1 }}
               className="relative flex"
             >
+              {/* Desktop arrow */}
               {i > 0 && (
                 <div className="hidden lg:flex absolute -left-3 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="text-accent">
@@ -117,6 +198,7 @@ const AliphChat = () => {
                   </svg>
                 </div>
               )}
+              {/* Mobile arrow */}
               {i > 0 && (
                 <div className="flex lg:hidden absolute -top-5 left-1/2 -translate-x-1/2 z-10">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="text-accent">
@@ -145,7 +227,7 @@ const AliphChat = () => {
         </div>
       </Section>
 
-      {/* 3. The Real Comparison */}
+      {/* ══════ SECTION 3: THE REAL COMPARISON ══════ */}
       <Section alabaster>
         <motion.p
           initial={{ opacity: 0, y: 12 }}
@@ -175,57 +257,22 @@ const AliphChat = () => {
           This isn't about features. It's about what happens to your data, your compliance, and your institutional knowledge with each choice.
         </motion.p>
 
-        <div className="max-w-4xl mx-auto rounded-2xl border border-border overflow-hidden bg-card">
+        {/* Desktop Table */}
+        <div className="hidden md:block max-w-[1100px] mx-auto rounded-2xl border border-border overflow-hidden bg-card">
           {/* Header */}
-          <div className="grid grid-cols-[1.2fr_1fr_1fr] bg-secondary">
-            <div className="p-4">
-              <span className="font-heading font-semibold text-sm text-muted-foreground">What happens when...</span>
+          <div className="grid grid-cols-[1.2fr_1fr_1fr]">
+            <div className="p-5 border-b border-border">
+              <span className="font-heading font-semibold text-[15px] text-foreground">What happens when...</span>
             </div>
-            <div className="p-4 text-center border-l border-border">
-              <span className="font-heading font-semibold text-sm text-muted-foreground">ChatGPT / Copilot</span>
+            <div className="p-5 border-b border-border border-l bg-secondary/50">
+              <span className="font-heading font-semibold text-[15px] text-muted-foreground">ChatGPT / Copilot</span>
             </div>
-            <div className="p-4 text-center border-l border-accent/20 bg-accent/5">
-              <span className="font-heading font-semibold text-sm text-accent">AliphChat</span>
+            <div className="p-5 border-b border-border border-l">
+              <span className="font-heading font-semibold text-[15px] text-accent">AliphChat</span>
             </div>
           </div>
 
-          {[
-            {
-              scenario: "An employee pastes client data into a prompt",
-              competitor: "Data sent to external servers. No control. No record.",
-              aliph: "Privacy Shield strips PII before anything leaves. Full audit trail.",
-            },
-            {
-              scenario: "SDAIA requests a compliance audit",
-              competitor: "No logs. No proof of what was shared or when.",
-              aliph: "Every interaction logged to immutable audit trail. Export-ready.",
-            },
-            {
-              scenario: "Someone asks about internal company policy",
-              competitor: "Hallucinates an answer from public internet data.",
-              aliph: "Searches Organization Memory first. Cites the actual policy document.",
-            },
-            {
-              scenario: "A senior employee resigns",
-              competitor: "Their knowledge walks out the door.",
-              aliph: "Their documents are already indexed. Knowledge stays.",
-            },
-            {
-              scenario: "Arabic language queries are needed",
-              competitor: "Inconsistent Arabic. No bilingual NER.",
-              aliph: "Native Arabic + English. Bilingual entity recognition built in.",
-            },
-            {
-              scenario: "Different teams need different access levels",
-              competitor: "Everyone sees everything. Or nothing.",
-              aliph: "Inherits your existing directory permissions automatically.",
-            },
-            {
-              scenario: "You want to switch AI models later",
-              competitor: "Locked into one vendor's ecosystem.",
-              aliph: "Global LLM Gateway routes to any model. Switch anytime.",
-            },
-          ].map((row, i) => (
+          {comparisonRows.map((row, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, x: -8 }}
@@ -234,14 +281,40 @@ const AliphChat = () => {
               transition={{ delay: i * 0.03 }}
               className="grid grid-cols-[1.2fr_1fr_1fr] border-t border-border"
             >
-              <div className="p-4">
-                <span className="font-body text-sm font-medium text-foreground">{row.scenario}</span>
+              <div className="p-5">
+                <span className="font-body text-sm font-semibold text-foreground">{row.scenario}</span>
               </div>
-              <div className="p-4 border-l border-border">
+              <div className="p-5 border-l border-border bg-secondary/50">
                 <span className="font-body text-sm text-muted-foreground">{row.competitor}</span>
               </div>
-              <div className="p-4 border-l border-accent/20 bg-accent/5">
+              <div className="p-5 border-l border-border">
                 <span className="font-body text-sm text-foreground">{row.aliph}</span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Mobile Cards */}
+        <div className="md:hidden space-y-4 max-w-lg mx-auto">
+          {comparisonRows.map((row, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+              className="rounded-xl border border-border bg-card overflow-hidden"
+            >
+              <div className="p-4 bg-secondary/30 border-b border-border">
+                <span className="font-body text-sm font-semibold text-foreground">{row.scenario}</span>
+              </div>
+              <div className="p-4 bg-secondary/50 border-b border-border">
+                <span className="font-body text-xs uppercase tracking-wider text-muted-foreground font-semibold">ChatGPT / Copilot</span>
+                <p className="font-body text-sm text-muted-foreground mt-1">{row.competitor}</p>
+              </div>
+              <div className="p-4">
+                <span className="font-body text-xs uppercase tracking-wider text-accent font-semibold">AliphChat</span>
+                <p className="font-body text-sm text-foreground mt-1">{row.aliph}</p>
               </div>
             </motion.div>
           ))}
@@ -258,94 +331,139 @@ const AliphChat = () => {
         </motion.p>
       </Section>
 
-      {/* 4. Product Showcase Parallax */}
-      <ParallaxImage
-        src={platformImg}
-        alt="AliphChat platform in action"
-        className="h-[50vh] md:h-[60vh]"
-        speed={0.2}
-        overlay
-        overlayOpacity={0.3}
-      >
-        <div className="container mx-auto px-6 py-20 lg:py-28 text-center text-white">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-4"
-          >
-            Enterprise AI that knows your business.
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="font-body text-lg text-white/80 max-w-xl mx-auto"
-          >
-            Deployed in days, not months. Your team is productive from week one.
-          </motion.p>
-        </div>
-      </ParallaxImage>
-
-      {/* 4. Alternating Features */}
-      <AlternatingFeature
-        features={[
-          {
-            eyebrow: "SEARCH",
-            icon: Search,
-            title: "Sovereign Search",
-            description: "Ask in Arabic, English, or both. Answers come from your own knowledge base first — with the source document cited.",
-            bullets: ["Multi-turn conversations", "Confidence scoring", "Source citations on every answer", "Cross-document reasoning"],
-            image: heroChatImg,
-            imageAlt: "Sovereign search interface",
-            link: { label: "Learn more", href: "/products/organization-memory" },
-          },
-          {
-            eyebrow: "PRIVACY",
-            icon: ShieldCheck,
-            title: "Built-in Privacy Engine",
-            description: "Every query is scanned for sensitive data. Every entity is masked before external AI is reached. Encrypted. Expiring. Auditable.",
-            bullets: ["Automatic PII detection", "Bilingual NER (Arabic & English)", "Zero data transmitted externally", "Complete audit trail"],
-            image: privacyImg,
-            imageAlt: "Privacy Shield masking flow",
-            link: { label: "Learn more", href: "/products/privacy-shield" },
-          },
-          {
-            eyebrow: "PERMISSIONS",
-            icon: Users,
-            title: "Inherited Permissions",
-            description: "No new access structures to build. AliphChat sees exactly what each employee is authorized to see in your existing systems.",
-            bullets: ["Google Workspace integration", "Microsoft 365 support", "Network drive access", "SSO provisioning"],
-            image: teamImg,
-            imageAlt: "Permission-based access control",
-          },
-        ]}
-      />
-
-      {/* 5. Impact Stats */}
-      <ImpactStats
-        eyebrow="IMPACT"
-        title="The difference is measurable."
-        stats={[
-          { value: "95%+", label: "Accuracy Rate", detail: "On enterprise knowledge queries" },
-          { value: "<3s", label: "Response Time", detail: "Average query to cited answer" },
-          { value: "100%", label: "Audit Coverage", detail: "Every interaction logged" },
-          { value: "Days", label: "Deployment", detail: "Not months. Not quarters." },
-        ]}
-      />
-
-
-      {/* 8. Mid-page CTA */}
-      <MidPageCTA
-        title="See AliphChat in action."
-        subtitle="Book a personalized demo with your own data."
-        primaryCta={{ label: "Request a Demo", href: "/demo" }}
-        secondaryCta={{ label: "Contact Sales", href: "/contact" }}
-      />
-
-      {/* 9. Use Cases */}
+      {/* ══════ SECTION 4: THREE CAPABILITIES (Tabbed) ══════ */}
       <Section>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-accent uppercase tracking-[0.25em] text-xs font-heading font-semibold mb-4 text-center"
+        >
+          WHAT MAKES ALIPHCHAT DIFFERENT
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-bold text-3xl md:text-4xl mb-4 text-foreground text-center tracking-tight"
+        >
+          Three things no other enterprise AI assistant does.
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.05 }}
+          className="font-body text-muted-foreground mb-10 text-center max-w-xl mx-auto"
+        >
+          These aren't add-ons. They're built into every interaction, every query, every answer.
+        </motion.p>
+
+        <div className="max-w-[1200px] mx-auto">
+          {/* Desktop: side-by-side tabs */}
+          <div className="hidden md:grid md:grid-cols-[30%_70%] gap-0 rounded-2xl border border-border overflow-hidden bg-card">
+            {/* Tab Navigation */}
+            <div className="border-r border-border bg-secondary/30">
+              {capabilities.map((cap, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveTab(i)}
+                  className={`w-full text-left px-6 py-5 border-b border-border transition-all text-sm font-heading font-medium ${
+                    activeTab === i
+                      ? "bg-accent/10 text-foreground font-semibold border-l-[3px] border-l-accent"
+                      : "text-muted-foreground hover:bg-secondary/60 border-l-[3px] border-l-transparent"
+                  }`}
+                >
+                  {cap.tab}
+                </button>
+              ))}
+            </div>
+
+            {/* Content Panel */}
+            <div className="p-8 lg:p-10 min-h-[380px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <h3 className="font-heading font-bold text-xl lg:text-2xl text-foreground mb-5 leading-snug">
+                    {capabilities[activeTab].title}
+                  </h3>
+                  <p className="font-body text-muted-foreground leading-relaxed mb-4">
+                    {capabilities[activeTab].body1}
+                  </p>
+                  <p className="font-body text-muted-foreground leading-relaxed mb-6">
+                    {capabilities[activeTab].body2}
+                  </p>
+                  <div className="space-y-3">
+                    {capabilities[activeTab].proofs.map((proof, j) => (
+                      <div key={j} className="flex items-start gap-3">
+                        <Check className="w-4 h-4 text-accent mt-0.5 shrink-0" />
+                        <span className="font-body text-[15px] text-foreground">{proof}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* Mobile: accordion-style */}
+          <div className="md:hidden space-y-3">
+            {capabilities.map((cap, i) => (
+              <div key={i} className="rounded-xl border border-border bg-card overflow-hidden">
+                <button
+                  onClick={() => setActiveTab(activeTab === i ? -1 : i)}
+                  className={`w-full text-left px-5 py-4 font-heading font-medium text-sm transition-all ${
+                    activeTab === i
+                      ? "bg-accent/10 text-foreground font-semibold border-l-[3px] border-l-accent"
+                      : "text-muted-foreground border-l-[3px] border-l-transparent"
+                  }`}
+                >
+                  {cap.tab}
+                </button>
+                <AnimatePresence>
+                  {activeTab === i && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-5 pb-5 pt-2">
+                        <h3 className="font-heading font-bold text-lg text-foreground mb-4 leading-snug">
+                          {cap.title}
+                        </h3>
+                        <p className="font-body text-sm text-muted-foreground leading-relaxed mb-3">
+                          {cap.body1}
+                        </p>
+                        <p className="font-body text-sm text-muted-foreground leading-relaxed mb-5">
+                          {cap.body2}
+                        </p>
+                        <div className="space-y-2.5">
+                          {cap.proofs.map((proof, j) => (
+                            <div key={j} className="flex items-start gap-2.5">
+                              <Check className="w-4 h-4 text-accent mt-0.5 shrink-0" />
+                              <span className="font-body text-sm text-foreground">{proof}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* ══════ USE CASES (kept) ══════ */}
+      <Section alabaster>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -371,7 +489,7 @@ const AliphChat = () => {
         </div>
       </Section>
 
-      {/* 10. Final CTA */}
+      {/* ══════ FINAL CTA (kept) ══════ */}
       <CTABanner
         title="Give your team world-class AI without the risk."
         subtitle="No commitment. No credit card. See it live."
