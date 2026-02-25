@@ -2,6 +2,11 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
+interface SplitHeroMetric {
+  value: string;
+  label: string;
+}
+
 interface SplitHeroProps {
   eyebrow?: string;
   title: string;
@@ -10,6 +15,7 @@ interface SplitHeroProps {
   secondaryCta?: { label: string; href: string };
   badge?: string;
   trustText?: string;
+  metrics?: SplitHeroMetric[];
   image: string;
   imageAlt: string;
 }
@@ -22,6 +28,7 @@ const SplitHero = ({
   secondaryCta,
   badge,
   trustText,
+  metrics,
   image,
   imageAlt,
 }: SplitHeroProps) => {
@@ -30,7 +37,7 @@ const SplitHero = ({
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 blur-[140px] rounded-full pointer-events-none" />
 
       <div className="container relative z-10 px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-[55fr_45fr] gap-12 lg:gap-16 items-center">
           {/* Left: Copy */}
           <div>
             {eyebrow && (
@@ -103,6 +110,22 @@ const SplitHero = ({
               >
                 {trustText}
               </motion.p>
+            )}
+
+            {metrics && metrics.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.45 }}
+                className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-8 pt-8 border-t border-border/60"
+              >
+                {metrics.map((m, i) => (
+                  <div key={i}>
+                    <p className="font-heading font-bold text-xl text-foreground">{m.value}</p>
+                    <p className="font-body text-xs text-muted-foreground mt-0.5">{m.label}</p>
+                  </div>
+                ))}
+              </motion.div>
             )}
           </div>
 

@@ -20,12 +20,17 @@ const AliphChat = () => {
     <>
       {/* 1. Split Hero */}
       <SplitHero
-        eyebrow="ALIPHCHAT"
+        eyebrow="ALIPHCHAT — SOVEREIGN ENTERPRISE AI ASSISTANT"
         title="Ask anything. Expose nothing."
-        subtitle="An enterprise AI assistant that searches your organization's knowledge first — and when it reaches beyond, your sensitive data has already been stripped. Arabic & English. Every answer cited."
-        primaryCta={{ label: "Request a Demo", href: "/demo" }}
-        secondaryCta={{ label: "Contact Sales", href: "/contact?inquiry=demo&source=aliphchat" }}
-        trustText="No commitment required. Free personalized demo."
+        subtitle="Give every employee ChatGPT-level intelligence. Keep every byte of sensitive data inside your walls. Arabic and English. Fully audited. Deployed in days."
+        primaryCta={{ label: "Try AliphChat", href: "/demo" }}
+        secondaryCta={{ label: "See How It Works ↓", href: "#how-it-works" }}
+        metrics={[
+          { value: "Zero", label: "Data exposure" },
+          { value: "Arabic + English", label: "Natively built in" },
+          { value: "Days", label: "To deploy" },
+          { value: "Every", label: "Interaction logged" },
+        ]}
         image={heroChatImg}
         imageAlt="AliphChat enterprise AI interface"
       />
