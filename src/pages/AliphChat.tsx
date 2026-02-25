@@ -145,86 +145,7 @@ const AliphChat = () => {
         </div>
       </Section>
 
-      {/* 3. Product Showcase Parallax */}
-      <ParallaxImage
-        src={platformImg}
-        alt="AliphChat platform in action"
-        className="h-[50vh] md:h-[60vh]"
-        speed={0.2}
-        overlay
-        overlayOpacity={0.3}
-      >
-        <div className="container mx-auto px-6 py-20 lg:py-28 text-center text-white">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-4"
-          >
-            Enterprise AI that knows your business.
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="font-body text-lg text-white/80 max-w-xl mx-auto"
-          >
-            Deployed in days, not months. Your team is productive from week one.
-          </motion.p>
-        </div>
-      </ParallaxImage>
-
-      {/* 4. Alternating Features */}
-      <AlternatingFeature
-        features={[
-          {
-            eyebrow: "SEARCH",
-            icon: Search,
-            title: "Sovereign Search",
-            description: "Ask in Arabic, English, or both. Answers come from your own knowledge base first — with the source document cited.",
-            bullets: ["Multi-turn conversations", "Confidence scoring", "Source citations on every answer", "Cross-document reasoning"],
-            image: heroChatImg,
-            imageAlt: "Sovereign search interface",
-            link: { label: "Learn more", href: "/products/organization-memory" },
-          },
-          {
-            eyebrow: "PRIVACY",
-            icon: ShieldCheck,
-            title: "Built-in Privacy Engine",
-            description: "Every query is scanned for sensitive data. Every entity is masked before external AI is reached. Encrypted. Expiring. Auditable.",
-            bullets: ["Automatic PII detection", "Bilingual NER (Arabic & English)", "Zero data transmitted externally", "Complete audit trail"],
-            image: privacyImg,
-            imageAlt: "Privacy Shield masking flow",
-            link: { label: "Learn more", href: "/products/privacy-shield" },
-          },
-          {
-            eyebrow: "PERMISSIONS",
-            icon: Users,
-            title: "Inherited Permissions",
-            description: "No new access structures to build. AliphChat sees exactly what each employee is authorized to see in your existing systems.",
-            bullets: ["Google Workspace integration", "Microsoft 365 support", "Network drive access", "SSO provisioning"],
-            image: teamImg,
-            imageAlt: "Permission-based access control",
-          },
-        ]}
-      />
-
-      {/* 5. Impact Stats */}
-      <ImpactStats
-        eyebrow="IMPACT"
-        title="The difference is measurable."
-        stats={[
-          { value: "95%+", label: "Accuracy Rate", detail: "On enterprise knowledge queries" },
-          { value: "<3s", label: "Response Time", detail: "Average query to cited answer" },
-          { value: "100%", label: "Audit Coverage", detail: "Every interaction logged" },
-          { value: "Days", label: "Deployment", detail: "Not months. Not quarters." },
-        ]}
-      />
-
-
-
-      {/* Section: The Real Comparison */}
+      {/* 3. The Real Comparison */}
       <Section alabaster>
         <motion.p
           initial={{ opacity: 0, y: 12 }}
@@ -336,6 +257,84 @@ const AliphChat = () => {
           <span className="text-foreground">AliphChat makes it safe for enterprise.</span>
         </motion.p>
       </Section>
+
+      {/* 4. Product Showcase Parallax */}
+      <ParallaxImage
+        src={platformImg}
+        alt="AliphChat platform in action"
+        className="h-[50vh] md:h-[60vh]"
+        speed={0.2}
+        overlay
+        overlayOpacity={0.3}
+      >
+        <div className="container mx-auto px-6 py-20 lg:py-28 text-center text-white">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-4"
+          >
+            Enterprise AI that knows your business.
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-body text-lg text-white/80 max-w-xl mx-auto"
+          >
+            Deployed in days, not months. Your team is productive from week one.
+          </motion.p>
+        </div>
+      </ParallaxImage>
+
+      {/* 4. Alternating Features */}
+      <AlternatingFeature
+        features={[
+          {
+            eyebrow: "SEARCH",
+            icon: Search,
+            title: "Sovereign Search",
+            description: "Ask in Arabic, English, or both. Answers come from your own knowledge base first — with the source document cited.",
+            bullets: ["Multi-turn conversations", "Confidence scoring", "Source citations on every answer", "Cross-document reasoning"],
+            image: heroChatImg,
+            imageAlt: "Sovereign search interface",
+            link: { label: "Learn more", href: "/products/organization-memory" },
+          },
+          {
+            eyebrow: "PRIVACY",
+            icon: ShieldCheck,
+            title: "Built-in Privacy Engine",
+            description: "Every query is scanned for sensitive data. Every entity is masked before external AI is reached. Encrypted. Expiring. Auditable.",
+            bullets: ["Automatic PII detection", "Bilingual NER (Arabic & English)", "Zero data transmitted externally", "Complete audit trail"],
+            image: privacyImg,
+            imageAlt: "Privacy Shield masking flow",
+            link: { label: "Learn more", href: "/products/privacy-shield" },
+          },
+          {
+            eyebrow: "PERMISSIONS",
+            icon: Users,
+            title: "Inherited Permissions",
+            description: "No new access structures to build. AliphChat sees exactly what each employee is authorized to see in your existing systems.",
+            bullets: ["Google Workspace integration", "Microsoft 365 support", "Network drive access", "SSO provisioning"],
+            image: teamImg,
+            imageAlt: "Permission-based access control",
+          },
+        ]}
+      />
+
+      {/* 5. Impact Stats */}
+      <ImpactStats
+        eyebrow="IMPACT"
+        title="The difference is measurable."
+        stats={[
+          { value: "95%+", label: "Accuracy Rate", detail: "On enterprise knowledge queries" },
+          { value: "<3s", label: "Response Time", detail: "Average query to cited answer" },
+          { value: "100%", label: "Audit Coverage", detail: "Every interaction logged" },
+          { value: "Days", label: "Deployment", detail: "Not months. Not quarters." },
+        ]}
+      />
+
 
       {/* 8. Mid-page CTA */}
       <MidPageCTA
