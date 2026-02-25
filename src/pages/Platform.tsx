@@ -12,17 +12,6 @@ const fadeUp = {
   transition: { duration: 0.5 },
 };
 
-const flowSteps = [
-  "User or system initiates query.",
-  "Query enters Control Plane.",
-  "Policy evaluation applied.",
-  "Sensitive elements detected.",
-  "Routing decision executed.",
-  "Inference performed via governed pathway.",
-  "Output logged.",
-  "Organizational memory optionally updated.",
-];
-
 const Platform = () => {
   return (
     <>
@@ -110,20 +99,22 @@ const Platform = () => {
       </section>
 
       {/* SECTION 2 — The Problem */}
-      <section id="architecture" className="relative bg-[hsl(220,20%,8%)]">
-        <div className="container mx-auto px-6 py-20 lg:py-28 relative z-10">
+      <section id="architecture" className="relative bg-[hsl(220,20%,8%)] py-16 md:py-20 lg:py-24">
+        <div className="container mx-auto px-6 relative z-10">
           <motion.p {...fadeUp} className="text-accent uppercase tracking-[0.25em] text-xs font-body font-semibold mb-4">
             THE PROBLEM
           </motion.p>
-          <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-12 text-white tracking-tight max-w-3xl">
+          <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-14 text-white tracking-tight max-w-3xl">
             Without a governance layer, this is what happens every time your team uses AI.
           </motion.h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-0">
             {/* LEFT — Without Aliph */}
-            <motion.div {...fadeUp} transition={{ delay: 0.1 }} className="rounded-xl border border-red-500/20 bg-red-500/5 p-8">
-              <h3 className="font-heading font-semibold text-lg text-red-400 mb-6">Today (Without Aliph)</h3>
-              <div className="space-y-4 mb-8">
+            <motion.div {...fadeUp} transition={{ delay: 0.1 }} className="md:border-r md:border-white/10 md:pr-10 lg:pr-14">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-red-500/15 border border-red-500/25 font-body text-xs font-semibold text-red-400 mb-8 tracking-wide">
+                Without Aliph
+              </span>
+              <div className="space-y-0">
                 {[
                   "Employee pastes client contract into ChatGPT",
                   "Full text — names, financials, terms — sent to US servers",
@@ -131,23 +122,43 @@ const Platform = () => {
                   "AI responds with no source citations",
                   "Employee acts on unverified information",
                 ].map((step, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <span className="w-6 h-6 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center shrink-0 mt-0.5">
-                      <span className="font-heading text-xs font-bold text-red-400">{i + 1}</span>
-                    </span>
-                    <p className="font-body text-sm text-white/70 leading-relaxed">{step}</p>
+                  <div key={i}>
+                    <div className="flex items-start gap-4">
+                      <div className="flex flex-col items-center">
+                        <span className="w-7 h-7 rounded-full bg-red-500/15 border border-red-500/25 flex items-center justify-center shrink-0">
+                          <span className="font-heading text-xs font-bold text-red-400">{i + 1}</span>
+                        </span>
+                      </div>
+                      <p className="font-body text-sm text-white/70 leading-relaxed pt-1">{step}</p>
+                    </div>
+                    {i < 4 && (
+                      <div className="flex items-center ml-3.5 py-1.5">
+                        <div className="w-px h-5 bg-red-500/20" />
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
-              <div className="border-t border-red-500/20 pt-4">
-                <p className="font-body text-sm text-red-400 font-semibold">→ PDPL violation. No audit trail. No recourse.</p>
+              <div className="mt-6 rounded-lg border border-red-500/30 bg-red-500/10 p-5">
+                <p className="font-heading font-bold text-red-400 text-base">
+                  PDPL violation. No audit trail. No recourse.
+                </p>
               </div>
             </motion.div>
 
+            {/* Divider on mobile */}
+            <div className="flex items-center justify-center md:hidden py-4">
+              <div className="h-px w-16 bg-white/10" />
+              <span className="mx-4 font-body text-xs text-white/30 uppercase tracking-widest">vs</span>
+              <div className="h-px w-16 bg-white/10" />
+            </div>
+
             {/* RIGHT — With Aliph */}
-            <motion.div {...fadeUp} transition={{ delay: 0.15 }} className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-8">
-              <h3 className="font-heading font-semibold text-lg text-emerald-400 mb-6">With Aliph</h3>
-              <div className="space-y-4 mb-8">
+            <motion.div {...fadeUp} transition={{ delay: 0.15 }} className="md:pl-10 lg:pl-14">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/25 font-body text-xs font-semibold text-emerald-400 mb-8 tracking-wide">
+                With Aliph
+              </span>
+              <div className="space-y-0">
                 {[
                   "Employee asks question through AliphChat",
                   "Aliph searches organization's own documents first",
@@ -155,49 +166,94 @@ const Platform = () => {
                   "AI responds. Tokens restored. Sources cited.",
                   "Employee acts on verified, attributed information",
                 ].map((step, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <span className="w-6 h-6 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 mt-0.5">
-                      <span className="font-heading text-xs font-bold text-emerald-400">{i + 1}</span>
-                    </span>
-                    <p className="font-body text-sm text-white/70 leading-relaxed">{step}</p>
+                  <div key={i}>
+                    <div className="flex items-start gap-4">
+                      <div className="flex flex-col items-center">
+                        <span className="w-7 h-7 rounded-full bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center shrink-0">
+                          <span className="font-heading text-xs font-bold text-emerald-400">{i + 1}</span>
+                        </span>
+                      </div>
+                      <p className="font-body text-sm text-white/70 leading-relaxed pt-1">{step}</p>
+                    </div>
+                    {i < 4 && (
+                      <div className="flex items-center ml-3.5 py-1.5">
+                        <div className="w-px h-5 bg-emerald-500/20" />
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
-              <div className="border-t border-emerald-500/20 pt-4">
-                <p className="font-body text-sm text-emerald-400 font-semibold">→ Compliant. Audited. Sovereign.</p>
+              <div className="mt-6 rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-5">
+                <p className="font-heading font-bold text-emerald-400 text-base">
+                  Compliant. Audited. Sovereign.
+                </p>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3 — System Flow */}
+      {/* SECTION 3 — Four Guarantees */}
       <Section alabaster>
-        <motion.h2 {...fadeUp} className="font-heading font-bold text-3xl md:text-4xl mb-4 text-foreground tracking-tight">
-          System Flow: From Query to Controlled Intelligence.
-        </motion.h2>
-        <motion.p {...fadeUp} transition={{ delay: 0.05 }} className="font-body text-muted-foreground mb-12 max-w-2xl">
-          Every query follows a governed pathway through the Control Plane.
+        <motion.p {...fadeUp} className="text-accent uppercase tracking-[0.25em] text-xs font-body font-semibold mb-4">
+          WHAT THE PLATFORM GUARANTEES
         </motion.p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {flowSteps.map((step, i) => (
+        <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-4 text-foreground tracking-tight max-w-3xl">
+          Four things that happen every time your team uses AI through Aliph.
+        </motion.h2>
+        <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-muted-foreground mb-12 max-w-[680px]">
+          No exceptions. No manual configuration. Automatic from day one.
+        </motion.p>
+
+        <div className="grid md:grid-cols-2 gap-5">
+          {[
+            {
+              num: "01",
+              title: "Your data is checked before it leaves.",
+              body: "Every query is evaluated against your organization's policies. If sensitive data is detected — in Arabic or English — it's handled before any external AI model sees it.",
+            },
+            {
+              num: "02",
+              title: "Your own knowledge is searched first.",
+              body: "Before calling any external model, Aliph checks your organization's documents, filtered by employee permissions. If the answer exists internally, no external call is ever made.",
+            },
+            {
+              num: "03",
+              title: "Every response is sourced.",
+              body: "No black-box answers. Every response includes citations — whether from your internal documents or external AI. Your team knows where every answer came from.",
+            },
+            {
+              num: "04",
+              title: "Everything is logged for compliance.",
+              body: "Full audit trail on every interaction. Who asked. What was involved. When it happened. Ready for regulatory review at any moment.",
+            },
+          ].map((card, i) => (
             <motion.div
-              key={i}
+              key={card.num}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.06 }}
-              className="bento-card p-6"
+              transition={{ delay: i * 0.07 }}
+              className="rounded-xl border border-border bg-card p-8 hover:shadow-md transition-shadow"
             >
-              <div className="flex items-center gap-3 mb-3">
-                <span className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center font-heading font-bold text-sm text-accent">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-              </div>
-              <p className="font-body text-sm text-foreground leading-relaxed">{step}</p>
+              <span className="font-heading font-semibold text-[2rem] text-accent leading-none">{card.num}</span>
+              <h3 className="font-heading font-bold text-lg text-foreground mt-4 mb-3">{card.title}</h3>
+              <p className="font-body text-[15px] text-muted-foreground leading-relaxed">{card.body}</p>
             </motion.div>
           ))}
         </div>
+
+        <motion.div {...fadeUp} transition={{ delay: 0.3 }} className="text-center mt-14">
+          <p className="font-body text-foreground text-base font-medium mb-5">
+            Want to see the full architecture? Schedule a technical walkthrough.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 px-7 py-3.5 border border-border text-foreground hover:bg-secondary rounded-lg font-body font-semibold text-[15px] transition-all"
+          >
+            Schedule Technical Walkthrough <ArrowRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
       </Section>
 
       {/* SECTION 4 — Layer 1: Privacy Shield */}
