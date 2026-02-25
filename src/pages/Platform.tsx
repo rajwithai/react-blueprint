@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Server, ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Section from "@/components/sections/Section";
 import CTABanner from "@/components/sections/CTABanner";
@@ -274,40 +274,79 @@ const Platform = () => {
         </motion.div>
       </Section>
 
-      {/* SECTION 8 — Deployment Architecture */}
-      <Section>
-        <motion.div {...fadeUp} className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
-            <Server className="w-5 h-5 text-accent" strokeWidth={1.5} />
-          </div>
-        </motion.div>
-        <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-6 text-foreground tracking-tight">
-          Deployment Designed for Sovereignty.
-        </motion.h2>
-        <div className="grid md:grid-cols-2 gap-12 mt-12">
-          <motion.div {...fadeUp} transition={{ delay: 0.1 }}>
-            <h3 className="font-heading font-semibold text-xl mb-4 text-foreground">Deployment Options</h3>
-            <div className="space-y-3">
-              {["On-premise infrastructure", "Sovereign cloud environments", "Hybrid configurations"].map((item) => (
-                <div key={item} className="flex items-center gap-3 font-body text-sm text-foreground">
-                  <div className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
-                  {item}
-                </div>
-              ))}
-            </div>
-          </motion.div>
-          <motion.div {...fadeUp} transition={{ delay: 0.15 }}>
-            <h3 className="font-heading font-semibold text-xl mb-4 text-foreground">System Integration</h3>
-            <div className="space-y-3">
-              {["CRM & ERP platforms", "Document management systems", "Internal repositories & knowledge bases", "Enterprise communication tools"].map((item) => (
-                <div key={item} className="flex items-center gap-3 font-body text-sm text-foreground">
-                  <div className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
-                  {item}
-                </div>
-              ))}
-            </div>
-          </motion.div>
+      {/* SECTION 5 — Deployment */}
+      <Section alabaster>
+        <div className="text-center mb-14">
+          <motion.p {...fadeUp} className="text-accent uppercase tracking-[0.25em] text-xs font-body font-semibold mb-4">
+            DEPLOYMENT
+          </motion.p>
+          <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-4 text-foreground tracking-tight">
+            Deploy your way. Your data never leaves where you put it.
+          </motion.h2>
+          <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-muted-foreground max-w-[600px] mx-auto">
+            Three deployment models. Same platform. Same capabilities. Choose based on your security requirements.
+          </motion.p>
         </div>
+
+        <div className="grid md:grid-cols-3 gap-5">
+          {[
+            {
+              label: "ON-PREMISE",
+              title: "Everything inside your walls.",
+              body: "The full Aliph platform runs on your own infrastructure. No data ever leaves your premises. Complete control over hardware, storage, and network configuration. Ideal for organizations with the strictest data sovereignty requirements.",
+              bestFor: "Banks · Government · Defense · Healthcare groups",
+            },
+            {
+              label: "SOVEREIGN CLOUD",
+              title: "In the cloud — but in the Kingdom.",
+              body: "Aliph runs on Azure's Saudi Arabia region. Your data stays within KSA borders. Managed infrastructure with enterprise SLAs. Faster deployment, lower IT overhead — with full sovereignty maintained.",
+              bestFor: "Fintech · Professional services · Mid-size enterprises · Hospitality groups",
+            },
+            {
+              label: "HYBRID",
+              title: "Sensitive data on-premise. Everything else in the cloud.",
+              body: "Keep your most sensitive data and processing on-premise. Route non-sensitive workloads through sovereign cloud. The platform manages the split automatically based on your policies — no manual routing by employees.",
+              bestFor: "Large enterprises · Multi-entity organizations · Conglomerates",
+            },
+          ].map((card, i) => (
+            <motion.div
+              key={card.label}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.07 }}
+              className="rounded-xl border border-border bg-card p-7 lg:p-8 flex flex-col shadow-sm hover:shadow-md transition-shadow"
+            >
+              <span className="font-body text-[11px] font-semibold tracking-[0.2em] text-muted-foreground uppercase mb-3">
+                {card.label}
+              </span>
+              <h3 className="font-heading font-bold text-lg lg:text-xl text-foreground mb-3 leading-snug">
+                {card.title}
+              </h3>
+              <p className="font-body text-[15px] text-muted-foreground leading-relaxed mb-6 flex-1">
+                {card.body}
+              </p>
+              <div className="border-t border-border pt-4">
+                <p className="font-body text-xs text-muted-foreground/70">
+                  <span className="font-semibold text-muted-foreground">Best for:</span> {card.bestFor}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Integration Strip */}
+        <motion.div {...fadeUp} transition={{ delay: 0.25 }} className="mt-12 text-center">
+          <h3 className="font-heading font-medium text-xl text-foreground mb-5">
+            Connects to your existing systems.
+          </h3>
+          <p className="font-body text-[15px] text-muted-foreground mb-4">
+            {["Google Workspace", "Microsoft 365", "SharePoint", "Salesforce CRM", "SAP", "Custom APIs"].join(" · ")}
+          </p>
+          <p className="font-body text-sm text-muted-foreground/60 max-w-[520px] mx-auto">
+            Organization Memory inherits permissions from your existing directory. No new access management needed.
+          </p>
+        </motion.div>
       </Section>
 
       {/* SECTION 9 — Why This Architecture Matters */}
