@@ -45,6 +45,106 @@ const AliphChat = () => {
         ]}
       />
 
+      {/* 2. How It Works — 4-Step Pipeline */}
+      <Section id="how-it-works">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-accent uppercase tracking-[0.25em] text-xs font-heading font-semibold mb-4 text-center"
+        >
+          HOW IT WORKS
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-bold text-3xl md:text-4xl mb-4 text-foreground text-center tracking-tight"
+        >
+          From question to sovereign answer{" "}
+          <br className="hidden sm:block" />
+          in four steps.
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.05 }}
+          className="font-body text-muted-foreground mb-14 text-center max-w-xl mx-auto"
+        >
+          No training needed. No IT configuration. Your team starts asking questions on day one.
+        </motion.p>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 max-w-5xl mx-auto">
+          {[
+            {
+              step: "01",
+              title: "Connect your knowledge.",
+              desc: "Point at Google Drive, SharePoint, shared folders. Aliph indexes everything. Inherits your permissions. No data migration.",
+              highlight: false,
+            },
+            {
+              step: "02",
+              title: "Your employee asks a question.",
+              desc: "In Arabic or English. About contracts, regulations, policies, performance — anything. Like talking to a colleague who's read every document in the company.",
+              highlight: false,
+            },
+            {
+              step: "03",
+              title: "Aliph searches your documents first. Protects your data if it goes further.",
+              desc: "Checks Organization Memory before any external call. If external AI needed, Privacy Shield strips sensitive data first.",
+              highlight: true,
+            },
+            {
+              step: "04",
+              title: "Answer delivered. Sources cited. Everything logged.",
+              desc: "Clear answer with document citations. Full interaction logged to immutable audit trail. Compliance-ready at any moment.",
+              highlight: false,
+            },
+          ].map((s, i) => (
+            <motion.div
+              key={s.step}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="relative flex"
+            >
+              {i > 0 && (
+                <div className="hidden lg:flex absolute -left-3 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="text-accent">
+                    <path d="M6 4l8 6-8 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+              )}
+              {i > 0 && (
+                <div className="flex lg:hidden absolute -top-5 left-1/2 -translate-x-1/2 z-10">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="text-accent">
+                    <path d="M4 6l6 8 6-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+              )}
+
+              <div
+                className={`flex-1 rounded-2xl p-7 md:p-8 text-center transition-all ${
+                  s.highlight
+                    ? "border-2 border-accent bg-accent/5 shadow-[0_0_30px_-8px_hsl(var(--accent)/0.25)]"
+                    : "border border-border bg-background"
+                }`}
+              >
+                <span className={`font-heading font-bold text-3xl ${s.highlight ? "text-accent" : "text-accent/70"}`}>
+                  {s.step}
+                </span>
+                <h3 className="font-heading font-semibold text-lg mt-4 mb-3 text-foreground leading-snug">
+                  {s.title}
+                </h3>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+
       {/* 3. Product Showcase Parallax */}
       <ParallaxImage
         src={platformImg}
@@ -122,48 +222,7 @@ const AliphChat = () => {
         ]}
       />
 
-      {/* 6. How It Works */}
-      <Section>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="font-heading font-semibold text-3xl md:text-4xl mb-4 text-foreground text-center tracking-tight"
-        >
-          How it works.
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.05 }}
-          className="font-body text-muted-foreground mb-12 text-center max-w-xl mx-auto"
-        >
-          Three steps from deployment to intelligence.
-        </motion.p>
-        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          {[
-            { step: "01", title: "Connect", desc: "Link your existing knowledge sources — Google Drive, SharePoint, local files. Permissions are inherited automatically." },
-            { step: "02", title: "Ask", desc: "Type your question in Arabic or English. AliphChat searches your knowledge base first, then reaches external AI with masked data." },
-            { step: "03", title: "Get Cited Answers", desc: "Every answer includes source citations. Full audit trail. Confidence scoring. Your compliance team can verify everything." },
-          ].map((s, i) => (
-            <motion.div
-              key={s.step}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="text-center"
-            >
-              <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-6">
-                <span className="font-heading font-bold text-2xl text-accent">{s.step}</span>
-              </div>
-              <h3 className="font-heading font-semibold text-xl mb-3 text-foreground">{s.title}</h3>
-              <p className="font-body text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </Section>
+
 
       {/* 7. Comparison Table */}
       <ComparisonTable
