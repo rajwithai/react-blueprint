@@ -12,7 +12,11 @@ import GlobalLLM from "./pages/GlobalLLM";
 import AliphChat from "./pages/AliphChat";
 import GRCPlatform from "./pages/GRCPlatform";
 import AgenticAI from "./pages/AgenticAI";
-import { FinancialServices, Healthcare, ProfessionalServices } from "./pages/Industries";
+import RealEstate from "./pages/industries/RealEstate";
+import Hospitality from "./pages/industries/Hospitality";
+import ProfessionalServices from "./pages/industries/ProfessionalServices";
+import FinancialServices from "./pages/industries/FinancialServices";
+import Healthcare from "./pages/industries/Healthcare";
 import About from "./pages/About";
 import Leadership from "./pages/Leadership";
 import Careers from "./pages/Careers";
@@ -42,9 +46,11 @@ const App = () => (
             <Route path="/products/aliphchat" element={<AliphChat />} />
             <Route path="/products/grc" element={<GRCPlatform />} />
             <Route path="/products/agentic-ai" element={<AgenticAI />} />
+            <Route path="/industries/real-estate" element={<RealEstate />} />
+            <Route path="/industries/hospitality" element={<Hospitality />} />
+            <Route path="/industries/professional-services" element={<ProfessionalServices />} />
             <Route path="/industries/financial-services" element={<FinancialServices />} />
             <Route path="/industries/healthcare" element={<Healthcare />} />
-            <Route path="/industries/professional-services" element={<ProfessionalServices />} />
             <Route path="/company/about" element={<About />} />
             <Route path="/company/leadership" element={<Leadership />} />
             <Route path="/company/careers" element={<Careers />} />
