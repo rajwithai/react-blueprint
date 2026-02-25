@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Section from "@/components/sections/Section";
-import CTABanner from "@/components/sections/CTABanner";
+
 import PlatformLayers from "@/components/sections/PlatformLayers";
 
 const fadeUp = {
@@ -349,30 +349,54 @@ const Platform = () => {
         </motion.div>
       </Section>
 
-      {/* SECTION 9 — Why This Architecture Matters */}
-      <Section alabaster>
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.h2 {...fadeUp} className="font-heading font-bold text-3xl md:text-4xl mb-6 text-foreground tracking-tight">
-            Governance Is Infrastructure.
+      {/* SECTION 6 — Final CTA */}
+      <section className="py-20 md:py-24 lg:py-28 bg-[hsl(220,25%,12%)]">
+        <div className="container mx-auto px-6 text-center max-w-[680px]">
+          <motion.h2
+            {...fadeUp}
+            className="font-heading font-bold text-3xl md:text-4xl lg:text-[44px] text-white tracking-tight leading-[1.1] mb-6"
+          >
+            See the full architecture in a 30-minute technical walkthrough.
           </motion.h2>
-          <motion.p {...fadeUp} transition={{ delay: 0.05 }} className="font-body text-muted-foreground leading-relaxed text-lg mb-6">
-            AI without governance creates long-term operational risk — unstructured data flows, untraceable decisions, and unaccountable model access.
+          <motion.p
+            {...fadeUp}
+            transition={{ delay: 0.05 }}
+            className="font-body text-[17px] md:text-lg text-white/70 leading-[1.65] mb-9 max-w-[620px] mx-auto"
+          >
+            We'll walk through the query flow live, show you the Privacy Shield in action on real data, and map a deployment model for your infrastructure. Bring your CTO. Bring your CISO. We'll answer everything.
           </motion.p>
-          <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-muted-foreground leading-relaxed text-lg mb-8">
-            AI with a Control Plane becomes controlled infrastructure — inspectable, auditable, and aligned with organizational policy.
+
+          <motion.div {...fadeUp} transition={{ delay: 0.1 }} className="flex flex-col sm:flex-row gap-4 justify-center mb-7">
+            <Link
+              to="/demo"
+              className="inline-block px-9 py-4 bg-accent hover:brightness-110 text-accent-foreground text-base font-bold rounded-lg shadow-lg transition-all duration-200"
+            >
+              Schedule a Technical Walkthrough
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-block px-9 py-4 border border-white/20 text-white hover:border-white/40 rounded-lg text-base font-semibold transition-all duration-200"
+            >
+              Download the Architecture Brief
+            </Link>
+          </motion.div>
+
+          <motion.p {...fadeUp} transition={{ delay: 0.15 }} className="font-body text-sm text-white/60 mb-5">
+            No sales pitch. No commitment. A focused technical conversation with Aliph's engineering team.
           </motion.p>
-          <motion.p {...fadeUp} transition={{ delay: 0.15 }} className="font-heading font-semibold text-accent text-xl">
-            Aliph is governance infrastructure for artificial intelligence.
+
+          <motion.p {...fadeUp} transition={{ delay: 0.2 }} className="font-body text-sm text-white/60">
+            Prefer to talk directly?<br />
+            <a href="https://wa.me/966569678421" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white underline transition-colors">
+              WhatsApp: +966 56 967 8421
+            </a>
+            <span className="mx-2">|</span>
+            <a href="mailto:raj@aliphai.ai" className="text-white/70 hover:text-white underline transition-colors">
+              raj@aliphai.ai
+            </a>
           </motion.p>
         </div>
-      </Section>
-
-      {/* SECTION 10 — Final CTA */}
-      <CTABanner
-        title="Build AI Infrastructure — Not AI Risk."
-        subtitle="See how the Control Plane operates inside your environment."
-        primaryCta={{ label: "Schedule a Technical Walkthrough", href: "/contact" }}
-      />
+      </section>
     </>
   );
 };
