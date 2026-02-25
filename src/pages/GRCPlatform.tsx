@@ -1,4 +1,4 @@
-import { Shield, Scale, Briefcase } from "lucide-react";
+import { Shield, Scale, Briefcase, FileCheck, BarChart3, ShieldAlert, FilePen, ClipboardCheck, BellRing } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import SplitHero from "@/components/sections/SplitHero";
@@ -22,28 +22,66 @@ const aliphItems = [
   { label: "Review & Revisions", time: "Your team validates" },
 ];
 
-/* ─── Section 3: Agent Pipeline Data ─── */
+/* ─── Section 2: What the Platform Delivers ─── */
+const deliverables = [
+  {
+    icon: FileCheck,
+    title: "PDPL Gap Analysis",
+    body: "Complete mapping of your current policies against PDPL requirements. Every gap identified. Every finding cited to the specific regulation clause. Risk-scored by severity.",
+  },
+  {
+    icon: BarChart3,
+    title: "Compliance Status Reports",
+    body: "Board-ready compliance posture summaries. Generated in minutes from live platform data. Current as of today — not the last time a consultant visited.",
+  },
+  {
+    icon: ShieldAlert,
+    title: "Risk Assessment Reports",
+    body: "Regulatory risk mapped across your organization. Risk scores assigned per department, per regulation, per data category. Prioritized remediation recommendations included.",
+  },
+  {
+    icon: FilePen,
+    title: "Policy Documents & Templates",
+    body: "Data protection policies, consent frameworks, breach notification procedures — drafted by AI, validated against current regulations, formatted to your firm's templates.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "Audit Evidence Packages",
+    body: "Complete audit trail documentation — every analysis run, every finding, every remediation action. Packaged for SDAIA review or internal audit committee presentation.",
+  },
+  {
+    icon: BellRing,
+    title: "Continuous Monitoring Alerts",
+    body: "New regulatory circular published? Impact assessment on your current compliance posture generated automatically. Your team is notified before the regulation takes effect — not after.",
+  },
+];
+
+/* ─── Section 4: Agent Pipeline Data ─── */
 const agents = [
   {
     step: "01",
-    name: "Research Agent",
-    body: "Scans regulatory databases, maps new circulars and updates, identifies relevant requirements for your specific industry and entity type. Stays current so your team doesn't have to.",
+    name: "Research",
+    subtitle: "Regulatory Research — Automated",
+    body: "Specialized agents scan regulatory databases, track new circulars and amendments, map requirements to your specific industry, entity type, and jurisdiction. PDPL, SAMA, CMA, NCA — monitored continuously. Your team stops chasing updates. Updates come to them.",
   },
   {
     step: "02",
-    name: "Drafting Agent",
-    body: "Generates compliance reports, gap analyses, policy documents, and remediation plans based on the Research Agent's findings and your organization's documents. Every draft follows your firm's templates and formatting standards.",
+    name: "Analyze & Draft",
+    subtitle: "Document Analysis & Report Drafting — Hours, Not Weeks",
+    body: "Agents analyze your existing policies, contracts, and internal documents against regulatory requirements. Gaps identified. Risk scores assigned. Remediation reports drafted in your firm's format and templates. A full PDPL gap analysis that used to take a consultant 6 weeks is drafted in hours.",
   },
   {
     step: "03",
-    name: "Validation Agent",
-    body: "Cross-checks every draft against source regulations and your internal documents. Flags inconsistencies, unsupported claims, and gaps. Nothing reaches your desk that hasn't been verified against primary sources.",
+    name: "Validate",
+    subtitle: "Every Claim Cross-Checked — Before You See It",
+    body: "Nothing reaches your desk unverified. Validation agents cross-reference every statement in every draft against source regulations, your internal documents, and precedent engagements. Unsupported claims are flagged. Inconsistencies are caught. Every output includes source citations so your team can verify with one click.",
     highlight: true,
   },
   {
     step: "04",
-    name: "Learning Agent",
-    body: "Captures your team's corrections, preferences, and institutional knowledge. Each engagement makes the system smarter. Your firm's regulatory expertise compounds over time — and stays even when people leave.",
+    name: "Learn",
+    subtitle: "Your Expertise Compounds — Permanently",
+    body: "Every correction your team makes, every preference expressed, every regulatory interpretation approved — captured and embedded into the system. The platform gets smarter with every engagement. When a partner retires or an associate leaves, their expertise stays. New hires inherit decades of institutional knowledge from day one.",
   },
 ];
 
@@ -147,7 +185,53 @@ const GRCPlatform = () => {
         imageAlt="GRC Platform compliance dashboard"
       />
 
-      {/* ══════ SECTION 2: THE COST OF COMPLIANCE TODAY ══════ */}
+      {/* ══════ SECTION 2: WHAT THE PLATFORM DELIVERS ══════ */}
+      <Section>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-accent uppercase tracking-[0.25em] text-xs font-heading font-semibold mb-4 text-center"
+        >
+          WHAT YOU GET
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-heading font-bold text-3xl md:text-4xl mb-4 text-foreground text-center tracking-tight"
+        >
+          Upload your documents. Get audit-ready compliance deliverables.
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.05 }}
+          className="font-body text-muted-foreground mb-14 text-center max-w-[680px] mx-auto"
+        >
+          The Aliph GRC Platform doesn't just analyze — it produces. Every output is sourced, validated, and formatted for regulatory submission or board presentation.
+        </motion.p>
+
+        <div className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+          {deliverables.map((d, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.06 }}
+              className="rounded-2xl border border-border bg-card p-7 md:p-8 shadow-sm"
+            >
+              <d.icon className="w-6 h-6 text-accent mb-4" />
+              <h3 className="font-heading font-bold text-[17px] text-foreground mb-2">{d.title}</h3>
+              <p className="font-body text-sm text-muted-foreground leading-relaxed">{d.body}</p>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+
+      {/* ══════ SECTION 3: THE COST OF COMPLIANCE TODAY ══════ */}
       <Section>
         <motion.p
           initial={{ opacity: 0, y: 12 }}
@@ -258,11 +342,9 @@ const GRCPlatform = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-bold text-3xl md:text-4xl mb-4 text-foreground text-center tracking-tight"
+          className="font-heading font-bold text-3xl md:text-4xl mb-4 text-foreground text-center tracking-tight max-w-4xl mx-auto"
         >
-          Four AI agents. One governed workflow.{" "}
-          <br className="hidden sm:block" />
-          Every output validated before it reaches your desk.
+          A team of AI agents that research, draft, validate, and learn — so your compliance team handles judgment, not paperwork.
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -271,7 +353,7 @@ const GRCPlatform = () => {
           transition={{ delay: 0.05 }}
           className="font-body text-muted-foreground mb-14 text-center max-w-[660px] mx-auto"
         >
-          Aliph's GRC agents work as a team — each specialized, each checking the others' work. You review the final output. You make the judgment calls. The agents handle everything else.
+          Multiple specialized agents coordinate across every engagement — each focused on a specific task, each cross-checking the others' work, each learning from your team's corrections. The result: advisory-firm quality output, validated against primary sources, delivered in hours instead of months.
         </motion.p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 max-w-5xl mx-auto">
@@ -311,9 +393,12 @@ const GRCPlatform = () => {
                 <span className={`font-heading font-bold text-3xl ${a.highlight ? "text-accent" : "text-accent/70"}`}>
                   {a.step}
                 </span>
-                <h3 className="font-heading font-semibold text-lg mt-4 mb-3 text-foreground leading-snug">
+                <h3 className="font-heading font-semibold text-lg mt-4 mb-1 text-foreground leading-snug">
                   {a.name}
                 </h3>
+                {a.subtitle && (
+                  <p className="font-heading font-medium text-sm text-muted-foreground mb-3">{a.subtitle}</p>
+                )}
                 <p className="font-body text-sm text-muted-foreground leading-relaxed">{a.body}</p>
               </div>
             </motion.div>
