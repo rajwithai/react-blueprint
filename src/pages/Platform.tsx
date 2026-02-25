@@ -109,32 +109,67 @@ const Platform = () => {
         </div>
       </section>
 
-      {/* SECTION 2 — AI Governance Boundary */}
-      <Section id="architecture">
-        <div className="max-w-3xl">
-          <motion.h2 {...fadeUp} className="font-heading font-bold text-3xl md:text-4xl mb-6 text-foreground tracking-tight">
-            AI Requires a Governance Boundary.
+      {/* SECTION 2 — The Problem */}
+      <section id="architecture" className="relative bg-[hsl(220,20%,8%)]">
+        <div className="container mx-auto px-6 py-20 lg:py-28 relative z-10">
+          <motion.p {...fadeUp} className="text-accent uppercase tracking-[0.25em] text-xs font-body font-semibold mb-4">
+            THE PROBLEM
+          </motion.p>
+          <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-12 text-white tracking-tight max-w-3xl">
+            Without a governance layer, this is what happens every time your team uses AI.
           </motion.h2>
-          <motion.p {...fadeUp} transition={{ delay: 0.05 }} className="font-body text-muted-foreground leading-relaxed text-lg mb-8">
-            Most organizations connect directly to AI models. This creates structural gaps:
-          </motion.p>
-          <motion.div {...fadeUp} transition={{ delay: 0.1 }} className="space-y-4 mb-8">
-            {[
-              "No inspection before inference.",
-              "No structured knowledge retention.",
-              "No enforceable audit trail.",
-            ].map((item) => (
-              <div key={item} className="flex items-start gap-3 font-body text-foreground">
-                <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2.5 shrink-0" />
-                <span className="text-[15px]">{item}</span>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* LEFT — Without Aliph */}
+            <motion.div {...fadeUp} transition={{ delay: 0.1 }} className="rounded-xl border border-red-500/20 bg-red-500/5 p-8">
+              <h3 className="font-heading font-semibold text-lg text-red-400 mb-6">Today (Without Aliph)</h3>
+              <div className="space-y-4 mb-8">
+                {[
+                  "Employee pastes client contract into ChatGPT",
+                  "Full text — names, financials, terms — sent to US servers",
+                  "No record of what was sent or when",
+                  "AI responds with no source citations",
+                  "Employee acts on unverified information",
+                ].map((step, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                      <span className="font-heading text-xs font-bold text-red-400">{i + 1}</span>
+                    </span>
+                    <p className="font-body text-sm text-white/70 leading-relaxed">{step}</p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </motion.div>
-          <motion.p {...fadeUp} transition={{ delay: 0.15 }} className="font-body text-muted-foreground leading-relaxed text-[15px]">
-            Aliph introduces a Control Boundary. Every interaction passes through this boundary before reaching any model — private or external.
-          </motion.p>
+              <div className="border-t border-red-500/20 pt-4">
+                <p className="font-body text-sm text-red-400 font-semibold">→ PDPL violation. No audit trail. No recourse.</p>
+              </div>
+            </motion.div>
+
+            {/* RIGHT — With Aliph */}
+            <motion.div {...fadeUp} transition={{ delay: 0.15 }} className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-8">
+              <h3 className="font-heading font-semibold text-lg text-emerald-400 mb-6">With Aliph</h3>
+              <div className="space-y-4 mb-8">
+                {[
+                  "Employee asks question through AliphChat",
+                  "Aliph searches organization's own documents first",
+                  "If external AI needed — Privacy Shield strips all sensitive data",
+                  "AI responds. Tokens restored. Sources cited.",
+                  "Employee acts on verified, attributed information",
+                ].map((step, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                      <span className="font-heading text-xs font-bold text-emerald-400">{i + 1}</span>
+                    </span>
+                    <p className="font-body text-sm text-white/70 leading-relaxed">{step}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="border-t border-emerald-500/20 pt-4">
+                <p className="font-body text-sm text-emerald-400 font-semibold">→ Compliant. Audited. Sovereign.</p>
+              </div>
+            </motion.div>
+          </div>
         </div>
-      </Section>
+      </section>
 
       {/* SECTION 3 — System Flow */}
       <Section alabaster>
