@@ -13,19 +13,19 @@ const navItems = [
     label: "Products",
     children: [
       { label: "AliphChat", href: "/products/aliphchat" },
-      { label: "Privacy Shield", href: "/platform/privacy-shield" },
-      { label: "Organization Memory", href: "/platform/organization-memory" },
-      { label: "Global LLM Router", href: "/platform/global-llm" },
       { label: "GRC Platform", href: "/products/grc" },
-      { label: "Agentic AI", href: "/products/agentic-ai" },
+      { label: "Agentic AI Platform", href: "/products/agentic-ai", badge: "Coming Q2 2026" },
     ],
   },
   {
     label: "Industries",
     children: [
-      { label: "Financial Services", href: "/industries/financial-services" },
-      { label: "Healthcare", href: "/industries/healthcare" },
+      { label: "Real Estate & Property Management", href: "/industries/real-estate" },
+      { label: "Hospitality & Tourism", href: "/industries/hospitality" },
       { label: "Professional Services", href: "/industries/professional-services" },
+      { label: "Financial Services", href: "/industries/financial-services" },
+      { divider: true } as any,
+      { label: "Healthcare", href: "/industries/healthcare", badge: "Coming H2 2026" },
     ],
   },
   {
@@ -93,16 +93,27 @@ const Navbar = () => {
                     transition={{ duration: 0.15 }}
                     className="absolute top-full left-0 pt-2"
                   >
-                    <div className="bg-card rounded-lg shadow-lg shadow-foreground/5 border border-border py-2 min-w-[220px]">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          to={child.href}
-                          className="block px-4 py-2.5 text-sm font-body text-muted-foreground hover:text-accent hover:bg-accent/5 transition-colors duration-200"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
+                    <div className="bg-card rounded-lg shadow-lg shadow-foreground/5 border border-border py-2 min-w-[260px]">
+                      {item.children.map((child: any, ci: number) =>
+                        child.divider ? (
+                          <div key={ci} className="my-1 mx-4 h-px bg-border" />
+                        ) : (
+                          <Link
+                            key={child.href}
+                            to={child.href}
+                            className={`flex items-center gap-2 px-4 py-2.5 text-sm font-body transition-colors duration-200 ${
+                              child.badge ? "text-muted-foreground/70 hover:text-accent hover:bg-accent/5" : "text-muted-foreground hover:text-accent hover:bg-accent/5"
+                            }`}
+                          >
+                            {child.label}
+                            {child.badge && (
+                              <span className="ml-auto text-[10px] font-heading font-semibold px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20 whitespace-nowrap">
+                                {child.badge}
+                              </span>
+                            )}
+                          </Link>
+                        )
+                      )}
                     </div>
                   </motion.div>
                 )}
@@ -171,15 +182,26 @@ const Navbar = () => {
                       transition={{ duration: 0.2 }}
                       className="pb-2 overflow-hidden"
                     >
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          to={child.href}
-                          className="block px-10 py-2.5 text-sm text-muted-foreground hover:text-accent transition-colors duration-200"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
+                      {item.children.map((child: any, ci: number) =>
+                        child.divider ? (
+                          <div key={ci} className="my-1 mx-6 h-px bg-border" />
+                        ) : (
+                          <Link
+                            key={child.href}
+                            to={child.href}
+                            className={`flex items-center gap-2 px-10 py-2.5 text-sm transition-colors duration-200 ${
+                              child.badge ? "text-muted-foreground/70 hover:text-accent" : "text-muted-foreground hover:text-accent"
+                            }`}
+                          >
+                            {child.label}
+                            {child.badge && (
+                              <span className="text-[10px] font-heading font-semibold px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20 whitespace-nowrap">
+                                {child.badge}
+                              </span>
+                            )}
+                          </Link>
+                        )
+                      )}
                     </motion.div>
                   )}
                 </AnimatePresence>
