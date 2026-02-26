@@ -18,8 +18,6 @@ import ProfessionalServices from "./pages/industries/ProfessionalServices";
 import FinancialServices from "./pages/industries/FinancialServices";
 import Healthcare from "./pages/industries/Healthcare";
 import About from "./pages/About";
-import Leadership from "./pages/Leadership";
-import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import Demo from "./pages/Demo";
 import Blog from "./pages/Blog";
@@ -52,8 +50,6 @@ const App = () => (
             <Route path="/industries/financial-services" element={<FinancialServices />} />
             <Route path="/industries/healthcare" element={<Healthcare />} />
             <Route path="/company/about" element={<About />} />
-            <Route path="/company/leadership" element={<Leadership />} />
-            <Route path="/company/careers" element={<Careers />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/demo" element={<Demo />} />
             <Route path="/resources/blog" element={<Blog />} />

@@ -32,8 +32,7 @@ const navItems = [
     label: "Company",
     children: [
       { label: "About", href: "/company/about" },
-      { label: "Leadership", href: "/company/leadership" },
-      { label: "Careers", href: "/company/careers" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
