@@ -48,7 +48,7 @@ const data: IndustryPageData = {
   ctaHeadline: "See how Aliph transforms your advisory practice.",
   ctaSubtext: "Bring a sample engagement, a regulatory question, or your firm's compliance challenges. We'll show you the precedent search, the privacy protection, and the GRC automation live. 30 minutes. Partner to CTO.",
   ctaPrimary: { label: "Book an Advisory AI Assessment", href: "/demo" },
-  ctaSecondary: { label: "Download the Professional Services Guide", href: "/contact" },
+  ctaSecondary: { label: "Download the Professional Services Guide", href: "/company/contact" },
   ctaTrust: "No sales pitch. See sovereign AI working on real advisory scenarios.",
 };
 

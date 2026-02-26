@@ -640,7 +640,7 @@ const GRCPlatform = () => {
               Book a GRC Demo
             </Link>
             <Link
-              to="/contact"
+              to="/company/contact"
               className="w-full sm:w-auto inline-flex items-center justify-center px-9 py-4 rounded-lg border border-white/30 text-white hover:bg-white/10 font-heading font-semibold transition-all text-base"
             >
               Download the GRC Capability Brief

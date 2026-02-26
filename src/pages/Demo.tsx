@@ -262,7 +262,7 @@ const Demo = () => {
 
       <CTABanner
         title="Have questions first?"
-        primaryCta={{ label: "Contact Sales", href: "/contact" }}
+        primaryCta={{ label: "Contact Sales", href: "/company/contact" }}
       />
     </>
   );

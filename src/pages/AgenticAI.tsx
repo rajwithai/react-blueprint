@@ -151,7 +151,7 @@ const AgenticAI = () => {
         title="Be among the first."
         subtitle="Priority access for early partners. Direct input into the product."
         primaryCta={{ label: "Join the Waitlist", href: "/demo" }}
-        secondaryCta={{ label: "Contact Sales", href: "/contact" }}
+        secondaryCta={{ label: "Contact Sales", href: "/company/contact" }}
       />
 
       {/* 8. Use Cases */}
@@ -221,7 +221,7 @@ const AgenticAI = () => {
         title="The future of enterprise AI is autonomous."
         subtitle="Join the waitlist. Shape the product."
         primaryCta={{ label: "Join the Waitlist", href: "/demo" }}
-        secondaryCta={{ label: "Contact Sales", href: "/contact" }}
+        secondaryCta={{ label: "Contact Sales", href: "/company/contact" }}
       />
     </>
   );

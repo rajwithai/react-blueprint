@@ -18,9 +18,7 @@ const footerColumns = [
     title: "Company",
     links: [
       { label: "About", href: "/company/about" },
-      { label: "Leadership", href: "/company/leadership" },
-      { label: "Careers", href: "/company/careers" },
-      { label: "Contact", href: "/contact" },
+      { label: "Contact", href: "/company/contact" },
       { label: "Blog", href: "/resources/blog" },
       { label: "PDPL Guide", href: "/resources/pdpl-guide" },
       { label: "Book a Demo", href: "/demo" },

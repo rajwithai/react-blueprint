@@ -209,7 +209,7 @@ const PrivacyShield = () => {
         title="Protect every query."
         subtitle="See Privacy Shield in action with a live demo."
         primaryCta={{ label: "Request a Demo", href: "/demo" }}
-        secondaryCta={{ label: "Contact Sales", href: "/contact" }}
+        secondaryCta={{ label: "Contact Sales", href: "/company/contact" }}
       />
 
       {/* 9. Technical Specs */}
@@ -234,7 +234,7 @@ const PrivacyShield = () => {
         title="Privacy that scales with your ambition."
         subtitle="No commitment. See Privacy Shield live with your own data."
         primaryCta={{ label: "Request a Demo", href: "/demo" }}
-        secondaryCta={{ label: "Contact Sales", href: "/contact" }}
+        secondaryCta={{ label: "Contact Sales", href: "/company/contact" }}
       />
     </>
   );

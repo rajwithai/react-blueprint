@@ -47,7 +47,7 @@ const data: IndustryPageData = {
   ctaHeadline: "See how Aliph works for your property portfolio.",
   ctaSubtext: "Bring your lease documents, your tenant records, or your regulatory filings. We'll run them through the platform live — show you the search, the privacy protection, and the compliance mapping. 30 minutes. No commitment.",
   ctaPrimary: { label: "Book a Real Estate AI Assessment", href: "/demo" },
-  ctaSecondary: { label: "Download the PropTech Sovereignty Guide", href: "/contact" },
+  ctaSecondary: { label: "Download the PropTech Sovereignty Guide", href: "/company/contact" },
   ctaTrust: "No sales pitch. See sovereign AI working on your actual property documents.",
 };
 

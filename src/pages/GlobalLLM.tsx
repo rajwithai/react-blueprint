@@ -179,7 +179,7 @@ const GlobalLLM = () => {
         title="Access global AI safely."
         subtitle="See how multi-model routing works with your data protected."
         primaryCta={{ label: "Request a Demo", href: "/demo" }}
-        secondaryCta={{ label: "Contact Sales", href: "/contact" }}
+        secondaryCta={{ label: "Contact Sales", href: "/company/contact" }}
       />
 
       {/* 8. Why Multi-Model */}
@@ -227,7 +227,7 @@ const GlobalLLM = () => {
         title="Every AI model. Zero data risk."
         subtitle="No commitment. See multi-model routing live."
         primaryCta={{ label: "Request a Demo", href: "/demo" }}
-        secondaryCta={{ label: "Contact Sales", href: "/contact" }}
+        secondaryCta={{ label: "Contact Sales", href: "/company/contact" }}
       />
     </>
   );
