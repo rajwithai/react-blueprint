@@ -134,7 +134,7 @@ const IndustryPage = ({ eyebrow, title, subtitle, heroImage, heroImageAlt, chall
       title={`See how ${eyebrow.toLowerCase()} leaders use Aliph`}
       subtitle="Walk through a real workflow designed for your industry."
       primaryCta={{ label: "Book a Demo", href: "/demo" }}
-      secondaryCta={{ label: "Contact Sales", href: "/contact" }}
+      secondaryCta={{ label: "Contact Sales", href: "/company/contact" }}
     />
 
     {/* Section 4: Stats */}

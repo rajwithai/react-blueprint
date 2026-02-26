@@ -12,7 +12,7 @@ interface MidPageCTAProps {
 }
 
 const buildHref = (href: string, inquiryType?: string, source?: string) => {
-  if (!href.startsWith("/contact") && !href.startsWith("/demo")) return href;
+  if (!href.startsWith("/company/contact") && !href.startsWith("/contact") && !href.startsWith("/demo")) return href;
   const params = new URLSearchParams();
   if (inquiryType) params.set("inquiry", inquiryType);
   if (source) params.set("source", source);

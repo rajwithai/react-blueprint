@@ -192,7 +192,7 @@ const OrganizationMemory = () => {
         title="Stop losing what your organization knows."
         subtitle="See how Organization Memory preserves and surfaces institutional knowledge."
         primaryCta={{ label: "Request a Demo", href: "/demo" }}
-        secondaryCta={{ label: "Contact Sales", href: "/contact" }}
+        secondaryCta={{ label: "Contact Sales", href: "/company/contact" }}
       />
 
       {/* 9. Intelligence Compounds */}
@@ -252,7 +252,7 @@ const OrganizationMemory = () => {
         title="Your organization's knowledge. Always available."
         subtitle="No commitment. See Organization Memory live with your own documents."
         primaryCta={{ label: "Request a Demo", href: "/demo" }}
-        secondaryCta={{ label: "Contact Sales", href: "/contact" }}
+        secondaryCta={{ label: "Contact Sales", href: "/company/contact" }}
       />
     </>
   );

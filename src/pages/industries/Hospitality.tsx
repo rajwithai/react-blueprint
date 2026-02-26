@@ -47,7 +47,7 @@ const data: IndustryPageData = {
   ctaHeadline: "See how Aliph transforms guest intelligence for your hotel group.",
   ctaSubtext: "Bring your guest data challenges, your multi-property coordination needs, or your compliance requirements. We'll show you sovereign AI working on hospitality-specific scenarios. 30 minutes. No commitment.",
   ctaPrimary: { label: "Book a Hospitality AI Assessment", href: "/demo" },
-  ctaSecondary: { label: "Download the Hospitality Sovereignty Guide", href: "/contact" },
+  ctaSecondary: { label: "Download the Hospitality Sovereignty Guide", href: "/company/contact" },
   ctaTrust: "No sales pitch. See sovereign AI working on real hospitality scenarios.",
 };
 

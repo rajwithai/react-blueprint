@@ -48,7 +48,7 @@ const Platform = () => {
                   See the full query flow ↓
                 </a>
                 <Link
-                  to="/contact"
+                  to="/company/contact"
                   className="inline-flex items-center gap-2 px-7 py-3.5 border border-border text-foreground hover:bg-secondary rounded-lg font-body font-semibold text-[15px] transition-all"
                 >
                   Schedule a technical walkthrough
@@ -248,7 +248,7 @@ const Platform = () => {
             Want to see the full architecture? Schedule a technical walkthrough.
           </p>
           <Link
-            to="/contact"
+            to="/company/contact"
             className="inline-flex items-center gap-2 px-7 py-3.5 border border-border text-foreground hover:bg-secondary rounded-lg font-body font-semibold text-[15px] transition-all"
           >
             Schedule Technical Walkthrough <ArrowRight className="w-4 h-4" />
@@ -374,7 +374,7 @@ const Platform = () => {
               Schedule a Technical Walkthrough
             </Link>
             <Link
-              to="/contact"
+              to="/company/contact"
               className="inline-block px-9 py-4 border border-white/20 text-white hover:border-white/40 rounded-lg text-base font-semibold transition-all duration-200"
             >
               Download the Architecture Brief

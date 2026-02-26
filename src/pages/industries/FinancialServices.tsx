@@ -48,7 +48,7 @@ const data: IndustryPageData = {
   ctaHeadline: "See how Aliph works with your financial data — securely.",
   ctaSubtext: "Bring your SAMA compliance challenges, your KYC workflows, or your regulatory monitoring needs. We'll demonstrate sovereign AI on financial services scenarios live. 30 minutes. No commitment. No client data required for the demo.",
   ctaPrimary: { label: "Book a Financial Services AI Assessment", href: "/demo" },
-  ctaSecondary: { label: "Download the Financial Services Sovereignty Guide", href: "/contact" },
+  ctaSecondary: { label: "Download the Financial Services Sovereignty Guide", href: "/company/contact" },
   ctaTrust: "No sales pitch. See sovereign AI working on real financial services scenarios.",
 };
 

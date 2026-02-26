@@ -161,7 +161,7 @@ const SolutionsTeaser = () => {
                   ))}
                 </div>
                 <Link
-                  to="/contact"
+                  to="/company/contact"
                   className="inline-flex items-center gap-2 text-accent font-bold hover:gap-3 transition-all pt-2"
                 >
                   Talk to us <ArrowRight className="w-4 h-4" />
@@ -192,7 +192,7 @@ const SolutionsTeaser = () => {
                   Patient data is the most sensitive category under PDPL. Aliph is building CBAHI compliance automation, clinical protocol management, and sovereign patient data intelligence for Saudi hospital groups and clinic chains.
                 </p>
                 <Link
-                  to="/contact"
+                  to="/company/contact"
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border text-sm font-semibold text-foreground hover:border-accent/30 hover:text-accent transition-all"
                 >
                   Join the Healthcare Early Access List <ArrowRight className="w-4 h-4" />
