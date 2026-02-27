@@ -49,9 +49,6 @@ const Footer = () => {
               ))}
             </div>
 
-            <p className="mt-6 text-xs text-accent font-body">
-              Live Production Pilot: Reve Consult, Riyadh.
-            </p>
 
             {/* Social Links */}
             <div className="mt-4 flex items-center gap-3">
