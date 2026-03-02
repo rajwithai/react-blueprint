@@ -2,14 +2,14 @@ import Section from "@/components/sections/Section";
 
 const PrivacyPolicy = () => (
   <>
-    <div className="hero-gradient py-20 pt-32">
+    <section className="pt-[88px] pb-[48px] md:pb-[56px] bg-background">
       <div className="container mx-auto px-6">
-        <h1 className="font-heading font-bold text-4xl text-primary-foreground">Privacy Policy</h1>
-        <p className="font-body text-primary-foreground/70 mt-4 max-w-2xl">
+        <h1 className="font-heading font-bold text-4xl md:text-5xl text-foreground">Privacy Policy</h1>
+        <p className="font-body text-muted-foreground mt-4 max-w-2xl text-[17px] leading-relaxed">
           How Aliph Solutions collects, uses, and protects your personal data in compliance with PDPL and applicable data protection regulations.
         </p>
       </div>
-    </div>
+    </section>
     <Section>
       <div className="max-w-3xl mx-auto prose prose-sm">
         <p className="font-body text-muted-foreground leading-relaxed text-sm italic">
