@@ -4,6 +4,7 @@ import {
   CheckCircle2, MessageCircle, Mail, ArrowRight, ArrowDown,
   ClipboardCheck, FileText, Shield, Pill, Brain, Languages
 } from "lucide-react";
+import heroImg from "@/assets/images/industry-healthcare.jpg";
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -67,48 +68,65 @@ const Healthcare = () => {
   return (
     <>
       {/* SECTION 1: HERO */}
-      <section className="pt-[88px] md:pt-[88px] pb-[48px] md:pb-[72px] bg-background">
+      <section className="pt-[88px] md:pt-[88px] pb-[48px] md:pb-[72px] bg-background overflow-hidden">
         <div className="container px-6">
-          <div className="max-w-3xl">
-            <motion.span
-              {...fadeUp}
-              className="inline-block px-4 py-1.5 rounded-full text-xs font-heading font-medium bg-accent/15 border border-accent/25 text-accent uppercase tracking-wider mb-6"
-            >
-              Coming H2 2026
-            </motion.span>
-            <motion.p {...fadeUp} transition={{ delay: 0.05 }} className="section-label mb-3">
-              Healthcare
-            </motion.p>
-            <motion.h1
-              {...fadeUp}
-              transition={{ delay: 0.1 }}
-              className="section-headline mb-4"
-            >
-              Patient data is the most sensitive category under PDPL. It deserves the most sovereign AI.
-            </motion.h1>
-            <motion.p
-              {...fadeUp}
-              transition={{ delay: 0.2 }}
-              className="section-subtext mx-auto mb-8"
-            >
-              Saudi hospital groups sit on decades of patient records, clinical protocols, and operational knowledge that AI could transform into better outcomes, faster diagnoses, and lower costs. But patient data cannot leave your walls. It cannot be sent to foreign servers. It cannot be processed by tools that don't understand CBAHI accreditation or MOH regulations. Aliph is building healthcare AI that treats patient data with the protection it demands.
-            </motion.p>
-            <motion.div {...fadeUp} transition={{ delay: 0.3 }} className="flex flex-col sm:flex-row justify-center gap-4 mb-4">
-              <a
-                href="#waitlist"
-                onClick={(e) => { e.preventDefault(); document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" }); }}
-                className="btn-primary group"
+          <div className="grid lg:grid-cols-[55fr_45fr] gap-12 items-center">
+            <div className="max-w-3xl">
+              <motion.span
+                {...fadeUp}
+                className="inline-block px-4 py-1.5 rounded-full text-xs font-heading font-medium bg-accent/15 border border-accent/25 text-accent uppercase tracking-wider mb-6"
               >
-                Join the Healthcare Early Access List
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <button
-                onClick={scrollToSection2}
-                className="btn-secondary"
+                Coming H2 2026
+              </motion.span>
+              <motion.p {...fadeUp} transition={{ delay: 0.05 }} className="section-label mb-3">
+                Healthcare
+              </motion.p>
+              <motion.h1
+                {...fadeUp}
+                transition={{ delay: 0.1 }}
+                className="section-headline mb-4"
               >
-                See What We're Building
-                <ArrowDown className="w-4 h-4" />
-              </button>
+                Patient data is the most sensitive category under PDPL. It deserves the most sovereign AI.
+              </motion.h1>
+              <motion.p
+                {...fadeUp}
+                transition={{ delay: 0.2 }}
+                className="section-subtext mb-8"
+              >
+                Saudi hospital groups sit on decades of patient records, clinical protocols, and operational knowledge that AI could transform into better outcomes, faster diagnoses, and lower costs. But patient data cannot leave your walls. It cannot be sent to foreign servers. It cannot be processed by tools that don't understand CBAHI accreditation or MOH regulations. Aliph is building healthcare AI that treats patient data with the protection it demands.
+              </motion.p>
+              <motion.div {...fadeUp} transition={{ delay: 0.3 }} className="flex flex-col sm:flex-row items-start gap-4 mb-4">
+                <a
+                  href="#waitlist"
+                  onClick={(e) => { e.preventDefault(); document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" }); }}
+                  className="btn-primary group"
+                >
+                  Join the Healthcare Early Access List
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+                <button
+                  onClick={scrollToSection2}
+                  className="btn-secondary"
+                >
+                  See What We're Building
+                  <ArrowDown className="w-4 h-4" />
+                </button>
+              </motion.div>
+            </div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="hidden lg:block"
+            >
+              <div className="rounded-2xl overflow-hidden shadow-lg border border-border/50">
+                <img
+                  src={heroImg}
+                  alt="Modern hospital with healthcare technology"
+                  className="w-full h-auto object-cover"
+                  loading="eager"
+                />
+              </div>
             </motion.div>
           </div>
         </div>

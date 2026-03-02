@@ -32,6 +32,8 @@ export interface IndustryPageData {
   primaryCta: { label: string; href: string };
   secondaryCta: { label: string; href: string };
   badges: string[];
+  heroImage?: string;
+  heroImageAlt?: string;
 
   realityLabel: string;
   realityHeadline: string;
@@ -72,41 +74,60 @@ const IndustryPageTemplate = ({ data }: { data: IndustryPageData }) => {
       <section className="relative py-[56px] md:py-[88px] bg-background overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 blur-[140px] rounded-full pointer-events-none" />
         <div className="container relative z-10 px-6">
-          <div className="max-w-3xl">
-            <motion.p {...fadeUp} className="section-label mb-3">
-              {data.label}
-            </motion.p>
-            <motion.h1
-              {...fadeUp}
-              transition={{ delay: 0.1 }}
-              className="font-bold text-[32px] md:text-[40px] lg:text-[48px] tracking-tight leading-[1.1] mb-4 text-foreground"
-            >
-              {data.headline}
-            </motion.h1>
-            <motion.p
-              {...fadeUp}
-              transition={{ delay: 0.2 }}
-              className="section-subtext mb-8 max-w-[520px]"
-            >
-              {data.subtext}
-            </motion.p>
-            <motion.div {...fadeUp} transition={{ delay: 0.3 }} className="flex flex-col sm:flex-row items-start gap-4 mb-6">
-              <Link to={data.primaryCta.href} className="btn-primary group">
-                {data.primaryCta.label}
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link to={data.secondaryCta.href} className="btn-secondary">
-                {data.secondaryCta.label}
-              </Link>
-            </motion.div>
-            <motion.div {...fadeUp} transition={{ delay: 0.4 }} className="flex flex-wrap gap-3">
-              {data.badges.map((b) => (
-                <div key={b} className="flex items-center gap-1.5 trust-line">
-                  <CheckCircle2 className="h-4 w-4 text-accent" />
-                  {b}
+          <div className={`grid ${data.heroImage ? "lg:grid-cols-[55fr_45fr] gap-12 items-center" : ""}`}>
+            <div className="max-w-3xl">
+              <motion.p {...fadeUp} className="section-label mb-3">
+                {data.label}
+              </motion.p>
+              <motion.h1
+                {...fadeUp}
+                transition={{ delay: 0.1 }}
+                className="font-bold text-[32px] md:text-[40px] lg:text-[48px] tracking-tight leading-[1.1] mb-4 text-foreground"
+              >
+                {data.headline}
+              </motion.h1>
+              <motion.p
+                {...fadeUp}
+                transition={{ delay: 0.2 }}
+                className="section-subtext mb-8 max-w-[520px]"
+              >
+                {data.subtext}
+              </motion.p>
+              <motion.div {...fadeUp} transition={{ delay: 0.3 }} className="flex flex-col sm:flex-row items-start gap-4 mb-6">
+                <Link to={data.primaryCta.href} className="btn-primary group">
+                  {data.primaryCta.label}
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link to={data.secondaryCta.href} className="btn-secondary">
+                  {data.secondaryCta.label}
+                </Link>
+              </motion.div>
+              <motion.div {...fadeUp} transition={{ delay: 0.4 }} className="flex flex-wrap gap-3">
+                {data.badges.map((b) => (
+                  <div key={b} className="flex items-center gap-1.5 trust-line">
+                    <CheckCircle2 className="h-4 w-4 text-accent" />
+                    {b}
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+            {data.heroImage && (
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="hidden lg:block"
+              >
+                <div className="rounded-2xl overflow-hidden shadow-lg border border-border/50">
+                  <img
+                    src={data.heroImage}
+                    alt={data.heroImageAlt || data.label}
+                    className="w-full h-auto object-cover"
+                    loading="eager"
+                  />
                 </div>
-              ))}
-            </motion.div>
+              </motion.div>
+            )}
           </div>
         </div>
       </section>

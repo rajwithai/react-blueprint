@@ -1,5 +1,6 @@
 import { UserCircle, Globe, TrendingUp, Brain } from "lucide-react";
 import IndustryPageTemplate, { IndustryPageData } from "@/components/sections/IndustryPageTemplate";
+import heroImg from "@/assets/images/industry-hospitality.jpg";
 
 const data: IndustryPageData = {
   label: "HOSPITALITY & TOURISM",
@@ -8,6 +9,8 @@ const data: IndustryPageData = {
   primaryCta: { label: "Book a Hospitality AI Assessment", href: "/demo" },
   secondaryCta: { label: "See the Platform →", href: "/platform" },
   badges: ["PDPL", "STA", "Tourism Authority Requirements"],
+  heroImage: heroImg,
+  heroImageAlt: "Luxury hotel lobby with digital concierge",
 
   realityLabel: "YOUR REALITY TODAY",
   realityHeadline: "Your hotels are sitting on a goldmine of guest data they can't safely use.",
