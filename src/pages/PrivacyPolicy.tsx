@@ -2,16 +2,12 @@ import Section from "@/components/sections/Section";
 
 const PrivacyPolicy = () => (
   <>
-    <section className="pt-[88px] pb-[48px] md:pb-[56px] bg-background">
-      <div className="container mx-auto px-6">
-        <h1 className="font-heading font-bold text-4xl md:text-5xl text-foreground">Privacy Policy</h1>
-        <p className="font-body text-muted-foreground mt-4 max-w-2xl text-[17px] leading-relaxed">
-          How Aliph Solutions collects, uses, and protects your personal data in compliance with PDPL and applicable data protection regulations.
-        </p>
-      </div>
-    </section>
     <Section>
       <div className="max-w-3xl mx-auto prose prose-sm">
+        <h1 className="font-heading font-bold text-4xl md:text-5xl text-foreground mb-2">Privacy Policy</h1>
+        <p className="font-body text-muted-foreground max-w-2xl text-[17px] leading-relaxed mb-6">
+          How Aliph Solutions collects, uses, and protects your personal data in compliance with PDPL and applicable data protection regulations.
+        </p>
         <p className="font-body text-muted-foreground leading-relaxed text-sm italic">
           Last updated: February 2026
         </p>
