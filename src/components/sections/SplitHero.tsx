@@ -116,7 +116,7 @@ const SplitHero = ({
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.45 }}
-                className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-8 pt-8 border-t border-border/60"
+                className="grid grid-cols-2 gap-6 mt-8 pt-8 border-t border-border/60"
               >
                 {metrics.map((m, i) => (
                   <div key={i}>
