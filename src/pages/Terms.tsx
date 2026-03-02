@@ -2,16 +2,12 @@ import Section from "@/components/sections/Section";
 
 const Terms = () => (
   <>
-    <div className="hero-gradient py-20 pt-32">
-      <div className="container mx-auto px-6">
-        <h1 className="font-heading font-bold text-4xl text-primary-foreground">Terms of Service</h1>
-        <p className="font-body text-primary-foreground/70 mt-4 max-w-2xl">
-          The terms and conditions governing your use of Aliph Solutions' website and services.
-        </p>
-      </div>
-    </div>
     <Section>
       <div className="max-w-3xl mx-auto prose prose-sm">
+        <h1 className="font-heading font-bold text-4xl md:text-5xl text-foreground mb-2">Terms of Service</h1>
+        <p className="font-body text-muted-foreground max-w-2xl text-[17px] leading-relaxed mb-6">
+          The terms and conditions governing your use of Aliph Solutions' website and services.
+        </p>
         <p className="font-body text-muted-foreground leading-relaxed text-sm italic">
           Last updated: February 2026
         </p>
