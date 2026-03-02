@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import SplitHero from "@/components/sections/SplitHero";
 import Section from "@/components/sections/Section";
-import heroChatImg from "@/assets/images/hero-chat-ui.jpg";
+import heroChatImg from "@/assets/images/aliphchat-ui.png";
 
 /* ─── Section 4: Capabilities Tab Data ─── */
 const capabilities = [
