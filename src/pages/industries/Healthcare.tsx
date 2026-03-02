@@ -69,7 +69,7 @@ const Healthcare = () => {
       {/* SECTION 1: HERO */}
       <section className="pt-[88px] md:pt-[88px] pb-[48px] md:pb-[72px] bg-background">
         <div className="container px-6">
-          <div className="max-w-[720px] mx-auto text-center">
+          <div className="max-w-3xl">
             <motion.span
               {...fadeUp}
               className="inline-block px-4 py-1.5 rounded-full text-xs font-heading font-medium bg-accent/15 border border-accent/25 text-accent uppercase tracking-wider mb-6"
