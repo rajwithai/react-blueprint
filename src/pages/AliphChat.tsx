@@ -155,7 +155,7 @@ const AliphChat = () => {
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-accent uppercase tracking-[0.25em] text-xs font-heading font-semibold mb-4 text-center"
+          className="section-label mb-3 text-center"
         >
           HOW IT WORKS
         </motion.p>
@@ -163,7 +163,7 @@ const AliphChat = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-bold text-3xl md:text-4xl mb-4 text-foreground text-center tracking-tight"
+          className="section-headline mb-4 text-center"
         >
           From question to sovereign answer{" "}
           <br className="hidden sm:block" />
@@ -174,7 +174,7 @@ const AliphChat = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.05 }}
-          className="font-body text-muted-foreground mb-14 text-center max-w-xl mx-auto"
+          className="section-subtext mb-10 text-center mx-auto"
         >
           No training needed. No IT configuration. Your team starts asking questions on day one.
         </motion.p>
@@ -207,19 +207,17 @@ const AliphChat = () => {
               )}
 
               <div
-                className={`flex-1 rounded-2xl p-7 md:p-8 text-center transition-all ${
+                className={`flex-1 rounded-lg p-7 text-center transition-all ${
                   s.highlight
                     ? "border-2 border-accent bg-accent/5 shadow-[0_0_30px_-8px_hsl(var(--accent)/0.25)]"
                     : "border border-border bg-background"
                 }`}
               >
-                <span className={`font-heading font-bold text-3xl ${s.highlight ? "text-accent" : "text-accent/70"}`}>
-                  {s.step}
-                </span>
-                <h3 className="font-heading font-semibold text-lg mt-4 mb-3 text-foreground leading-snug">
+                <span className="step-number">{s.step}</span>
+                <h3 className="card-title-std mt-4 mb-3 leading-snug">
                   {s.title}
                 </h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                <p className="card-body-std">{s.desc}</p>
               </div>
             </motion.div>
           ))}
@@ -232,7 +230,7 @@ const AliphChat = () => {
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-accent uppercase tracking-[0.25em] text-xs font-heading font-semibold mb-4 text-center"
+          className="section-label mb-3 text-center"
         >
           THE REAL COMPARISON
         </motion.p>
@@ -240,7 +238,7 @@ const AliphChat = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-bold text-3xl md:text-4xl mb-4 text-foreground text-center tracking-tight"
+          className="section-headline mb-4 text-center"
         >
           Your team already uses ChatGPT.{" "}
           <br className="hidden sm:block" />
@@ -251,22 +249,22 @@ const AliphChat = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.05 }}
-          className="font-body text-muted-foreground mb-12 text-center max-w-2xl mx-auto"
+          className="section-subtext mb-10 text-center mx-auto"
         >
           This isn't about features. It's about what happens to your data, your compliance, and your institutional knowledge with each choice.
         </motion.p>
 
         {/* Desktop Table */}
-        <div className="hidden md:block max-w-[1100px] mx-auto rounded-2xl border border-border overflow-hidden bg-card">
+        <div className="hidden md:block max-w-[1060px] mx-auto rounded-lg border border-border overflow-hidden bg-card">
           {/* Header */}
-          <div className="grid grid-cols-[1.2fr_1fr_1fr]">
-            <div className="p-5 border-b border-border">
+          <div className="grid grid-cols-[1.2fr_1fr_1fr] border-b-2 border-border">
+            <div className="p-5">
               <span className="font-heading font-semibold text-[15px] text-foreground">What happens when...</span>
             </div>
-            <div className="p-5 border-b border-border border-l bg-secondary/50">
+            <div className="p-5 border-l bg-[#FAFAFA]">
               <span className="font-heading font-semibold text-[15px] text-muted-foreground">ChatGPT / Copilot</span>
             </div>
-            <div className="p-5 border-b border-border border-l">
+            <div className="p-5 border-l">
               <span className="font-heading font-semibold text-[15px] text-accent">AliphChat</span>
             </div>
           </div>
@@ -278,16 +276,16 @@ const AliphChat = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.03 }}
-              className="grid grid-cols-[1.2fr_1fr_1fr] border-t border-border"
+              className="grid grid-cols-[1.2fr_1fr_1fr] border-t border-[#F3F4F6]"
             >
-              <div className="p-5">
-                <span className="font-body text-sm font-semibold text-foreground">{row.scenario}</span>
+              <div className="comparison-cell">
+                <span className="font-semibold text-[15px] text-foreground">{row.scenario}</span>
               </div>
-              <div className="p-5 border-l border-border bg-secondary/50">
-                <span className="font-body text-sm text-muted-foreground">{row.competitor}</span>
+              <div className="comparison-cell border-l bg-[#FAFAFA]">
+                <span className="text-[15px] text-muted-foreground">{row.competitor}</span>
               </div>
-              <div className="p-5 border-l border-border">
-                <span className="font-body text-sm text-foreground">{row.aliph}</span>
+              <div className="comparison-cell border-l">
+                <span className="text-[15px] text-foreground">{row.aliph}</span>
               </div>
             </motion.div>
           ))}
@@ -302,18 +300,18 @@ const AliphChat = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="rounded-xl border border-border bg-card overflow-hidden"
+              className="card-std overflow-hidden p-0"
             >
-              <div className="p-4 bg-secondary/30 border-b border-border">
-                <span className="font-body text-sm font-semibold text-foreground">{row.scenario}</span>
+              <div className="p-4 bg-[#F9FAFB] border-b border-border">
+                <span className="font-semibold text-sm text-foreground">{row.scenario}</span>
               </div>
-              <div className="p-4 bg-secondary/50 border-b border-border">
-                <span className="font-body text-xs uppercase tracking-wider text-muted-foreground font-semibold">ChatGPT / Copilot</span>
-                <p className="font-body text-sm text-muted-foreground mt-1">{row.competitor}</p>
+              <div className="p-4 bg-[#FAFAFA] border-b border-border">
+                <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">ChatGPT / Copilot</span>
+                <p className="text-sm text-muted-foreground mt-1">{row.competitor}</p>
               </div>
               <div className="p-4">
-                <span className="font-body text-xs uppercase tracking-wider text-accent font-semibold">AliphChat</span>
-                <p className="font-body text-sm text-foreground mt-1">{row.aliph}</p>
+                <span className="text-xs uppercase tracking-wider text-accent font-semibold">AliphChat</span>
+                <p className="text-sm text-foreground mt-1">{row.aliph}</p>
               </div>
             </motion.div>
           ))}
@@ -336,7 +334,7 @@ const AliphChat = () => {
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-accent uppercase tracking-[0.25em] text-xs font-heading font-semibold mb-4 text-center"
+          className="section-label mb-3 text-center"
         >
           WHAT MAKES ALIPHCHAT DIFFERENT
         </motion.p>
@@ -344,7 +342,7 @@ const AliphChat = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-bold text-3xl md:text-4xl mb-4 text-foreground text-center tracking-tight"
+          className="section-headline mb-4 text-center"
         >
           Three things no other enterprise AI assistant does.
         </motion.h2>
@@ -353,24 +351,24 @@ const AliphChat = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.05 }}
-          className="font-body text-muted-foreground mb-10 text-center max-w-xl mx-auto"
+          className="section-subtext mb-10 text-center mx-auto"
         >
           These aren't add-ons. They're built into every interaction, every query, every answer.
         </motion.p>
 
-        <div className="max-w-[1200px] mx-auto">
+        <div className="max-w-[1100px] mx-auto">
           {/* Desktop: side-by-side tabs */}
-          <div className="hidden md:grid md:grid-cols-[30%_70%] gap-0 rounded-2xl border border-border overflow-hidden bg-card">
+          <div className="hidden md:grid md:grid-cols-[30%_70%] gap-0 rounded-lg border border-border overflow-hidden bg-card">
             {/* Tab Navigation */}
-            <div className="border-r border-border bg-secondary/30">
+            <div className="border-r border-border bg-[#F9FAFB]">
               {capabilities.map((cap, i) => (
                 <button
                   key={i}
                   onClick={() => setActiveTab(i)}
-                  className={`w-full text-left px-6 py-5 border-b border-border transition-all text-sm font-heading font-medium ${
+                  className={`w-full text-left px-5 py-4 border-b border-border transition-all text-sm font-heading ${
                     activeTab === i
-                      ? "bg-accent/10 text-foreground font-semibold border-l-[3px] border-l-accent"
-                      : "text-muted-foreground hover:bg-secondary/60 border-l-[3px] border-l-transparent"
+                      ? "bg-[#FFF7ED] text-foreground font-semibold border-l-[3px] border-l-accent"
+                      : "text-muted-foreground hover:bg-secondary/60 border-l-[3px] border-l-transparent font-normal"
                   }`}
                 >
                   {cap.tab}
@@ -379,7 +377,7 @@ const AliphChat = () => {
             </div>
 
             {/* Content Panel */}
-            <div className="p-8 lg:p-10 min-h-[380px]">
+            <div className="p-8 min-h-[380px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab}
@@ -391,17 +389,17 @@ const AliphChat = () => {
                   <h3 className="font-heading font-bold text-xl lg:text-2xl text-foreground mb-5 leading-snug">
                     {capabilities[activeTab].title}
                   </h3>
-                  <p className="font-body text-muted-foreground leading-relaxed mb-4">
+                  <p className="card-body-std mb-4">
                     {capabilities[activeTab].body1}
                   </p>
-                  <p className="font-body text-muted-foreground leading-relaxed mb-6">
+                  <p className="card-body-std mb-6">
                     {capabilities[activeTab].body2}
                   </p>
                   <div className="space-y-3">
                     {capabilities[activeTab].proofs.map((proof, j) => (
                       <div key={j} className="flex items-start gap-3">
                         <Check className="w-4 h-4 text-accent mt-0.5 shrink-0" />
-                        <span className="font-body text-[15px] text-foreground">{proof}</span>
+                        <span className="text-[15px] text-foreground">{proof}</span>
                       </div>
                     ))}
                   </div>
@@ -413,13 +411,13 @@ const AliphChat = () => {
           {/* Mobile: accordion-style */}
           <div className="md:hidden space-y-3">
             {capabilities.map((cap, i) => (
-              <div key={i} className="rounded-xl border border-border bg-card overflow-hidden">
+              <div key={i} className="card-std overflow-hidden p-0">
                 <button
                   onClick={() => setActiveTab(activeTab === i ? -1 : i)}
-                  className={`w-full text-left px-5 py-4 font-heading font-medium text-sm transition-all ${
+                  className={`w-full text-left px-5 py-4 font-heading text-sm transition-all ${
                     activeTab === i
-                      ? "bg-accent/10 text-foreground font-semibold border-l-[3px] border-l-accent"
-                      : "text-muted-foreground border-l-[3px] border-l-transparent"
+                      ? "bg-[#FFF7ED] text-foreground font-semibold border-l-[3px] border-l-accent"
+                      : "text-muted-foreground border-l-[3px] border-l-transparent font-normal"
                   }`}
                 >
                   {cap.tab}
@@ -434,20 +432,16 @@ const AliphChat = () => {
                       className="overflow-hidden"
                     >
                       <div className="px-5 pb-5 pt-2">
-                        <h3 className="font-heading font-bold text-lg text-foreground mb-4 leading-snug">
+                        <h3 className="card-title-std mb-4 leading-snug">
                           {cap.title}
                         </h3>
-                        <p className="font-body text-sm text-muted-foreground leading-relaxed mb-3">
-                          {cap.body1}
-                        </p>
-                        <p className="font-body text-sm text-muted-foreground leading-relaxed mb-5">
-                          {cap.body2}
-                        </p>
+                        <p className="card-body-std mb-3">{cap.body1}</p>
+                        <p className="card-body-std mb-5">{cap.body2}</p>
                         <div className="space-y-2.5">
                           {cap.proofs.map((proof, j) => (
                             <div key={j} className="flex items-start gap-2.5">
                               <Check className="w-4 h-4 text-accent mt-0.5 shrink-0" />
-                              <span className="font-body text-sm text-foreground">{proof}</span>
+                              <span className="text-sm text-foreground">{proof}</span>
                             </div>
                           ))}
                         </div>
@@ -467,7 +461,7 @@ const AliphChat = () => {
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-accent uppercase tracking-[0.25em] text-xs font-heading font-semibold mb-4 text-center"
+          className="section-label mb-3 text-center"
         >
           USE CASES
         </motion.p>
@@ -475,7 +469,7 @@ const AliphChat = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading font-bold text-3xl md:text-4xl mb-4 text-foreground text-center tracking-tight"
+          className="section-headline mb-4 text-center"
         >
           What teams actually do with AliphChat.
         </motion.h2>
@@ -484,14 +478,14 @@ const AliphChat = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.05 }}
-          className="font-body text-muted-foreground mb-12 text-center max-w-[660px] mx-auto"
+          className="section-subtext mb-10 text-center mx-auto"
         >
           Every team has questions only your organization can answer. Here's how different teams use AliphChat every day.
         </motion.p>
 
         <div className="max-w-[1100px] mx-auto">
           {/* Row 1: 3 cards */}
-          <div className="grid md:grid-cols-3 gap-6 mb-6 md:mb-8">
+          <div className="grid md:grid-cols-3 gap-6 mb-6">
             {[
               {
                 icon: Scale,
@@ -518,12 +512,12 @@ const AliphChat = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="rounded-2xl border border-border bg-card p-7 md:p-8 shadow-sm"
+                className="card-std"
               >
-                <card.icon className="w-6 h-6 text-accent mb-4" />
-                <h3 className="font-heading font-bold text-lg text-foreground mb-2">{card.team}</h3>
-                <p className="font-heading font-semibold text-[15px] text-foreground/80 mb-3">{card.scenario}</p>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{card.body}</p>
+                <card.icon className="card-icon mb-4" />
+                <h3 className="card-title-std mb-2">{card.team}</h3>
+                <p className="font-heading font-medium text-[15px] text-foreground/80 mb-3">{card.scenario}</p>
+                <p className="card-body-std">{card.body}</p>
               </motion.div>
             ))}
           </div>
@@ -537,14 +531,12 @@ const AliphChat = () => {
                 team: "Audit & Regulatory Preparation",
                 scenario: "SDAIA requests a compliance review. Your team scrambles.",
                 body: "AliphChat generates instant summaries of your compliance posture — which policies exist, what data flows are documented, where gaps remain. Every answer is sourced from your actual documents. Export the interaction as part of your audit evidence. Preparation that took weeks now takes hours.",
-                colStart: "md:col-start-1",
               },
               {
                 icon: Handshake,
                 team: "Client Advisory Teams",
                 scenario: "Your consultants rewrite proposals from scratch because nobody can find the precedent.",
                 body: "A senior associate needs the approach used on a similar engagement three years ago. AliphChat searches every past proposal, deliverable, and engagement note — returning the most relevant precedents with exact document references. Institutional knowledge becomes accessible to every team member, not locked in a partner's memory.",
-                colStart: "md:col-start-2",
               },
             ].map((card, i) => (
               <motion.div
@@ -553,12 +545,12 @@ const AliphChat = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: (i + 3) * 0.08 }}
-                className="rounded-2xl border border-border bg-card p-7 md:p-8 shadow-sm"
+                className="card-std"
               >
-                <card.icon className="w-6 h-6 text-accent mb-4" />
-                <h3 className="font-heading font-bold text-lg text-foreground mb-2">{card.team}</h3>
-                <p className="font-heading font-semibold text-[15px] text-foreground/80 mb-3">{card.scenario}</p>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{card.body}</p>
+                <card.icon className="card-icon mb-4" />
+                <h3 className="card-title-std mb-2">{card.team}</h3>
+                <p className="font-heading font-medium text-[15px] text-foreground/80 mb-3">{card.scenario}</p>
+                <p className="card-body-std">{card.body}</p>
               </motion.div>
             ))}
             <div className="hidden md:block" />
@@ -567,13 +559,13 @@ const AliphChat = () => {
       </Section>
 
       {/* ══════ SECTION 6: TRACTION STRIP ══════ */}
-      <section className="py-12 md:py-16 bg-secondary/60 border-y border-border">
+      <section className="py-14 md:py-[56px] bg-[#F9FAFB] border-y border-border">
         <div className="container px-6 mx-auto">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-heading font-semibold text-xl md:text-[22px] text-foreground text-center mb-10"
+            className="font-heading font-semibold text-xl text-foreground text-center mb-10"
           >
             Built, tested, and ready for your organization.
           </motion.p>
@@ -594,8 +586,8 @@ const AliphChat = () => {
                 transition={{ delay: i * 0.06 }}
                 className={`text-center ${i === 4 ? "col-span-2 md:col-span-1" : ""}`}
               >
-                <p className="font-heading font-bold text-4xl md:text-[48px] text-foreground mb-1">{stat.value}</p>
-                <p className="font-body text-[13px] text-muted-foreground leading-snug">{stat.label}</p>
+                <p className="stat-number mb-1">{stat.value}</p>
+                <p className="stat-label">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -604,7 +596,7 @@ const AliphChat = () => {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-body text-[15px] text-muted-foreground text-center mt-8"
+            className="trust-line text-center mt-8"
           >
             No unverified claims. Just what the platform delivers today.
           </motion.p>
@@ -618,7 +610,7 @@ const AliphChat = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-heading font-bold text-3xl md:text-4xl lg:text-[42px] text-white leading-tight mb-6"
+            className="dark-cta-headline mb-4"
           >
             Give your team the AI they want — with the governance you need.
           </motion.h2>
@@ -628,7 +620,7 @@ const AliphChat = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.08 }}
-            className="font-body text-[17px] text-white/70 leading-relaxed max-w-[620px] mx-auto mb-9"
+            className="dark-cta-subtext mb-8 max-w-[620px] mx-auto"
           >
             Book a 30-minute walkthrough. We'll connect AliphChat to a sample knowledge base, show you the Privacy Shield in action, and demonstrate source citations and audit trails live. Your team could be using it within days.
           </motion.p>
@@ -638,18 +630,12 @@ const AliphChat = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.16 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-7"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6"
           >
-            <Link
-              to="/demo"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-9 py-4 bg-accent hover:brightness-110 text-accent-foreground rounded-lg font-heading font-semibold transition-all shadow-sm text-base"
-            >
+            <Link to="/demo" className="btn-primary">
               Try AliphChat
             </Link>
-            <Link
-              to="/demo"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-9 py-4 rounded-lg border border-white/30 text-white hover:bg-white/10 font-heading font-semibold transition-all text-base"
-            >
+            <Link to="/demo" className="btn-secondary btn-secondary-dark">
               Request a Live Demo
             </Link>
           </motion.div>
@@ -659,7 +645,7 @@ const AliphChat = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.24 }}
-            className="font-body text-sm text-white/60 mb-5"
+            className="dark-cta-trust mb-4"
           >
             No commitment. No lengthy sales process. See it working in 30 minutes.
           </motion.p>
@@ -669,10 +655,10 @@ const AliphChat = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="space-y-1"
+            className="dark-cta-contact"
           >
-            <p className="font-body text-sm text-white/50">Prefer to talk directly?</p>
-            <p className="font-body text-sm text-white/50">
+            <p>Prefer to talk directly?</p>
+            <p className="mt-1">
               WhatsApp:{" "}
               <a href="https://wa.me/966569678421" className="text-white/70 hover:underline">
                 +966 56 967 8421
