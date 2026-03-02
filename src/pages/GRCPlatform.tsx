@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import SplitHero from "@/components/sections/SplitHero";
 import Section from "@/components/sections/Section";
-import grcDashboardImg from "@/assets/images/aliphchat-ui.png";
+import grcDashboardImg from "@/assets/images/grc-dashboard.png";
 
 /* ─── Section 2: Cost Comparison Data ─── */
 const traditionalItems = [
