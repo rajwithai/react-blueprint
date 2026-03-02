@@ -612,7 +612,7 @@ const AliphChat = () => {
       </section>
 
       {/* ══════ SECTION 7: FINAL CTA ══════ */}
-      <section className="py-20 md:py-24 lg:py-28 bg-[#1a1a2e]">
+      <section className="dark-cta-section py-[56px] md:py-[88px]">
         <div className="container px-6 mx-auto max-w-[680px] text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

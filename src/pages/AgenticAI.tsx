@@ -219,7 +219,7 @@ const AgenticAI = () => {
       </Section>
 
       {/* ── 6. EARLY ACCESS WAITLIST CTA ── */}
-      <section className="relative bg-[hsl(220,20%,12%)] text-[hsl(0,0%,95%)]">
+      <section className="relative dark-cta-section py-[56px] md:py-[88px] text-[hsl(0,0%,95%)]">
         <div className="container mx-auto px-6 py-24 lg:py-32">
           <div className="max-w-2xl mx-auto text-center">
             <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="inline-flex px-3 py-1 rounded-full text-xs font-heading font-semibold bg-accent/15 border border-accent/25 text-accent uppercase tracking-wider mb-6">

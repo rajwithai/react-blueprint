@@ -8,22 +8,22 @@
   :root {
     /* Apple/Google-inspired Light Design System */
     --background: 0 0% 100%;
-    --foreground: 0 0% 11%;
+    --foreground: 220 14% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 11%;
+    --card-foreground: 220 14% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 11%;
+    --popover-foreground: 220 14% 10%;
 
     --primary: 220 50% 10%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 14% 96%;
-    --secondary-foreground: 0 0% 11%;
+    --secondary-foreground: 220 14% 10%;
 
     --muted: 220 14% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted-foreground: 220 9% 46%;
 
     --accent: 37 75% 43%;
     --accent-foreground: 0 0% 100%;
@@ -35,19 +35,22 @@
     --input: 220 13% 91%;
     --ring: 220 50% 10%;
 
-    --radius: 12px;
+    --radius: 8px;
 
-    /* Custom tokens (accent-only) */
+    /* Custom tokens */
     --navy: 220 50% 10%;
     --gold: 37 75% 43%;
     --gold-light: 37 70% 55%;
 
+    /* Dark CTA background */
+    --dark-cta: 240 25% 14%;
+
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 0 0% 11%;
+    --sidebar-foreground: 220 14% 10%;
     --sidebar-primary: 220 50% 10%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 220 14% 96%;
-    --sidebar-accent-foreground: 0 0% 11%;
+    --sidebar-accent-foreground: 220 14% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 220 50% 10%;
   }
@@ -65,7 +68,6 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Inter', system-ui, sans-serif;
-    font-weight: 600;
   }
 }
 
@@ -73,6 +75,288 @@
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* ═══════════════════════════════════════════════
+   UNIVERSAL TYPOGRAPHY
+   ═══════════════════════════════════════════════ */
+
+/* Section label — small caps */
+.section-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: hsl(var(--accent));
+  line-height: 1;
+}
+@media (max-width: 767px) {
+  .section-label { font-size: 11px; }
+}
+
+/* Section headline */
+.section-headline {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: hsl(var(--foreground));
+}
+@media (max-width: 767px) {
+  .section-headline { font-size: 28px; }
+}
+
+/* Section subtext */
+.section-subtext {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: hsl(var(--muted-foreground));
+  max-width: 680px;
+}
+@media (max-width: 767px) {
+  .section-subtext { font-size: 15px; }
+}
+
+/* Card title */
+.card-title-std {
+  font-size: 18px;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+@media (max-width: 767px) {
+  .card-title-std { font-size: 16px; }
+}
+
+/* Card body */
+.card-body-std {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: hsl(var(--muted-foreground));
+}
+@media (max-width: 767px) {
+  .card-body-std { font-size: 14px; }
+}
+
+/* Step number */
+.step-number {
+  font-size: 32px;
+  font-weight: 600;
+  color: hsl(var(--accent));
+}
+
+/* Stat number */
+.stat-number {
+  font-size: 44px;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  line-height: 1;
+}
+@media (max-width: 767px) {
+  .stat-number { font-size: 32px; }
+}
+
+/* Stat label */
+.stat-label {
+  font-size: 13px;
+  font-weight: 400;
+  color: hsl(var(--muted-foreground));
+}
+@media (max-width: 767px) {
+  .stat-label { font-size: 12px; }
+}
+
+/* Trust line */
+.trust-line {
+  font-size: 14px;
+  font-weight: 400;
+  color: hsl(220 9% 63%);
+}
+@media (max-width: 767px) {
+  .trust-line { font-size: 13px; }
+}
+
+/* ═══════════════════════════════════════════════
+   UNIVERSAL CARD
+   ═══════════════════════════════════════════════ */
+.card-std {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  padding: 28px;
+}
+
+.card-std-pain {
+  border-left: 3px solid #EF4444;
+}
+.card-std-success {
+  border-left: 3px solid #22C55E;
+}
+.card-std-accent {
+  border-left: 3px solid hsl(var(--accent));
+}
+.card-std-accent-top {
+  border-top: 2px solid hsl(var(--accent));
+}
+
+/* Card icon */
+.card-icon {
+  width: 24px;
+  height: 24px;
+  color: hsl(var(--accent));
+}
+
+/* ═══════════════════════════════════════════════
+   UNIVERSAL BUTTONS
+   ═══════════════════════════════════════════════ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: hsl(var(--accent));
+  color: hsl(var(--foreground));
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: opacity 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: transparent;
+  border: 1.5px solid hsl(var(--foreground));
+  color: hsl(var(--foreground));
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  opacity: 0.9;
+}
+
+/* Dark section variants */
+.btn-secondary-dark {
+  border-color: rgba(255,255,255,0.3);
+  color: #FFFFFF;
+}
+.btn-secondary-dark:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* ═══════════════════════════════════════════════
+   DARK CTA SECTION
+   ═══════════════════════════════════════════════ */
+.dark-cta-section {
+  background: #1A1A2E;
+}
+
+.dark-cta-headline {
+  font-size: 40px;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+@media (max-width: 767px) {
+  .dark-cta-headline { font-size: 28px; }
+}
+
+.dark-cta-subtext {
+  font-size: 17px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.65;
+}
+
+.dark-cta-trust {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+}
+
+.dark-cta-contact {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+}
+
+/* ═══════════════════════════════════════════════
+   COMPARISON TABLE
+   ═══════════════════════════════════════════════ */
+.comparison-table {
+  max-width: 1060px;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: 1px solid hsl(var(--border));
+  overflow: hidden;
+  background: hsl(var(--card));
+}
+
+.comparison-header {
+  font-weight: 600;
+  font-size: 15px;
+  border-bottom: 2px solid hsl(var(--border));
+}
+
+.comparison-col1 {
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.comparison-col2 {
+  font-weight: 400;
+  color: hsl(var(--muted-foreground));
+  background: #FAFAFA;
+}
+
+.comparison-col3 {
+  font-weight: 400;
+  color: hsl(var(--foreground));
+  background: #FFFFFF;
+}
+
+.comparison-row {
+  border-top: 1px solid #F3F4F6;
+}
+
+.comparison-cell {
+  padding: 20px 16px;
+  font-size: 15px;
+}
+
+/* ═══════════════════════════════════════════════
+   REGULATION CARD
+   ═══════════════════════════════════════════════ */
+.reg-acronym {
+  font-size: 28px;
+  font-weight: 700;
+  color: hsl(var(--accent));
+}
+
+.reg-name {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: hsl(var(--muted-foreground));
+}
+
+.reg-body {
+  font-size: 14px;
+  font-weight: 400;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.6;
 }
 
 /* ═══════════════════════════════════════════════
@@ -84,12 +368,12 @@
 }
 
 /* ═══════════════════════════════════════════════
-   BENTO CARD
+   BENTO CARD (legacy compat)
    ═══════════════════════════════════════════════ */
 .bento-card {
   background: hsl(var(--card));
   border: 1px solid hsl(var(--border));
-  border-radius: var(--radius);
+  border-radius: 8px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -123,7 +407,7 @@
 .animate-fade-in-up-delay-4 { animation-delay: 400ms; }
 
 /* ═══════════════════════════════════════════════
-   CTA STYLES
+   CTA STYLES (legacy compat)
    ═══════════════════════════════════════════════ */
 .cta-primary {
   position: relative;
@@ -171,4 +455,11 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* ═══════════════════════════════════════════════
+   SMOOTH SCROLL
+   ═══════════════════════════════════════════════ */
+html {
+  scroll-behavior: smooth;
 }

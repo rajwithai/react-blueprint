@@ -215,7 +215,7 @@ const Healthcare = () => {
       </section>
 
       {/* SECTION 5: WAITLIST CTA */}
-      <section id="waitlist" className="py-20 md:py-24 bg-[hsl(var(--primary))] text-primary-foreground">
+      <section id="waitlist" className="dark-cta-section py-[56px] md:py-[88px] text-primary-foreground">
         <div className="container px-6 text-center max-w-3xl mx-auto">
           <motion.span
             {...fadeUp}

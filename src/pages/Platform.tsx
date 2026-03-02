@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Section from "@/components/sections/Section";
-
 import PlatformLayers from "@/components/sections/PlatformLayers";
 
 const fadeUp = {
@@ -16,19 +15,18 @@ const Platform = () => {
   return (
     <>
       {/* SECTION 1 — Hero */}
-      <section className="relative bg-background overflow-hidden">
+      <section className="relative bg-background overflow-hidden py-[56px] md:py-[88px]">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
-
-        <div className="container mx-auto px-6 py-20 md:py-28 lg:py-36 relative z-10">
-          <div className="grid lg:grid-cols-[55%_45%] gap-10 lg:gap-16 items-center">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-[55%_45%] gap-10 lg:gap-12 items-center">
             <div>
-              <motion.p {...fadeUp} className="text-accent uppercase tracking-[0.25em] text-xs font-body font-semibold mb-4">
+              <motion.p {...fadeUp} className="section-label mb-3">
                 THE ALIPH PLATFORM
               </motion.p>
               <motion.h1
                 {...fadeUp}
                 transition={{ duration: 0.5, delay: 0.05 }}
-                className="font-heading font-bold text-4xl md:text-5xl lg:text-[3.25rem] tracking-tight leading-[1.1] mb-6 text-foreground"
+                className="font-bold text-[32px] md:text-[40px] lg:text-[48px] tracking-tight leading-[1.1] mb-4 text-foreground"
               >
                 How Aliph governs every AI interaction{" "}
                 <span className="text-muted-foreground font-medium">in your organization.</span>
@@ -36,21 +34,15 @@ const Platform = () => {
               <motion.p
                 {...fadeUp}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="font-body text-lg text-muted-foreground leading-relaxed mb-8 max-w-[520px]"
+                className="section-subtext mb-8 max-w-[520px]"
               >
                 When an employee asks AI a question, Aliph intercepts the query, checks it against your policies, strips sensitive data if it needs to leave your walls, searches your own documents first, logs everything for compliance, and delivers an answer with source citations. Here's exactly how.
               </motion.p>
-              <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-wrap gap-4 mb-0">
-                <a
-                  href="#architecture"
-                  className="cta-gold inline-flex items-center gap-2 px-7 py-3.5 bg-accent hover:brightness-110 text-accent-foreground rounded-lg font-body font-semibold text-[15px] transition-all shadow-sm"
-                >
+              <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-wrap gap-4">
+                <a href="#architecture" className="btn-primary">
                   See the full query flow ↓
                 </a>
-                <Link
-                  to="/company/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 border border-border text-foreground hover:bg-secondary rounded-lg font-body font-semibold text-[15px] transition-all"
-                >
+                <Link to="/company/contact" className="btn-secondary">
                   Schedule a technical walkthrough
                 </Link>
               </motion.div>
@@ -63,7 +55,7 @@ const Platform = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="hidden lg:block"
             >
-              <div className="rounded-xl p-8 relative border border-border bg-secondary">
+              <div className="rounded-lg p-8 relative border border-border bg-[#F9FAFB]">
                 <div className="space-y-3">
                   {[
                     { label: "Cloud AI Gateway", highlight: false },
@@ -80,11 +72,11 @@ const Platform = () => {
                       className={`flex items-center gap-4 p-4 rounded-lg border ${layer.highlight ? "border-accent/30 bg-accent/5 shadow-[0_0_16px_hsl(var(--accent)/0.1)]" : "border-border bg-card"}`}
                     >
                       <div className={`w-2 h-2 rounded-full ${layer.highlight ? "bg-accent" : "bg-muted-foreground/30"}`} />
-                      <span className={`font-body text-sm ${layer.highlight ? "text-accent font-semibold" : "text-muted-foreground"}`}>
+                      <span className={`text-sm ${layer.highlight ? "text-accent font-semibold" : "text-muted-foreground"}`}>
                         {layer.label}
                       </span>
                       {layer.highlight && (
-                        <span className="ml-auto text-[10px] font-body text-accent/70 tracking-wide uppercase">● Active</span>
+                        <span className="ml-auto text-[10px] text-accent/70 tracking-wide uppercase">● Active</span>
                       )}
                       {!layer.highlight && i < 4 && (
                         <ChevronRight className="w-3 h-3 text-muted-foreground/30 ml-auto" />
@@ -99,19 +91,19 @@ const Platform = () => {
       </section>
 
       {/* SECTION 2 — The Problem */}
-      <section id="architecture" className="relative bg-[hsl(220,20%,8%)] py-16 md:py-20 lg:py-24">
+      <section id="architecture" className="relative bg-[hsl(220,20%,8%)] py-12 md:py-[72px]">
         <div className="container mx-auto px-6 relative z-10">
-          <motion.p {...fadeUp} className="text-accent uppercase tracking-[0.25em] text-xs font-body font-semibold mb-4">
+          <motion.p {...fadeUp} className="section-label mb-3">
             THE PROBLEM
           </motion.p>
-          <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-14 text-white tracking-tight max-w-3xl">
+          <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-bold text-[28px] md:text-[40px] mb-10 text-white tracking-tight max-w-3xl leading-[1.2]">
             Without a governance layer, this is what happens every time your team uses AI.
           </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-8 md:gap-0">
             {/* LEFT — Without Aliph */}
             <motion.div {...fadeUp} transition={{ delay: 0.1 }} className="md:border-r md:border-white/10 md:pr-10 lg:pr-14">
-              <span className="inline-block px-4 py-1.5 rounded-full bg-red-500/15 border border-red-500/25 font-body text-xs font-semibold text-red-400 mb-8 tracking-wide">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-red-500/15 border border-red-500/25 text-xs font-semibold text-red-400 mb-8 tracking-wide">
                 Without Aliph
               </span>
               <div className="space-y-0">
@@ -124,38 +116,29 @@ const Platform = () => {
                 ].map((step, i) => (
                   <div key={i}>
                     <div className="flex items-start gap-4">
-                      <div className="flex flex-col items-center">
-                        <span className="w-7 h-7 rounded-full bg-red-500/15 border border-red-500/25 flex items-center justify-center shrink-0">
-                          <span className="font-heading text-xs font-bold text-red-400">{i + 1}</span>
-                        </span>
-                      </div>
-                      <p className="font-body text-sm text-white/70 leading-relaxed pt-1">{step}</p>
+                      <span className="w-7 h-7 rounded-full bg-red-500/15 border border-red-500/25 flex items-center justify-center shrink-0">
+                        <span className="text-xs font-bold text-red-400">{i + 1}</span>
+                      </span>
+                      <p className="text-sm text-white/70 leading-relaxed pt-1">{step}</p>
                     </div>
-                    {i < 4 && (
-                      <div className="flex items-center ml-3.5 py-1.5">
-                        <div className="w-px h-5 bg-red-500/20" />
-                      </div>
-                    )}
+                    {i < 4 && <div className="flex items-center ml-3.5 py-1.5"><div className="w-px h-5 bg-red-500/20" /></div>}
                   </div>
                 ))}
               </div>
               <div className="mt-6 rounded-lg border border-red-500/30 bg-red-500/10 p-5">
-                <p className="font-heading font-bold text-red-400 text-base">
-                  PDPL violation. No audit trail. No recourse.
-                </p>
+                <p className="font-bold text-red-400 text-base">PDPL violation. No audit trail. No recourse.</p>
               </div>
             </motion.div>
 
-            {/* Divider on mobile */}
             <div className="flex items-center justify-center md:hidden py-4">
               <div className="h-px w-16 bg-white/10" />
-              <span className="mx-4 font-body text-xs text-white/30 uppercase tracking-widest">vs</span>
+              <span className="mx-4 text-xs text-white/30 uppercase tracking-widest">vs</span>
               <div className="h-px w-16 bg-white/10" />
             </div>
 
             {/* RIGHT — With Aliph */}
             <motion.div {...fadeUp} transition={{ delay: 0.15 }} className="md:pl-10 lg:pl-14">
-              <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/25 font-body text-xs font-semibold text-emerald-400 mb-8 tracking-wide">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/25 text-xs font-semibold text-emerald-400 mb-8 tracking-wide">
                 With Aliph
               </span>
               <div className="space-y-0">
@@ -168,25 +151,17 @@ const Platform = () => {
                 ].map((step, i) => (
                   <div key={i}>
                     <div className="flex items-start gap-4">
-                      <div className="flex flex-col items-center">
-                        <span className="w-7 h-7 rounded-full bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center shrink-0">
-                          <span className="font-heading text-xs font-bold text-emerald-400">{i + 1}</span>
-                        </span>
-                      </div>
-                      <p className="font-body text-sm text-white/70 leading-relaxed pt-1">{step}</p>
+                      <span className="w-7 h-7 rounded-full bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center shrink-0">
+                        <span className="text-xs font-bold text-emerald-400">{i + 1}</span>
+                      </span>
+                      <p className="text-sm text-white/70 leading-relaxed pt-1">{step}</p>
                     </div>
-                    {i < 4 && (
-                      <div className="flex items-center ml-3.5 py-1.5">
-                        <div className="w-px h-5 bg-emerald-500/20" />
-                      </div>
-                    )}
+                    {i < 4 && <div className="flex items-center ml-3.5 py-1.5"><div className="w-px h-5 bg-emerald-500/20" /></div>}
                   </div>
                 ))}
               </div>
               <div className="mt-6 rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-5">
-                <p className="font-heading font-bold text-emerald-400 text-base">
-                  Compliant. Audited. Sovereign.
-                </p>
+                <p className="font-bold text-emerald-400 text-base">Compliant. Audited. Sovereign.</p>
               </div>
             </motion.div>
           </div>
@@ -195,38 +170,22 @@ const Platform = () => {
 
       {/* SECTION 3 — Four Guarantees */}
       <Section alabaster>
-        <motion.p {...fadeUp} className="text-accent uppercase tracking-[0.25em] text-xs font-body font-semibold mb-4">
+        <motion.p {...fadeUp} className="section-label mb-3">
           WHAT THE PLATFORM GUARANTEES
         </motion.p>
-        <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-4 text-foreground tracking-tight max-w-3xl">
+        <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="section-headline mb-4 max-w-3xl">
           Four things that happen every time your team uses AI through Aliph.
         </motion.h2>
-        <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-muted-foreground mb-12 max-w-[680px]">
+        <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="section-subtext mb-10">
           No exceptions. No manual configuration. Automatic from day one.
         </motion.p>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-2 gap-6">
           {[
-            {
-              num: "01",
-              title: "Your data is checked before it leaves.",
-              body: "Every query is evaluated against your organization's policies. If sensitive data is detected — in Arabic or English — it's handled before any external AI model sees it.",
-            },
-            {
-              num: "02",
-              title: "Your own knowledge is searched first.",
-              body: "Before calling any external model, Aliph checks your organization's documents, filtered by employee permissions. If the answer exists internally, no external call is ever made.",
-            },
-            {
-              num: "03",
-              title: "Every response is sourced.",
-              body: "No black-box answers. Every response includes citations — whether from your internal documents or external AI. Your team knows where every answer came from.",
-            },
-            {
-              num: "04",
-              title: "Everything is logged for compliance.",
-              body: "Full audit trail on every interaction. Who asked. What was involved. When it happened. Ready for regulatory review at any moment.",
-            },
+            { num: "01", title: "Your data is checked before it leaves.", body: "Every query is evaluated against your organization's policies. If sensitive data is detected — in Arabic or English — it's handled before any external AI model sees it." },
+            { num: "02", title: "Your own knowledge is searched first.", body: "Before calling any external model, Aliph checks your organization's documents, filtered by employee permissions. If the answer exists internally, no external call is ever made." },
+            { num: "03", title: "Every response is sourced.", body: "No black-box answers. Every response includes citations — whether from your internal documents or external AI. Your team knows where every answer came from." },
+            { num: "04", title: "Everything is logged for compliance.", body: "Full audit trail on every interaction. Who asked. What was involved. When it happened. Ready for regulatory review at any moment." },
           ].map((card, i) => (
             <motion.div
               key={card.num}
@@ -234,23 +193,20 @@ const Platform = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.07 }}
-              className="rounded-xl border border-border bg-card p-8 hover:shadow-md transition-shadow"
+              className="card-std"
             >
-              <span className="font-heading font-semibold text-[2rem] text-accent leading-none">{card.num}</span>
-              <h3 className="font-heading font-bold text-lg text-foreground mt-4 mb-3">{card.title}</h3>
-              <p className="font-body text-[15px] text-muted-foreground leading-relaxed">{card.body}</p>
+              <span className="step-number">{card.num}</span>
+              <h3 className="card-title-std mt-4 mb-2">{card.title}</h3>
+              <p className="card-body-std">{card.body}</p>
             </motion.div>
           ))}
         </div>
 
-        <motion.div {...fadeUp} transition={{ delay: 0.3 }} className="text-center mt-14">
-          <p className="font-body text-foreground text-base font-medium mb-5">
+        <motion.div {...fadeUp} transition={{ delay: 0.3 }} className="text-center mt-10">
+          <p className="text-foreground text-base font-medium mb-5">
             Want to see the full architecture? Schedule a technical walkthrough.
           </p>
-          <Link
-            to="/company/contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 border border-border text-foreground hover:bg-secondary rounded-lg font-body font-semibold text-[15px] transition-all"
-          >
+          <Link to="/company/contact" className="btn-secondary inline-flex">
             Schedule Technical Walkthrough <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>
@@ -258,14 +214,14 @@ const Platform = () => {
 
       {/* SECTION 4 — The Four Layers */}
       <Section>
-        <div className="text-center mb-14">
-          <motion.p {...fadeUp} className="text-accent uppercase tracking-[0.25em] text-xs font-body font-semibold mb-4">
+        <div className="text-center mb-10">
+          <motion.p {...fadeUp} className="section-label mb-3">
             THE FOUR LAYERS
           </motion.p>
-          <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-4 text-foreground tracking-tight">
+          <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="section-headline mb-4">
             Four layers. One sovereign platform.
           </motion.h2>
-          <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-muted-foreground max-w-[640px] mx-auto">
+          <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="section-subtext mx-auto">
             Every capability is built in — not bolted on. They work together automatically from the moment you deploy.
           </motion.p>
         </div>
@@ -276,38 +232,23 @@ const Platform = () => {
 
       {/* SECTION 5 — Deployment */}
       <Section alabaster>
-        <div className="text-center mb-14">
-          <motion.p {...fadeUp} className="text-accent uppercase tracking-[0.25em] text-xs font-body font-semibold mb-4">
+        <div className="text-center mb-10">
+          <motion.p {...fadeUp} className="section-label mb-3">
             DEPLOYMENT
           </motion.p>
-          <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-4 text-foreground tracking-tight">
+          <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="section-headline mb-4">
             Deploy your way. Your data never leaves where you put it.
           </motion.h2>
-          <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-muted-foreground max-w-[600px] mx-auto">
+          <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="section-subtext mx-auto">
             Three deployment models. Same platform. Same capabilities. Choose based on your security requirements.
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-3 gap-6">
           {[
-            {
-              label: "ON-PREMISE",
-              title: "Everything inside your walls.",
-              body: "The full Aliph platform runs on your own infrastructure. No data ever leaves your premises. Complete control over hardware, storage, and network configuration. Ideal for organizations with the strictest data sovereignty requirements.",
-              bestFor: "Banks · Government · Defense · Healthcare groups",
-            },
-            {
-              label: "SOVEREIGN CLOUD",
-              title: "In the cloud — but in the Kingdom.",
-              body: "Aliph runs on Azure's Saudi Arabia region. Your data stays within KSA borders. Managed infrastructure with enterprise SLAs. Faster deployment, lower IT overhead — with full sovereignty maintained.",
-              bestFor: "Fintech · Professional services · Mid-size enterprises · Hospitality groups",
-            },
-            {
-              label: "HYBRID",
-              title: "Sensitive data on-premise. Everything else in the cloud.",
-              body: "Keep your most sensitive data and processing on-premise. Route non-sensitive workloads through sovereign cloud. The platform manages the split automatically based on your policies — no manual routing by employees.",
-              bestFor: "Large enterprises · Multi-entity organizations · Conglomerates",
-            },
+            { label: "ON-PREMISE", title: "Everything inside your walls.", body: "The full Aliph platform runs on your own infrastructure. No data ever leaves your premises. Complete control over hardware, storage, and network configuration. Ideal for organizations with the strictest data sovereignty requirements.", bestFor: "Banks · Government · Defense · Healthcare groups" },
+            { label: "SOVEREIGN CLOUD", title: "In the cloud — but in the Kingdom.", body: "Aliph runs on Azure's Saudi Arabia region. Your data stays within KSA borders. Managed infrastructure with enterprise SLAs. Faster deployment, lower IT overhead — with full sovereignty maintained.", bestFor: "Fintech · Professional services · Mid-size enterprises · Hospitality groups" },
+            { label: "HYBRID", title: "Sensitive data on-premise. Everything else in the cloud.", body: "Keep your most sensitive data and processing on-premise. Route non-sensitive workloads through sovereign cloud. The platform manages the split automatically based on your policies — no manual routing by employees.", bestFor: "Large enterprises · Multi-entity organizations · Conglomerates" },
           ].map((card, i) => (
             <motion.div
               key={card.label}
@@ -315,19 +256,13 @@ const Platform = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.07 }}
-              className="rounded-xl border border-border bg-card p-7 lg:p-8 flex flex-col shadow-sm hover:shadow-md transition-shadow"
+              className="card-std flex flex-col"
             >
-              <span className="font-body text-[11px] font-semibold tracking-[0.2em] text-muted-foreground uppercase mb-3">
-                {card.label}
-              </span>
-              <h3 className="font-heading font-bold text-lg lg:text-xl text-foreground mb-3 leading-snug">
-                {card.title}
-              </h3>
-              <p className="font-body text-[15px] text-muted-foreground leading-relaxed mb-6 flex-1">
-                {card.body}
-              </p>
+              <span className="section-label text-muted-foreground mb-3">{card.label}</span>
+              <h3 className="card-title-std mb-2 leading-snug">{card.title}</h3>
+              <p className="card-body-std mb-6 flex-1">{card.body}</p>
               <div className="border-t border-border pt-4">
-                <p className="font-body text-xs text-muted-foreground/70">
+                <p className="text-xs text-muted-foreground/70">
                   <span className="font-semibold text-muted-foreground">Best for:</span> {card.bestFor}
                 </p>
               </div>
@@ -335,65 +270,43 @@ const Platform = () => {
           ))}
         </div>
 
-        {/* Integration Strip */}
-        <motion.div {...fadeUp} transition={{ delay: 0.25 }} className="mt-12 text-center">
-          <h3 className="font-heading font-medium text-xl text-foreground mb-5">
+        <motion.div {...fadeUp} transition={{ delay: 0.25 }} className="mt-10 text-center">
+          <h3 className="font-medium text-xl text-foreground mb-5">
             Connects to your existing systems.
           </h3>
-          <p className="font-body text-[15px] text-muted-foreground mb-4">
+          <p className="card-body-std text-center mb-4">
             {["Google Workspace", "Microsoft 365", "SharePoint", "Salesforce CRM", "SAP", "Custom APIs"].join(" · ")}
           </p>
-          <p className="font-body text-sm text-muted-foreground/60 max-w-[520px] mx-auto">
+          <p className="trust-line max-w-[520px] mx-auto">
             Organization Memory inherits permissions from your existing directory. No new access management needed.
           </p>
         </motion.div>
       </Section>
 
       {/* SECTION 6 — Final CTA */}
-      <section className="py-20 md:py-24 lg:py-28 bg-[hsl(220,25%,12%)]">
+      <section className="dark-cta-section py-[56px] md:py-[88px]">
         <div className="container mx-auto px-6 text-center max-w-[680px]">
-          <motion.h2
-            {...fadeUp}
-            className="font-heading font-bold text-3xl md:text-4xl lg:text-[44px] text-white tracking-tight leading-[1.1] mb-6"
-          >
+          <motion.h2 {...fadeUp} className="dark-cta-headline mb-4">
             See the full architecture in a 30-minute technical walkthrough.
           </motion.h2>
-          <motion.p
-            {...fadeUp}
-            transition={{ delay: 0.05 }}
-            className="font-body text-[17px] md:text-lg text-white/70 leading-[1.65] mb-9 max-w-[620px] mx-auto"
-          >
+          <motion.p {...fadeUp} transition={{ delay: 0.05 }} className="dark-cta-subtext mb-8 max-w-[620px] mx-auto">
             We'll walk through the query flow live, show you the Privacy Shield in action on real data, and map a deployment model for your infrastructure. Bring your CTO. Bring your CISO. We'll answer everything.
           </motion.p>
 
-          <motion.div {...fadeUp} transition={{ delay: 0.1 }} className="flex flex-col sm:flex-row gap-4 justify-center mb-7">
-            <Link
-              to="/demo"
-              className="inline-block px-9 py-4 bg-accent hover:brightness-110 text-accent-foreground text-base font-bold rounded-lg shadow-lg transition-all duration-200"
-            >
-              Schedule a Technical Walkthrough
-            </Link>
-            <Link
-              to="/company/contact"
-              className="inline-block px-9 py-4 border border-white/20 text-white hover:border-white/40 rounded-lg text-base font-semibold transition-all duration-200"
-            >
-              Download the Architecture Brief
-            </Link>
+          <motion.div {...fadeUp} transition={{ delay: 0.1 }} className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+            <Link to="/demo" className="btn-primary">Schedule a Technical Walkthrough</Link>
+            <Link to="/company/contact" className="btn-secondary btn-secondary-dark">Download the Architecture Brief</Link>
           </motion.div>
 
-          <motion.p {...fadeUp} transition={{ delay: 0.15 }} className="font-body text-sm text-white/60 mb-5">
+          <motion.p {...fadeUp} transition={{ delay: 0.15 }} className="dark-cta-trust mb-4">
             No sales pitch. No commitment. A focused technical conversation with Aliph's engineering team.
           </motion.p>
 
-          <motion.p {...fadeUp} transition={{ delay: 0.2 }} className="font-body text-sm text-white/60">
+          <motion.p {...fadeUp} transition={{ delay: 0.2 }} className="dark-cta-contact">
             Prefer to talk directly?<br />
-            <a href="https://wa.me/966569678421" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white underline transition-colors">
-              WhatsApp: +966 56 967 8421
-            </a>
+            <a href="https://wa.me/966569678421" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white underline transition-colors">WhatsApp: +966 56 967 8421</a>
             <span className="mx-2">|</span>
-            <a href="mailto:raj@aliphai.ai" className="text-white/70 hover:text-white underline transition-colors">
-              raj@aliphai.ai
-            </a>
+            <a href="mailto:raj@aliphai.ai" className="text-white/70 hover:text-white underline transition-colors">raj@aliphai.ai</a>
           </motion.p>
         </div>
       </section>

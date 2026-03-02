@@ -21,15 +21,15 @@ const risks = [
 
 const RiskCards = () => {
   return (
-    <section className="py-24 bg-background">
-      <div className="container px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+    <section className="py-12 md:py-[72px] bg-background">
+      <div className="container px-6">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-destructive mb-4"
+            className="inline-block section-label text-destructive mb-3"
           >
             The Hidden Risk
           </motion.span>
@@ -38,7 +38,7 @@ const RiskCards = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6"
+            className="section-headline mb-4"
           >
             Every ungoverned AI query is a liability{" "}
             <span className="text-destructive">you can't see.</span>
@@ -48,7 +48,7 @@ const RiskCards = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            className="text-xl text-muted-foreground"
+            className="section-subtext mx-auto"
           >
             Right now, someone in your organization is pasting client contracts into ChatGPT. Someone else is feeding financial projections into Gemini. A third person is asking Copilot about employee performance data. Every query is stored on foreign servers. None of it is logged. And under PDPL, every incident carries penalties up to SAR 5 million.
           </motion.p>
@@ -64,13 +64,13 @@ const RiskCards = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-card p-8 rounded-xl border border-border hover:border-destructive/30 transition-all duration-200"
+                className="card-std"
               >
-                <div className="w-12 h-12 bg-destructive/10 rounded-lg flex items-center justify-center mb-6 text-destructive">
-                  <Icon className="w-6 h-6" />
+                <div className="w-10 h-10 bg-destructive/10 rounded-lg flex items-center justify-center mb-5 text-destructive">
+                  <Icon className="card-icon !text-destructive" />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">{risk.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{risk.desc}</p>
+                <h3 className="card-title-std mb-2">{risk.title}</h3>
+                <p className="card-body-std">{risk.desc}</p>
               </motion.div>
             );
           })}
