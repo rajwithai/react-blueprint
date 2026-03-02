@@ -6,15 +6,18 @@ interface SectionProps {
   children: ReactNode;
   className?: string;
   id?: string;
+  compact?: boolean;
 }
 
-const Section = ({ dark = false, alabaster = false, children, className = "", id }: SectionProps) => {
-  const bg = alabaster || dark ? "bg-secondary" : "bg-background";
+const Section = ({ dark = false, alabaster = false, children, className = "", id, compact = false }: SectionProps) => {
+  const bg = alabaster ? "bg-[#F9FAFB]" : dark ? "bg-[#1A1A2E]" : "bg-background";
+  const padding = compact
+    ? "py-14 md:py-[56px]"
+    : "py-12 md:py-[72px]";
 
   return (
     <section id={id} className={`${bg} relative ${className}`}>
-      <div className="absolute top-0 left-0 right-0 section-divider" />
-      <div className="container mx-auto px-6 py-20 lg:py-28 relative z-10">
+      <div className={`container mx-auto px-6 ${padding} relative z-10`}>
         {children}
       </div>
     </section>

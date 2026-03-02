@@ -26,18 +26,18 @@ const outcomes = [
 
 const Outcomes = () => {
   return (
-    <section className="py-24 bg-secondary border-t border-border">
-      <div className="container px-4 md:px-6">
-        <div className="text-center mb-16">
+    <section className="py-12 md:py-[72px] bg-[#F9FAFB]">
+      <div className="container px-6">
+        <div className="text-center mb-10">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-accent uppercase tracking-[0.3em] text-xs font-heading font-semibold mb-5"
+            className="section-label mb-3"
           >
             WHAT CHANGES FOR YOUR ORGANIZATION
           </motion.p>
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-4 leading-[1.1]">
+          <h2 className="section-headline mb-4">
             Stop choosing between speed and compliance.
             <span className="text-muted-foreground block mt-2">You get both.</span>
           </h2>
@@ -51,15 +51,14 @@ const Outcomes = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-card border border-border p-6 rounded-xl hover:border-accent/30 transition-colors"
+              className="card-std"
             >
-              <item.icon className="w-8 h-8 text-accent mb-4" />
-              <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+              <item.icon className="card-icon mb-4" />
+              <h3 className="card-title-std mb-2">{item.title}</h3>
+              <p className="card-body-std">{item.desc}</p>
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );
