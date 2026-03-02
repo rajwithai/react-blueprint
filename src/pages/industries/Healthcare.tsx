@@ -67,29 +67,29 @@ const Healthcare = () => {
   return (
     <>
       {/* SECTION 1: HERO */}
-      <section className="pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px] bg-background">
+      <section className="pt-[88px] md:pt-[88px] pb-[48px] md:pb-[72px] bg-background">
         <div className="container px-6">
           <div className="max-w-[720px] mx-auto text-center">
             <motion.span
               {...fadeUp}
-              className="inline-block px-4 py-1.5 rounded-full text-xs font-heading font-semibold bg-accent/15 border border-accent/25 text-accent uppercase tracking-wider mb-6"
+              className="inline-block px-4 py-1.5 rounded-full text-xs font-heading font-medium bg-accent/15 border border-accent/25 text-accent uppercase tracking-wider mb-6"
             >
               Coming H2 2026
             </motion.span>
-            <motion.p {...fadeUp} transition={{ delay: 0.05 }} className="text-xs uppercase tracking-[0.25em] font-heading font-semibold text-muted-foreground mb-4">
+            <motion.p {...fadeUp} transition={{ delay: 0.05 }} className="section-label mb-3">
               Healthcare
             </motion.p>
             <motion.h1
               {...fadeUp}
               transition={{ delay: 0.1 }}
-              className="font-heading font-bold text-[2.5rem] md:text-[3.25rem] tracking-tight leading-[1.08] mb-6 text-foreground"
+              className="section-headline mb-4"
             >
               Patient data is the most sensitive category under PDPL. It deserves the most sovereign AI.
             </motion.h1>
             <motion.p
               {...fadeUp}
               transition={{ delay: 0.2 }}
-              className="font-body text-lg md:text-[19px] text-muted-foreground leading-[1.7] mb-10 max-w-[640px] mx-auto"
+              className="section-subtext mx-auto mb-8"
             >
               Saudi hospital groups sit on decades of patient records, clinical protocols, and operational knowledge that AI could transform into better outcomes, faster diagnoses, and lower costs. But patient data cannot leave your walls. It cannot be sent to foreign servers. It cannot be processed by tools that don't understand CBAHI accreditation or MOH regulations. Aliph is building healthcare AI that treats patient data with the protection it demands.
             </motion.p>
@@ -97,14 +97,14 @@ const Healthcare = () => {
               <a
                 href="#waitlist"
                 onClick={(e) => { e.preventDefault(); document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" }); }}
-                className="inline-flex items-center gap-2 px-8 py-3.5 bg-accent hover:brightness-110 text-accent-foreground rounded-lg font-heading font-semibold transition-all shadow-sm group"
+                className="btn-primary group"
               >
                 Join the Healthcare Early Access List
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <button
                 onClick={scrollToSection2}
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg border border-border text-foreground hover:bg-muted font-heading font-semibold transition-all"
+                className="btn-secondary"
               >
                 See What We're Building
                 <ArrowDown className="w-4 h-4" />
@@ -115,16 +115,16 @@ const Healthcare = () => {
       </section>
 
       {/* SECTION 2: THE REALITY */}
-      <section id="reality" className="py-16 md:py-20 bg-secondary/30">
+      <section id="reality" className="py-12 md:py-[72px] bg-[#F9FAFB]">
         <div className="container px-6">
-          <div className="max-w-3xl mx-auto text-center mb-14">
-            <motion.p {...fadeUp} className="text-xs uppercase tracking-[0.25em] font-heading font-semibold text-muted-foreground mb-3">
+          <div className="max-w-3xl mx-auto text-center mb-10">
+            <motion.p {...fadeUp} className="section-label mb-3">
               Your Reality Today
             </motion.p>
-            <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-6 text-foreground">
+            <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="section-headline mb-4">
               Your hospital collects the data. Your staff can't safely use it.
             </motion.h2>
-            <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-muted-foreground leading-relaxed text-base md:text-lg max-w-[700px] mx-auto">
+            <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="section-subtext mx-auto">
               Your clinicians make life-and-death decisions every day. They need instant access to patient histories, drug interaction data, clinical protocols, and institutional knowledge. Instead, they dig through fragmented EMR systems, call colleagues who may not answer, or — increasingly — paste patient details into ChatGPT because there's no sovereign alternative. Meanwhile, your compliance team tracks CBAHI accreditation requirements manually across spreadsheets. Your best physicians' thirty years of clinical intuition exist only in their heads. And every patient's national ID, medical history, insurance record, and diagnostic result stored in your systems falls under PDPL's strictest data category — with penalties up to SAR 5 million per violation.
             </motion.p>
           </div>
@@ -134,10 +134,10 @@ const Healthcare = () => {
                 key={i}
                 {...fadeUp}
                 transition={{ delay: i * 0.08 }}
-                className="bg-card rounded-xl p-6 border border-border shadow-sm border-l-[3px] border-l-destructive/60"
+                className="card-std card-std-pain"
               >
-                <h3 className="font-heading font-semibold text-base mb-2 text-foreground">{card.title}</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{card.body}</p>
+                <h3 className="card-title-std mb-2">{card.title}</h3>
+                <p className="card-body-std">{card.body}</p>
               </motion.div>
             ))}
           </div>
@@ -145,16 +145,16 @@ const Healthcare = () => {
       </section>
 
       {/* SECTION 3: WHAT WE'RE BUILDING */}
-      <section className="py-16 md:py-20 bg-background">
+      <section className="py-12 md:py-[72px] bg-background">
         <div className="container px-6">
-          <div className="max-w-3xl mx-auto text-center mb-14">
-            <motion.p {...fadeUp} className="text-xs uppercase tracking-[0.25em] font-heading font-semibold text-muted-foreground mb-3">
+          <div className="max-w-3xl mx-auto text-center mb-10">
+            <motion.p {...fadeUp} className="section-label mb-3">
               What We're Building
             </motion.p>
-            <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-6 text-foreground">
+            <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="section-headline mb-4">
               Six capabilities designed specifically for Saudi hospital groups and clinic chains.
             </motion.h2>
-            <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-muted-foreground leading-relaxed text-lg max-w-[680px] mx-auto">
+            <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="section-subtext mx-auto">
               Every capability runs on Aliph's four-layer sovereign architecture. Patient data never leaves your infrastructure. Every interaction is logged for compliance. Arabic and English are natively supported.
             </motion.p>
           </div>
@@ -166,13 +166,13 @@ const Healthcare = () => {
                   key={i}
                   {...fadeUp}
                   transition={{ delay: i * 0.06 }}
-                  className="bg-card rounded-xl p-6 border border-border shadow-sm border-l-[3px] border-l-green-500/60"
+                  className="card-std card-std-success"
                 >
                   <div className="p-2 rounded-lg bg-accent/10 w-fit mb-3">
-                    <Icon className="h-5 w-5 text-accent" />
+                    <Icon className="card-icon" />
                   </div>
-                  <h3 className="font-heading font-semibold text-base mb-2 text-foreground">{cap.title}</h3>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed">{cap.body}</p>
+                  <h3 className="card-title-std mb-2">{cap.title}</h3>
+                  <p className="card-body-std">{cap.body}</p>
                 </motion.div>
               );
             })}
@@ -181,16 +181,16 @@ const Healthcare = () => {
       </section>
 
       {/* SECTION 4: REGULATIONS */}
-      <section className="py-16 md:py-20 bg-secondary/20">
+      <section className="py-12 md:py-[72px] bg-[#F9FAFB]">
         <div className="container px-6">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <motion.p {...fadeUp} className="text-xs uppercase tracking-[0.25em] font-heading font-semibold text-muted-foreground mb-3">
+          <div className="max-w-3xl mx-auto text-center mb-10">
+            <motion.p {...fadeUp} className="section-label mb-3">
               Regulatory Coverage
             </motion.p>
-            <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="font-heading font-bold text-3xl md:text-4xl mb-6 text-foreground">
+            <motion.h2 {...fadeUp} transition={{ delay: 0.05 }} className="section-headline mb-4">
               Built for the most regulated environment in Saudi Arabia.
             </motion.h2>
-            <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="font-body text-muted-foreground leading-relaxed text-lg max-w-[660px] mx-auto">
+            <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="section-subtext mx-auto">
               Healthcare data falls under the strictest categories of every Saudi regulation. Aliph's healthcare module is being built with these frameworks embedded — not bolted on after launch.
             </motion.p>
           </div>
@@ -200,33 +200,33 @@ const Healthcare = () => {
                 key={reg.acronym}
                 {...fadeUp}
                 transition={{ delay: i * 0.08 }}
-                className="bg-card rounded-xl p-6 border border-border border-t-[3px] border-t-accent/60 text-center"
+                className="card-std card-std-accent-top text-center"
               >
-                <p className="font-heading font-bold text-[28px] md:text-[32px] text-accent mb-1">{reg.acronym}</p>
-                <p className="font-heading text-[11px] uppercase tracking-wider text-muted-foreground mb-3">{reg.name}</p>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{reg.body}</p>
+                <p className="reg-acronym mb-1">{reg.acronym}</p>
+                <p className="reg-name mb-2">{reg.name}</p>
+                <p className="reg-body">{reg.body}</p>
               </motion.div>
             ))}
           </div>
-          <motion.p {...fadeUp} className="text-center text-sm text-muted-foreground mt-8 max-w-3xl mx-auto">
+          <motion.p {...fadeUp} className="trust-line text-center mt-8 max-w-3xl mx-auto">
             Additional frameworks being evaluated: Saudi FDA (pharmaceutical), SCFHS (professional licensing), and medical research ethics requirements.
           </motion.p>
         </div>
       </section>
 
       {/* SECTION 5: WAITLIST CTA */}
-      <section id="waitlist" className="dark-cta-section py-[56px] md:py-[88px] text-primary-foreground">
+      <section id="waitlist" className="dark-cta-section py-[56px] md:py-[88px]">
         <div className="container px-6 text-center max-w-3xl mx-auto">
           <motion.span
             {...fadeUp}
-            className="inline-block px-4 py-1.5 rounded-full text-xs font-heading font-semibold bg-accent/20 border border-accent/30 text-accent uppercase tracking-wider mb-6"
+            className="inline-block px-4 py-1.5 rounded-full text-xs font-heading font-medium bg-accent/20 border border-accent/30 text-accent uppercase tracking-wider mb-6"
           >
             Launching H2 2026
           </motion.span>
-          <motion.h2 {...fadeUp} transition={{ delay: 0.1 }} className="font-heading font-bold text-3xl md:text-[2.5rem] leading-tight mb-6">
+          <motion.h2 {...fadeUp} transition={{ delay: 0.1 }} className="dark-cta-headline mb-4">
             We're selecting founding healthcare partners to shape this product.
           </motion.h2>
-          <motion.p {...fadeUp} transition={{ delay: 0.15 }} className="font-body text-primary-foreground/70 text-lg leading-relaxed mb-8 max-w-[640px] mx-auto">
+          <motion.p {...fadeUp} transition={{ delay: 0.15 }} className="dark-cta-subtext mb-8 max-w-[640px] mx-auto">
             We're building healthcare AI in close collaboration with a small number of Saudi hospital groups and clinic chains. Founding partners get direct input into which capabilities launch first, priority deployment access, and dedicated engineering support during integration with your EMR and clinical systems.
           </motion.p>
 
@@ -239,7 +239,7 @@ const Healthcare = () => {
             ].map((item) => (
               <div key={item} className="flex items-start gap-2">
                 <CheckCircle2 className="h-4 w-4 text-accent mt-0.5 shrink-0" />
-                <span className="font-body text-sm text-primary-foreground/90">{item}</span>
+                <span className="text-sm text-white/90">{item}</span>
               </div>
             ))}
           </motion.div>
@@ -255,14 +255,14 @@ const Healthcare = () => {
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     placeholder="Your Name"
-                    className="px-4 py-3 rounded-lg border border-primary-foreground/20 bg-primary-foreground/5 text-primary-foreground placeholder:text-primary-foreground/40 font-body text-sm focus:outline-none focus:ring-2 focus:ring-accent/40"
+                    className="px-4 py-3 rounded-lg border border-white/20 bg-white/5 text-white placeholder:text-white/40 text-sm focus:outline-none focus:ring-2 focus:ring-accent/40"
                   />
                   <input
                     type="text"
                     value={form.org}
                     onChange={(e) => setForm({ ...form, org: e.target.value })}
                     placeholder="Organization"
-                    className="px-4 py-3 rounded-lg border border-primary-foreground/20 bg-primary-foreground/5 text-primary-foreground placeholder:text-primary-foreground/40 font-body text-sm focus:outline-none focus:ring-2 focus:ring-accent/40"
+                    className="px-4 py-3 rounded-lg border border-white/20 bg-white/5 text-white placeholder:text-white/40 text-sm focus:outline-none focus:ring-2 focus:ring-accent/40"
                   />
                 </div>
                 <input
@@ -271,50 +271,49 @@ const Healthcare = () => {
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   placeholder="Email Address"
-                  className="w-full px-4 py-3 rounded-lg border border-primary-foreground/20 bg-primary-foreground/5 text-primary-foreground placeholder:text-primary-foreground/40 font-body text-sm focus:outline-none focus:ring-2 focus:ring-accent/40"
+                  className="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/5 text-white placeholder:text-white/40 text-sm focus:outline-none focus:ring-2 focus:ring-accent/40"
                 />
                 <select
                   value={form.role}
                   onChange={(e) => setForm({ ...form, role: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg border border-primary-foreground/20 bg-primary-foreground/5 text-primary-foreground font-body text-sm focus:outline-none focus:ring-2 focus:ring-accent/40 appearance-none"
+                  className="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-accent/40 appearance-none"
                 >
-                  <option value="" className="text-muted-foreground bg-card text-foreground">Your Role</option>
+                  <option value="" disabled className="text-foreground bg-background">Your Role</option>
                   {roleOptions.map((r) => (
-                    <option key={r} value={r} className="bg-card text-foreground">{r}</option>
+                    <option key={r} value={r} className="text-foreground bg-background">{r}</option>
                   ))}
                 </select>
-                <button
-                  type="submit"
-                  className="w-full px-8 py-3.5 bg-accent hover:brightness-110 text-accent-foreground rounded-lg font-heading font-semibold transition-all shadow-sm inline-flex items-center justify-center gap-2 group"
-                >
+                <button type="submit" className="btn-primary w-full justify-center group">
                   Apply for Founding Partner Access
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </form>
             ) : (
-              <div className="px-6 py-5 rounded-lg bg-accent/15 border border-accent/25">
-                <p className="font-heading font-semibold text-accent text-base mb-1">Application received.</p>
-                <p className="font-body text-sm text-primary-foreground/70">We review every application. Expect a personal response within 48 hours.</p>
-              </div>
+              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="py-8 text-center">
+                <CheckCircle2 className="w-10 h-10 text-accent mx-auto mb-3" />
+                <p className="text-lg font-heading font-semibold text-white mb-1">Application received.</p>
+                <p className="text-sm text-white/60">Expect a personal response within 48 hours.</p>
+              </motion.div>
             )}
           </motion.div>
 
           {!submitted && (
-            <motion.p {...fadeUp} transition={{ delay: 0.3 }} className="text-xs text-primary-foreground/40 mt-4">
+            <motion.p {...fadeUp} transition={{ delay: 0.3 }} className="dark-cta-trust mt-4">
               We review every application. Expect a personal response within 48 hours.
             </motion.p>
           )}
 
-          <motion.div {...fadeUp} transition={{ delay: 0.35 }} className="mt-8">
-            <p className="text-xs text-primary-foreground/40 mb-2">Want to discuss healthcare AI directly?</p>
-            <div className="flex justify-center gap-4 text-xs text-primary-foreground/50">
-              <a href="https://wa.me/966569678421" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-primary-foreground/80 transition-colors">
+          <motion.div {...fadeUp} transition={{ delay: 0.35 }} className="dark-cta-contact mt-4">
+            <p>Want to discuss healthcare AI directly?</p>
+            <p className="mt-1">
+              <a href="https://wa.me/966569678421" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-white/80 transition-colors">
                 <MessageCircle className="h-3.5 w-3.5" /> +966 56 967 8421
               </a>
-              <a href="mailto:raj@aliphai.ai" className="inline-flex items-center gap-1 hover:text-primary-foreground/80 transition-colors">
+              <span className="mx-2">|</span>
+              <a href="mailto:raj@aliphai.ai" className="inline-flex items-center gap-1 hover:text-white/80 transition-colors">
                 <Mail className="h-3.5 w-3.5" /> raj@aliphai.ai
               </a>
-            </div>
+            </p>
           </motion.div>
         </div>
       </section>

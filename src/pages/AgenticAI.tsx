@@ -85,12 +85,12 @@ const AgenticAI = () => {
 
       {/* ── 2. THE SHIFT ── */}
       <Section id="the-shift">
-        <div className="max-w-3xl mx-auto text-center mb-14">
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-accent uppercase tracking-[0.25em] text-xs font-heading font-semibold mb-4">THE SHIFT</motion.p>
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-6 text-foreground tracking-tight">
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="section-label mb-3">THE SHIFT</motion.p>
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="section-headline mb-4">
             ChatGPT answers questions.<br />AI agents complete projects.
           </motion.h2>
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 }} className="font-body text-muted-foreground text-lg leading-relaxed max-w-[700px] mx-auto">
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 }} className="section-subtext mx-auto">
             The enterprise AI you use today is reactive — you ask, it answers. Agentic AI is different. You give it an objective, and it breaks the problem down, researches across multiple sources, drafts deliverables, validates its own work against your standards, and presents you with the finished output. You supervise the result. The agents handle everything else.
           </motion.p>
         </div>
@@ -103,11 +103,11 @@ const AgenticAI = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className={`rounded-xl border p-8 ${c.highlight ? "border-l-4 border-l-accent bg-accent/[0.03] border-accent/20" : "border-border bg-card"}`}
+              className={`card-std ${c.highlight ? "card-std-accent border-l-4" : ""}`}
             >
-              <span className="font-heading font-bold text-3xl text-accent mb-4 block">{c.num}</span>
-              <h3 className="font-heading font-semibold text-lg mb-3 text-foreground">{c.title}</h3>
-              <p className="font-body text-sm text-muted-foreground leading-relaxed">{c.body}</p>
+              <span className="step-number block mb-4">{c.num}</span>
+              <h3 className="card-title-std mb-3">{c.title}</h3>
+              <p className="card-body-std">{c.body}</p>
             </motion.div>
           ))}
         </div>
@@ -115,12 +115,12 @@ const AgenticAI = () => {
 
       {/* ── 3. CAPABILITIES ── */}
       <Section alabaster>
-        <div className="max-w-3xl mx-auto text-center mb-14">
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-accent uppercase tracking-[0.25em] text-xs font-heading font-semibold mb-4">CAPABILITIES</motion.p>
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-6 text-foreground tracking-tight">
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="section-label mb-3">CAPABILITIES</motion.p>
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="section-headline mb-4">
             Give an agent an objective. Get back a deliverable.
           </motion.h2>
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 }} className="font-body text-muted-foreground text-lg leading-relaxed max-w-[660px] mx-auto">
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 }} className="section-subtext mx-auto">
             These aren't chatbot conversations. These are autonomous workflows — agents that research, draft, check their own work, and deliver results ready for your review.
           </motion.p>
         </div>
@@ -133,12 +133,12 @@ const AgenticAI = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="rounded-xl border border-border bg-card p-7 shadow-sm"
+              className="card-std"
             >
-              <uc.icon className="w-6 h-6 text-accent mb-4" />
-              <h3 className="font-heading font-semibold text-[17px] mb-1.5 text-foreground">{uc.title}</h3>
-              <p className="font-body text-sm text-muted-foreground/70 italic mb-3">{uc.subtitle}</p>
-              <p className="font-body text-sm text-muted-foreground leading-relaxed">{uc.body}</p>
+              <uc.icon className="card-icon mb-4" />
+              <h3 className="card-title-std mb-1.5">{uc.title}</h3>
+              <p className="text-sm text-muted-foreground/70 italic mb-3">{uc.subtitle}</p>
+              <p className="card-body-std">{uc.body}</p>
             </motion.div>
           ))}
         </div>
@@ -146,28 +146,28 @@ const AgenticAI = () => {
 
       {/* ── 4. THE REAL COMPARISON ── */}
       <Section>
-        <div className="max-w-3xl mx-auto text-center mb-14">
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-accent uppercase tracking-[0.25em] text-xs font-heading font-semibold mb-4">THE REAL COMPARISON</motion.p>
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl mb-6 text-foreground tracking-tight">
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="section-label mb-3">THE REAL COMPARISON</motion.p>
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="section-headline mb-4">
             Open-source AI agents are powerful.<br className="hidden md:inline" /> They're also completely ungoverned.
           </motion.h2>
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 }} className="font-body text-muted-foreground text-lg leading-relaxed max-w-[680px] mx-auto">
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 }} className="section-subtext mx-auto">
             Frameworks like CrewAI, AutoGen, and LangGraph give you autonomous AI agents. They don't give you data sovereignty, audit trails, organizational context, or regulatory compliance. Aliph does.
           </motion.p>
         </div>
 
         {/* Desktop table */}
-        <div className="hidden md:block max-w-4xl mx-auto rounded-2xl border border-border overflow-hidden bg-card">
-          <div className="grid grid-cols-[2fr_1.5fr_1.5fr] bg-secondary">
-            <div className="p-4"><span className="font-heading font-semibold text-sm text-muted-foreground">What happens when…</span></div>
-            <div className="p-4 text-center border-l border-border"><span className="font-heading font-semibold text-sm text-muted-foreground">Open-Source Agents</span></div>
-            <div className="p-4 text-center border-l border-accent/20 bg-accent/5"><span className="font-heading font-semibold text-sm text-accent">Aliph Agentic Platform</span></div>
+        <div className="hidden md:block max-w-[1060px] mx-auto rounded-lg border border-border overflow-hidden bg-card">
+          <div className="grid grid-cols-[2fr_1.5fr_1.5fr] border-b-2 border-border">
+            <div className="p-5"><span className="font-heading font-semibold text-[15px] text-foreground">What happens when…</span></div>
+            <div className="p-5 text-center border-l bg-[#FAFAFA]"><span className="font-heading font-semibold text-[15px] text-muted-foreground">Open-Source Agents</span></div>
+            <div className="p-5 text-center border-l"><span className="font-heading font-semibold text-[15px] text-accent">Aliph Agentic Platform</span></div>
           </div>
           {comparisonRows.map((row, i) => (
-            <motion.div key={i} initial={{ opacity: 0, x: -8 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.04 }} className="grid grid-cols-[2fr_1.5fr_1.5fr] border-t border-border">
-              <div className="p-4"><span className="font-heading font-semibold text-sm text-foreground">{row.scenario}</span></div>
-              <div className="p-4 border-l border-border bg-secondary/40"><span className="font-body text-sm text-muted-foreground">{row.open}</span></div>
-              <div className="p-4 border-l border-accent/20 bg-accent/5"><span className="font-body text-sm text-foreground">{row.aliph}</span></div>
+            <motion.div key={i} initial={{ opacity: 0, x: -8 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.04 }} className="grid grid-cols-[2fr_1.5fr_1.5fr] border-t border-[#F3F4F6]">
+              <div className="comparison-cell"><span className="font-semibold text-[15px] text-foreground">{row.scenario}</span></div>
+              <div className="comparison-cell border-l bg-[#FAFAFA]"><span className="text-[15px] text-muted-foreground">{row.open}</span></div>
+              <div className="comparison-cell border-l"><span className="text-[15px] text-foreground">{row.aliph}</span></div>
             </motion.div>
           ))}
         </div>
@@ -175,32 +175,32 @@ const AgenticAI = () => {
         {/* Mobile stacked cards */}
         <div className="md:hidden space-y-4 max-w-lg mx-auto">
           {comparisonRows.map((row, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="rounded-xl border border-border bg-card overflow-hidden">
-              <div className="p-4 bg-secondary/60 border-b border-border"><span className="font-heading font-semibold text-sm text-foreground">{row.scenario}</span></div>
-              <div className="p-4 border-b border-border"><p className="text-xs font-heading font-semibold text-muted-foreground mb-1">Open-Source Agents</p><p className="font-body text-sm text-muted-foreground">{row.open}</p></div>
-              <div className="p-4 bg-accent/5"><p className="text-xs font-heading font-semibold text-accent mb-1">Aliph Agentic Platform</p><p className="font-body text-sm text-foreground">{row.aliph}</p></div>
+            <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="card-std overflow-hidden p-0">
+              <div className="p-4 bg-[#F9FAFB] border-b border-border"><span className="font-semibold text-sm text-foreground">{row.scenario}</span></div>
+              <div className="p-4 bg-[#FAFAFA] border-b border-border"><p className="text-xs font-heading font-semibold text-muted-foreground mb-1">Open-Source Agents</p><p className="text-sm text-muted-foreground">{row.open}</p></div>
+              <div className="p-4"><p className="text-xs font-heading font-semibold text-accent mb-1">Aliph Agentic Platform</p><p className="text-sm text-foreground">{row.aliph}</p></div>
             </motion.div>
           ))}
         </div>
 
-        <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center font-heading font-semibold text-lg md:text-xl text-foreground mt-12 max-w-2xl mx-auto">
+        <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center font-heading font-semibold text-lg text-foreground mt-10 max-w-2xl mx-auto">
           Open-source gives you the engine. Aliph gives you the governance that makes it enterprise-safe.
         </motion.p>
       </Section>
 
       {/* ── 5. SAME SOVEREIGN FOUNDATION ── */}
       <Section alabaster>
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-accent uppercase tracking-[0.25em] text-xs font-heading font-semibold mb-4">SAME SOVEREIGN FOUNDATION</motion.p>
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-heading font-semibold text-3xl md:text-4xl mb-6 text-foreground tracking-tight">
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="section-label mb-3">SAME SOVEREIGN FOUNDATION</motion.p>
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="section-headline mb-4">
             Everything that makes AliphChat and GRC Platform sovereign — powers the agents too.
           </motion.h2>
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 }} className="font-body text-muted-foreground leading-relaxed max-w-[660px] mx-auto">
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 }} className="section-subtext mx-auto">
             The Agentic AI Platform runs on the same four-layer architecture. Privacy Shield, Organization Memory, governed model connectivity, and full audit trails — shared across every Aliph product.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
           {foundationBadges.map((b, i) => (
             <motion.div
               key={b.title}
@@ -208,34 +208,34 @@ const AgenticAI = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="rounded-xl border border-border bg-card p-6 text-center"
+              className="card-std text-center"
             >
-              <b.icon className="w-6 h-6 text-accent mx-auto mb-3" />
-              <h3 className="font-heading font-semibold text-base text-foreground mb-1">{b.title}</h3>
-              <p className="font-body text-[13px] text-muted-foreground leading-snug">{b.line}</p>
+              <b.icon className="card-icon mx-auto mb-3" />
+              <h3 className="card-title-std mb-1">{b.title}</h3>
+              <p className="stat-label leading-snug">{b.line}</p>
             </motion.div>
           ))}
         </div>
       </Section>
 
       {/* ── 6. EARLY ACCESS WAITLIST CTA ── */}
-      <section className="relative dark-cta-section py-[56px] md:py-[88px] text-[hsl(0,0%,95%)]">
-        <div className="container mx-auto px-6 py-24 lg:py-32">
+      <section className="dark-cta-section py-[56px] md:py-[88px]">
+        <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto text-center">
-            <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="inline-flex px-3 py-1 rounded-full text-xs font-heading font-semibold bg-accent/15 border border-accent/25 text-accent uppercase tracking-wider mb-6">
+            <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="inline-flex px-3 py-1 rounded-full text-xs font-heading font-medium bg-accent/15 border border-accent/25 text-accent uppercase tracking-wider mb-6">
               LAUNCHING Q2 2026
             </motion.span>
 
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-heading font-bold text-3xl md:text-4xl lg:text-[44px] leading-tight tracking-tight mb-6">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="dark-cta-headline mb-4">
               Be the first to deploy sovereign AI agents across your enterprise.
             </motion.h2>
 
-            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 }} className="font-body text-lg text-[hsl(0,0%,75%)] leading-relaxed mb-10 max-w-[620px] mx-auto">
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 }} className="dark-cta-subtext mb-8 max-w-[620px] mx-auto">
               We're selecting a limited number of early access partners who want to shape the product with us. Early partners get priority deployment, direct engineering access, and input into the agent capabilities that matter most for their workflows.
             </motion.p>
 
             {/* Benefits */}
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 mb-10 text-sm">
+            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 mb-10 text-sm text-white/90">
               {["Priority access before general availability", "Direct input into agent capabilities and workflows", "Dedicated engineering support during deployment"].map((t) => (
                 <span key={t} className="flex items-center gap-2"><Check className="w-4 h-4 text-accent shrink-0" />{t}</span>
               ))}
@@ -256,9 +256,9 @@ const AgenticAI = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@company.com"
-                    className="flex-1 h-12 px-4 rounded-lg border border-[hsl(220,15%,25%)] bg-[hsl(220,18%,16%)] text-[hsl(0,0%,95%)] font-body text-sm placeholder:text-[hsl(0,0%,50%)] focus:outline-none focus:ring-2 focus:ring-accent/40"
+                    className="flex-1 h-12 px-4 rounded-lg border border-white/20 bg-white/5 text-white text-sm placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-accent/40"
                   />
-                  <button type="submit" className="inline-flex items-center justify-center gap-2 h-12 px-6 bg-accent hover:brightness-110 text-accent-foreground rounded-lg font-heading font-semibold text-sm transition-all shrink-0">
+                  <button type="submit" className="btn-primary shrink-0">
                     Join the Waitlist
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
@@ -267,17 +267,17 @@ const AgenticAI = () => {
             </AnimatePresence>
 
             {!submitted && (
-              <p className="text-[13px] text-[hsl(0,0%,50%)] font-body mb-10">
+              <p className="dark-cta-trust mb-8">
                 No commitment. We'll notify you when early access opens and share product updates along the way.
               </p>
             )}
 
-            <div className="text-[13px] text-[hsl(0,0%,50%)] font-body space-y-1 mt-6">
+            <div className="dark-cta-contact mt-4">
               <p>Questions about the Agentic AI Platform?</p>
-              <p>
-                <a href="https://wa.me/966569678421" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">WhatsApp: +966 56 967 8421</a>
+              <p className="mt-1">
+                <a href="https://wa.me/966569678421" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:underline">WhatsApp: +966 56 967 8421</a>
                 <span className="mx-2">|</span>
-                <a href="mailto:raj@aliphai.ai" className="hover:text-accent transition-colors">raj@aliphai.ai</a>
+                <a href="mailto:raj@aliphai.ai" className="text-white/70 hover:underline">raj@aliphai.ai</a>
               </p>
             </div>
           </div>
