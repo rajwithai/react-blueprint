@@ -1,5 +1,6 @@
 import { Search, Shield, BarChart3, Brain } from "lucide-react";
 import IndustryPageTemplate, { IndustryPageData } from "@/components/sections/IndustryPageTemplate";
+import heroImg from "@/assets/images/industry-real-estate.jpg";
 
 const data: IndustryPageData = {
   label: "REAL ESTATE & PROPERTY MANAGEMENT",
@@ -8,6 +9,8 @@ const data: IndustryPageData = {
   primaryCta: { label: "Book a Real Estate AI Assessment", href: "/demo" },
   secondaryCta: { label: "See the Platform →", href: "/platform" },
   badges: ["PDPL", "RERA", "Municipal Requirements"],
+  heroImage: heroImg,
+  heroImageAlt: "Saudi real estate skyline with property management dashboard",
 
   realityLabel: "YOUR REALITY TODAY",
   realityHeadline: "Your properties generate massive amounts of data. None of it is governed.",

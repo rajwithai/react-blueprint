@@ -1,5 +1,6 @@
 import { Radar, Shield, Zap, Brain } from "lucide-react";
 import IndustryPageTemplate, { IndustryPageData } from "@/components/sections/IndustryPageTemplate";
+import heroImg from "@/assets/images/industry-financial-services.jpg";
 
 const data: IndustryPageData = {
   label: "FINANCIAL SERVICES — FINTECH, INVESTMENT, INSURANCE",
@@ -8,6 +9,8 @@ const data: IndustryPageData = {
   primaryCta: { label: "Book a Financial Services AI Assessment", href: "/demo" },
   secondaryCta: { label: "See the Platform →", href: "/platform" },
   badges: ["SAMA", "CMA", "PDPL", "AML"],
+  heroImage: heroImg,
+  heroImageAlt: "Financial services trading floor with analytics dashboards",
 
   realityLabel: "YOUR REALITY TODAY",
   realityHeadline: "Your analysts use AI every day. Your compliance team doesn't know.",

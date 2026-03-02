@@ -1,5 +1,6 @@
 import { Search, Shield, FileText, Brain } from "lucide-react";
 import IndustryPageTemplate, { IndustryPageData } from "@/components/sections/IndustryPageTemplate";
+import heroImg from "@/assets/images/industry-professional-services.jpg";
 
 const data: IndustryPageData = {
   label: "PROFESSIONAL SERVICES — LEGAL, ADVISORY, CONSULTING",
@@ -8,6 +9,8 @@ const data: IndustryPageData = {
   primaryCta: { label: "Book an Advisory AI Assessment", href: "/demo" },
   secondaryCta: { label: "See the Platform →", href: "/platform" },
   badges: ["PDPL", "SAMA", "CMA", "NCA"],
+  heroImage: heroImg,
+  heroImageAlt: "Professional services team reviewing analytics",
 
   realityLabel: "YOUR REALITY TODAY",
   realityHeadline: "Your firm's greatest asset is institutional knowledge. And it's disappearing.",
