@@ -37,7 +37,7 @@ const SplitHero = ({
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 blur-[140px] rounded-full pointer-events-none" />
 
       <div className="container relative z-10 px-6">
-        <div className="grid lg:grid-cols-[55fr_45fr] gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-[45fr_55fr] gap-8 lg:gap-12 items-center">
           {/* Left: Copy */}
           <div>
             {badge && (
