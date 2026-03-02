@@ -135,11 +135,11 @@ const SplitHero = ({
             transition={{ duration: 0.7, delay: 0.2 }}
             className="relative"
           >
-            <div className="rounded-lg overflow-hidden shadow-2xl border border-border/50 max-w-[90%] ml-auto">
+            <div className="rounded-lg overflow-hidden shadow-2xl border border-border/50">
               <img
                 src={image}
                 alt={imageAlt}
-                className="w-full h-[500px] md:h-[560px] object-cover object-top"
+                className="w-full h-auto object-contain"
                 loading="eager"
               />
             </div>
