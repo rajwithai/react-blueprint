@@ -1,6 +1,7 @@
 import { useState, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { CheckCircle2, ArrowRight, Loader2 } from "lucide-react";
+import { sendWaitlistEmail } from "@/lib/emailService";
 
 interface InlineEmailCaptureProps {
   title?: string;
@@ -19,12 +20,24 @@ const InlineEmailCapture = ({
 }: InlineEmailCaptureProps) => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    setSubmitted(true);
-    setEmail("");
+
+    setLoading(true);
+    setError(null);
+    try {
+      await sendWaitlistEmail({ email, source: "Inline Waitlist" });
+      setSubmitted(true);
+      setEmail("");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -76,14 +89,27 @@ const InlineEmailCapture = ({
             />
             <button
               type="submit"
-              className="inline-flex items-center justify-center gap-2 h-11 px-6 bg-accent hover:brightness-110 text-accent-foreground rounded-lg font-heading font-semibold text-sm transition-all shrink-0"
+              disabled={loading}
+              className="inline-flex items-center justify-center gap-2 h-11 px-6 bg-accent hover:brightness-110 text-accent-foreground rounded-lg font-heading font-semibold text-sm transition-all shrink-0 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              {buttonText}
-              <ArrowRight className="w-3.5 h-3.5" />
+              {loading ? (
+                <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Subscribing...</>
+              ) : (
+                <>
+                  {buttonText}
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </>
+              )}
             </button>
           </motion.form>
         )}
       </AnimatePresence>
+
+      {error && (
+        <p className="text-sm text-destructive mt-3 font-body">
+          {error}
+        </p>
+      )}
 
       {!submitted && (
         <p className="text-[11px] text-muted-foreground/50 font-body mt-2">

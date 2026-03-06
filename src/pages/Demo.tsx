@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { CheckCircle2, Shield, Clock, Users, Zap, Globe } from "lucide-react";
+import { CheckCircle2, Shield, Users, Zap, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
 import ParallaxImage from "@/components/sections/ParallaxImage";
-import platformImg from "@/assets/images/platform-architecture.jpg";
+import { sendDemoEmail } from "@/lib/emailService";
 
 const companySizes = ["1–50", "51–200", "201–500", "501–1000", "1000+"];
 const industries = ["Financial Services", "Healthcare", "Professional Services", "Technology", "Government", "Other"];
@@ -15,6 +15,8 @@ const products = ["AliphChat", "GRC Platform", "Agentic AI Platform", "Show Me E
 const Demo = () => {
   const [formData, setFormData] = useState({ name: "", email: "", organization: "", title: "", companySize: "", industry: "", products: [] as string[] });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const toggleProduct = (p: string) => {
     setFormData(prev => ({
@@ -23,9 +25,18 @@ const Demo = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
+    try {
+      await sendDemoEmail(formData);
+      setSubmitted(true);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -82,6 +93,7 @@ const Demo = () => {
                 <button
                   onClick={() => {
                     setSubmitted(false);
+                    setError(null);
                     setFormData({ name: "", email: "", organization: "", title: "", companySize: "", industry: "", products: [] });
                   }}
                   className="mt-4 font-body text-sm text-accent hover:underline"
@@ -140,8 +152,21 @@ const Demo = () => {
                     ))}
                   </div>
                 </div>
-                <button type="submit" className="w-full px-8 py-3.5 rounded-lg bg-accent text-accent-foreground font-heading font-semibold hover:brightness-110 transition-all text-lg">
-                  Book My Demo
+                {error && (
+                  <p className="font-body text-sm text-red-500 bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-3 text-center">
+                    {error}
+                  </p>
+                )}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full px-8 py-3.5 rounded-lg bg-accent text-accent-foreground font-heading font-semibold hover:brightness-110 transition-all text-lg flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {loading ? (
+                    <><Loader2 className="w-5 h-5 animate-spin" /> Sending Request...</>
+                  ) : (
+                    "Book My Demo"
+                  )}
                 </button>
               </motion.form>
             )}

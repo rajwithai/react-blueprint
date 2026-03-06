@@ -2,9 +2,10 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   CheckCircle2, MessageCircle, Mail, ArrowRight, ArrowDown,
-  ClipboardCheck, FileText, Shield, Pill, Brain, Languages
+  ClipboardCheck, FileText, Shield, Pill, Brain, Languages, Loader2
 } from "lucide-react";
 import heroImg from "@/assets/images/industry-healthcare.jpg";
+import { sendHealthcareEmail } from "@/lib/emailService";
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -55,10 +56,21 @@ const roleOptions = [
 const Healthcare = () => {
   const [form, setForm] = useState({ name: "", org: "", email: "", role: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (form.email && form.name) setSubmitted(true);
+    setLoading(true);
+    setError(null);
+    try {
+      await sendHealthcareEmail(form);
+      setSubmitted(true);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const scrollToSection2 = () => {
@@ -301,9 +313,24 @@ const Healthcare = () => {
                     <option key={r} value={r} className="text-foreground bg-background">{r}</option>
                   ))}
                 </select>
-                <button type="submit" className="btn-primary w-full justify-center group">
-                  Apply for Founding Partner Access
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                {error && (
+                  <p className="text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded-lg px-4 py-3 text-center mb-3">
+                    {error}
+                  </p>
+                )}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="btn-primary w-full justify-center group disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {loading ? (
+                    <><Loader2 className="w-4 h-4 animate-spin mr-2" /> Submitting...</>
+                  ) : (
+                    <>
+                      Apply for Founding Partner Access
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform ml-1" />
+                    </>
+                  )}
                 </button>
               </form>
             ) : (

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Mail, MessageCircle, MapPin, CheckCircle2 } from "lucide-react";
+import { Mail, MessageCircle, MapPin, CheckCircle2, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { sendContactEmail } from "@/lib/emailService";
 
 const interestOptions = [
   "AliphChat — Enterprise AI Assistant",
@@ -31,6 +32,8 @@ const Contact = () => {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (inquiry && inquiryMap[inquiry]) {
@@ -38,9 +41,18 @@ const Contact = () => {
     }
   }, [inquiry]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
+    try {
+      await sendContactEmail(formData);
+      setSubmitted(true);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -135,7 +147,7 @@ const Contact = () => {
                   A real person from our founding team will get back to you within 24 hours.
                 </p>
                 <button
-                  onClick={() => { setSubmitted(false); setFormData({ name: "", email: "", company: "", interest: "", message: "" }); }}
+                  onClick={() => { setSubmitted(false); setError(null); setFormData({ name: "", email: "", company: "", interest: "", message: "" }); }}
                   className="mt-4 font-body text-sm text-accent hover:underline"
                 >
                   Send another message
@@ -173,8 +185,21 @@ const Contact = () => {
                   <label className="block font-heading font-semibold text-sm text-foreground mb-1.5">Message *</label>
                   <textarea required rows={5} placeholder="Tell us how we can help..." className="w-full rounded-lg border border-border bg-card px-4 py-3 font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent/40 resize-none" value={formData.message} onChange={e => setFormData({ ...formData, message: e.target.value })} />
                 </div>
-                <button type="submit" className="w-full px-8 py-3.5 rounded-lg bg-accent text-accent-foreground font-heading font-semibold hover:brightness-110 transition-all">
-                  Send Message
+                {error && (
+                  <p className="font-body text-sm text-red-500 bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-3 text-center">
+                    {error}
+                  </p>
+                )}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full px-8 py-3.5 rounded-lg bg-accent text-accent-foreground font-heading font-semibold hover:brightness-110 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {loading ? (
+                    <><Loader2 className="w-4 h-4 animate-spin" /> Sending...</>
+                  ) : (
+                    "Send Message"
+                  )}
                 </button>
                 <p className="font-body text-xs text-muted-foreground text-center">
                   We read every message. Expect a response within 24 hours.

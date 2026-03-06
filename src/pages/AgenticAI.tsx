@@ -2,12 +2,13 @@ import { useState, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FileSearch, FileText, Users, BarChart3, ClipboardCheck, Presentation,
-  Shield, Brain, Lock, Globe, ArrowRight, CheckCircle2, Check,
+  Shield, Brain, Lock, Globe, ArrowRight, CheckCircle2, Check, Loader2
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import SplitHero from "@/components/sections/SplitHero";
 import Section from "@/components/sections/Section";
 import agentImg from "@/assets/images/agentic-ai-agents.jpg";
+import { sendWaitlistEmail } from "@/lib/emailService";
 
 /* ─── Data ─── */
 
@@ -60,12 +61,24 @@ const foundationBadges = [
 const AgenticAI = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    setSubmitted(true);
-    setEmail("");
+    
+    setLoading(true);
+    setError(null);
+    try {
+      await sendWaitlistEmail({ email, source: "AgenticAI Waitlist" });
+      setSubmitted(true);
+      setEmail("");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -258,13 +271,18 @@ const AgenticAI = () => {
                     placeholder="your@company.com"
                     className="flex-1 h-12 px-4 rounded-lg border border-white/20 bg-white/5 text-white text-sm placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-accent/40"
                   />
-                  <button type="submit" className="btn-primary shrink-0">
-                    Join the Waitlist
-                    <ArrowRight className="w-3.5 h-3.5" />
+                  <button type="submit" disabled={loading} className="btn-primary shrink-0 disabled:opacity-70 disabled:cursor-not-allowed">
+                    {loading ? <><Loader2 className="w-4 h-4 animate-spin mr-1" /> Joining...</> : <>Join the Waitlist <ArrowRight className="w-3.5 h-3.5" /></>}
                   </button>
                 </motion.form>
               )}
             </AnimatePresence>
+
+            {error && (
+              <p className="text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded-lg px-4 py-3 text-center mb-4 mt-2 max-w-md mx-auto">
+                {error}
+              </p>
+            )}
 
             {!submitted && (
               <p className="dark-cta-trust mb-8">
