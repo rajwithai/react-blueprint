@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import aliphLogo from "@/assets/aliph-logo.png";
 
@@ -50,10 +50,24 @@ const Navbar = () => {
   const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
   const location = useLocation();
 
+  const isArabic = document.cookie.includes("googtrans=/en/ar");
+
+  const toggleLanguage = () => {
+    const newLang = isArabic ? "en" : "ar";
+    document.cookie = `googtrans=/en/${newLang}; path=/; domain=${window.location.hostname}`;
+    document.cookie = `googtrans=/en/${newLang}; path=/`; 
+    document.documentElement.dir = newLang === "ar" ? "rtl" : "ltr";
+    window.location.reload();
+  };
+
   useEffect(() => {
     setMobileOpen(false);
     setOpenDropdown(null);
   }, [location]);
+
+  useEffect(() => {
+    document.documentElement.dir = isArabic ? "rtl" : "ltr";
+  }, [isArabic]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 h-[72px] flex items-center bg-background/95 backdrop-blur-xl border-b border-border">
@@ -122,9 +136,16 @@ const Navbar = () => {
         </nav>
 
         <div className="flex items-center gap-3">
+          <button
+            onClick={toggleLanguage}
+            className="justify-center whitespace-nowrap font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-border shadow-xs active:shadow-none min-h-8 rounded-md px-3 text-xs flex items-center gap-2 hover:bg-accent hover:text-accent-foreground transition-colors"
+          >
+            <Globe className="h-4 w-4" />
+            {isArabic ? "English" : "العربية"}
+          </button>
           <Link
             to="/company/contact"
-            className="cta-primary inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-body font-semibold text-[14px]"
+            className="cta-primary hidden md:inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-body font-semibold text-[14px]"
           >
             Contact Sales
           </Link>

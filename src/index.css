@@ -463,3 +463,37 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* ═══════════════════════════════════════════════
+   GOOGLE TRANSLATE OVERRIDES
+   ═══════════════════════════════════════════════ */
+.goog-te-banner-frame.skiptranslate, 
+.goog-te-banner-frame,
+.VIpgJd-ZVi9od-ORHb-OEVmcd,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf { 
+    display: none !important; 
+} 
+
+iframe.skiptranslate {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+body { 
+    top: 0px !important; 
+}
+
+#goog-gt-tt, .goog-te-balloon-frame {
+    display: none !important;
+}
+
+.goog-tooltip, 
+.goog-tooltip:hover {
+    display: none !important;
+}
+
+.goog-text-highlight {
+    background-color: transparent !important;
+    border: none !important; 
+    box-shadow: none !important;
+}
