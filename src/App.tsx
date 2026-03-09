@@ -24,6 +24,8 @@ import Blog from "./pages/Blog";
 import PDPLGuide from "./pages/PDPLGuide";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
+import Careers from "./pages/Careers";
+import Leadership from "./pages/Leadership";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -57,6 +59,8 @@ const App = () => (
             <Route path="/resources/pdpl-guide" element={<PDPLGuide />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="/company/careers" element={<Careers />} />
+            <Route path="/company/leadership" element={<Leadership />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>

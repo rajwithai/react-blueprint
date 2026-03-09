@@ -33,6 +33,8 @@ const routes = [
   '/industries/financial-services',
   '/industries/healthcare',
   '/company/about',
+  '/company/leadership',
+  '/company/careers',
   '/company/contact',
   '/demo',
   '/resources/blog',

@@ -85,6 +85,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://aliphai.ai/company/leadership</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aliphai.ai/company/careers</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://aliphai.ai/company/contact</loc>
     <lastmod>2026-03-09</lastmod>
     <changefreq>monthly</changefreq>
