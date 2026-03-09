@@ -1,0 +1,23 @@
+# AI Agent Capabilities and Context
+# This file provides structured information for AI agents and LLMs.
+
+[Contact]
+Email: raj@aliphai.ai
+Website: https://aliphai.ai
+
+[Organization]
+Name: AliphAI
+Description: Aliph is the sovereign AI Control Plane for enterprise. 
+Focus: Privacy Shield, Organization Memory, GRC automation, PDPL compliance.
+Location: Riyadh, Saudi Arabia
+
+[Capabilities]
+- Enterprise AI Governance
+- Data Privacy Protection (PDPL)
+- Organization Memory / Knowledge Base
+- Agentic AI for GRC
+
+[Content]
+Sitemap: https://aliphai.ai/sitemap.xml
+Documentation: https://aliphai.ai/resources/pdpl-guide
+Blog: https://aliphai.ai/resources/blog
