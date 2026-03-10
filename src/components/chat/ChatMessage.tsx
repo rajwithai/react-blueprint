@@ -54,7 +54,7 @@ const ChatMessage = ({ message, index }: ChatMessageProps) => {
           {isUser ? (
             <p>{message.content}</p>
           ) : (
-            <div className="prose prose-sm max-w-none prose-p:my-1 prose-ul:my-1 prose-li:my-0.5 prose-headings:my-1.5 prose-a:text-white prose-a:bg-primary prose-a:px-4 prose-a:py-1.5 prose-a:rounded-lg prose-a:no-underline prose-a:inline-block prose-a:font-medium prose-a:shadow-sm prose-a:hover:opacity-90 prose-code:text-xs prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded">
+            <div className="prose prose-sm max-w-none prose-p:my-1 prose-ul:my-1 prose-li:my-0.5 prose-headings:my-1.5 prose-a:text-accent prose-a:font-semibold prose-a:underline underline-offset-4 hover:prose-a:text-accent/80 prose-code:text-xs prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded">
               <ReactMarkdown rehypePlugins={[rehypeRaw]}>{message.content}</ReactMarkdown>
             </div>
           )}
