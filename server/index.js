@@ -2,6 +2,10 @@ import express from "express";
 import cors from "cors";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 dotenv.config();
 
@@ -222,7 +226,16 @@ app.post("/api/healthcare", async (req, res) => {
 // ── Health Check ──────────────────────────────────────────────────────────────
 app.get("/api/health", (_req, res) => res.json({ status: "ok" }));
 
+// ── Static Files & SPA Fallback ─────────────────────────────────────────────
+// Serve static files from the Vite build directory
+app.use(express.static(path.join(__dirname, "../dist")));
+
+// Handle fallbacks for SPA: any route that doesn't match API or static files
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../dist/index.html"));
+});
+
 // ── Start Server ──────────────────────────────────────────────────────────────
 app.listen(PORT, () => {
-  console.log(`🚀 Mailer server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
