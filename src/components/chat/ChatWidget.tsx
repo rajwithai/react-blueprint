@@ -70,10 +70,25 @@ const ChatWidget = () => {
           }),
         });
 
-        if (!res.ok) throw new Error(`API error: ${res.status}`);
+        if (!res.ok) {
+          const errorText = await res.text();
+          console.error("Chat API Error:", { status: res.status, body: errorText });
+          throw new Error(`API error: ${res.status}. ${errorText.substring(0, 100)}`);
+        }
 
-        const data = await res.json();
-        const reply = data.reply || data.response || data.message || "No response received.";
+        const rawText = await res.text();
+        if (!rawText) throw new Error("No response received from the assistant.");
+
+        let data;
+        try {
+          data = JSON.parse(rawText);
+        } catch (e) {
+          console.error("Failed to parse JSON:", rawText);
+          // If it's not JSON, maybe use the raw text as the reply?
+          data = { reply: rawText };
+        }
+
+        const reply = data.reply || data.response || data.message || (typeof data === 'string' ? data : "No response received.");
 
         const assistantMsg: Message = {
           id: crypto.randomUUID(),
