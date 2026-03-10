@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { User } from "lucide-react";
+import { MessageCircle, User } from "lucide-react";
 import ReactMarkdown from "react-markdown";
-import aliphLogo from "@/assets/aliph-logo.png";
 
 export interface Message {
   id: string;
@@ -38,7 +37,7 @@ const ChatMessage = ({ message, index }: ChatMessageProps) => {
         {isUser ? (
           <User className="h-3.5 w-3.5 text-primary-foreground" />
         ) : (
-          <img src={aliphLogo} alt="Aliph" className="h-4 w-4 object-contain" />
+          <MessageCircle className="h-3.5 w-3.5 text-muted-foreground" />
         )}
       </div>
 

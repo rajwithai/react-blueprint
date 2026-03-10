@@ -166,7 +166,6 @@ const ChatWidget = () => {
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-background/80 backdrop-blur-md">
               <div className="flex items-center gap-2.5">
-                <img src={aliphLogo} alt="Aliph" className="h-6 w-6 object-contain" />
                 <div>
                   <p className="text-sm font-semibold text-foreground leading-none">Aliph AI Assistant</p>
                   <p className="text-[11px] text-muted-foreground mt-0.5">Ask me anything</p>
@@ -185,7 +184,6 @@ const ChatWidget = () => {
             <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
               {messages.length === 0 && !isLoading && (
                 <div className="flex flex-col items-center justify-center h-full text-center gap-3 py-8">
-                  <img src={aliphLogo} alt="Aliph" className="h-10 w-10 opacity-60" />
                   <p className="text-sm text-muted-foreground max-w-[240px]">
                     Hi! I'm Aliph AI. Ask me anything about our products and solutions.
                   </p>
@@ -199,7 +197,7 @@ const ChatWidget = () => {
               {isLoading && (
                 <div className="flex gap-2.5">
                   <div className="flex-shrink-0 h-7 w-7 rounded-full bg-secondary flex items-center justify-center">
-                    <img src={aliphLogo} alt="Aliph" className="h-4 w-4 object-contain" />
+                    <MessageCircle className="h-4 w-4 text-muted-foreground" />
                   </div>
                   <div className="rounded-2xl rounded-bl-md bg-secondary">
                     <TypingIndicator />
