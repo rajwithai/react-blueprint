@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { MessageCircle, User } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 export interface Message {
   id: string;
@@ -54,7 +55,7 @@ const ChatMessage = ({ message, index }: ChatMessageProps) => {
             <p>{message.content}</p>
           ) : (
             <div className="prose prose-sm max-w-none prose-p:my-1 prose-ul:my-1 prose-li:my-0.5 prose-headings:my-1.5 prose-a:text-accent prose-code:text-xs prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded">
-              <ReactMarkdown>{message.content}</ReactMarkdown>
+              <ReactMarkdown rehypePlugins={[rehypeRaw]}>{message.content}</ReactMarkdown>
             </div>
           )}
         </div>
