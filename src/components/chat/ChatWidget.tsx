@@ -17,6 +17,8 @@ const ChatWidget = () => {
   const [hasUnread, setHasUnread] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
+  const [sessionId] = useState(() => 'ses_' + Math.random().toString(36).substring(2, 11));
+  const [userId] = useState(() => 'usr_' + Math.random().toString(36).substring(2, 11));
 
   // Auto-scroll
   useEffect(() => {
@@ -60,7 +62,12 @@ const ChatWidget = () => {
         const res = await fetch(CHAT_API_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: content, conversation_history: history }),
+          body: JSON.stringify({ 
+            question: content, 
+            user_id: userId, 
+            session_id: sessionId,
+            history: history
+          }),
         });
 
         if (!res.ok) throw new Error(`API error: ${res.status}`);
