@@ -7,6 +7,7 @@ import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
 import ParallaxImage from "@/components/sections/ParallaxImage";
 import { sendDemoEmail } from "@/lib/emailService";
+import platformImg from "@/assets/images/platform-architecture.jpg";
 
 const companySizes = ["1–50", "51–200", "201–500", "501–1000", "1000+"];
 const industries = ["Financial Services", "Healthcare", "Professional Services", "Technology", "Government", "Other"];
