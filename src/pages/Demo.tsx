@@ -42,8 +42,8 @@ const Demo = () => {
   return (
     <>
       <PageHero
-        title="See it live."
-        subtitle="30 minutes. Tailored to your organization. See Privacy Shield mask data in real time, Organization Memory answer from your knowledge base, and multi-agent AI produce work that used to take weeks."
+        title="Book your Demo."
+        subtitle="Experience the future of sovereign AI tailored to your organization."
       />
 
 
@@ -158,6 +158,10 @@ const Demo = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
+            <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6 text-foreground">See it live.</h2>
+            <p className="font-body text-muted-foreground text-lg mb-8 leading-relaxed">
+              30 minutes. Tailored to your organization. See Privacy Shield mask data in real time, Organization Memory answer from your knowledge base, and multi-agent AI produce work that used to take weeks.
+            </p>
             <h3 className="font-heading font-semibold text-xl mb-6 text-foreground">What to Expect</h3>
             <div className="space-y-4">
               {[
