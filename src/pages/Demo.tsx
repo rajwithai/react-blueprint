@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CheckCircle2, Shield, Users, Zap, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import PageHero from "@/components/sections/PageHero";
+
 import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
@@ -41,10 +41,7 @@ const Demo = () => {
 
   return (
     <>
-      <PageHero
-        title="Book your Demo."
-        subtitle="Experience the future of sovereign AI tailored to your organization."
-      />
+
 
 
       {/* Section 1: Form */}
