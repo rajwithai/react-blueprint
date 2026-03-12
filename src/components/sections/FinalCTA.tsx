@@ -32,8 +32,8 @@ const FinalCTA = () => {
             WhatsApp: +966 56 967 8421
           </a>
           <span className="mx-2">|</span>
-          <a href="mailto:raj@aliphai.ai" className="text-white/70 hover:text-white transition-colors underline">
-            raj@aliphai.ai
+          <a href="mailto:raj@aliphsolutions.sa" className="text-white/70 hover:text-white transition-colors underline">
+            raj@aliphsolutions.sa
           </a>
         </p>
       </div>

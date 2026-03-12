@@ -288,8 +288,8 @@ const IndustryPageTemplate = ({ data }: { data: IndustryPageData }) => {
             <a href="https://wa.me/966569678421" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-white/80 transition-colors">
               <MessageCircle className="h-3.5 w-3.5" /> +966 56 967 8421
             </a>
-            <a href="mailto:raj@aliphai.ai" className="inline-flex items-center gap-1 hover:text-white/80 transition-colors">
-              <Mail className="h-3.5 w-3.5" /> raj@aliphai.ai
+            <a href="mailto:raj@aliphsolutions.sa" className="inline-flex items-center gap-1 hover:text-white/80 transition-colors">
+              <Mail className="h-3.5 w-3.5" /> raj@aliphsolutions.sa
             </a>
           </motion.div>
         </div>

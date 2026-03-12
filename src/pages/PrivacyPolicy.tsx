@@ -14,7 +14,7 @@ const PrivacyPolicy = () => (
 
         <h2 className="font-heading font-semibold text-xl mt-10 mb-3">1. Introduction</h2>
         <p className="font-body text-muted-foreground leading-relaxed">
-          Aliph Solutions ("we", "our", "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website (aliphai.ai) or use our products and services. We comply with the Kingdom of Saudi Arabia's Personal Data Protection Law (PDPL) and applicable international data protection regulations.
+          Aliph Solutions ("we", "our", "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website (aliphsolutions.sa) or use our products and services. We comply with the Kingdom of Saudi Arabia's Personal Data Protection Law (PDPL) and applicable international data protection regulations.
         </p>
 
         <h2 className="font-heading font-semibold text-xl mt-10 mb-3">2. Data We Collect</h2>
@@ -86,7 +86,7 @@ const PrivacyPolicy = () => (
           For privacy-related inquiries, data access requests, or to exercise your rights under PDPL, please contact our Data Protection team:
         </p>
         <ul className="list-none pl-0 space-y-1 text-muted-foreground font-body mt-3">
-          <li><strong>Email:</strong> hello@aliphai.ai</li>
+          <li><strong>Email:</strong> hello@aliphsolutions.sa</li>
           <li><strong>Address:</strong> Riyadh, Kingdom of Saudi Arabia</li>
         </ul>
         <p className="font-body text-muted-foreground leading-relaxed mt-4">

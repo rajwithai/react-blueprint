@@ -109,7 +109,7 @@ const Careers = () => {
               <h3 className="font-heading font-semibold text-lg mb-2 text-foreground">{role.title}</h3>
               <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4">{role.desc}</p>
               <a
-                href={`mailto:careers@aliphai.ai?subject=Application: ${role.title}`}
+                href={`mailto:careers@aliphsolutions.sa?subject=Application: ${role.title}`}
                 className="inline-flex items-center gap-2 px-5 py-2 bg-accent hover:brightness-110 text-accent-foreground rounded-lg font-heading font-semibold text-sm transition-all"
               >
                 Apply Now
@@ -171,15 +171,15 @@ const Careers = () => {
           <p className="font-body text-muted-foreground leading-relaxed mb-6">
             If you are exceptional at enterprise AI, privacy-preserving systems, Arabic NLP, or GRC automation — reach out.
           </p>
-          <a href="mailto:careers@aliphai.ai" className="inline-flex items-center gap-2 text-primary font-heading font-semibold hover:gap-3 transition-all">
-            <Mail className="h-4 w-4" /> careers@aliphai.ai
+          <a href="mailto:careers@aliphsolutions.sa" className="inline-flex items-center gap-2 text-primary font-heading font-semibold hover:gap-3 transition-all">
+            <Mail className="h-4 w-4" /> careers@aliphsolutions.sa
           </a>
         </div>
       </Section>
 
       <CTABanner
         title="Ready to build something exceptional?"
-        primaryCta={{ label: "Apply Now", href: "mailto:careers@aliphai.ai" }}
+        primaryCta={{ label: "Apply Now", href: "mailto:careers@aliphsolutions.sa" }}
       />
     </>
   );

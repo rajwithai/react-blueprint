@@ -167,7 +167,7 @@ const About = () => {
           <motion.div {...fadeUp} transition={{ delay: 0.15 }} className="space-y-3">
             <p className="dark-cta-trust">We're actively hiring for enterprise sales, AI engineering, and GRC advisory roles in Riyadh.</p>
             <p className="dark-cta-contact">
-              <a href="mailto:raj@aliphai.ai" className="hover:text-accent transition-colors">raj@aliphai.ai</a>
+              <a href="mailto:raj@aliphsolutions.sa" className="hover:text-accent transition-colors">raj@aliphsolutions.sa</a>
               <span className="mx-2">|</span>
               <a href="https://wa.me/966569678421" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">WhatsApp: +966 56 967 8421</a>
             </p>

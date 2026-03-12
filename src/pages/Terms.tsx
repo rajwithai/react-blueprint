@@ -14,7 +14,7 @@ const Terms = () => (
 
         <h2 className="font-heading font-semibold text-xl mt-10 mb-3">1. Acceptance of Terms</h2>
         <p className="font-body text-muted-foreground leading-relaxed">
-          By accessing or using the Aliph Solutions website (aliphai.ai) and any associated services, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you must discontinue use of our website and services immediately.
+          By accessing or using the Aliph Solutions website (aliphsolutions.sa) and any associated services, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you must discontinue use of our website and services immediately.
         </p>
 
         <h2 className="font-heading font-semibold text-xl mt-10 mb-3">2. Description of Services</h2>
@@ -72,7 +72,7 @@ const Terms = () => (
           For questions or concerns regarding these Terms of Service, please contact us:
         </p>
         <ul className="list-none pl-0 space-y-1 text-muted-foreground font-body mt-3">
-          <li><strong>Email:</strong> hello@aliphai.ai</li>
+          <li><strong>Email:</strong> hello@aliphsolutions.sa</li>
           <li><strong>Address:</strong> Riyadh, Kingdom of Saudi Arabia</li>
         </ul>
       </div>

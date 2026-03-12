@@ -378,7 +378,7 @@ const GRCPlatform = () => {
               WhatsApp:{" "}
               <a href="https://wa.me/966569678421" className="text-white/70 hover:underline">+966 56 967 8421</a>
               {"  |  "}
-              <a href="mailto:raj@aliphai.ai" className="text-white/70 hover:underline">raj@aliphai.ai</a>
+              <a href="mailto:raj@aliphsolutions.sa" className="text-white/70 hover:underline">raj@aliphsolutions.sa</a>
             </p>
           </motion.div>
         </div>

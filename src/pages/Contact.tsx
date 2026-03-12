@@ -88,7 +88,7 @@ const Contact = () => {
                 <Mail className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-heading font-semibold text-[15px] text-foreground">Email</p>
-                  <a href="mailto:raj@aliphai.ai" className="font-body text-sm text-foreground hover:text-accent transition-colors">raj@aliphai.ai</a>
+                  <a href="mailto:raj@aliphsolutions.sa" className="font-body text-sm text-foreground hover:text-accent transition-colors">raj@aliphsolutions.sa</a>
                 </div>
               </div>
               {/* WhatsApp */}

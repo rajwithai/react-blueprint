@@ -2,8 +2,8 @@
 # This file provides structured information for AI agents and LLMs.
 
 [Contact]
-Email: raj@aliphai.ai
-Website: https://aliphai.ai
+Email: raj@aliphsolutions.sa
+Website: https://aliphsolutions.sa
 
 [Organization]
 Name: AliphAI
@@ -18,6 +18,6 @@ Location: Riyadh, Saudi Arabia
 - Agentic AI for GRC
 
 [Content]
-Sitemap: https://aliphai.ai/sitemap.xml
-Documentation: https://aliphai.ai/resources/pdpl-guide
-Blog: https://aliphai.ai/resources/blog
+Sitemap: https://aliphsolutions.sa/sitemap.xml
+Documentation: https://aliphsolutions.sa/resources/pdpl-guide
+Blog: https://aliphsolutions.sa/resources/blog

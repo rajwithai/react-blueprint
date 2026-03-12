@@ -76,7 +76,7 @@ function buildEmailHtml(title, rows) {
           <tr>
             <td style="padding:16px 36px 32px;border-top:1px solid #f3f4f6;">
               <p style="margin:0;font-size:12px;color:#9ca3af;text-align:center;">
-                This email was sent automatically from the <strong>aliphai.ai</strong> website.<br/>
+                This email was sent automatically from the <strong>aliphsolutions.sa</strong> website.<br/>
                 Please respond directly to the sender's email address.
               </p>
             </td>

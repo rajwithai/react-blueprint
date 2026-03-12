@@ -43,7 +43,7 @@ const routes = [
   '/terms',
 ];
 
-const BASE_URL = process.env.VITE_BASE_URL || 'https://aliphai.ai';
+const BASE_URL = process.env.VITE_BASE_URL || 'https://aliphsolutions.sa';
 
 const generateSitemap = () => {
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -89,7 +89,7 @@ Sitemap: ${BASE_URL}/sitemap.xml
 # This file provides structured information for AI agents and LLMs.
 
 [Contact]
-Email: raj@aliphai.ai
+Email: raj@aliphsolutions.sa
 Website: ${BASE_URL}
 
 [Organization]

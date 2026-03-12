@@ -295,7 +295,7 @@ const AgenticAI = () => {
               <p className="mt-1">
                 <a href="https://wa.me/966569678421" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:underline">WhatsApp: +966 56 967 8421</a>
                 <span className="mx-2">|</span>
-                <a href="mailto:raj@aliphai.ai" className="text-white/70 hover:underline">raj@aliphai.ai</a>
+                <a href="mailto:raj@aliphsolutions.sa" className="text-white/70 hover:underline">raj@aliphsolutions.sa</a>
               </p>
             </div>
           </div>

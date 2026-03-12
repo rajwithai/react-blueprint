@@ -306,7 +306,7 @@ const Platform = () => {
             Prefer to talk directly?<br />
             <a href="https://wa.me/966569678421" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white underline transition-colors">WhatsApp: +966 56 967 8421</a>
             <span className="mx-2">|</span>
-            <a href="mailto:raj@aliphai.ai" className="text-white/70 hover:text-white underline transition-colors">raj@aliphai.ai</a>
+            <a href="mailto:raj@aliphsolutions.sa" className="text-white/70 hover:text-white underline transition-colors">raj@aliphsolutions.sa</a>
           </motion.p>
         </div>
       </section>

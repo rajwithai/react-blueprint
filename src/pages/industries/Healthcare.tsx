@@ -355,8 +355,8 @@ const Healthcare = () => {
                 <MessageCircle className="h-3.5 w-3.5" /> +966 56 967 8421
               </a>
               <span className="mx-2">|</span>
-              <a href="mailto:raj@aliphai.ai" className="inline-flex items-center gap-1 hover:text-white/80 transition-colors">
-                <Mail className="h-3.5 w-3.5" /> raj@aliphai.ai
+              <a href="mailto:raj@aliphsolutions.sa" className="inline-flex items-center gap-1 hover:text-white/80 transition-colors">
+                <Mail className="h-3.5 w-3.5" /> raj@aliphsolutions.sa
               </a>
             </p>
           </motion.div>
