@@ -5,9 +5,8 @@ import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
 import FeatureCard from "@/components/sections/FeatureCard";
 import CTABanner from "@/components/sections/CTABanner";
-import ParallaxImage from "@/components/sections/ParallaxImage";
 import { sendDemoEmail } from "@/lib/emailService";
-import platformImg from "@/assets/images/platform-architecture.jpg";
+
 
 const companySizes = ["1–50", "51–200", "201–500", "501–1000", "1000+"];
 const industries = ["Financial Services", "Healthcare", "Professional Services", "Technology", "Government", "Other"];
@@ -47,26 +46,6 @@ const Demo = () => {
         subtitle="30 minutes. Tailored to your organization. See Privacy Shield mask data in real time, Organization Memory answer from your knowledge base, and multi-agent AI produce work that used to take weeks."
       />
 
-      {/* Parallax Architecture */}
-      <ParallaxImage
-        src={platformImg}
-        alt="Aliph platform in action"
-        className="h-[40vh] md:h-[50vh]"
-        speed={0.2}
-        overlay
-        overlayOpacity={0.2}
-      >
-        <div className="container mx-auto px-6 py-20 lg:py-28 text-center text-white">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl"
-          >
-            See sovereign AI in action.
-          </motion.h2>
-        </div>
-      </ParallaxImage>
 
       {/* Section 1: Form */}
       <Section>
