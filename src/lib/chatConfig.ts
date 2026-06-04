@@ -1,5 +1,5 @@
 // Change this URL to your actual API endpoint
-export const CHAT_API_URL = "https://agent.aliphsolutions.sa/webhook/chat-agent";
+export const CHAT_API_URL = "https://agent.aliphai.ai/webhook/chat-agent";
 
 // Suggestion chips per page context
 export function getSuggestionChips(pathname: string): string[] {
